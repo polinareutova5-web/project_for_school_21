@@ -7,20 +7,4 @@
 
 Лендинг построен как интерактивное путешествие по реке знаний: пользователь начинает у озера, следует за утками, знакомится с программами, встречает черепаху, выбирает маршрут и приходит к регистрации.
 
-## Технологии
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Lucide Icons
-
-## Команды
-
-```bash
-npm install
-npm run dev
-npm run typecheck
-npm run build
-```
