@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Интерактивное путешествие по кампусу Центра прикладного программирования РУДН × Школа 21." />
+    <meta property="og:title" content="Центр прикладного программирования РУДН × Школа 21" />
+    <meta property="og:description" content="Познакомьтесь с кампусом через плавное путешествие по реке знаний." />
+    <meta property="og:type" content="website" />
+    <title>РУДН × Школа 21 — река знаний</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="logo gradient-text" href="#hero">РУДН × 21</a>
+      <nav aria-label="Главная навигация">
+        <a href="#story">Путь</a>
+        <a href="#programs">Программы</a>
+        <a href="#choice">Выбор</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#form">Анкета</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero lake" id="hero">
+        <span class="duck duck-one">🦆</span>
+        <span class="duck duck-two">🦆</span>
+        <span class="duck duck-three">🦆</span>
+        <div class="hero-content reveal">
+          <p class="eyebrow">Река знаний начинается здесь</p>
+          <h1>Центр прикладного программирования <span class="gradient-text">РУДН × Школа 21</span></h1>
+          <p class="lead">Интерактивный кампус, где обучение превращается в путь: от первого проекта до уверенной разработки в команде.</p>
+          <a class="button" href="#story">Стать частью кампуса</a>
+        </div>
+      </section>
+
+      <section class="section story" id="story">
+        <span class="scroll-duck" aria-hidden="true">🦆</span>
+        <div class="narrow reveal">
+          <p class="eyebrow">История начинается</p>
+          <h2>Камера плавно движется вниз по реке</h2>
+          <p>На берегах появляются камыши, листья, волны и круги на воде. Текст возникает спокойно, без визуального шума.</p>
+          <div class="decor-grid" aria-label="Декоративные элементы">
+            <span>камыш</span><span>листья</span><span>волны</span><span>круги</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="programs">
+        <div class="wide reveal">
+          <p class="eyebrow">Разделение реки</p>
+          <h2>Два образовательных маршрута</h2>
+          <div class="programs">
+            <article class="program-card">
+              <button class="card-toggle" type="button">Основная программа</button>
+              <div class="card-body">
+                <p>Глубокий маршрут для входа в прикладную разработку и сборки сильного портфолио.</p>
+                <ul>
+                  <li>peer-to-peer обучение</li>
+                  <li>проектный трек</li>
+                  <li>гибкий темп</li>
+                  <li>кампусная среда</li>
+                </ul>
+                <a href="#form" class="text-link">Подробнее</a>
+              </div>
+            </article>
+            <article class="program-card">
+              <button class="card-toggle" type="button">Дополнительные мероприятия</button>
+              <div class="card-body">
+                <p>Спокойная река событий: митапы, воркшопы, хакатоны и карьерные встречи.</p>
+                <ul>
+                  <li>индустриальные встречи</li>
+                  <li>практические воркшопы</li>
+                  <li>командные активности</li>
+                  <li>знакомство с кампусом</li>
+                </ul>
+                <a href="#form" class="text-link">Подробнее</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section turtle-section">
+        <button class="turtle-card reveal" type="button" id="turtleButton">
+          <span class="turtle">🐢</span>
+          <strong>Исследовать кампус</strong>
+          <span>Черепаха предлагает альтернативный спокойный путь по пространствам, событиям и сообществу.</span>
+          <small id="turtleHint">Нажмите, чтобы увидеть подсказку</small>
+        </button>
+      </section>
+
+      <section class="section choice" id="choice">
+        <div class="wide reveal">
+          <p class="eyebrow">Интерактивный выбор</p>
+          <h2>За кем пойти дальше?</h2>
+          <div class="choice-buttons">
+            <button class="choice-button active" data-path="duck" type="button">🦆 Следовать за уткой</button>
+            <button class="choice-button" data-path="turtle" type="button">🐢 Следовать за черепахой</button>
+          </div>
+          <p class="choice-result" id="choiceResult">Утка ведёт к основной программе и проектной практике.</p>
+        </div>
+      </section>
+
+      <section class="section" id="benefits">
+        <div class="wide reveal">
+          <p class="eyebrow">Почему именно мы</p>
+          <h2>Минимум шума. Максимум практики.</h2>
+          <div class="benefits">
+            <article><b>Практика</b><span>Реальные задачи и командная разработка.</span></article>
+            <article><b>Сообщество</b><span>Рост через взаимную помощь и обратную связь.</span></article>
+            <article><b>Кампус</b><span>Чистое пространство для концентрации.</span></article>
+            <article><b>События</b><span>Воркшопы, митапы и хакатоны.</span></article>
+            <article><b>Маршрут</b><span>Можно выбрать собственную скорость.</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section final" id="form">
+        <div class="form-layout reveal">
+          <div>
+            <p class="eyebrow">Финал путешествия</p>
+            <h2>Отправить анкету</h2>
+            <p>Это место для заявки потенциального ученика. Сейчас форма показывает подтверждение на сайте; для реального сбора заявок подключите Formspree, Tally, Google Forms или серверный обработчик.</p>
+            <p class="contacts">Контакты · Соцсети · РУДН · Школа 21</p>
+          </div>
+          <form class="application-form" id="applicationForm">
+            <label>Имя<input name="name" autocomplete="name" required placeholder="Как вас зовут?" /></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required placeholder="name@example.com" /></label>
+            <label>Телефон<input name="phone" type="tel" autocomplete="tel" required placeholder="+7 999 000 00 00" /></label>
+            <label>О себе<textarea name="message" rows="4" required placeholder="Расскажите, почему вам интересен кампус"></textarea></label>
+            <button class="button dark" type="submit">Отправить анкету</button>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <a class="to-top" href="#hero" aria-label="Наверх">↑</a>
+    <script src="script.js" defer></script>
+  </body>
+</html>
