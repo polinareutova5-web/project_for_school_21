@@ -220,7 +220,7 @@ display: block;
     0 10px 20px rgba(31, 31, 31, .12),
     0 22px 42px rgba(32, 198, 166, .18);
   filter: drop-shadow(0 8px 10px rgba(31,31,31,.08));
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-title {
