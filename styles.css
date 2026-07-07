@@ -223,18 +223,6 @@ display: block;
   overflow: hidden;
 }
 
-.hero-gradient-title::after {
-  content: "";
-  position: absolute;
-  inset: 10% -12% 44%;
-   background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.18) 30%, rgba(255,255,255,.62) 50%, rgba(255,255,255,.18) 70%, transparent 100%);
-  transform: skewX(-18deg);
-   mix-blend-mode: screen;
-  opacity: .86;
-  pointer-events: none;
-}
-
-
 .hero-title {
   font-size: clamp(48px, 10vw, 132px);
   font-weight: 950;
