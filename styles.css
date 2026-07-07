@@ -145,15 +145,17 @@ hero-pond {
   display: flex;
   align-items: center;
   background:
-    radial-gradient(circle at 10% 18%, rgba(34, 197, 94, .09), transparent 28%),
-    radial-gradient(circle at 88% 76%, rgba(34, 211, 238, .12), transparent 34%),
-    linear-gradient(180deg, #ffffff, rgba(240, 253, 250, .82));
+    radial-gradient(circle at 10% 18%, color-mix(in srgb, var(--green) 9%, transparent), transparent 28%),
+    radial-gradient(circle at 88% 76%, color-mix(in srgb, var(--sky) 12%, transparent), transparent 34%),
+    linear-gradient(180deg, var(--white), color-mix(in srgb, var(--teal) 10%, var(--white)));
 }
 
 .river-gallery {
   display: grid;
   gap: clamp(22px, 4vh, 42px);
   margin-top: 46px;
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
   min-height: 62vh;
 }
 
@@ -161,36 +163,64 @@ hero-pond {
   position: relative;
   min-height: clamp(230px, 29vh, 330px);
   overflow: hidden;
-  border: 1px solid rgba(5,5,5,.08);
-  border-radius: 42px;
+  border-block: 1px solid color-mix(in srgb, var(--black) 8%, transparent);
   background:
-    radial-gradient(circle at 8% 28%, rgba(34, 197, 94, .28) 0 10%, transparent 11%),
-    radial-gradient(circle at 92% 72%, rgba(20, 184, 166, .2) 0 12%, transparent 13%),
-    linear-gradient(180deg, rgba(220, 252, 231, .82), rgba(255,255,255,.72) 32% 68%, rgba(204, 251, 241, .72));
-  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.7);
+ radial-gradient(ellipse at 8% 22%, color-mix(in srgb, var(--green) 28%, transparent) 0 12%, transparent 13%),
+    radial-gradient(ellipse at 92% 78%, color-mix(in srgb, var(--teal) 22%, transparent) 0 13%, transparent 14%),
+    linear-gradient(180deg, color-mix(in srgb, var(--green) 12%, var(--white)), color-mix(in srgb, var(--white) 78%, transparent) 34% 66%, color-mix(in srgb, var(--teal) 13%, var(--white)));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 70%, transparent);
 }
 
 .turtle-river {
   background:
-    radial-gradient(circle at 16% 72%, rgba(20, 184, 166, .22) 0 11%, transparent 12%),
-    radial-gradient(circle at 86% 28%, rgba(34, 197, 94, .24) 0 10%, transparent 11%),
-    linear-gradient(180deg, rgba(236, 253, 245, .86), rgba(255,255,255,.72) 32% 68%, rgba(219, 234, 254, .58));
+    radial-gradient(ellipse at 16% 72%, color-mix(in srgb, var(--teal) 24%, transparent) 0 12%, transparent 13%),
+    radial-gradient(ellipse at 86% 28%, color-mix(in srgb, var(--green) 24%, transparent) 0 11%, transparent 12%),
+    linear-gradient(180deg, color-mix(in srgb, var(--teal) 10%, var(--white)), color-mix(in srgb, var(--white) 78%, transparent) 34% 66%, color-mix(in srgb, var(--blue) 11%, var(--white)));
+}
+
+.river-lane::before,
+.river-lane::after {
+  content: "";
+  position: absolute;
+  left: -5vw;
+  right: -5vw;
+  z-index: 2;
+  height: 24%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 50%, color-mix(in srgb, var(--green) 18%, transparent) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 42% 60%, color-mix(in srgb, var(--teal) 12%, transparent) 0 5%, transparent 6%),
+    radial-gradient(ellipse at 76% 45%, color-mix(in srgb, var(--green) 15%, transparent) 0 6%, transparent 7%);
+  filter: blur(.2px);
+}
+
+.river-lane::before { top: 0; }
+.river-lane::after { bottom: 0; transform: scaleY(-1); }
+
+.duck-river {
+  margin-left: -3vw;
+  padding-left: 3vw;
+}
+
+.turtle-river {
+  margin-right: -3vw;
+  padding-right: 3vw;
 }
 
 .horizontal-water {
   position: absolute;
-  left: -4%;
-  right: -4%;
-  top: 27%;
-  height: 46%;
+   left: -10vw;
+  right: -10vw;
+  top: 25%;
+  height: 50%;
   overflow: hidden;
-  border-radius: 999px;
+ border-radius: 44% / 50%;
   background:
-    radial-gradient(ellipse at 18% 34%, rgba(255,255,255,.38) 0 8%, transparent 9%),
-    radial-gradient(ellipse at 72% 62%, rgba(255,255,255,.28) 0 9%, transparent 10%),
-    repeating-linear-gradient(172deg, rgba(255,255,255,.18) 0 2px, transparent 3px 28px),
-    linear-gradient(90deg, rgba(34,211,238,.54), rgba(37,99,235,.38) 50%, rgba(20,184,166,.54));
-  box-shadow: inset 0 18px 42px rgba(255,255,255,.28), inset 0 -22px 44px rgba(15, 118, 110, .16);
+  radial-gradient(ellipse at 18% 34%, color-mix(in srgb, var(--white) 38%, transparent) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 72% 62%, color-mix(in srgb, var(--white) 28%, transparent) 0 9%, transparent 10%),
+    repeating-linear-gradient(172deg, color-mix(in srgb, var(--white) 18%, transparent) 0 2px, transparent 3px 28px),
+    linear-gradient(90deg, color-mix(in srgb, var(--sky) 54%, transparent), color-mix(in srgb, var(--blue) 38%, transparent) 50%, color-mix(in srgb, var(--teal) 54%, transparent));
+  box-shadow: inset 0 18px 42px color-mix(in srgb, var(--white) 28%, transparent), inset 0 -22px 44px color-mix(in srgb, var(--teal) 22%, transparent);
 }
 
 .horizontal-water::before,
@@ -198,7 +228,10 @@ hero-pond {
   content: "";
   position: absolute;
   inset: 0 -18%;
-  background: repeating-linear-gradient(90deg, transparent 0 72px, rgba(255,255,255,.34) 74px 77px, transparent 79px 138px);
+  background:
+    radial-gradient(ellipse at 20% 42%, color-mix(in srgb, var(--white) 22%, transparent) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 58% 64%, color-mix(in srgb, var(--white) 16%, transparent) 0 8%, transparent 9%),
+    repeating-linear-gradient(90deg, transparent 0 72px, color-mix(in srgb, var(--white) 34%, transparent) 74px 77px, transparent 79px 138px);
   animation: river-current 9s linear infinite;
 }
 
@@ -214,7 +247,7 @@ hero-pond {
   width: 28%;
   height: 2px;
   border-radius: 999px;
-  background: rgba(255,255,255,.62);
+background: color-mix(in srgb, var(--white) 62%, transparent);
   filter: blur(.3px);
   animation: glint-slide 7s ease-in-out infinite;
 }
@@ -226,7 +259,7 @@ hero-pond {
   position: absolute;
   z-index: 3;
   font-size: clamp(30px, 4vw, 54px);
-  filter: drop-shadow(0 10px 12px rgba(15,23,42,.16));
+filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--black) 16%, transparent));
   animation: swim-horizontal 13s ease-in-out infinite, creature-bob 3.6s ease-in-out infinite;
 }
 
@@ -235,7 +268,7 @@ hero-pond {
 .swimmer-two { left: 44%; top: 45%; animation-delay: 2.3s, .6s; }
 .swimmer-three { left: 76%; top: 18%; animation-delay: 4.4s, 1.2s; }
 
-.water-ring { position: absolute; z-index: 2; width: 80px; aspect-ratio: 1; border: 2px solid rgba(255,255,255,.52); border-radius: 50%; animation: ripple 5.2s ease-out infinite; }
+.water-ring { position: absolute; z-index: 2; width: 80px; aspect-ratio: 1; border: 2px solid color-mix(in srgb, var(--white) 52%, transparent); border-radius: 50%; animation: ripple 5.2s ease-out infinite; }
 .ring-one { left: 22%; top: 18%; } .ring-two { right: 28%; bottom: 14%; animation-delay: 2s; } .ring-three { left: 34%; bottom: 10%; animation-delay: 1s; } .ring-four { right: 18%; top: 16%; animation-delay: 2.7s; }
 
 .bank {
@@ -266,7 +299,7 @@ hero-pond {
   width: 7px;
   height: var(--reed-height, 64px);
   border-radius: 999px 999px 4px 4px;
-  background: linear-gradient(180deg, #b7791f 0 18%, #166534 42%, #14532d 100%);
+background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--green) 100%);
   transform-origin: bottom center;
   animation: reed-sway 4s ease-in-out infinite;
 }
@@ -278,8 +311,8 @@ hero-pond {
   width: clamp(34px, 5vw, 66px);
   height: clamp(18px, 3vw, 34px);
   border-radius: 58% 42% 48% 52%;
-  background: linear-gradient(145deg, #d6d3d1, #78716c 62%, #57534e);
-  box-shadow: inset 8px 7px 12px rgba(255,255,255,.34), 0 8px 18px rgba(87,83,78,.2);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--white) 88%, var(--blue)), color-mix(in srgb, var(--black) 38%, var(--blue)) 62%, color-mix(in srgb, var(--black) 52%, var(--blue)));
+  box-shadow: inset 8px 7px 12px color-mix(in srgb, var(--white) 34%, transparent), 0 8px 18px color-mix(in srgb, var(--black) 18%, transparent);
 }
 
 .rock-two, .rock-six { transform: rotate(-8deg) scale(.82); }
@@ -288,7 +321,7 @@ hero-pond {
 
 .shore-leaf {
   font-size: clamp(22px, 3vw, 34px);
-  filter: drop-shadow(0 8px 8px rgba(15,23,42,.12));
+  filter: drop-shadow(0 8px 8px color-mix(in srgb, var(--black) 12%, transparent));
   animation: shore-leaf-wiggle 5.5s ease-in-out infinite;
 }
 
