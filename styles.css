@@ -47,7 +47,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 clamp(18px, 1.4vw, 28px);
   white-space: nowrap;
   color: var(--white);
-  font-size: clamp(12px, .86vw, 16px);
+  font-size: clamp(18px, 1.4vw, 24px);
   font-weight: 900;
 }
 
@@ -63,15 +63,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 .brand-lockup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(108px, 10vw, 170px);
-  height: clamp(54px, 5.2vw, 82px);
-  padding: 8px 12px;
-  border: 2px solid var(--black);
-  border-radius: 22px;
-  background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Умножили ширину на 1.5: было (108px, 10vw, 170px) -> стало (162px, 15vw, 255px) */
+    width: clamp(162px, 15vw, 255px); 
+    /* Умножили высоту на 1.5: было (54px, 5.2vw, 82px) -> стало (81px, 7.8vw, 123px) */
+    height: clamp(81px, 7.8vw, 123px); 
+    padding: 8px 12px;
+    
+    border: none; /* ⚠️ УБРАЛИ ЧЕРНУЮ РАМКУ */
+    
+    border-radius: 22px;
+    background: transparent;
 }
 
 /* ============================================
