@@ -915,3 +915,142 @@ input, textarea { width: 100%; border: 1px solid rgba(31,31,31,.14); border-radi
   .reed-clump { transform: scale(.82); }
   .swimmer { font-size: 32px; }
 }
+
+/* ===========================
+      УТОЧКА
+=========================== */
+
+.pond-duck{
+
+    position:absolute;
+
+    width:72px;
+
+    height:auto;
+
+    right:-120px;
+
+    top:42%;
+
+    z-index:5;
+
+    pointer-events:none;
+
+    filter:
+        drop-shadow(0 10px 12px rgba(0,0,0,.18));
+
+    animation:duck-swim 16s linear infinite;
+}
+
+
+/* если изображение смотрит ВЛЕВО —
+   эту строку удалить
+
+если смотрит ВПРАВО —
+   оставить */
+
+.pond-duck{
+    transform:scaleX(-1);
+}
+
+
+
+@keyframes duck-swim{
+
+    /* сидит за экраном */
+
+    0%{
+
+        right:-120px;
+
+        top:42%;
+
+    }
+
+    /* появляется */
+
+    15%{
+
+        right:0;
+
+        top:42%;
+
+    }
+
+    /* плывет по воде */
+
+    35%{
+
+        right:15%;
+
+        top:43%;
+
+    }
+
+    55%{
+
+        right:30%;
+
+        top:45%;
+
+    }
+
+    /* подплывает к черепахам */
+
+    75%{
+
+        right:43%;
+
+        top:47%;
+
+    }
+
+    /* остается возле них */
+
+    90%{
+
+        right:46%;
+
+        top:46%;
+
+    }
+
+    /* чуть качается */
+
+    100%{
+
+        right:46%;
+
+        top:46%;
+
+    }
+
+}
+.pond-duck{
+
+    animation:
+        duck-swim 16s linear infinite,
+        duck-float 3s ease-in-out infinite;
+
+}
+
+
+@keyframes duck-float{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            scaleX(-1);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-4px)
+            scaleX(-1);
+
+    }
+
+}
