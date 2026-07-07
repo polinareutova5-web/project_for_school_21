@@ -177,17 +177,31 @@ display: block;
 }
 
 /* Заголовки первой страницы */
-.hero-main-title {
-   max-width: 1040px;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--black);
-  font-size: clamp(54px, 8.2vw, 142px);
-  font-weight: 950;
-  line-height: .9;
-  letter-spacing: -.07em;
-}
+.hero-main-title{
 
+    max-width:1100px;
+
+    margin:0 auto;
+
+    text-align:center;
+
+    color:#1f1f1f;
+
+    font-size:clamp(60px,8.8vw,152px);
+
+    font-weight:950;
+
+    line-height:.9;
+
+    letter-spacing:-0.015em;
+
+    text-shadow:
+        1px 1px 0 rgba(255,255,255,.7),
+        2px 2px 0 rgba(255,255,255,.55),
+        0 6px 12px rgba(0,0,0,.10),
+        0 18px 36px rgba(0,0,0,.12);
+
+}
 .hero-gradient-title {
    position: relative;
   display: inline-block;
@@ -239,14 +253,14 @@ display: block;
   color: var(--black);
 }
 
-.hero-description {
-  max-width: 520px;
-  margin: 0 0 14px;
-  text-align: left;
-   font-size: clamp(20px, 1.7vw, 30px);
-  font-weight: 750;
-  line-height: 1.14;
-  color: var(--black);
+.hero-description{
+    margin:0 0 18px;
+    text-align:center;
+    max-width:none;
+
+    font-size:clamp(22px,1.8vw,32px);
+    font-weight:800;
+    line-height:1.2;
 }
 
 .hero-bottom-row {
@@ -259,9 +273,10 @@ display: block;
   align-items: flex-end;
   gap: clamp(12px, 1.3vw, 22px);
 }
-.hero-bottom-copy {
-  flex: 1 1 560px;
-  min-width: 0;
+.hero-bottom-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 
