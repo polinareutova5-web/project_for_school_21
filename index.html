@@ -24,9 +24,14 @@
 
     <main>
       <section class="hero lake" id="hero">
-        <span class="duck duck-one">🦆</span>
-        <span class="duck duck-two">🦆</span>
-        <span class="duck duck-three">🦆</span>
+       <div class="hero-pond" aria-label="Озеро с утками">
+          <span class="pond-duck pond-duck-one" aria-hidden="true">🦆</span>
+          <span class="pond-duck pond-duck-two" aria-hidden="true">🦆</span>
+          <span class="pond-duck pond-duck-three" aria-hidden="true">🦆</span>
+          <span class="pond-ripple pond-ripple-one" aria-hidden="true"></span>
+          <span class="pond-ripple pond-ripple-two" aria-hidden="true"></span>
+          <span class="pond-ripple pond-ripple-three" aria-hidden="true"></span>
+        </div>
         <div class="hero-content reveal">
           <p class="eyebrow">Река знаний начинается здесь</p>
           <h1>Центр прикладного программирования <span class="gradient-text">РУДН × Школа 21</span></h1>
@@ -36,13 +41,36 @@
       </section>
 
       <section class="section story" id="story">
-        <span class="scroll-duck" aria-hidden="true">🦆</span>
-        <div class="narrow reveal">
-          <p class="eyebrow">История начинается</p>
-          <h2>Камера плавно движется вниз по реке</h2>
-          <p>На берегах появляются камыши, листья, волны и круги на воде. Текст возникает спокойно, без визуального шума.</p>
-          <div class="decor-grid" aria-label="Декоративные элементы">
-            <span>камыш</span><span>листья</span><span>волны</span><span>круги</span>
+        <div class="wide reveal">
+          <h2>Две живые реки кампуса</h2>
+          <p>Вместо подписей — настоящая спокойная анимация: вода течёт, камыши качаются, листья проплывают по поверхности, а круги расходятся от лёгкого движения.</p>
+          <div class="river-gallery" aria-label="Анимация двух рек с камышами, листьями и кругами на воде">
+            <article class="river-scene river-scene-one" aria-label="Первая река с камышами">
+              <div class="river-water">
+                <span class="river-wave wave-one"></span>
+                <span class="river-wave wave-two"></span>
+                <span class="river-wave wave-three"></span>
+                <span class="floating-leaf leaf-one">🍃</span>
+                <span class="floating-leaf leaf-two">🍂</span>
+                <span class="water-ring ring-one"></span>
+                <span class="water-ring ring-two"></span>
+              </div>
+              <div class="reed-bank reed-bank-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="reed-bank reed-bank-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+            <article class="river-scene river-scene-two" aria-label="Вторая река с листьями и волнами">
+              <div class="river-water">
+                <span class="river-wave wave-one"></span>
+                <span class="river-wave wave-two"></span>
+                <span class="river-wave wave-three"></span>
+                <span class="floating-leaf leaf-three">🍃</span>
+                <span class="floating-leaf leaf-four">🍂</span>
+                <span class="water-ring ring-three"></span>
+                <span class="water-ring ring-four"></span>
+              </div>
+              <div class="reed-bank reed-bank-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="reed-bank reed-bank-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
           </div>
         </div>
       </section>
