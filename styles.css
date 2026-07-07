@@ -155,140 +155,28 @@ a { color: inherit; text-decoration: none; }
    ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
    Большой заголовок, описание, кнопки действий
    ============================================ */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  padding: 140px 24px 80px;
-  text-align: center;
-  background: var(--white);
-}
+/* УДАЛИТЕ весь блок .hero-pixel-title и .hero-main-title */
 
-/* ⚠️ УДАЛЕНО: .lake::before (белая рябь на фоне) */
-/* ⚠️ УДАЛЕНО: .duck, .duck-one, .duck-two, .duck-three (утки) */
-/* ⚠️ УДАЛЕНО: .scroll-duck (плавающая утка) */
-
-.hero-content {
-  position: relative;
-  max-width: 1120px;
-  z-index: 2;
-}
-
-/* Большой пиксельный заголовок ШКОЛА */
-.hero-pixel-title {
-  font-family: 'Courier New', 'Lucida Console', monospace;
-  font-size: clamp(90px, 20vw, 240px);
+/* ВМЕСТО НИХ добавьте: */
+.hero-title {
+  font-size: clamp(48px, 10vw, 132px);
   font-weight: 950;
-  letter-spacing: 0.06em;
-  line-height: 0.9;
+  line-height: 0.95;
+  letter-spacing: -.06em;
   margin: 0 0 24px;
   color: var(--black);
-  text-transform: uppercase;
-  text-shadow:
-    4px 4px 0 rgba(0, 0, 0, 0.06),
-    8px 8px 0 rgba(0, 0, 0, 0.03);
 }
 
-/* Главный заголовок "НАУЧИСЬ СОЗДАВАТЬ БУДУЩЕЕ С ПОМОЩЬЮ ИИ" */
-.hero-main-title {
+.hero-subtitle {
   font-size: clamp(32px, 6vw, 72px);
   font-weight: 950;
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 0 0 28px;
-  text-transform: uppercase;
   color: var(--black);
 }
 
-/* Описание под заголовком */
-.hero-description {
-  max-width: 680px;
-  margin: 0 auto 40px;
-  font-size: clamp(16px, 1.8vw, 22px);
-  line-height: 1.5;
-  color: rgba(5, 5, 5, 0.68);
-}
-
-/* Контейнер для кнопок и текста действий */
-.hero-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* Стрелка → перед описанием */
-.hero-arrow {
-  font-size: clamp(24px, 3vw, 40px);
-  color: var(--black);
-  margin-right: 8px;
-}
-
-/* Текст-подсказка в рамке */
-.hero-action-text {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 24px;
-  border: 1px solid rgba(5, 5, 5, 0.14);
-  border-radius: 999px;
-  background: var(--white);
-  font-size: clamp(14px, 1.4vw, 18px);
-  color: var(--black);
-  max-width: 420px;
-}
-
-/* Кнопка "Подать заявку" — зелёная */
-.button-apply {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 999px;
-  background: var(--green);
-  color: var(--white);
-  padding: 16px 32px;
-  font-size: clamp(15px, 1.4vw, 20px);
-  font-weight: 900;
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
-}
-
-.button-apply:hover {
-  transform: scale(1.04);
-  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.45);
-}
-
-/* Кнопка "Личный кабинет" — серая */
-.button-cabinet {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(5, 5, 5, 0.12);
-  color: var(--black);
-  padding: 16px 32px;
-  font-size: clamp(15px, 1.4vw, 20px);
-  font-weight: 900;
-  cursor: pointer;
-  transition: transform .25s ease, background .25s ease;
-}
-
-.button-cabinet:hover {
-  transform: scale(1.04);
-  background: rgba(5, 5, 5, 0.18);
-}
-
-/* ============================================
-   ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
-   ⚠️ ДОБАВЛЕНО ВМЕСТО УТОК И БЕЛОЙ РЯБИ
-   Анимированное озеро с тремя черепахами
-   ============================================ */
+/* Обновите .hero-turtle-pond - добавьте контур: */
 .hero-turtle-pond {
   position: absolute;
   right: clamp(18px, 6vw, 86px);
@@ -297,71 +185,210 @@ a { color: inherit; text-decoration: none; }
   width: clamp(220px, 27vw, 390px);
   aspect-ratio: 1.8;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.52);
+  border: 3px solid rgba(5, 5, 5, 0.15); /* ЧЕТКИЙ КОНТУР */
   border-radius: 48% 52% 46% 54% / 58% 44% 56% 42%;
   background:
-    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.62) 0 6%, transparent 7%),
-    radial-gradient(circle at 70% 68%, rgba(255, 255, 255, 0.38) 0 7%, transparent 8%),
-    linear-gradient(135deg, rgba(34, 211, 238, 0.62), rgba(20, 184, 166, 0.5) 54%, rgba(37, 99, 235, 0.28));
-  box-shadow: 0 22px 60px rgba(20, 184, 166, 0.22), inset 0 0 70px rgba(255, 255, 255, 0.24);
+    radial-gradient(circle at 22% 22%, rgba(255,255,255,.62) 0 6%, transparent 7%),
+    radial-gradient(circle at 70% 68%, rgba(255,255,255,.38) 0 7%, transparent 8%),
+    linear-gradient(135deg, rgba(34,211,238,.62), rgba(20,184,166,.5) 54%, rgba(37,99,235,.28));
+  box-shadow: 
+    0 22px 60px rgba(20, 184, 166, .22), 
+    inset 0 0 70px rgba(255,255,255,.24),
+    0 0 0 1px rgba(255, 255, 255, 0.8); /* ДОПОЛНИТЕЛЬНАЯ ОБВОДКА */
 }
 
+/* Более натуральная рябь - улучшенная анимация: */
 .hero-turtle-pond::before,
 .hero-turtle-pond::after {
   content: "";
   position: absolute;
   inset: 18% -20%;
-  background: repeating-linear-gradient(100deg, transparent 0 28px, rgba(255, 255, 255, 0.22) 29px 32px, transparent 33px 68px);
+  background: 
+    repeating-linear-gradient(100deg, 
+      transparent 0 28px, 
+      rgba(255,255,255,.22) 29px 32px, 
+      transparent 33px 68px
+    );
   animation: pond-current 12s linear infinite;
+  filter: blur(0.5px); /* МЯГКОСТЬ ДЛЯ НАТУРАЛЬНОСТИ */
 }
 
 .hero-turtle-pond::after {
   animation-duration: 18s;
-  opacity: 0.55;
+  opacity: .55;
   transform: rotate(-5deg);
+  filter: blur(0.8px); /* ЕЩЕ МЯГЧЕ */
 }
 
-/* Черепахи в озере */
+/* ЧЕРЕПАШКИ - поддержка изображений: */
 .pond-turtle {
   position: absolute;
   z-index: 2;
-  font-size: clamp(24px, 3vw, 42px);
-  filter: drop-shadow(0 8px 12px rgba(15, 23, 42, 0.16));
-  animation: turtle-float 5s ease-in-out infinite;
+  width: clamp(40px, 5vw, 64px); /* ФИКСИРОВАННЫЙ РАЗМЕР */
+  height: clamp(40px, 5vw, 64px);
+  object-fit: cover;
+  border-radius: 50%; /* КРУГЛАЯ ФОРМА */
+  filter: drop-shadow(0 8px 12px rgba(15,23,42,.16));
+  animation: turtle-float 4.8s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.3); /* ФОН ЕСЛИ НЕТ ФОТО */
 }
 
 .pond-turtle-one { left: 16%; top: 36%; }
-.pond-turtle-two { right: 22%; top: 24%; animation-delay: 0.9s; transform: scaleX(-1); }
-.pond-turtle-three { left: 52%; bottom: 19%; font-size: clamp(20px, 2.4vw, 34px); animation-delay: 1.7s; }
+.pond-turtle-two { right: 22%; top: 24%; animation-delay: .9s; }
+.pond-turtle-three { left: 52%; bottom: 19%; width: clamp(32px, 4vw, 52px); height: clamp(32px, 4vw, 52px); animation-delay: 1.7s; }
 
-/* Круги на воде от черепах */
+/* Если используете emoji вместо фото (резервный вариант): */
+.pond-turtle-emoji {
+  font-size: clamp(24px, 3vw, 42px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Улучшенные круги на воде: */
 .pond-ripple {
   position: absolute;
   width: 58px;
   aspect-ratio: 1;
-  border: 2px solid rgba(255, 255, 255, 0.55);
+  border: 2px solid rgba(255,255,255,.55);
   border-radius: 50%;
-  animation: ripple 4.2s ease-out infinite;
+  animation: ripple-natural 4.2s ease-out infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* СВЕЧЕНИЕ */
 }
 
 .pond-ripple-one { left: 18%; top: 48%; }
 .pond-ripple-two { right: 18%; top: 42%; animation-delay: 1.2s; }
 .pond-ripple-three { left: 54%; bottom: 18%; animation-delay: 2.1s; }
 
+/* ГРАДИЕНТНЫЕ КНОПКИ С ЭФФЕКТОМ СТЕКЛА: */
+.button-apply,
+.button-cabinet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--gradient); /* ВАШ ГРАДИЕНТ */
+  color: var(--white);
+  padding: 16px 32px;
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 900;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 
+    0 8px 24px rgba(123, 47, 247, 0.3), /* ТЕНЬ ОТ ГРАДИЕНТА */
+    inset 0 1px 0 rgba(255, 255, 255, 0.4); /* БЛИК СВЕРХУ */
+}
+
+/* ЭФФЕКТ СТЕКЛА - СЛОИ: */
+.button-apply::before,
+.button-cabinet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.button-apply::after,
+.button-cabinet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.button-apply:hover::before,
+.button-cabinet:hover::before {
+  left: 100%;
+}
+
+.button-apply:hover,
+.button-cabinet:hover {
+  transform: scale(1.04);
+  box-shadow: 
+    0 12px 32px rgba(123, 47, 247, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Для кнопки "Личный кабинет" - серая версия с тем же эффектом: */
+.button-cabinet {
+  background: rgba(5, 5, 5, 0.12);
+  color: var(--black);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.button-cabinet::after {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+.button-cabinet:hover {
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Анимация для более натуральной ряби: */
+@keyframes ripple-natural {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.2);
+    border-width: 3px;
+  }
+  50% {
+    border-width: 2px;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+    border-width: 1px;
+  }
+}
+
 @keyframes turtle-float {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 8px -6px; }
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg); 
+  }
+  25% {
+    transform: translate(6px, -4px) rotate(1deg);
+  }
+  50% { 
+    transform: translate(10px, -8px) rotate(2deg); 
+  }
+  75% {
+    transform: translate(4px, -5px) rotate(-1deg);
+  }
 }
 
 @keyframes pond-current {
   to { transform: translateX(160px); }
 }
-
-@keyframes ripple {
-  0% { opacity: 0.72; transform: scale(0.2); }
-  100% { opacity: 0; transform: scale(1.9); }
-}
-
 /* ============================================
    ОСТАЛЬНЫЕ СТИЛИ (без изменений)
    ============================================ */
