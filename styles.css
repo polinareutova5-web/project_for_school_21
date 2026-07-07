@@ -10,46 +10,361 @@
   --shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
 }
 
-* { box-sizing: border-box; }
+/* ============================================
+   ОБЩИЕ СТИЛИ
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--white); color: var(--black); font-family: Inter, Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 
+/* ============================================
+   НАВИГАЦИЯ — ПЕРВАЯ СТРАНИЦА
+   ️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ВЕРХНЯЯ ПАНЕЛЬ САЙТА
+   Разделы: О программе, Треки, Как поступить, Кампус,
+            Основное обучение, Контакты, FAQ, Личный кабинет, Регистрация
+   ============================================ */
 .nav {
-  position: fixed; top: 16px; left: 50%; z-index: 10; transform: translateX(-50%);
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    width: min(1920px, calc(100% - 8vw)); padding: 0;
-  border: 0; border-radius: 0; background: transparent; backdrop-filter: none;
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1920px, calc(100% - 8vw));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
 }
-.nav nav { display: flex; gap: clamp(16px, 2vw, 48px); font-size: 14px; font-weight: 700; }
-.brand-lockup { display: flex; align-items: center; gap: clamp(12px, 2vw, 34px); }
+
+.nav nav {
+  display: flex;
+  gap: clamp(12px, 1.6vw, 32px);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 24px);
+}
+
+/* ============================================
+   ИКОНКА/ЛОГОТИП СВЕРХУ СЛЕВА
+   ⚠️ В HTML замените src на ссылку вашей иконки
+   Пример: <img class="brand-icon" src="ВАША_ССЫЛКА_НА_ФОТО" alt="Логотип">
+   ============================================ */
+.brand-icon {
+  width: clamp(36px, 4vw, 52px);
+  height: clamp(36px, 4vw, 52px);
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
 .brand-mark {
-  display: grid; place-items: center; min-width: clamp(58px, 8vw, 132px); min-height: clamp(38px, 5vw, 68px);
-  border: 1px solid color-mix(in srgb, var(--black) 12%, transparent); border-radius: 999px; background: var(--white);
-  color: var(--black); font-size: clamp(18px, 2.4vw, 36px); font-weight: 950; letter-spacing: -.04em; box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  min-width: clamp(58px, 8vw, 132px);
+  min-height: clamp(38px, 5vw, 68px);
+  border: 1px solid color-mix(in srgb, var(--black) 12%, transparent);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--black);
+  font-size: clamp(18px, 2.4vw, 36px);
+  font-weight: 950;
+  letter-spacing: -.04em;
+  box-shadow: var(--shadow);
 }
+
 .brand-school { background: var(--black); color: var(--white); }
 .brand-x { font-size: clamp(22px, 3vw, 44px); font-weight: 950; }
+
 .nav-pill {
-  align-items: center; padding: clamp(6px, .5vw, 9px) clamp(12px, 1vw, 14px) clamp(6px, .5vw, 9px) clamp(30px, 3vw, 50px);
-  border-radius: clamp(32px, 2vw, 51px); background: var(--black); color: var(--white); box-shadow: var(--shadow);
+  align-items: center;
+  padding: clamp(6px, .5vw, 9px) clamp(12px, 1vw, 14px) clamp(6px, .5vw, 9px) clamp(30px, 3vw, 50px);
+  border-radius: clamp(32px, 2vw, 51px);
+  background: var(--black);
+  color: var(--white);
+  box-shadow: var(--shadow);
 }
+
 .nav-pill a { transition: color .2s ease, transform .2s ease; }
 .nav-pill a:hover { color: var(--green); transform: translateY(-1px); }
+
+/* ============================================
+   КНОПКА "РЕГИСТРАЦИЯ" — ЭФФЕКТ СТЕКЛА/ГЛЯНЦА
+   ⚠️ ЗДЕСЬ НАСТРАИВАЕТСЯ СТЕКЛЯННЫЙ ЭФФЕКТ
+   ============================================ */
 .nav-cta {
-  margin-left: clamp(4px, 1vw, 18px); border-radius: 999px; background: var(--white); color: var(--black) !important;
-  padding: clamp(7px, .6vw, 10px) clamp(14px, 1.5vw, 22px); font-size: clamp(13px, 1.2vw, 20px);
+  margin-left: clamp(4px, 1vw, 18px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--black) !important;
+  padding: clamp(7px, .6vw, 10px) clamp(14px, 1.5vw, 22px);
+  font-size: clamp(13px, 1.2vw, 20px);
+  font-weight: 700;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.nav-cta:hover { color: var(--black) !important; transform: scale(.97); }
+
+/* Блик на кнопке при наведении */
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: left .6s ease;
+}
+
+.nav-cta:hover::before {
+  left: 100%;
+}
+
+.nav-cta:hover {
+  color: var(--black) !important;
+  transform: scale(.97);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
 .logo { font-weight: 900; }
 .gradient-text { background: var(--gradient); background-clip: text; -webkit-background-clip: text; color: transparent; }
 
-.hero { position: relative; min-height: 100vh; display: grid; place-items: center; overflow: hidden; padding: 120px 24px 64px; text-align: center; }
-.lake::before {
-  content: ""; position: absolute; inset: 24px; border-radius: 48px;
-  background: radial-gradient(circle at 18% 24%, rgba(255,255,255,.72) 0 8%, transparent 9%), radial-gradient(circle at 76% 58%, rgba(255,255,255,.55) 0 7%, transparent 8%), linear-gradient(160deg, rgba(34,211,238,.26), rgba(20,184,166,.2) 48%, rgba(34,197,94,.18));
+/* ============================================
+   HERO / ПЕРВАЯ СТРАНИЦА
+   ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
+   Большой заголовок, описание, кнопки действий
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 140px 24px 80px;
+  text-align: center;
+  background: var(--white);
 }
-.hero-content { position: relative; max-width: 1120px; }
+
+/* ⚠️ УДАЛЕНО: .lake::before (белая рябь на фоне) */
+/* ⚠️ УДАЛЕНО: .duck, .duck-one, .duck-two, .duck-three (утки) */
+/* ⚠️ УДАЛЕНО: .scroll-duck (плавающая утка) */
+
+.hero-content {
+  position: relative;
+  max-width: 1120px;
+  z-index: 2;
+}
+
+/* Большой пиксельный заголовок ШКОЛА */
+.hero-pixel-title {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: clamp(90px, 20vw, 240px);
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  line-height: 0.9;
+  margin: 0 0 24px;
+  color: var(--black);
+  text-transform: uppercase;
+  text-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.06),
+    8px 8px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Главный заголовок "НАУЧИСЬ СОЗДАВАТЬ БУДУЩЕЕ С ПОМОЩЬЮ ИИ" */
+.hero-main-title {
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 28px;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* Описание под заголовком */
+.hero-description {
+  max-width: 680px;
+  margin: 0 auto 40px;
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.5;
+  color: rgba(5, 5, 5, 0.68);
+}
+
+/* Контейнер для кнопок и текста действий */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Стрелка → перед описанием */
+.hero-arrow {
+  font-size: clamp(24px, 3vw, 40px);
+  color: var(--black);
+  margin-right: 8px;
+}
+
+/* Текст-подсказка в рамке */
+.hero-action-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border: 1px solid rgba(5, 5, 5, 0.14);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: clamp(14px, 1.4vw, 18px);
+  color: var(--black);
+  max-width: 420px;
+}
+
+/* Кнопка "Подать заявку" — зелёная */
+.button-apply {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  padding: 16px 32px;
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+}
+
+.button-apply:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.45);
+}
+
+/* Кнопка "Личный кабинет" — серая */
+.button-cabinet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(5, 5, 5, 0.12);
+  color: var(--black);
+  padding: 16px 32px;
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.button-cabinet:hover {
+  transform: scale(1.04);
+  background: rgba(5, 5, 5, 0.18);
+}
+
+/* ============================================
+   ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
+   ⚠️ ДОБАВЛЕНО ВМЕСТО УТОК И БЕЛОЙ РЯБИ
+   Анимированное озеро с тремя черепахами
+   ============================================ */
+.hero-turtle-pond {
+  position: absolute;
+  right: clamp(18px, 6vw, 86px);
+  bottom: clamp(22px, 7vw, 96px);
+  z-index: 1;
+  width: clamp(220px, 27vw, 390px);
+  aspect-ratio: 1.8;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 48% 52% 46% 54% / 58% 44% 56% 42%;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.62) 0 6%, transparent 7%),
+    radial-gradient(circle at 70% 68%, rgba(255, 255, 255, 0.38) 0 7%, transparent 8%),
+    linear-gradient(135deg, rgba(34, 211, 238, 0.62), rgba(20, 184, 166, 0.5) 54%, rgba(37, 99, 235, 0.28));
+  box-shadow: 0 22px 60px rgba(20, 184, 166, 0.22), inset 0 0 70px rgba(255, 255, 255, 0.24);
+}
+
+.hero-turtle-pond::before,
+.hero-turtle-pond::after {
+  content: "";
+  position: absolute;
+  inset: 18% -20%;
+  background: repeating-linear-gradient(100deg, transparent 0 28px, rgba(255, 255, 255, 0.22) 29px 32px, transparent 33px 68px);
+  animation: pond-current 12s linear infinite;
+}
+
+.hero-turtle-pond::after {
+  animation-duration: 18s;
+  opacity: 0.55;
+  transform: rotate(-5deg);
+}
+
+/* Черепахи в озере */
+.pond-turtle {
+  position: absolute;
+  z-index: 2;
+  font-size: clamp(24px, 3vw, 42px);
+  filter: drop-shadow(0 8px 12px rgba(15, 23, 42, 0.16));
+  animation: turtle-float 5s ease-in-out infinite;
+}
+
+.pond-turtle-one { left: 16%; top: 36%; }
+.pond-turtle-two { right: 22%; top: 24%; animation-delay: 0.9s; transform: scaleX(-1); }
+.pond-turtle-three { left: 52%; bottom: 19%; font-size: clamp(20px, 2.4vw, 34px); animation-delay: 1.7s; }
+
+/* Круги на воде от черепах */
+.pond-ripple {
+  position: absolute;
+  width: 58px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  animation: ripple 4.2s ease-out infinite;
+}
+
+.pond-ripple-one { left: 18%; top: 48%; }
+.pond-ripple-two { right: 18%; top: 42%; animation-delay: 1.2s; }
+.pond-ripple-three { left: 54%; bottom: 18%; animation-delay: 2.1s; }
+
+@keyframes turtle-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 8px -6px; }
+}
+
+@keyframes pond-current {
+  to { transform: translateX(160px); }
+}
+
+@keyframes ripple {
+  0% { opacity: 0.72; transform: scale(0.2); }
+  100% { opacity: 0; transform: scale(1.9); }
+}
+
+/* ============================================
+   ОСТАЛЬНЫЕ СТИЛИ (без изменений)
+   ============================================ */
 .hero-symbols, .hero-facts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
 .hero-symbols { margin-bottom: 28px; }
 .hero-symbols span, .hero-facts span, .label-pill {
@@ -69,14 +384,8 @@ h2 { font-size: clamp(42px, 8vw, 96px); }
 .lead, .section p { color: rgba(5, 5, 5, .68); font-size: clamp(18px, 2vw, 24px); line-height: 1.45; }
 .lead { max-width: 720px; margin: 30px auto; }
 .button { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: var(--gradient); color: var(--white); padding: 16px 26px; font-weight: 900; transition: transform .25s ease; cursor: pointer; }
-.button:hover, .duck:hover, .choice-button:hover, .turtle-card:hover { transform: scale(1.04); }
+.button:hover, .choice-button:hover, .turtle-card:hover { transform: scale(1.04); }
 .button.dark { width: 100%; background: var(--black); }
-
-.duck { position: absolute; z-index: 1; font-size: 48px; animation: float 6s ease-in-out infinite; transition: transform .25s ease; }
-.duck-one { left: 10%; top: 34%; }
-.duck-two { right: 18%; top: 28%; animation-delay: 1.4s; }
-.duck-three { left: 54%; bottom: 20%; font-size: 36px; animation-delay: 2.2s; }
-.scroll-duck { position: absolute; left: 8%; top: 16%; font-size: 60px; animation: swim 12s ease-in-out infinite; }
 
 .section { position: relative; padding: 120px 24px; overflow: hidden; }
 .narrow, .wide, .form-layout { width: min(1120px, 100%); margin: 0 auto; }
@@ -92,7 +401,6 @@ h2 { font-size: clamp(42px, 8vw, 96px); }
 .program-card.open .card-body { display: block; }
 .program-card li { margin: 12px 0; }
 .text-link { font-weight: 900; color: var(--teal); }
-
 .turtle-section { text-align: center; }
 .turtle-card { display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 620px; margin: 0 auto; padding: 34px; cursor: pointer; }
 .turtle { font-size: 78px; animation: nod 5s ease-in-out infinite; }
@@ -106,7 +414,6 @@ h2 { font-size: clamp(42px, 8vw, 96px); }
 .benefits article { min-height: 190px; padding: 26px; }
 .benefits b { display: block; margin-bottom: 16px; font-size: 24px; }
 .benefits span { color: rgba(5,5,5,.64); line-height: 1.45; }
-
 .final { background: var(--gradient); color: var(--white); }
 .final p { color: rgba(255,255,255,.82); }
 .contacts { font-weight: 900; }
@@ -126,51 +433,16 @@ input, textarea { width: 100%; border: 1px solid rgba(5,5,5,.14); border-radius:
   .nav nav { display: none; }
   .hero, .section { padding-left: 18px; padding-right: 18px; }
   .decor-grid, .programs, .choice-buttons, .benefits, .form-layout { grid-template-columns: 1fr; }
-  .lake::before { inset: 12px; border-radius: 32px; }
-  .duck { font-size: 34px; }
-  .scroll-duck { display: none; }
+  .hero-turtle-pond { right: 16px; bottom: 22px; width: min(320px, calc(100% - 32px)); opacity: .82; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
 }
-hero-pond {
-  position: absolute;
-  right: clamp(18px, 6vw, 86px);
-  bottom: clamp(22px, 7vw, 96px);
-  z-index: 1;
-  width: clamp(220px, 27vw, 390px);
-  aspect-ratio: 1.8;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.52);
-  border-radius: 48% 52% 46% 54% / 58% 44% 56% 42%;
-  background:
-    radial-gradient(circle at 22% 22%, rgba(255,255,255,.62) 0 6%, transparent 7%),
-    radial-gradient(circle at 70% 68%, rgba(255,255,255,.38) 0 7%, transparent 8%),
-    linear-gradient(135deg, rgba(34,211,238,.62), rgba(20,184,166,.5) 54%, rgba(37,99,235,.28));
-  box-shadow: 0 22px 60px rgba(20, 184, 166, .22), inset 0 0 70px rgba(255,255,255,.24);
-}
 
-.hero-pond::before,
-.hero-pond::after {
-  content: "";
-  position: absolute;
-  inset: 18% -20%;
-  background: repeating-linear-gradient(100deg, transparent 0 28px, rgba(255,255,255,.22) 29px 32px, transparent 33px 68px);
-  animation: pond-current 12s linear infinite;
-}
-
-.hero-pond::after { animation-duration: 18s; opacity: .55; transform: rotate(-5deg); }
-
-.pond-duck { position: absolute; z-index: 2; font-size: clamp(24px, 3vw, 42px); filter: drop-shadow(0 8px 12px rgba(15,23,42,.16)); animation: duck-bob 4.8s ease-in-out infinite; }
-.pond-duck-one { left: 16%; top: 36%; }
-.pond-duck-two { right: 22%; top: 24%; animation-delay: .9s; transform: scaleX(-1); }
-.pond-duck-three { left: 52%; bottom: 19%; font-size: clamp(20px, 2.4vw, 34px); animation-delay: 1.7s; }
-.pond-ripple { position: absolute; width: 58px; aspect-ratio: 1; border: 2px solid rgba(255,255,255,.55); border-radius: 50%; animation: ripple 4.2s ease-out infinite; }
-.pond-ripple-one { left: 18%; top: 48%; }
-.pond-ripple-two { right: 18%; top: 42%; animation-delay: 1.2s; }
-.pond-ripple-three { left: 54%; bottom: 18%; animation-delay: 2.1s; }
-
+/* ============================================
+   STORY / РЕКА С ЧЕРЕПАХАМИ (без изменений)
+   ============================================ */
 .story {
   min-height: 100vh;
   display: flex;
@@ -180,7 +452,6 @@ hero-pond {
     radial-gradient(circle at 88% 76%, color-mix(in srgb, var(--sky) 12%, transparent), transparent 34%),
     linear-gradient(180deg, var(--white), color-mix(in srgb, var(--teal) 10%, var(--white)));
 }
-
 .river-gallery {
   display: grid;
   gap: clamp(22px, 4vh, 42px);
@@ -189,26 +460,23 @@ hero-pond {
   width: 100vw;
   min-height: 62vh;
 }
-
 .river-lane {
   position: relative;
   min-height: clamp(230px, 29vh, 330px);
   overflow: hidden;
   border-block: 1px solid color-mix(in srgb, var(--black) 8%, transparent);
   background:
- radial-gradient(ellipse at 8% 22%, color-mix(in srgb, var(--green) 28%, transparent) 0 12%, transparent 13%),
+    radial-gradient(ellipse at 8% 22%, color-mix(in srgb, var(--green) 28%, transparent) 0 12%, transparent 13%),
     radial-gradient(ellipse at 92% 78%, color-mix(in srgb, var(--teal) 22%, transparent) 0 13%, transparent 14%),
     linear-gradient(180deg, color-mix(in srgb, var(--green) 12%, var(--white)), color-mix(in srgb, var(--white) 78%, transparent) 34% 66%, color-mix(in srgb, var(--teal) 13%, var(--white)));
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 70%, transparent);
 }
-
 .turtle-river {
   background:
     radial-gradient(ellipse at 16% 72%, color-mix(in srgb, var(--teal) 24%, transparent) 0 12%, transparent 13%),
     radial-gradient(ellipse at 86% 28%, color-mix(in srgb, var(--green) 24%, transparent) 0 11%, transparent 12%),
     linear-gradient(180deg, color-mix(in srgb, var(--teal) 10%, var(--white)), color-mix(in srgb, var(--white) 78%, transparent) 34% 66%, color-mix(in srgb, var(--blue) 11%, var(--white)));
 }
-
 .river-lane::before,
 .river-lane::after {
   content: "";
@@ -224,10 +492,8 @@ hero-pond {
     radial-gradient(ellipse at 76% 45%, color-mix(in srgb, var(--green) 15%, transparent) 0 6%, transparent 7%);
   filter: blur(.2px);
 }
-
 .river-lane::before { top: 0; }
 .river-lane::after { bottom: 0; transform: scaleY(-1); }
-
 .river-sign {
   position: absolute;
   left: clamp(24px, 7vw, 120px);
@@ -245,7 +511,6 @@ hero-pond {
   letter-spacing: .04em;
   backdrop-filter: blur(12px);
 }
-
 .turtle-river .river-sign {
   left: auto;
   right: clamp(24px, 7vw, 120px);
@@ -254,28 +519,25 @@ hero-pond {
   margin-left: -3vw;
   padding-left: 3vw;
 }
-
 .turtle-river {
   margin-right: -3vw;
   padding-right: 3vw;
 }
-
 .horizontal-water {
   position: absolute;
-   left: -10vw;
+  left: -10vw;
   right: -10vw;
   top: 25%;
   height: 50%;
   overflow: hidden;
- border-radius: 44% / 50%;
+  border-radius: 44% / 50%;
   background:
-  radial-gradient(ellipse at 18% 34%, color-mix(in srgb, var(--white) 38%, transparent) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 18% 34%, color-mix(in srgb, var(--white) 38%, transparent) 0 8%, transparent 9%),
     radial-gradient(ellipse at 72% 62%, color-mix(in srgb, var(--white) 28%, transparent) 0 9%, transparent 10%),
     repeating-linear-gradient(172deg, color-mix(in srgb, var(--white) 18%, transparent) 0 2px, transparent 3px 28px),
     linear-gradient(90deg, color-mix(in srgb, var(--sky) 54%, transparent), color-mix(in srgb, var(--blue) 38%, transparent) 50%, color-mix(in srgb, var(--teal) 54%, transparent));
   box-shadow: inset 0 18px 42px color-mix(in srgb, var(--white) 28%, transparent), inset 0 -22px 44px color-mix(in srgb, var(--teal) 22%, transparent);
 }
-
 .horizontal-water::before,
 .horizontal-water::after {
   content: "";
@@ -287,43 +549,36 @@ hero-pond {
     repeating-linear-gradient(90deg, transparent 0 72px, color-mix(in srgb, var(--white) 34%, transparent) 74px 77px, transparent 79px 138px);
   animation: river-current 9s linear infinite;
 }
-
 .horizontal-water::after {
   opacity: .48;
   transform: translateY(22px);
   animation-duration: 14s;
   animation-direction: reverse;
 }
-
 .river-glint {
   position: absolute;
   width: 28%;
   height: 2px;
   border-radius: 999px;
-background: color-mix(in srgb, var(--white) 62%, transparent);
+  background: color-mix(in srgb, var(--white) 62%, transparent);
   filter: blur(.3px);
   animation: glint-slide 7s ease-in-out infinite;
 }
-
 .glint-one { left: 12%; top: 34%; }
 .glint-two { right: 16%; bottom: 28%; animation-delay: 2s; }
-
 .swimmer {
   position: absolute;
   z-index: 3;
   font-size: clamp(30px, 4vw, 54px);
-filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--black) 16%, transparent));
+  filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--black) 16%, transparent));
   animation: swim-horizontal 13s ease-in-out infinite, creature-bob 3.6s ease-in-out infinite;
 }
-
 .turtle-swimmer { animation-duration: 18s, 4.8s; }
 .swimmer-one { left: 6%; top: 20%; }
 .swimmer-two { left: 44%; top: 45%; animation-delay: 2.3s, .6s; }
 .swimmer-three { left: 76%; top: 18%; animation-delay: 4.4s, 1.2s; }
-
 .water-ring { position: absolute; z-index: 2; width: 80px; aspect-ratio: 1; border: 2px solid color-mix(in srgb, var(--white) 52%, transparent); border-radius: 50%; animation: ripple 5.2s ease-out infinite; }
 .ring-one { left: 22%; top: 18%; } .ring-two { right: 28%; bottom: 14%; animation-delay: 2s; } .ring-three { left: 34%; bottom: 10%; animation-delay: 1s; } .ring-four { right: 18%; top: 16%; animation-delay: 2.7s; }
-
 .bank {
   position: absolute;
   left: 0;
@@ -335,10 +590,8 @@ filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--black) 16%, transparent
   min-height: 30%;
   pointer-events: none;
 }
-
 .bank-top { top: 0; padding-top: 14px; align-items: flex-start; }
 .bank-bottom { bottom: 0; padding-bottom: 12px; align-items: flex-end; }
-
 .reed-clump {
   display: inline-flex;
   align-items: flex-end;
@@ -346,20 +599,17 @@ filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--black) 16%, transparent
   min-width: 48px;
   height: 86px;
 }
-
 .reed-clump i {
   display: block;
   width: 7px;
   height: var(--reed-height, 64px);
   border-radius: 999px 999px 4px 4px;
-background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--green) 100%);
+  background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--green) 100%);
   transform-origin: bottom center;
   animation: reed-sway 4s ease-in-out infinite;
 }
-
 .reed-clump i:nth-child(2) { --reed-height: 84px; animation-delay: .45s; }
 .reed-clump i:nth-child(3) { --reed-height: 56px; animation-delay: .9s; }
-
 .river-rock {
   width: clamp(34px, 5vw, 66px);
   height: clamp(18px, 3vw, 34px);
@@ -367,22 +617,16 @@ background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--g
   background: linear-gradient(145deg, color-mix(in srgb, var(--white) 88%, var(--blue)), color-mix(in srgb, var(--black) 38%, var(--blue)) 62%, color-mix(in srgb, var(--black) 52%, var(--blue)));
   box-shadow: inset 8px 7px 12px color-mix(in srgb, var(--white) 34%, transparent), 0 8px 18px color-mix(in srgb, var(--black) 18%, transparent);
 }
-
 .rock-two, .rock-six { transform: rotate(-8deg) scale(.82); }
 .rock-three, .rock-seven { transform: rotate(7deg) scale(1.08); }
 .rock-four, .rock-eight { transform: rotate(-4deg) scale(.72); }
-
 .shore-leaf {
   font-size: clamp(22px, 3vw, 34px);
   filter: drop-shadow(0 8px 8px color-mix(in srgb, var(--black) 12%, transparent));
   animation: shore-leaf-wiggle 5.5s ease-in-out infinite;
 }
-
 .leaf-b, .leaf-d { animation-delay: 1.7s; }
 
-@keyframes pond-current { to { transform: translateX(160px); } }
-@keyframes duck-bob { 0%,100% { translate: 0 0; } 50% { translate: 10px -8px; } }
-@keyframes ripple { 0% { opacity: .72; transform: scale(.2); } 100% { opacity: 0; transform: scale(1.9); } }
 @keyframes river-current { to { transform: translateX(180px); } }
 @keyframes glint-slide { 0%,100% { opacity: .35; transform: translateX(-18px); } 50% { opacity: .82; transform: translateX(26px); } }
 @keyframes swim-horizontal { 0%,100% { translate: -18px 0; } 50% { translate: 26px 0; } }
@@ -391,7 +635,6 @@ background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--g
 @keyframes shore-leaf-wiggle { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg) translateY(-4px); } }
 
 @media (max-width: 820px) {
-  .hero-pond { right: 16px; bottom: 22px; width: min(320px, calc(100% - 32px)); opacity: .82; }
   .story { min-height: auto; }
   .river-gallery { min-height: auto; }
   .river-lane { min-height: 240px; border-radius: 30px; }
@@ -400,4 +643,3 @@ background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--g
   .reed-clump { transform: scale(.82); }
   .swimmer { font-size: 32px; }
 }
-
