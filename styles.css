@@ -103,3 +103,71 @@ input, textarea { width: 100%; border: 1px solid rgba(5,5,5,.14); border-radius:
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
 }
+hero-pond {
+  position: absolute;
+  right: clamp(18px, 6vw, 86px);
+  bottom: clamp(22px, 7vw, 96px);
+  z-index: 1;
+  width: clamp(220px, 27vw, 390px);
+  aspect-ratio: 1.8;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.52);
+  border-radius: 48% 52% 46% 54% / 58% 44% 56% 42%;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(255,255,255,.62) 0 6%, transparent 7%),
+    radial-gradient(circle at 70% 68%, rgba(255,255,255,.38) 0 7%, transparent 8%),
+    linear-gradient(135deg, rgba(34,211,238,.62), rgba(20,184,166,.5) 54%, rgba(37,99,235,.28));
+  box-shadow: 0 22px 60px rgba(20, 184, 166, .22), inset 0 0 70px rgba(255,255,255,.24);
+}
+
+.hero-pond::before,
+.hero-pond::after {
+  content: "";
+  position: absolute;
+  inset: 18% -20%;
+  background: repeating-linear-gradient(100deg, transparent 0 28px, rgba(255,255,255,.22) 29px 32px, transparent 33px 68px);
+  animation: pond-current 12s linear infinite;
+}
+
+.hero-pond::after { animation-duration: 18s; opacity: .55; transform: rotate(-5deg); }
+
+.pond-duck { position: absolute; z-index: 2; font-size: clamp(24px, 3vw, 42px); filter: drop-shadow(0 8px 12px rgba(15,23,42,.16)); animation: duck-bob 4.8s ease-in-out infinite; }
+.pond-duck-one { left: 16%; top: 36%; }
+.pond-duck-two { right: 22%; top: 24%; animation-delay: .9s; transform: scaleX(-1); }
+.pond-duck-three { left: 52%; bottom: 19%; font-size: clamp(20px, 2.4vw, 34px); animation-delay: 1.7s; }
+.pond-ripple { position: absolute; width: 58px; aspect-ratio: 1; border: 2px solid rgba(255,255,255,.55); border-radius: 50%; animation: ripple 4.2s ease-out infinite; }
+.pond-ripple-one { left: 18%; top: 48%; }
+.pond-ripple-two { right: 18%; top: 42%; animation-delay: 1.2s; }
+.pond-ripple-three { left: 54%; bottom: 18%; animation-delay: 2.1s; }
+
+.river-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 46px; }
+.river-scene { position: relative; min-height: 430px; overflow: hidden; border-radius: 42px; border: 1px solid rgba(5,5,5,.08); background: linear-gradient(90deg, rgba(34,197,94,.22), rgba(255,255,255,.7) 18% 82%, rgba(20,184,166,.2)); box-shadow: var(--shadow); }
+.river-scene-two { background: linear-gradient(90deg, rgba(20,184,166,.22), rgba(255,255,255,.72) 20% 80%, rgba(34,197,94,.22)); }
+.river-water { position: absolute; inset: -12% 22%; overflow: hidden; border-radius: 46% / 16%; background: linear-gradient(180deg, rgba(34,211,238,.48), rgba(37,99,235,.32) 48%, rgba(20,184,166,.42)); transform: perspective(520px) rotateX(18deg); box-shadow: inset 0 0 80px rgba(255,255,255,.36); animation: camera-down 10s ease-in-out infinite; }
+.river-water::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(255,255,255,.34) 0 2px, transparent 3px 34px); animation: water-flow 4.4s linear infinite; }
+.river-wave { position: absolute; left: -25%; width: 150%; height: 22px; border-top: 3px solid rgba(255,255,255,.55); border-radius: 50%; animation: wave-slide 6s linear infinite; }
+.wave-one { top: 24%; } .wave-two { top: 52%; animation-delay: 1.4s; } .wave-three { top: 76%; animation-delay: 2.5s; }
+.floating-leaf { position: absolute; z-index: 2; font-size: 28px; animation: leaf-drift 8s ease-in-out infinite; }
+.leaf-one { left: 24%; top: -8%; } .leaf-two { right: 28%; top: 12%; animation-delay: 2.2s; } .leaf-three { left: 38%; top: -10%; animation-delay: .8s; } .leaf-four { right: 34%; top: 8%; animation-delay: 3.1s; }
+.water-ring { position: absolute; width: 70px; aspect-ratio: 1; border: 2px solid rgba(255,255,255,.52); border-radius: 50%; animation: ripple 4.8s ease-out infinite; }
+.ring-one { left: 25%; top: 30%; } .ring-two { right: 20%; bottom: 22%; animation-delay: 1.8s; } .ring-three { left: 45%; top: 20%; animation-delay: 1s; } .ring-four { right: 28%; bottom: 30%; animation-delay: 2.8s; }
+.reed-bank { position: absolute; inset-block: 0; z-index: 3; display: flex; align-items: flex-end; gap: 13px; padding-bottom: 18px; }
+.reed-bank-left { left: 5%; } .reed-bank-right { right: 5%; transform: scaleX(-1); }
+.reed-bank i { display: block; width: 8px; height: var(--reed-height, 150px); border-radius: 99px; background: linear-gradient(#8b5a2b, #166534); transform-origin: bottom center; animation: reed-sway 3.8s ease-in-out infinite; }
+.reed-bank i:nth-child(2) { --reed-height: 210px; animation-delay: .4s; } .reed-bank i:nth-child(3) { --reed-height: 170px; animation-delay: .8s; } .reed-bank i:nth-child(4) { --reed-height: 235px; animation-delay: 1.2s; } .reed-bank i:nth-child(5) { --reed-height: 130px; animation-delay: 1.6s; }
+
+@keyframes pond-current { to { transform: translateX(160px); } }
+@keyframes duck-bob { 0%,100% { translate: 0 0; } 50% { translate: 10px -8px; } }
+@keyframes ripple { 0% { opacity: .72; transform: scale(.2); } 100% { opacity: 0; transform: scale(1.9); } }
+@keyframes camera-down { 0%,100% { translate: 0 -10px; } 50% { translate: 0 18px; } }
+@keyframes water-flow { to { transform: translateY(34px); } }
+@keyframes wave-slide { to { transform: translateX(18%); } }
+@keyframes leaf-drift { 0% { transform: translateY(-40px) rotate(0deg); } 100% { transform: translateY(430px) translateX(48px) rotate(190deg); } }
+@keyframes reed-sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(7deg); } }
+
+@media (max-width: 820px) {
+  .hero-pond { right: 16px; bottom: 22px; width: min(320px, calc(100% - 32px)); opacity: .82; }
+  .river-gallery { grid-template-columns: 1fr; }
+  .river-scene { min-height: 360px; }
+  .river-water { inset-inline: 18%; }
+}
