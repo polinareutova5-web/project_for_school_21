@@ -1,0 +1,911 @@
+:root {
+  --white: #ffffff;
+  --black: #1f1f1f;
+  --purple: #7b2ff7;
+  --blue: #2563eb;
+  --sky: #22d3ee;
+  --teal: #14b8a6;
+  --green: #22c55e;
+  --gradient: linear-gradient(110deg, #6b3ff5 0%, #2476ff 30%, #20c7e8 56%, #20c6a6 76%, #44eb99 100%);
+  --shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
+}
+
+/* ============================================
+   ОБЩИЕ СТИЛИ
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--white); color: var(--black); font-family: Inter, Minecraft, SB Sans Text; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   НАВИГАЦИЯ — ПЕРВАЯ СТРАНИЦА
+   ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ВЕРХНЯЯ ПАНЕЛЬ САЙТА
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+ display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(12px, 1.4vw, 24px);
+  row-gap: 8px;
+  width: min(1640px, calc(100% - 48px));
+  padding: 0;
+  background: transparent;
+}
+
+.nav nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, .75vw, 14px);
+  min-width: 0;
+  padding: 0 clamp(18px, 1.4vw, 28px);
+  white-space: nowrap;
+  color: var(--white);
+  font-size: clamp(12px, .86vw, 16px);
+  font-weight: 900;
+}
+
+.nav nav a {
+  flex: 0 0 auto;
+  line-height: 1;
+   transition: color .2s ease, text-shadow .2s ease;
+}
+
+.nav nav a:hover {
+  color: #00FFAF;
+  text-shadow: 0 0 14px rgba(0, 255, 175, .85);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(108px, 10vw, 170px);
+  height: clamp(54px, 5.2vw, 82px);
+  padding: 8px 12px;
+  border: 2px solid var(--black);
+  border-radius: 22px;
+  background: transparent;
+}
+
+/* ============================================
+   ИКОНКА/ЛОГОТИП СВЕРХУ СЛЕВА
+   ============================================ */
+.brand-icon {
+display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.brand-mark,
+.brand-x { display: none; }
+
+.nav nav,
+.nav-cta {
+  min-height: 54px;
+  background: var(--black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(18px, 1.4vw, 28px);
+  color: var(--white) !important;
+  font-size: clamp(12px, .86vw, 16px);
+  font-weight: 900;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, color .25s ease;
+}
+
+.nav nav {
+  clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%);
+}
+
+.nav-cta {
+ margin-left: -1px;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%);
+}
+
+/* Блик на кнопке при наведении */
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: left .6s ease;
+}
+
+.nav-cta:hover::before { left: 100%; }
+
+.nav-cta:hover {
+  color: var(--white) !important;
+  transform: scale(.97);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.logo { font-weight: 900; }
+.gradient-text { background: var(--gradient); background-clip: text; -webkit-background-clip: text; color: transparent; }
+
+/* ============================================
+   HERO / ПЕРВАЯ СТРАНИЦА
+   ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+   padding: 150px 24px 86px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 14% 20%, rgba(226,246,239,.92) 0 12%, transparent 32%),
+    radial-gradient(circle at 86% 88%, rgba(255,255,255,.58) 0 8%, transparent 24%),
+    linear-gradient(155deg, #d8f3ea 0%, #e2f6ef 38%, #edf9f5 72%, #ffffff 100%);
+}
+
+.hero-content {
+  position: relative;
+  width: min(1320px, 100%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(clamp(-110px, -8vh, -56px));
+}
+
+/* Заголовки первой страницы */
+.hero-main-title {
+   max-width: 1040px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--black);
+  font-size: clamp(54px, 8.2vw, 142px);
+  font-weight: 950;
+  line-height: .9;
+  letter-spacing: -.07em;
+}
+
+.hero-gradient-title {
+   position: relative;
+  display: inline-block;
+  margin: 10px auto 0;
+  padding: 0 .08em;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+    font-size: clamp(50px, 6.9vw, 116px);
+  font-weight: 950;
+  line-height: .92;
+  letter-spacing: -.06em;
+  text-shadow:
+    0 2px 0 rgba(255,255,255,.24),
+    0 10px 20px rgba(31, 31, 31, .12),
+    0 22px 42px rgba(32, 198, 166, .18);
+  filter: drop-shadow(0 8px 10px rgba(31,31,31,.08));
+  overflow: hidden;
+}
+
+.hero-gradient-title::after {
+  content: "";
+  position: absolute;
+  inset: 10% -12% 44%;
+   background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.18) 30%, rgba(255,255,255,.62) 50%, rgba(255,255,255,.18) 70%, transparent 100%);
+  transform: skewX(-18deg);
+   mix-blend-mode: screen;
+  opacity: .86;
+  pointer-events: none;
+}
+
+
+.hero-title {
+  font-size: clamp(48px, 10vw, 132px);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -.06em;
+  margin: 0 0 24px;
+  color: var(--black);
+}
+
+.hero-subtitle {
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 28px;
+  color: var(--black);
+}
+
+.hero-description {
+  max-width: 520px;
+  margin: 0 0 14px;
+  text-align: left;
+   font-size: clamp(20px, 1.7vw, 30px);
+  font-weight: 750;
+  line-height: 1.14;
+  color: var(--black);
+}
+
+.hero-bottom-row {
+  position: absolute;
+  left: clamp(24px, 6vw, 112px);
+  right: clamp(24px, 34vw, 540px);
+  bottom: clamp(12px, 3vw, 46px);
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(12px, 1.3vw, 22px);
+}
+.hero-bottom-copy {
+  flex: 1 1 560px;
+  min-width: 0;
+}
+
+
+.hero-campus-pill {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--black);
+  padding: 12px 26px;
+  text-align: center;
+   font-size: clamp(13px, .92vw, 16px);
+  font-weight: 800;
+  line-height: 1.18;
+}
+
+.hero-bottom-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.hero-apply-button,
+.hero-cabinet-button {
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 28px;
+  font-size: clamp(14px, 1vw, 18px);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.hero-apply-button {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  background: var(--gradient);
+  color: var(--white);
+   border: 2px solid transparent;
+  background:
+    linear-gradient(110deg, #6b3ff5 0%, #2476ff 30%, #20c7e8 56%, #20c6a6 76%, #44eb99 100%) padding-box,
+    linear-gradient(110deg, #6b3ff5 0%, #2476ff 30%, #20c7e8 56%, #20c6a6 76%, #44eb99 100%) border-box;
+  box-shadow: 0 10px 28px rgba(32, 198, 166, .24), inset 0 1px 0 rgba(255,255,255,.45);
+}
+
+.hero-apply-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.72), transparent);
+  transform: skewX(-18deg);
+  transition: left .55s ease;
+}
+
+.hero-apply-button:hover::before { left: 130%; }
+
+
+.hero-apply-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+ background: linear-gradient(180deg, rgba(255,255,255,.32) 0%, transparent 48%, rgba(0,0,0,.1) 100%);
+  opacity: .62;
+  pointer-events: none;
+   transition: opacity .25s ease;
+}
+.hero-apply-button:hover::after { opacity: 1; }
+.hero-cabinet-button {
+  border: 2px solid var(--black);
+  background: transparent;
+  color: var(--black);
+  transition: border-color .25s ease, box-shadow .25s ease, color .25s ease;
+}
+
+.hero-cabinet-button:hover {
+  border-color: #00FFAF;
+  box-shadow: 0 0 0 4px rgba(0,255,175,.14), 0 0 22px rgba(0,255,175,.38);
+  color: var(--black);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-arrow {
+  font-size: clamp(24px, 3vw, 40px);
+  color: var(--black);
+  margin-right: 8px;
+}
+
+.hero-action-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border: 1px solid rgba(31, 31, 31, 0.14);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: clamp(14px, 1.4vw, 18px);
+  color: var(--black);
+  max-width: 420px;
+}
+
+/* ============================================
+   КНОПКИ "ПОДАТЬ ЗАЯВКУ" И "ЛИЧНЫЙ КАБИНЕТ"
+   ⚠️ ГРАДИЕНТ + ЭФФЕКТ СТЕКЛА/ГЛЯНЦА
+   ============================================ */
+.button-apply,
+.button-cabinet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--gradient);
+  color: var(--white);
+  padding: 16px 32px;
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 900;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow:
+    0 8px 24px rgba(123, 47, 247, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Блик скользит при наведении */
+.button-apply::before,
+.button-cabinet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.6s ease;
+}
+
+/* Верхний слой глянца */
+.button-apply::after,
+.button-cabinet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.button-apply:hover::before,
+.button-cabinet:hover::before { left: 100%; }
+
+.button-apply:hover,
+.button-cabinet:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 12px 32px rgba(123, 47, 247, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Кнопка "Личный кабинет" — серая версия */
+.button-cabinet {
+  background: rgba(31, 31, 31, 0.12);
+  color: var(--black);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.button-cabinet::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+.button-cabinet:hover {
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
+   ============================================ */
+.hero-turtle-pond {
+  position: absolute;
+right: clamp(8px, 3.6vw, 64px);
+    bottom: clamp(12px, 2.6vw, 42px);
+  z-index: 1;
+  width: clamp(220px, 27vw, 390px);
+  aspect-ratio: 1.8;
+  overflow: hidden;
+  border: 2px solid rgba(31, 31, 31, 0.18);
+  border-radius: 48% 52% 46% 54% / 58% 44% 56% 42%;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(255,255,255,.62) 0 6%, transparent 7%),
+    radial-gradient(circle at 70% 68%, rgba(255,255,255,.38) 0 7%, transparent 8%),
+    linear-gradient(135deg, rgba(34,211,238,.62), rgba(20,184,166,.5) 54%, rgba(37,99,235,.28));
+  box-shadow:
+    0 22px 60px rgba(20, 184, 166, .22),
+    inset 0 0 70px rgba(255,255,255,.24),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hero-turtle-pond:hover { transform: scale(1.02); }
+
+/* Более натуральная рябь */
+.hero-turtle-pond::before,
+.hero-turtle-pond::after {
+  content: "";
+  position: absolute;
+  inset: 18% -20%;
+  background:
+    repeating-linear-gradient(100deg,
+      transparent 0 28px,
+      rgba(255,255,255,.22) 29px 32px,
+      transparent 33px 68px
+    );
+  animation: pond-current 12s linear infinite;
+  filter: blur(0.5px); /* Мягкость для натуральности */
+}
+
+.hero-turtle-pond::after {
+  animation-duration: 18s;
+  opacity: .55;
+  transform: rotate(-5deg);
+  filter: blur(0.8px);
+}
+
+/* ============================================
+   ЧЕРЕПАШКИ — ПОДДЕРЖКА ИЗОБРАЖЕНИЙ
+   ⚠️ Можно использовать <img> с ссылкой на фото
+   Если фото не загрузится — покажется emoji
+   ============================================ */
+.pond-turtle {
+  position: absolute;
+  z-index: 2;
+  width: clamp(40px, 5vw, 64px);
+  height: clamp(40px, 5vw, 64px);
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 8px 12px rgba(15,23,42,.16));
+  animation: turtle-float 4.8s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.pond-turtle-one { left: 16%; top: 36%; }
+.pond-turtle-two { right: 22%; top: 24%; animation-delay: .9s; transform: scaleX(-1); }
+.pond-turtle-three { left: 52%; bottom: 19%; width: clamp(32px, 4vw, 52px); height: clamp(32px, 4vw, 52px); animation-delay: 1.7s; }
+
+/* Резервный вариант — emoji */
+.pond-turtle-emoji {
+  position: absolute;
+  z-index: 2;
+  font-size: clamp(32px, 4vw, 58px);
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 12px rgba(15,23,42,.14));
+  animation: turtle-float 4.8s ease-in-out infinite;
+}
+.pond-turtle-one + .pond-turtle-emoji { left: 16%; top: 36%; }
+.pond-turtle-two + .pond-turtle-emoji { right: 22%; top: 24%; animation-delay: .9s; }
+.pond-turtle-three + .pond-turtle-emoji { left: 52%; bottom: 19%; animation-delay: 1.7s; }
+
+.pond-reeds {
+  position: absolute;
+  z-index: 3;
+  bottom: 2%;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.pond-reeds-left { left: 7%; }
+.pond-reeds-right { right: 8%; }
+
+.pond-reeds i {
+  display: block;
+  width: 4px;
+  height: clamp(42px, 5vw, 70px);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #4ba06f, #1f6f48);
+  transform-origin: bottom center;
+  animation: reeds-sway 5s ease-in-out infinite;
+}
+
+.pond-reeds i:nth-child(2) { height: clamp(54px, 6vw, 88px); transform: rotate(7deg); animation-delay: .5s; }
+.pond-reeds i:nth-child(3) { height: clamp(36px, 4.2vw, 62px); transform: rotate(-8deg); animation-delay: 1s; }
+.pond-reeds i:nth-child(4) { height: clamp(48px, 5.6vw, 76px); transform: rotate(11deg); animation-delay: 1.4s; }
+
+
+/* Улучшенные круги на воде */
+.pond-ripple {
+  position: absolute;
+  width: 58px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255,255,255,.55);
+  border-radius: 50%;
+  animation: ripple-natural 4.2s ease-out infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.pond-ripple-one { left: 18%; top: 48%; }
+.pond-ripple-two { right: 18%; top: 42%; animation-delay: 1.2s; }
+.pond-ripple-three { left: 54%; bottom: 18%; animation-delay: 2.1s; }
+
+/* Анимация натуральной ряби */
+@keyframes ripple-natural {
+  0% { opacity: 0.6; transform: scale(0.2); border-width: 3px; }
+  50% { border-width: 2px; }
+  100% { opacity: 0; transform: scale(2.2); border-width: 1px; }
+}
+
+@keyframes turtle-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(6px, -4px) rotate(1deg); }
+  50% { transform: translate(10px, -8px) rotate(2deg); }
+  75% { transform: translate(4px, -5px) rotate(-1deg); }
+}
+
+@keyframes pond-current {
+  to { transform: translateX(160px); }
+}
+
+@keyframes reeds-sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(6deg); }
+}
+/* ============================================
+   ОСТАЛЬНЫЕ СТИЛИ (без изменений)
+   ============================================ */
+.hero-symbols, .hero-facts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+.hero-symbols { margin-bottom: 28px; }
+.hero-symbols span, .hero-facts span, .label-pill {
+  display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--black); border-radius: 70px;
+  background: color-mix(in srgb, var(--white) 82%, transparent); color: var(--black); padding: 7px 22px;
+  font-size: clamp(14px, 1.6vw, 24px); font-weight: 900; text-transform: uppercase; backdrop-filter: blur(12px);
+}
+.hero-symbols span:nth-child(2) { min-width: 48px; padding-inline: 0; border: 0; background: transparent; font-size: clamp(24px, 3vw, 42px); }
+.hero-symbols span:nth-child(3), .hero-symbols span:nth-child(4) { background: var(--black); color: var(--white); }
+.hero-facts { margin: 0 auto 28px; max-width: 900px; }
+.hero-facts span { border-color: color-mix(in srgb, var(--black) 14%, transparent); font-size: clamp(12px, 1vw, 15px); letter-spacing: .04em; }
+.label-pill { margin-bottom: 18px; font-size: 13px; letter-spacing: .28em; }
+.eyebrow { margin: 0 0 18px; font-size: 13px; font-weight: 900; letter-spacing: .28em; text-transform: uppercase; }
+h1, h2 { margin: 0; font-weight: 950; line-height: .95; letter-spacing: -.06em; }
+h1 { font-size: clamp(48px, 10vw, 132px); }
+h2 { font-size: clamp(42px, 8vw, 96px); }
+.lead, .section p { color: rgba(31, 31, 31, .68); font-size: clamp(18px, 2vw, 24px); line-height: 1.45; }
+.lead { max-width: 720px; margin: 30px auto; }
+.button { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: var(--gradient); color: var(--white); padding: 16px 26px; font-weight: 900; transition: transform .25s ease; cursor: pointer; }
+.button:hover, .choice-button:hover, .turtle-card:hover { transform: scale(1.04); }
+.button.dark { width: 100%; background: var(--black); }
+.section { position: relative; padding: 120px 24px; overflow: hidden; }
+.narrow, .wide, .form-layout { width: min(1120px, 100%); margin: 0 auto; }
+.narrow { max-width: 900px; }
+.decor-grid, .programs, .benefits, .choice-buttons { display: grid; gap: 18px; margin-top: 40px; }
+.decor-grid { grid-template-columns: repeat(4, 1fr); }
+.decor-grid span, .program-card, .benefits article, .turtle-card { border: 1px solid rgba(31,31,31,.1); border-radius: 32px; background: var(--white); box-shadow: var(--shadow); }
+.decor-grid span { padding: 28px; font-size: 24px; font-weight: 900; }
+.programs, .choice-buttons, .form-layout { grid-template-columns: repeat(2, 1fr); }
+.program-card { padding: 30px; }
+.card-toggle { width: 100%; border: 0; background: transparent; text-align: left; font-size: 30px; font-weight: 950; cursor: pointer; }
+.card-body { display: none; }
+.program-card.open .card-body { display: block; }
+.program-card li { margin: 12px 0; }
+.text-link { font-weight: 900; color: var(--teal); }
+.turtle-section { text-align: center; }
+.turtle-card { display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 620px; margin: 0 auto; padding: 34px; cursor: pointer; }
+.turtle { font-size: 78px; animation: nod 5s ease-in-out infinite; }
+.turtle-card strong { font-size: 34px; }
+.turtle-card small { color: var(--teal); font-weight: 900; }
+.choice { background: var(--black); color: var(--white); }
+.choice p { color: rgba(255,255,255,.75); }
+.choice-button { border: 0; border-radius: 28px; padding: 30px; background: rgba(255,255,255,.1); color: var(--white); text-align: left; font-size: 28px; font-weight: 950; cursor: pointer; transition: transform .25s ease, background .25s ease; }
+.choice-button.active { background: var(--gradient); }
+.benefits { grid-template-columns: repeat(5, 1fr); }
+.benefits article { min-height: 190px; padding: 26px; }
+.benefits b { display: block; margin-bottom: 16px; font-size: 24px; }
+.benefits span { color: rgba(31,31,31,.64); line-height: 1.45; }
+.final { background: var(--gradient); color: var(--white); }
+.final p { color: rgba(255,255,255,.82); }
+.contacts { font-weight: 900; }
+.application-form { display: grid; gap: 14px; border-radius: 32px; background: var(--white); color: var(--black); padding: 28px; box-shadow: var(--shadow); }
+.application-form label { display: grid; gap: 8px; font-weight: 800; }
+input, textarea { width: 100%; border: 1px solid rgba(31,31,31,.14); border-radius: 18px; padding: 15px 16px; font: inherit; resize: vertical; }
+.form-status { min-height: 24px; margin: 0; color: var(--teal) !important; font-weight: 900; }
+.to-top { position: fixed; right: 20px; bottom: 20px; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--black); color: var(--white); box-shadow: var(--shadow); }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(10px,-12px); } }
+@keyframes swim { 0%,100% { transform: translateX(0); } 50% { transform: translateX(42vw); } }
+@keyframes nod { 0%,100% { transform: rotate(0); } 50% { transform: rotate(4deg); } }
+
+@media (max-width: 1180px) {
+  .hero-content { transform: translateY(-42px); }
+  .hero-bottom-row {
+    right: clamp(24px, 6vw, 112px);
+    bottom: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+ .hero-bottom-copy { flex-basis: 100%; }
+  .hero-description { text-align: center; margin-inline: auto; }
+}
+@media (max-width: 1100px) {
+  .nav { position: absolute; grid-template-columns: 1fr; width: min(720px, calc(100% - 28px)); }
+  .brand-lockup { margin: 0 auto; }
+  .nav nav { overflow-x: auto; justify-content: flex-start; padding: 0 24px; }
+  .nav-cta { justify-self: center; }
+}
+
+@media (max-width: 820px) {
+  .hero, .section { padding-left: 18px; padding-right: 18px; }
+  .hero-content { transform: translateY(-18px); }
+  .hero-bottom-row { position: relative; left: auto; right: auto; bottom: auto; margin-top: 30px; }
+  .decor-grid, .programs, .choice-buttons, .benefits, .form-layout { grid-template-columns: 1fr; }
+  .hero-turtle-pond { right: 16px; bottom: 22px; width: min(320px, calc(100% - 32px)); opacity: .82; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* ============================================
+   STORY / РЕКА С ЧЕРЕПАХАМИ (без изменений)
+   ============================================ */
+.story {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 10% 18%, color-mix(in srgb, var(--green) 9%, transparent), transparent 28%),
+    radial-gradient(circle at 88% 76%, color-mix(in srgb, var(--sky) 12%, transparent), transparent 34%),
+    linear-gradient(180deg, var(--white), color-mix(in srgb, var(--teal) 10%, var(--white)));
+}
+.river-gallery {
+  display: grid;
+  gap: clamp(22px, 4vh, 42px);
+  margin-top: 46px;
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  min-height: 62vh;
+}
+.river-lane {
+  position: relative;
+  min-height: clamp(230px, 29vh, 330px);
+  overflow: hidden;
+  border-block: 1px solid color-mix(in srgb, var(--black) 8%, transparent);
+  background:
+    radial-gradient(ellipse at 8% 22%, color-mix(in srgb, var(--green) 28%, transparent) 0 12%, transparent 13%),
+    radial-gradient(ellipse at 92% 78%, color-mix(in srgb, var(--teal) 22%, transparent) 0 13%, transparent 14%),
+    linear-gradient(180deg, color-mix(in srgb, var(--green) 12%, var(--white)), color-mix(in srgb, var(--white) 78%, transparent) 34% 66%, color-mix(in srgb, var(--teal) 13%, var(--white)));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 70%, transparent);
+}
+.turtle-river {
+  background:
+    radial-gradient(ellipse at 16% 72%, color-mix(in srgb, var(--teal) 24%, transparent) 0 12%, transparent 13%),
+    radial-gradient(ellipse at 86% 28%, color-mix(in srgb, var(--green) 24%, transparent) 0 11%, transparent 12%),
+    linear-gradient(180deg, color-mix(in srgb, var(--teal) 10%, var(--white)), color-mix(in srgb, var(--white) 78%, transparent) 34% 66%, color-mix(in srgb, var(--blue) 11%, var(--white)));
+}
+.river-lane::before,
+.river-lane::after {
+  content: "";
+  position: absolute;
+  left: -5vw;
+  right: -5vw;
+  z-index: 2;
+  height: 24%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 50%, color-mix(in srgb, var(--green) 18%, transparent) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 42% 60%, color-mix(in srgb, var(--teal) 12%, transparent) 0 5%, transparent 6%),
+    radial-gradient(ellipse at 76% 45%, color-mix(in srgb, var(--green) 15%, transparent) 0 6%, transparent 7%);
+  filter: blur(.2px);
+}
+.river-lane::before { top: 0; }
+.river-lane::after { bottom: 0; transform: scaleY(-1); }
+.river-sign {
+  position: absolute;
+  left: clamp(24px, 7vw, 120px);
+  top: 18px;
+  z-index: 6;
+  max-width: min(520px, 80vw);
+  border: 1px solid var(--black);
+  border-radius: 70px;
+  background: color-mix(in srgb, var(--white) 84%, transparent);
+  color: var(--black);
+  padding: 8px 22px;
+  font-size: clamp(13px, 1.2vw, 20px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  backdrop-filter: blur(12px);
+}
+.turtle-river .river-sign {
+  left: auto;
+  right: clamp(24px, 7vw, 120px);
+}
+.duck-river {
+  margin-left: -3vw;
+  padding-left: 3vw;
+}
+.turtle-river {
+  margin-right: -3vw;
+  padding-right: 3vw;
+}
+.horizontal-water {
+  position: absolute;
+  left: -10vw;
+  right: -10vw;
+  top: 25%;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 44% / 50%;
+  background:
+    radial-gradient(ellipse at 18% 34%, color-mix(in srgb, var(--white) 38%, transparent) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 72% 62%, color-mix(in srgb, var(--white) 28%, transparent) 0 9%, transparent 10%),
+    repeating-linear-gradient(172deg, color-mix(in srgb, var(--white) 18%, transparent) 0 2px, transparent 3px 28px),
+    linear-gradient(90deg, color-mix(in srgb, var(--sky) 54%, transparent), color-mix(in srgb, var(--blue) 38%, transparent) 50%, color-mix(in srgb, var(--teal) 54%, transparent));
+  box-shadow: inset 0 18px 42px color-mix(in srgb, var(--white) 28%, transparent), inset 0 -22px 44px color-mix(in srgb, var(--teal) 22%, transparent);
+}
+.horizontal-water::before,
+.horizontal-water::after {
+  content: "";
+  position: absolute;
+  inset: 0 -18%;
+  background:
+    radial-gradient(ellipse at 20% 42%, color-mix(in srgb, var(--white) 22%, transparent) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 58% 64%, color-mix(in srgb, var(--white) 16%, transparent) 0 8%, transparent 9%),
+    repeating-linear-gradient(90deg, transparent 0 72px, color-mix(in srgb, var(--white) 34%, transparent) 74px 77px, transparent 79px 138px);
+  animation: river-current 9s linear infinite;
+}
+.horizontal-water::after {
+  opacity: .48;
+  transform: translateY(22px);
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+.river-glint {
+  position: absolute;
+  width: 28%;
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 62%, transparent);
+  filter: blur(.3px);
+  animation: glint-slide 7s ease-in-out infinite;
+}
+.glint-one { left: 12%; top: 34%; }
+.glint-two { right: 16%; bottom: 28%; animation-delay: 2s; }
+.swimmer {
+  position: absolute;
+  z-index: 3;
+  font-size: clamp(30px, 4vw, 54px);
+  filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--black) 16%, transparent));
+  animation: swim-horizontal 13s ease-in-out infinite, creature-bob 3.6s ease-in-out infinite;
+}
+.turtle-swimmer { animation-duration: 18s, 4.8s; }
+.swimmer-one { left: 6%; top: 20%; }
+.swimmer-two { left: 44%; top: 45%; animation-delay: 2.3s, .6s; }
+.swimmer-three { left: 76%; top: 18%; animation-delay: 4.4s, 1.2s; }
+.water-ring { position: absolute; z-index: 2; width: 80px; aspect-ratio: 1; border: 2px solid color-mix(in srgb, var(--white) 52%, transparent); border-radius: 50%; animation: ripple 5.2s ease-out infinite; }
+.ring-one { left: 22%; top: 18%; }
+.ring-two { right: 28%; bottom: 14%; animation-delay: 2s; }
+.ring-three { left: 34%; bottom: 10%; animation-delay: 1s; }
+.ring-four { right: 18%; top: 16%; animation-delay: 2.7s; }
+.bank {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 30%;
+  pointer-events: none;
+}
+.bank-top { top: 0; padding-top: 14px; align-items: flex-start; }
+.bank-bottom { bottom: 0; padding-bottom: 12px; align-items: flex-end; }
+.reed-clump {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 5px;
+  min-width: 48px;
+  height: 86px;
+}
+.reed-clump i {
+  display: block;
+  width: 7px;
+  height: var(--reed-height, 64px);
+  border-radius: 999px 999px 4px 4px;
+  background: linear-gradient(180deg, var(--green) 0 18%, var(--teal) 42%, var(--green) 100%);
+  transform-origin: bottom center;
+  animation: reed-sway 4s ease-in-out infinite;
+}
+.reed-clump i:nth-child(2) { --reed-height: 84px; animation-delay: .45s; }
+.reed-clump i:nth-child(3) { --reed-height: 56px; animation-delay: .9s; }
+.river-rock {
+  width: clamp(34px, 5vw, 66px);
+  height: clamp(18px, 3vw, 34px);
+  border-radius: 58% 42% 48% 52%;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--white) 88%, var(--blue)), color-mix(in srgb, var(--black) 38%, var(--blue)) 62%, color-mix(in srgb, var(--black) 52%, var(--blue)));
+  box-shadow: inset 8px 7px 12px color-mix(in srgb, var(--white) 34%, transparent), 0 8px 18px color-mix(in srgb, var(--black) 18%, transparent);
+}
+.rock-two, .rock-six { transform: rotate(-8deg) scale(.82); }
+.rock-three, .rock-seven { transform: rotate(7deg) scale(1.08); }
+.rock-four, .rock-eight { transform: rotate(-4deg) scale(.72); }
+.shore-leaf {
+  font-size: clamp(22px, 3vw, 34px);
+  filter: drop-shadow(0 8px 8px color-mix(in srgb, var(--black) 12%, transparent));
+  animation: shore-leaf-wiggle 5.5s ease-in-out infinite;
+}
+.leaf-b, .leaf-d { animation-delay: 1.7s; }
+
+@keyframes river-current { to { transform: translateX(180px); } }
+@keyframes glint-slide { 0%,100% { opacity: .35; transform: translateX(-18px); } 50% { opacity: .82; transform: translateX(26px); } }
+@keyframes swim-horizontal { 0%,100% { translate: -18px 0; } 50% { translate: 26px 0; } }
+@keyframes creature-bob { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-7px) rotate(2deg); } }
+@keyframes reed-sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(7deg); } }
+@keyframes shore-leaf-wiggle { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg) translateY(-4px); } }
+@keyframes ripple { 0% { opacity: .72; transform: scale(.2); } 100% { opacity: 0; transform: scale(1.9); } }
+
+@media (max-width: 820px) {
+  .story { min-height: auto; }
+  .river-gallery { min-height: auto; }
+  .river-lane { min-height: 240px; border-radius: 30px; }
+  .horizontal-water { top: 30%; height: 40%; }
+  .bank { justify-content: space-between; padding-inline: 12px; }
+  .reed-clump { transform: scale(.82); }
+  .swimmer { font-size: 32px; }
+}
