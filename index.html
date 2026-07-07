@@ -11,14 +11,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="nav">
-      <a class="logo gradient-text" href="#hero">РУДН × 21</a>
-      <nav aria-label="Главная навигация">
+    <header class="nav header-wrap">
+      <a class="brand-lockup" href="#hero" aria-label="РУДН × Школа 21">
+        <span class="brand-mark brand-rudn">РУДН</span>
+        <span class="brand-x">×</span>
+        <span class="brand-mark brand-school">21</span>
+      </a>
+      <nav class="nav-pill" aria-label="Главная навигация">
         <a href="#story">Путь</a>
         <a href="#programs">Программы</a>
         <a href="#choice">Выбор</a>
         <a href="#benefits">Преимущества</a>
-        <a href="#form">Анкета</a>
+         <a class="nav-cta" href="#form">Подать заявку</a>
       </nav>
     </header>
 
@@ -33,9 +37,18 @@
           <span class="pond-ripple pond-ripple-three" aria-hidden="true"></span>
         </div>
         <div class="hero-content reveal">
-          <p class="eyebrow">Река знаний начинается здесь</p>
+         <div class="hero-symbols" aria-label="Символика партнёров и кампуса">
+            <span>РУДН</span><span>×</span><span>Школа 21</span><span>Сбер</span><span>Кампус</span>
+          </div>
+          <p class="eyebrow label-pill">Река знаний начинается здесь</p>
           <h1>Центр прикладного программирования <span class="gradient-text">РУДН × Школа 21</span></h1>
-          <p class="lead">Интерактивный кампус, где обучение превращается в путь: от первого проекта до уверенной разработки в команде.</p>
+           <p class="lead">Совместный кампус для тех, кто хочет учиться через практику: peer-to-peer, проекты, события, сообщество и два маршрута развития — основной поток обучения и спокойная река дополнительных мероприятий.</p>
+          <div class="hero-facts" aria-label="Ключевые элементы кампуса">
+            <span>Основная программа</span>
+            <span>Дополнительные мероприятия</span>
+            <span>Проектная практика</span>
+            <span>Кампусное сообщество</span>
+          </div>
           <a class="button" href="#story">Стать частью кампуса</a>
         </div>
       </section>
@@ -46,6 +59,7 @@
           <p>Вместо подписей — настоящая спокойная анимация: вода течёт, камыши качаются, листья проплывают по поверхности, а круги расходятся от лёгкого движения.</p>
           <div class="river-gallery" aria-label="Две параллельные горизонтальные реки с утками, черепахами, камышами и береговыми деталями">
             <article class="river-lane duck-river" aria-label="Горизонтальная река с утками">
+                <div class="river-sign">Основная программа · утки ведут к проектам</div>
               <div class="bank bank-top" aria-hidden="true">
                 <span class="reed-clump"><i></i><i></i><i></i></span>
                 <span class="river-rock rock-one"></span>
@@ -71,6 +85,7 @@
               </div>
             </article>
            <article class="river-lane turtle-river" aria-label="Горизонтальная река с черепашками">
+             <div class="river-sign">Дополнительные мероприятия · черепахи ведут по кампусу</div>
               <div class="bank bank-top" aria-hidden="true">
                 <span class="river-rock rock-five"></span>
                 <span class="reed-clump"><i></i><i></i><i></i></span>
