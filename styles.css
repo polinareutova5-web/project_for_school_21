@@ -924,11 +924,11 @@ input, textarea { width: 100%; border: 1px solid rgba(31,31,31,.14); border-radi
 
     position:absolute;
 
-    left:20px;
+    left:-40px;          /* сместить левее */
 
-    top:140px;
+    top:145px;
 
-    width:clamp(420px,42vw,760px);
+    width:clamp(200px,21vw,380px);   /* примерно в 2 раза меньше */
 
     height:auto;
 
@@ -938,8 +938,7 @@ input, textarea { width: 100%; border: 1px solid rgba(31,31,31,.14); border-radi
 
     user-select:none;
 
-    filter:
-        drop-shadow(0 20px 35px rgba(0,0,0,.18));
+    filter:drop-shadow(0 20px 35px rgba(0,0,0,.18));
 
     animation:
         imageFloat 8s ease-in-out infinite,
