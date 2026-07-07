@@ -926,7 +926,7 @@ input, textarea { width: 100%; border: 1px solid rgba(31,31,31,.14); border-radi
 
     left:-40px;          /* сместить левее */
 
-    top:1px;
+    top:-10px;
 
     width:clamp(200px,21vw,380px);   /* примерно в 2 раза меньше */
 
