@@ -2,6 +2,38 @@
 // ПЕРВАЯ СТРАНИЦА — ГЛАВНЫЙ ЭКРАН
 // ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ФУНКЦИОНАЛ ПЕРВОЙ СТРАНИЦЫ
 // Анимации, интерактивность озера с черепахами, кнопки
+// ПЕРВАЯ СТРАНИЦА - ОБРАБОТКА КНОПОК
+const applyButton = document.querySelector('.button-apply');
+const cabinetButton = document.querySelector('.button-cabinet');
+
+if (applyButton) {
+  applyButton.addEventListener('click', () => {
+    document.querySelector('#form')?.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+if (cabinetButton) {
+  cabinetButton.addEventListener('click', () => {
+    alert('Личный кабинет будет доступен после регистрации');
+  });
+}
+
+// ОЗЕРО - ИНТЕРАКТИВНОСТЬ
+const turtlePond = document.querySelector('.hero-turtle-pond');
+if (turtlePond) {
+  turtlePond.addEventListener('mouseenter', () => {
+    turtlePond.style.transform = 'scale(1.02)';
+    turtlePond.style.transition = 'transform 0.3s ease';
+  });
+  
+  turtlePond.addEventListener('mouseleave', () => {
+    turtlePond.style.transform = 'scale(1)';
+  });
+  
+  turtlePond.addEventListener('click', () => {
+    document.querySelector('#turtleButton')?.scrollIntoView({ behavior: 'smooth' });
+  });
+}
 // ============================================
 
 // Анимация появления элементов при скролле
