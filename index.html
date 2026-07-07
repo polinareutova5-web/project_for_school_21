@@ -42,47 +42,61 @@
        ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
        Большой заголовок, описание, кнопки действий
        ============================================ -->
-  <section class="hero" id="hero">
+ <!-- ПЕРВАЯ СТРАНИЦА - HERO SECTION -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <!-- Верните ваш оригинальный заголовок -->
+    <h1 class="hero-title">Река знаний начинается здесь</h1>
+    <h2 class="hero-subtitle">Центр прикладного программирования РУДН × Школа 21</h2>
     
-    <!-- ⚠️ УДАЛЕНО: .lake::before (белая рябь) -->
-    <!-- ⚠️ УДАЛЕНО: .duck, .duck-one, .duck-two, .duck-three (утки) -->
-    <!-- ⚠️ УДАЛЕНО: .scroll-duck (плавающая утка) -->
+    <p class="lead">
+      Совместный кампус для тех, кто хочет учиться через практику: peer-to-peer, проекты, события, сообщество и два маршрута развития — основной поток обучения и спокойная река дополнительных мероприятий.
+    </p>
     
-    <div class="hero-content">
-      
-      <!-- ⚠️ БОЛЬШОЙ ПИКСЕЛЬНЫЙ ЗАГОЛОВОК -->
-      <h1 class="hero-pixel-title">ШКОЛА</h1>
-      
-      <!-- ⚠️ ГЛАВНЫЙ ЗАГОЛОВОК -->
-      <h2 class="hero-main-title">НАУЧИСЬ СОЗДАВАТЬ<br>БУДУЩЕЕ С ПОМОЩЬЮ ИИ</h2>
-      
-      <!-- ⚠️ ОПИСАНИЕ С СТРЕЛКОЙ И ТЕКСТОМ -->
-      <div class="hero-actions">
-        <span class="hero-arrow">→</span>
-        <span class="hero-action-text">
-          Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.
-        </span>
-      </div>
-      
-      <!-- ️ КНОПКИ ДЕЙСТВИЙ -->
-      <div class="hero-actions" style="margin-top: 32px;">
-        <button class="button-apply">Подать заявку</button>
-        <button class="button-cabinet">Личный кабинет</button>
-      </div>
-      
+    <div class="hero-symbols">
+      <span>Основная программа</span>
+      <span>×</span>
+      <span>Дополнительные мероприятия</span>
+      <span>Проектная практика</span>
+      <span>Кампусное сообщество</span>
     </div>
     
-    <!-- ⚠️ ОЗЕРО С ЧЕРЕПАХАМИ ВМЕСТО УТОК -->
-    <div class="hero-turtle-pond">
-      <div class="pond-turtle pond-turtle-one">🐢</div>
-      <div class="pond-turtle pond-turtle-two">🐢</div>
-      <div class="pond-turtle pond-turtle-three">🐢</div>
-      <div class="pond-ripple pond-ripple-one"></div>
-      <div class="pond-ripple pond-ripple-two"></div>
-      <div class="pond-ripple pond-ripple-three"></div>
+    <!-- КНОПКИ С ГРАДИЕНТОМ И СТЕКЛОМ -->
+    <div class="hero-actions" style="margin-top: 32px;">
+      <button class="button-apply">Подать заявку</button>
+      <button class="button-cabinet">Личный кабинет</button>
     </div>
+  </div>
+  
+  <!-- ОЗЕРО С ЧЕРЕПАШКАМИ - КОНТУР + ФОТО -->
+  <div class="hero-turtle-pond">
+    <!-- ЧЕРЕПАШКА 1 - замените src на вашу ссылку -->
+    <img class="pond-turtle pond-turtle-one" 
+         src="ВАША_ССЫЛКА_НА_ЧЕРЕПАШКУ_1.jpg" 
+         alt="Черепаха 1"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="pond-turtle-emoji" style="display:none">🐢</div>
     
-  </section>
+    <!-- ЧЕРЕПАШКА 2 -->
+    <img class="pond-turtle pond-turtle-two" 
+         src="ВАША_ССЫЛКА_НА_ЧЕРЕПАШКУ_2.jpg" 
+         alt="Черепаха 2"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="pond-turtle-emoji" style="display:none">🐢</div>
+    
+    <!-- ЧЕРЕПАШКА 3 -->
+    <img class="pond-turtle pond-turtle-three" 
+         src="ВАША_ССЫЛКА_НА_ЧЕРЕПАШКУ_3.jpg" 
+         alt="Черепаха 3"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="pond-turtle-emoji" style="display:none">🐢</div>
+    
+    <!-- КРУГИ НА ВОДЕ -->
+    <div class="pond-ripple pond-ripple-one"></div>
+    <div class="pond-ripple pond-ripple-two"></div>
+    <div class="pond-ripple pond-ripple-three"></div>
+  </div>
+</section>
 
   <!-- ============================================
        ОСТАЛЬНЫЕ СЕКЦИИ САЙТА (без изменений)
