@@ -465,22 +465,24 @@ display: block;
    ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
    ============================================ */
 
+/* ============================================
+   ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
+   ============================================ */
+
 .hero-turtle-pond{
     position:absolute;
-    right:-10vw;
+    right:-6vw;
     bottom:0;
     z-index:1;
 
-    width:clamp(760px,60vw,1080px);
-    height:clamp(420px,44vw,700px);
+    /* уменьшили озеро */
+    width:clamp(620px,48vw,860px);
+    height:clamp(340px,36vw,560px);
 
     overflow:hidden;
     border:none;
 
-    /* Форма максимально приближена к макету */
-    border-radius:
-        58% 0 0 0 /
-        18% 0 0 0;
+    border-radius:58% 0 0 0 / 18% 0 0 0;
 
     clip-path:polygon(
         100% 100%,
@@ -519,9 +521,7 @@ display: block;
         inset 0 -40px 70px rgba(0,120,160,.08),
         0 30px 90px rgba(27,170,184,.18);
 
-    transition:
-        transform .45s ease,
-        box-shadow .45s ease;
+    transition:transform .45s ease;
 }
 
 .hero-turtle-pond:hover{
@@ -537,13 +537,12 @@ display: block;
     width:145%;
     height:105%;
 
-    background:
-        repeating-linear-gradient(
-            102deg,
-            transparent 0 38px,
-            rgba(255,255,255,.18) 40px 43px,
-            transparent 44px 82px
-        );
+    background:repeating-linear-gradient(
+        102deg,
+        transparent 0 38px,
+        rgba(255,255,255,.18) 40px 43px,
+        transparent 44px 82px
+    );
 
     animation:pond-current 18s linear infinite;
     opacity:.55;
@@ -567,48 +566,43 @@ display: block;
     position:absolute;
     z-index:5;
 
-    width:clamp(72px,6.6vw,108px);
-    height:clamp(72px,6.6vw,108px);
+    /* немного увеличили */
+    width:clamp(78px,6vw,102px);
+    height:clamp(78px,6vw,102px);
 
     object-fit:contain;
 
-    border-radius:50%;
-
-    filter:
-        drop-shadow(0 12px 18px rgba(0,0,0,.16));
+    filter:drop-shadow(0 10px 16px rgba(0,0,0,.16));
 
     animation:turtle-float 5.2s ease-in-out infinite;
-
     background:none;
 }
 
-/* Левая черепаха — ниже и левее, чтобы не закрывалась "21" */
+/* левая — ниже и левее */
 
 .pond-turtle-one{
-    left:19%;
-    top:57%;
+    left:4%;
+    top:70%;
 }
 
-/* Правая — полностью внутри озера */
+/* правая — значительно ближе к центру */
 
 .pond-turtle-two{
-    right:13%;
-    top:30%;
+    right:36%;
+    top:31%;
 
     animation-delay:.9s;
-
     transform:scaleX(-1);
 }
 
-/* Нижняя — выше и крупнее */
+/* нижняя — выше */
 
 .pond-turtle-three{
+    left:57%;
+    bottom:24%;
 
-    left:60%;
-    bottom:13%;
-
-    width:clamp(66px,5.6vw,94px);
-    height:clamp(66px,5.6vw,94px);
+    width:clamp(72px,5vw,92px);
+    height:clamp(72px,5vw,92px);
 
     animation-delay:1.8s;
 }
@@ -618,7 +612,6 @@ display: block;
    ============================================ */
 
 .pond-turtle-emoji{
-
     position:absolute;
     z-index:5;
 
@@ -626,32 +619,27 @@ display: block;
     align-items:center;
     justify-content:center;
 
-    font-size:clamp(58px,5vw,86px);
+    font-size:clamp(58px,5vw,82px);
 
-    filter:drop-shadow(0 12px 18px rgba(0,0,0,.15));
+    filter:drop-shadow(0 10px 16px rgba(0,0,0,.15));
 
     animation:turtle-float 5.2s ease-in-out infinite;
 }
 
-.pond-turtle-one+.pond-turtle-emoji{
-
-    left:19%;
-    top:57%;
+.pond-turtle-one + .pond-turtle-emoji{
+    left:4%;
+    top:70%;
 }
 
-.pond-turtle-two+.pond-turtle-emoji{
-
-    right:13%;
-    top:30%;
-
+.pond-turtle-two + .pond-turtle-emoji{
+    right:36%;
+    top:31%;
     animation-delay:.9s;
 }
 
-.pond-turtle-three+.pond-turtle-emoji{
-
-    left:60%;
-    bottom:13%;
-
+.pond-turtle-three + .pond-turtle-emoji{
+    left:57%;
+    bottom:24%;
     animation-delay:1.8s;
 }
 
@@ -660,38 +648,29 @@ display: block;
    ============================================ */
 
 .pond-reeds{
-
     position:absolute;
-
     z-index:6;
-
     bottom:3%;
 
     display:flex;
-
     align-items:flex-end;
-
     gap:6px;
 
     pointer-events:none;
 }
 
 .pond-reeds-left{
-
     left:8%;
 }
 
 .pond-reeds-right{
-
     right:6%;
 }
 
 .pond-reeds i{
-
     display:block;
 
     width:5px;
-
     height:clamp(58px,6vw,96px);
 
     border-radius:999px;
@@ -703,34 +682,24 @@ display: block;
     );
 
     transform-origin:bottom center;
-
     animation:reeds-sway 5.8s ease-in-out infinite;
 }
 
 .pond-reeds i:nth-child(2){
-
     height:clamp(72px,7vw,112px);
-
     transform:rotate(7deg);
-
     animation-delay:.4s;
 }
 
 .pond-reeds i:nth-child(3){
-
     height:clamp(48px,5vw,82px);
-
     transform:rotate(-8deg);
-
     animation-delay:.9s;
 }
 
 .pond-reeds i:nth-child(4){
-
     height:clamp(66px,6vw,104px);
-
     transform:rotate(12deg);
-
     animation-delay:1.4s;
 }
 /* ============================================
