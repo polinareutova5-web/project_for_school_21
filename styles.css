@@ -563,8 +563,8 @@ display: block;
     z-index:5;
 
     /* немного увеличили */
-    width:clamp(78px,6vw,102px);
-    height:clamp(78px,6vw,102px);
+    width:clamp(85px,8vw,110px);
+    height:clamp(85px,8vw,110px);
 
     object-fit:contain;
 
@@ -577,8 +577,8 @@ display: block;
 /* левая — ниже и левее */
 
 .pond-turtle-one{
-    left:4%;
-    top:70%;
+    left:15%;
+    top:75%;
 }
 
 /* правая — значительно ближе к центру */
