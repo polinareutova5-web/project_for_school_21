@@ -466,20 +466,22 @@ display: block;
    ============================================ */
 .hero-turtle-pond {
   position: absolute;
-  /* уходит за правый край */
   right: -14vw;
-  /* остается только на первом экране */
   bottom: -40px;
   z-index: 1;
-  /* озеро становится значительно больше */
-  width: clamp(560px, 50vw, 900px);
-  height: clamp(300px, 38vw, 550px);
+
+  /* Озеро немного меньше */
+  width: clamp(500px, 44vw, 800px);
+  height: clamp(270px, 34vw, 500px);
+
   overflow: hidden;
-  /* убираем рамку */
   border: none;
-  /* открываем озеро снизу и справа */
-border-radius: 62% 0 0 18%
-               / 100% 0 0 36%;
+
+  /* Более волнистые и природные края */
+  border-radius:
+    68% 0 0 24%
+    / 92% 0 0 42%;
+
   background:
       radial-gradient(circle at 18% 22%, rgba(255,255,255,.55) 0 5%, transparent 6%),
       radial-gradient(circle at 70% 65%, rgba(255,255,255,.28) 0 8%, transparent 9%),
@@ -489,11 +491,15 @@ border-radius: 62% 0 0 18%
           rgba(20,184,166,.55) 55%,
           rgba(37,99,235,.34)
       );
+
   box-shadow:
       inset 0 0 90px rgba(255,255,255,.22),
       0 25px 80px rgba(20,184,166,.20);
 }
-.hero-turtle-pond:hover { transform: scale(1.02); }
+
+.hero-turtle-pond:hover {
+  transform: scale(1.02);
+}
 
 /* Более натуральная рябь */
 .hero-turtle-pond::before,
@@ -502,13 +508,14 @@ border-radius: 62% 0 0 18%
   position: absolute;
   inset: 18% -20%;
   background:
-    repeating-linear-gradient(100deg,
+    repeating-linear-gradient(
+      100deg,
       transparent 0 28px,
       rgba(255,255,255,.22) 29px 32px,
       transparent 33px 68px
     );
   animation: pond-current 12s linear infinite;
-  filter: blur(0.5px); /* Мягкость для натуральности */
+  filter: blur(0.5px);
 }
 
 .hero-turtle-pond::after {
@@ -517,105 +524,56 @@ border-radius: 62% 0 0 18%
   transform: rotate(-5deg);
   filter: blur(0.8px);
 }
-/* ============================================
-   ЧЕРЕПАШКИ — ПОДДЕРЖКА ИЗОБРАЖЕНИЙ
-   ⚠️ Можно использовать <img> с ссылкой на фото
-   Если фото не загрузится — покажется emoji
-   ============================================ */
+
+/* Увеличенные черепашки */
 .pond-turtle {
   position: absolute;
   z-index: 2;
-  width: clamp(40px, 5vw, 64px);
-  height: clamp(40px, 5vw, 64px);
+
+  width: clamp(48px, 6vw, 76px);
+  height: clamp(48px, 6vw, 76px);
+
   object-fit: cover;
   border-radius: 50%;
   filter: drop-shadow(0 8px 12px rgba(15,23,42,.16));
   animation: turtle-float 4.8s ease-in-out infinite;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255,255,255,.3);
 }
 
-.pond-turtle-one { left: 16%; top: 36%; }
-.pond-turtle-two { right: 22%; top: 24%; animation-delay: .9s; transform: scaleX(-1); }
-.pond-turtle-three { left: 52%; bottom: 19%; width: clamp(32px, 4vw, 52px); height: clamp(32px, 4vw, 52px); animation-delay: 1.7s; }
+.pond-turtle-one {
+  left: 16%;
+  top: 36%;
+}
+
+.pond-turtle-two {
+  right: 22%;
+  top: 24%;
+  animation-delay: .9s;
+  transform: scaleX(-1);
+}
+
+.pond-turtle-three {
+  left: 52%;
+  bottom: 19%;
+
+  width: clamp(40px, 5vw, 62px);
+  height: clamp(40px, 5vw, 62px);
+
+  animation-delay: 1.7s;
+}
 
 /* Резервный вариант — emoji */
 .pond-turtle-emoji {
   position: absolute;
   z-index: 2;
-  font-size: clamp(32px, 4vw, 58px);
+
+  font-size: clamp(40px, 5vw, 68px);
+
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 8px 12px rgba(15,23,42,.14));
   animation: turtle-float 4.8s ease-in-out infinite;
 }
-.pond-turtle-one + .pond-turtle-emoji { left: 16%; top: 36%; }
-.pond-turtle-two + .pond-turtle-emoji { right: 22%; top: 24%; animation-delay: .9s; }
-.pond-turtle-three + .pond-turtle-emoji { left: 52%; bottom: 19%; animation-delay: 1.7s; }
-
-.pond-reeds {
-  position: absolute;
-  z-index: 3;
-  bottom: 2%;
-  display: flex;
-  align-items: flex-end;
-  gap: 5px;
-  pointer-events: none;
-}
-
-.pond-reeds-left { left: 7%; }
-.pond-reeds-right { right: 8%; }
-
-.pond-reeds i {
-  display: block;
-  width: 4px;
-  height: clamp(42px, 5vw, 70px);
-  border-radius: 999px;
-  background: linear-gradient(180deg, #4ba06f, #1f6f48);
-  transform-origin: bottom center;
-  animation: reeds-sway 5s ease-in-out infinite;
-}
-
-.pond-reeds i:nth-child(2) { height: clamp(54px, 6vw, 88px); transform: rotate(7deg); animation-delay: .5s; }
-.pond-reeds i:nth-child(3) { height: clamp(36px, 4.2vw, 62px); transform: rotate(-8deg); animation-delay: 1s; }
-.pond-reeds i:nth-child(4) { height: clamp(48px, 5.6vw, 76px); transform: rotate(11deg); animation-delay: 1.4s; }
-
-
-/* Улучшенные круги на воде */
-.pond-ripple {
-  position: absolute;
-  width: 58px;
-  aspect-ratio: 1;
-  border: 2px solid rgba(255,255,255,.55);
-  border-radius: 50%;
-  animation: ripple-natural 4.2s ease-out infinite;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.pond-ripple-one { left: 18%; top: 48%; }
-.pond-ripple-two { right: 18%; top: 42%; animation-delay: 1.2s; }
-.pond-ripple-three { left: 54%; bottom: 18%; animation-delay: 2.1s; }
-
-/* Анимация натуральной ряби */
-@keyframes ripple-natural {
-  0% { opacity: 0.6; transform: scale(0.2); border-width: 3px; }
-  50% { border-width: 2px; }
-  100% { opacity: 0; transform: scale(2.2); border-width: 1px; }
-}
-
-@keyframes turtle-float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(6px, -4px) rotate(1deg); }
-  50% { transform: translate(10px, -8px) rotate(2deg); }
-  75% { transform: translate(4px, -5px) rotate(-1deg); }
-}
-
-@keyframes pond-current {
-  to { transform: translateX(160px); }
-}
-
-@keyframes reeds-sway {
-  0%, 100% { transform: rotate(-4deg); }
-  50% { transform: rotate(6deg); }
 }
 /* ============================================
    ОСТАЛЬНЫЕ СТИЛИ (без изменений)
