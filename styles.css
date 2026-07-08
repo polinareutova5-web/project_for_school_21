@@ -478,8 +478,22 @@ display: block;
   /* убираем рамку */
   border: none;
   /* открываем озеро снизу и справа */
-  border-radius: 58% 0 0 26%
-               / 88% 0 0 42%;
+ clip-path: polygon(
+    0% 25%,
+    6% 22%,
+    12% 27%,
+    20% 21%,
+    28% 26%,
+    37% 20%,
+    47% 24%,
+    58% 18%,
+    69% 22%,
+    80% 17%,
+    90% 20%,
+    100% 18%,
+    100% 100%,
+    0% 100%
+);
   background:
       radial-gradient(circle at 18% 22%, rgba(255,255,255,.55) 0 5%, transparent 6%),
       radial-gradient(circle at 70% 65%, rgba(255,255,255,.28) 0 8%, transparent 9%),
