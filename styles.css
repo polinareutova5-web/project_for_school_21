@@ -466,21 +466,21 @@ display: block;
    ============================================ */
 .hero-turtle-pond {
   position: absolute;
-  right: -14vw;
+  right: -12vw;
   bottom: -40px;
   z-index: 1;
 
-  /* Озеро немного меньше */
-  width: clamp(500px, 44vw, 800px);
-  height: clamp(270px, 34vw, 500px);
+  /* Озеро чуть меньше */
+  width: clamp(500px, 45vw, 800px);
+  height: clamp(270px, 34vw, 480px);
 
   overflow: hidden;
   border: none;
 
-  /* Более волнистые и природные края */
+  /* Более волнистый берег */
   border-radius:
-    68% 0 0 24%
-    / 92% 0 0 42%;
+    58% 0 0 26%
+    / 88% 0 0 42%;
 
   background:
       radial-gradient(circle at 18% 22%, rgba(255,255,255,.55) 0 5%, transparent 6%),
@@ -501,12 +501,13 @@ display: block;
   transform: scale(1.02);
 }
 
-/* Более натуральная рябь */
+/* Дополнительная лёгкая неровность воды */
 .hero-turtle-pond::before,
 .hero-turtle-pond::after {
   content: "";
   position: absolute;
   inset: 18% -20%;
+
   background:
     repeating-linear-gradient(
       100deg,
@@ -514,24 +515,29 @@ display: block;
       rgba(255,255,255,.22) 29px 32px,
       transparent 33px 68px
     );
+
   animation: pond-current 12s linear infinite;
-  filter: blur(0.5px);
+  filter: blur(.5px);
 }
 
 .hero-turtle-pond::after {
   animation-duration: 18s;
   opacity: .55;
   transform: rotate(-5deg);
-  filter: blur(0.8px);
+  filter: blur(.8px);
 }
 
-/* Увеличенные черепашки */
+/* ============================================
+   ЧЕРЕПАШКИ КРУПНЕЕ
+   ============================================ */
+
 .pond-turtle {
   position: absolute;
   z-index: 2;
 
-  width: clamp(48px, 6vw, 76px);
-  height: clamp(48px, 6vw, 76px);
+  /* Было 40-64px */
+  width: clamp(50px, 6vw, 80px);
+  height: clamp(50px, 6vw, 80px);
 
   object-fit: cover;
   border-radius: 50%;
@@ -556,24 +562,25 @@ display: block;
   left: 52%;
   bottom: 19%;
 
-  width: clamp(40px, 5vw, 62px);
-  height: clamp(40px, 5vw, 62px);
+  /* Третья тоже стала больше */
+  width: clamp(42px, 5vw, 65px);
+  height: clamp(42px, 5vw, 65px);
 
   animation-delay: 1.7s;
 }
 
-/* Резервный вариант — emoji */
+/* Emoji-версия тоже увеличена */
+
 .pond-turtle-emoji {
   position: absolute;
   z-index: 2;
 
-  font-size: clamp(40px, 5vw, 68px);
+  font-size: clamp(40px, 5vw, 72px);
 
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 8px 12px rgba(15,23,42,.14));
   animation: turtle-float 4.8s ease-in-out infinite;
-}
 }
 /* ============================================
    ОСТАЛЬНЫЕ СТИЛИ (без изменений)
