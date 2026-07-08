@@ -466,26 +466,34 @@ display: block;
    ============================================ */
 .hero-turtle-pond {
   position: absolute;
-right: clamp(8px, 3.6vw, 64px);
-    bottom: clamp(12px, 2.6vw, 42px);
+  /* уходит за правый край */
+  right: -14vw;
+  /* остается только на первом экране */
+  bottom: -2vw;
   z-index: 1;
-  width: clamp(220px, 27vw, 390px);
-  aspect-ratio: 1.8;
+  /* озеро становится значительно больше */
+  width: clamp(700px, 65vw, 1200px);
+  height: clamp(360px, 42vw, 650px);
   overflow: hidden;
-  border: 2px solid rgba(31, 31, 31, 0.18);
-  border-radius: 48% 52% 46% 54% / 58% 44% 56% 42%;
+  /* убираем рамку */
+  border: none;
+  /* открываем озеро снизу и справа */
+  border-radius:
+      60% 0 0 0 /
+      100% 0 0 0;
   background:
-    radial-gradient(circle at 22% 22%, rgba(255,255,255,.62) 0 6%, transparent 7%),
-    radial-gradient(circle at 70% 68%, rgba(255,255,255,.38) 0 7%, transparent 8%),
-    linear-gradient(135deg, rgba(34,211,238,.62), rgba(20,184,166,.5) 54%, rgba(37,99,235,.28));
+      radial-gradient(circle at 18% 22%, rgba(255,255,255,.55) 0 5%, transparent 6%),
+      radial-gradient(circle at 70% 65%, rgba(255,255,255,.28) 0 8%, transparent 9%),
+      linear-gradient(
+          135deg,
+          rgba(34,211,238,.68),
+          rgba(20,184,166,.55) 55%,
+          rgba(37,99,235,.34)
+      );
   box-shadow:
-    0 22px 60px rgba(20, 184, 166, .22),
-    inset 0 0 70px rgba(255,255,255,.24),
-    0 0 0 1px rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  transition: transform 0.3s ease;
+      inset 0 0 90px rgba(255,255,255,.22),
+      0 25px 80px rgba(20,184,166,.20);
 }
-
 .hero-turtle-pond:hover { transform: scale(1.02); }
 
 /* Более натуральная рябь */
