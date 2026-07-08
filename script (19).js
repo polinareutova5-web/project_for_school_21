@@ -51,5 +51,5 @@ form?.addEventListener('submit', (event) => {
 if (localStorage.getItem('school21-application') && formStatus) {
   formStatus.textContent = 'У вас есть сохранённая заявка';
 }
-styles (11).css
+styles.css
 
