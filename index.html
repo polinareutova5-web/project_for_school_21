@@ -7,109 +7,195 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Навигация -->
-    <header class="nav">
-        <div class="brand-lockup">
-            <img src="https://i.imgur.com/2Ik1TS0.png" alt="РУДН × Школа 21" class="brand-icon">
-        </div>
-        <nav>
-            <a href="#tracks">Треки</a>
-            <a href="#admission">Как поступить</a>
-            <a href="#faq">FAQ</a>
-            <a href="#form">Регистрация</a>
-            <a href="#contacts">Контакты</a>
-            <a href="#cabinet">Личный кабинет</a>
-        </nav>
-        <a href="#form" class="nav-cta">Регистрация</a>
-    </header>
+    <!-- НАВИГАЦИЯ -->
+  <header class="nav">
+    <a class="brand-lockup" href="#hero">
+      <img class="brand-icon" src="https://i.imgur.com/2Ik1TS0.png" alt="РУДН × Школа 21">
+    </a>
+    <nav>
+      <a href="#about">О программе</a>
+      <a href="#tracks">Треки</a>
+      <a href="#admission">Как поступить</a>
+      <a href="#campus">Кампус</a>
+      <a href="#education">Основное обучение</a>
+      <a href="#contacts">Контакты</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cabinet">Личный кабинет</a>
+    </nav>
+    <a href="#form" class="nav-cta">Регистрация</a>
+  </header>
 
-    <!-- Реки (SVG overlay) -->
-    <svg class="rivers-overlay" xmlns="http://www.w3.org/2000/svg">
+  <!-- ============================================
+       СЛАЙД 1: HERO (ЭТАЛОН — НЕ МЕНЯЕМ)
+       ============================================ -->
+  <section class="slide slide-hero" id="hero">
+    <div class="hero-content">
+      <img class="hero-rotating-image" src="https://i.imgur.com/Zu8TAyb.png" alt="Декоративное изображение">
+      <h1 class="hero-main-title">Центр прикладного<br>программирования</h1>
+      <h2 class="hero-gradient-title">РУДН × Школа 21</h2>
+    </div>
+    <div class="hero-bottom-row">
+      <div class="hero-bottom-copy">
+        <p class="hero-description">Научись создавать<br>будущее с помощью ИИ</p>
+        <div class="hero-campus-pill">Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.</div>
+      </div>
+      <div class="hero-bottom-actions">
+        <a class="hero-apply-button" href="#form">Подать заявку</a>
+        <a class="hero-cabinet-button" href="#cabinet">Личный кабинет</a>
+      </div>
+    </div>
+    <!-- ОЗЕРО С ЧЕРЕПАХАМИ -->
+    <div class="hero-turtle-pond">
+      <img class="pond-turtle pond-turtle-one" src="https://i.imgur.com/Iehgato.png" alt="Черепаха 1">
+      <img class="pond-turtle pond-turtle-two" src="https://i.imgur.com/GvuuYgf.png" alt="Черепаха 2">
+      <img class="pond-turtle pond-turtle-three" src="https://i.imgur.com/4FgtZXe.png" alt="Черепаха 3">
+      <div class="pond-reeds pond-reeds-left"><i></i><i></i><i></i></div>
+      <div class="pond-reeds pond-reeds-right"><i></i><i></i><i></i><i></i></div>
+      <div class="pond-ripple pond-ripple-one"></div>
+      <div class="pond-ripple pond-ripple-two"></div>
+      <div class="pond-ripple pond-ripple-three"></div>
+    </div>
+  </section>
+
+    <!-- ============================================
+       СЛАЙД 2: ИНТЕРАКТИВНЫЙ МАРШРУТ С РЕКАМИ
+       ============================================ -->
+  <section class="slide slide-rivers" id="about">
+    <div class="rivers-scene">
+
+      <!-- НАДПИСЬ "ТРЕКИ" СВЕРХУ -->
+      <div class="tracks-title">ТРЕКИ</div>
+
+      <!-- РЕКИ (SVG) -->
+      <svg class="rivers-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        
+        <!-- ФИЛЬТРЫ ДЛЯ ПОДСВЕТКИ -->
         <defs>
-            <filter id="glow-purple">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-            <filter id="glow-teal">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
+          <filter id="purpleGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="12" result="blur"/>
+            <feFlood flood-color="#D0A6F4" flood-opacity="0.4" result="color"/>
+            <feComposite in="color" in2="blur" operator="in" result="glow"/>
+            <feMerge>
+              <feMergeNode in="glow"/>
+              <feMergeNode in="glow"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          
+          <filter id="tealGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="12" result="blur"/>
+            <feFlood flood-color="#2FE4D3" flood-opacity="0.4" result="color"/>
+            <feComposite in="color" in2="blur" operator="in" result="glow"/>
+            <feMerge>
+              <feMergeNode in="glow"/>
+              <feMergeNode in="glow"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
         </defs>
-        <!-- Фиолетовая река -->
-        <path class="river-path river-purple" d="M 50% 100% Q 30% 150% 20% 200% T 15% 300% Q 25% 400% 35% 500% T 30% 600% Q 20% 700% 25% 800% T 20% 900% Q 15% 1000% 10% 1100% T 15% 1200% Q 20% 1300% 25% 1400% T 20% 1500% Q 15% 1600% 10% 1700% T 15% 1800% Q 20% 1900% 25% 2000%" filter="url(#glow-purple)"/>
-        <!-- Бирюзовая река -->
-        <path class="river-path river-teal" d="M 50% 100% Q 70% 150% 80% 200% T 85% 300% Q 75% 400% 65% 500% T 70% 600% Q 80% 700% 75% 800% T 80% 900% Q 85% 1000% 90% 1100% T 85% 1200% Q 80% 1300% 75% 1400% T 80% 1500% Q 85% 1600% 90% 1700% T 85% 1800% Q 80% 1900% 75% 2000%" filter="url(#glow-teal)"/>
-    </svg>
 
-    <!-- Слайд 1: Hero -->
-    <section class="slide hero" id="hero">
-        <div class="hero-content">
-            <img src="https://i.imgur.com/Zu8TAyb.png" alt="" class="hero-rotating-image">
-            <h1 class="hero-main-title">Центр прикладного<br>программирования</h1>
-            <h2 class="hero-gradient-title">РУДН × Школа 21</h2>
-            <p class="hero-description">Научись создавать будущее с помощью ИИ</p>
-            <p>Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.</p>
-        </div>
-        <div class="hero-bottom-row">
-            <div class="hero-bottom-actions">
-                <a href="#form" class="hero-apply-button">Подать заявку</a>
-                <a href="#cabinet" class="hero-cabinet-button">Личный кабинет</a>
-            </div>
-        </div>
-        <div class="hero-turtle-pond">
-            <div class="water-surface"></div>
-            <div class="pond-ripple pond-ripple-one"></div>
-            <div class="pond-ripple pond-ripple-two"></div>
-            <div class="pond-ripple pond-ripple-three"></div>
-            <img src="https://i.imgur.com/Iehgato.png" alt="" class="pond-turtle pond-turtle-one">
-            <img src="https://i.imgur.com/GvuuYgf.png" alt="" class="pond-turtle pond-turtle-two">
-            <img src="https://i.imgur.com/4FgtZXe.png" alt="" class="pond-turtle pond-turtle-three">
-            <div class="pond-reeds pond-reeds-left"><i></i><i></i><i></i></div>
-            <div class="pond-reeds pond-reeds-right"><i></i><i></i><i></i></div>
-        </div>
-    </section>
+        <!-- ==========================================
+             ФИОЛЕТОВАЯ РЕКА (#D0A6F4) 
+             ========================================== -->
+        <path class="river-glow river-purple-glow" 
+              style="stroke-width: 55; filter: url(#purpleGlow);" 
+              d="M1200,30 C1120,40 1050,80 960,120 C870,160 780,200 700,240 C640,270 600,300 550,330 C500,360 450,390 400,420 C350,450 310,480 270,510 C230,540 200,570 170,600 C140,630 110,660 80,690 C60,710 40,730 20,750 C10,765 5,780 0,800" />
+        
+        <path class="river-core river-purple-core" 
+              style="stroke-width: 24;" 
+              d="M1200,30 C1120,40 1050,80 960,120 C870,160 780,200 700,240 C640,270 600,300 550,330 C500,360 450,390 400,420 C350,450 310,480 270,510 C230,540 200,570 170,600 C140,630 110,660 80,690 C60,710 40,730 20,750 C10,765 5,780 0,800" />
 
-    <!-- Слайд 2: Треки -->
-    <section class="slide" id="tracks">
-        <h2 class="section-title reveal">Треки обучения</h2>
-        <div class="flag flag-left"><span></span>Вводная встреча</div>
-        <div class="flag flag-right"><span></span>Подача документов</div>
-        <div class="turtle-board">
-            <span>🐢</span>
-            <div>
-                <div>Цифровой заказчик</div>
-                <small>Интенсив</small>
+        <!-- ==========================================
+             БИРЮЗОВАЯ РЕКА (#2FE4D3) 
+             ========================================== -->
+        <path class="river-glow river-teal-glow" 
+              style="stroke-width: 50; filter: url(#tealGlow);" 
+              d="M1200,70 C1150,90 1100,130 1050,170 C1000,210 950,250 900,280 C850,310 800,330 750,350 C700,370 660,380 630,400 C600,420 580,450 560,480 C540,510 530,540 520,570 C510,600 500,630 490,660 C480,690 470,720 460,750 C450,770 440,785 430,800" />
+        
+        <path class="river-core river-teal-core" 
+              style="stroke-width: 22;" 
+              d="M1200,70 C1150,90 1100,130 1050,170 C1000,210 950,250 900,280 C850,310 800,330 750,350 C700,370 660,380 630,400 C600,420 580,450 560,480 C540,510 530,540 520,570 C510,600 500,630 490,660 C480,690 470,720 460,750 C450,770 440,785 430,800" />
+
+        <!-- ==========================================
+             ДВИЖУЩАЯСЯ РЯБЬ
+             ========================================== -->
+        <circle class="ripple-dot" r="9" fill="white" opacity="0.8">
+          <animateMotion dur="10s" repeatCount="indefinite" path="M1200,30 C1120,40 1050,80 960,120 C870,160 780,200 700,240 C640,270 600,300 550,330 C500,360 450,390 400,420 C350,450 310,480 270,510 C230,540 200,570 170,600 C140,630 110,660 80,690 C60,710 40,730 20,750 C10,765 5,780 0,800"/>
+          <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="ripple-dot" r="6" fill="white" opacity="0.5">
+          <animateMotion dur="10s" repeatCount="indefinite" begin="3s" path="M1200,30 C1120,40 1050,80 960,120 C870,160 780,200 700,240 C640,270 600,300 550,330 C500,360 450,390 400,420 C350,450 310,480 270,510 C230,540 200,570 170,600 C140,630 110,660 80,690 C60,710 40,730 20,750 C10,765 5,780 0,800"/>
+          <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="ripple-dot" r="8" fill="white" opacity="0.7">
+          <animateMotion dur="11s" repeatCount="indefinite" path="M1200,70 C1150,90 1100,130 1050,170 C1000,210 950,250 900,280 C850,310 800,330 750,350 C700,370 660,380 630,400 C600,420 580,450 560,480 C540,510 530,540 520,570 C510,600 500,630 490,660 C480,690 470,720 460,750 C450,770 440,785 430,800"/>
+          <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="ripple-dot" r="5" fill="white" opacity="0.6">
+          <animateMotion dur="11s" repeatCount="indefinite" begin="3.5s" path="M1200,70 C1150,90 1100,130 1050,170 C1000,210 950,250 900,280 C850,310 800,330 750,350 C700,370 660,380 630,400 C600,420 580,450 560,480 C540,510 530,540 520,570 C510,600 500,630 490,660 C480,690 470,720 460,750 C450,770 440,785 430,800"/>
+          <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+
+      </svg>
+
+      <!-- ФЛАЖОК 1 (левый) -->
+      <div class="flag flag-left" id="flag1">
+        <div class="flag-neon-wrapper">
+          <img class="flag-image" src="https://i.imgur.com/VH3D9Zp.png" alt="Флаг">
+          <div class="flag-label neon-border">Вводная встреча</div>
+        </div>
+      </div>
+
+      <!-- ФЛАЖОК 2 (правый) -->
+      <div class="flag flag-right" id="flag2">
+        <div class="flag-neon-wrapper">
+          <img class="flag-image" src="https://i.imgur.com/VH3D9Zp.png" alt="Флаг">
+          <div class="flag-label neon-border">Подача документов</div>
+        </div>
+      </div>
+
+      <!-- ДЕРЕВЯННАЯ ТАБЛИЧКА-РАЗВИЛКА -->
+      <div class="wooden-sign" id="woodenSign">
+        <div class="sign-body">
+          <div class="sign-arrows">
+            <div class="sign-arrow left-arrow">
+              <span class="arrow-label">Цифровой заказчик</span>
+              <span class="arrow-icon">⬅</span>
             </div>
-        </div>
-        <div class="turtle-board intensive">
-            <span>🦆</span>
-            <div>
-                <div>ИИ-инженер</div>
-                <small>Интенсив</small>
+            <div class="sign-arrow right-arrow">
+              <span class="arrow-label">ИИ-инженер</span>
+              <span class="arrow-icon">➡</span>
             </div>
+          </div>
         </div>
-        <div class="campus-turtle" data-popup="Нажми на меня">
-            🦆
-            <p>Нажми на меня</p>
+        <div class="sign-post"></div>
+      </div>
+
+      <!-- УТКА -->
+      <div class="duck-interactive" id="duckInteractive">
+        <img class="duck-image" src="https://i.imgur.com/ASXHKaW.png" alt="Утка">
+        <div class="duck-label">нажми на меня</div>
+      </div>
+
+      <!-- ПОПАПЫ -->
+      <div class="popup-info popup-customer" id="popupCustomer">
+        <div class="popup-content">
+          <h4>Для ЦЗ:</h4>
+          <p>программа доступна для всех желающих, независимо от опыта и сферы деятельности</p>
+          <button class="popup-close">✕</button>
         </div>
-        <div class="duck-helper">
-            
-            <small>даты интенсивов для ЦЗ и ИИ</small>
+      </div>
+
+      <div class="popup-info popup-engineer" id="popupEngineer">
+        <div class="popup-content">
+          <h4>ИИ-инженер</h4>
+          <p>учишься мыслить и решать задачи как разработчик: проектировать, кодить, работать в команде. После обучения ты готов работать ИИ-инженером, дата-сайентистом или ML-разработчиком.</p>
+          <button class="popup-close">✕</button>
         </div>
-        <div class="bridge"></div>
-        <div class="duck-flag">
-            🚩
-            <span></span>
-            <b>основное обучение</b>
-        </div>
-        <a href="#form" class="outline-cta">Подать документы на основное обучение</a>
-    </section>
+      </div>
+
+    </div>
+  </section>
 
     <!-- Слайд 3: Как поступить -->
     <section class="slide" id="admission">
