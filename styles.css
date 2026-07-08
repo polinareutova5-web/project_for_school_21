@@ -574,27 +574,27 @@ display: block;
     background:none;
 }
 
-/* левая — ниже и левее */
+/* левая */
 
 .pond-turtle-one{
     left:18%;
     top:65%;
 }
 
-/* правая — значительно ближе к центру */
+/* правая */
 
 .pond-turtle-two{
-    right:10%;
+    right:5%;
     top:31%;
 
     animation-delay:.9s;
     transform:scaleX(-1);
 }
 
-/* нижняя — выше */
+/* нижняя */
 
 .pond-turtle-three{
-    left:-10%;
+    left:5%;
     bottom:24%;
 
     width:clamp(72px,5vw,92px);
