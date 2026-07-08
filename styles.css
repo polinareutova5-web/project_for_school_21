@@ -577,14 +577,14 @@ display: block;
 /* левая — ниже и левее */
 
 .pond-turtle-one{
-    left:15%;
-    top:60%;
+    left:18%;
+    top:65%;
 }
 
 /* правая — значительно ближе к центру */
 
 .pond-turtle-two{
-    right:36%;
+    right:50%;
     top:31%;
 
     animation-delay:.9s;
@@ -594,7 +594,7 @@ display: block;
 /* нижняя — выше */
 
 .pond-turtle-three{
-    left:40%;
+    left:15%;
     bottom:24%;
 
     width:clamp(72px,5vw,92px);
