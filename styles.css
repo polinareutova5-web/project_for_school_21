@@ -924,7 +924,7 @@ input, textarea { width: 100%; border: 1px solid rgba(31,31,31,.14); border-radi
 
     position:absolute;
 
-    left:-40px;          /* сместить левее */
+    left:-50px;          /* сместить левее */
 
     top:-25px;
 
