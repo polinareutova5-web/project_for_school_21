@@ -558,51 +558,34 @@ display: block;
    ЧЕРЕПАШКИ
    ============================================ */
 
-.pond-turtle{
-    position:absolute;
-    z-index:5;
-
-    /* немного увеличили */
-    width:clamp(85px,8vw,110px);
-    height:clamp(85px,8vw,110px);
-
-    object-fit:contain;
-
-    filter:drop-shadow(0 10px 16px rgba(0,0,0,.16));
-
-    animation:turtle-float 5.2s ease-in-out infinite;
-    background:none;
-}
-
-/* левая */
+/* левая — чуть правее */
 
 .pond-turtle-one{
-    left:18%;
+    left:22%;
     top:65%;
 }
 
-/* правая */
+/* правая — левее примерно на полторы черепахи */
 
 .pond-turtle-two{
-    right:5%;
+    right:20%;
     top:31%;
 
     animation-delay:.9s;
     transform:scaleX(-1);
 }
 
-/* нижняя */
+/* нижняя — вернули в центр озера */
 
 .pond-turtle-three{
-    left:5%;
-    bottom:24%;
+    left:56%;
+    bottom:22%;
 
     width:clamp(72px,5vw,92px);
     height:clamp(72px,5vw,92px);
 
     animation-delay:1.8s;
 }
-
 /* ============================================
    EMOJI FALLBACK
    ============================================ */
