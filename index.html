@@ -248,28 +248,361 @@
     </div>
   </section>
 
-  <section class="section final" id="form">
-    <div class="narrow">
-      <span class="label-pill" style="border-color: rgba(255,255,255,.4); color: var(--white);">Финал путешествия</span>
-      <h2>Отправить анкету</h2>
-      <p>Это место для заявки потенциального ученика. Сейчас форма показывает подтверждение на сайте; для реального сбора заявок подключите Formspree, Tally, Google Forms или серверный обработчик.</p>
-      <form class="application-form" id="applicationForm">
-        <label>Имя<input type="text" name="name" required></label>
-        <label>Email<input type="email" name="email" required></label>
-        <label>Телефон<input type="tel" name="phone"></label>
-        <label>О себе<textarea name="about" rows="4"></textarea></label>
-        <button type="submit" class="button dark">Отправить анкету</button>
+  <!-- ============================================================
+     СЛАЙД: КАРТА (слева) + ОТЗЫВЫ (справа)
+     ============================================================ -->
+<section class="map-reviews-section">
+  <div class="container-full">
+    <div class="map-reviews-grid">
+
+      <!-- ЛЕВАЯ ЧАСТЬ: КАРТА -->
+      <div class="map-block">
+        <div class="map-card">
+          <!-- Кнопки-фильтры -->
+          <div class="map-buttons">
+            <button class="map-btn active" data-tab="address">📍 Адрес</button>
+            <button class="map-btn" data-tab="photo">📷 Фото</button>
+            <button class="map-btn" data-tab="video">🎬 Видео</button>
+            <button class="map-btn" data-tab="chats">💬 Чаты</button>
+            <button class="map-btn" data-tab="books">📚 Книги</button>
+          </div>
+
+          <!-- Карта -->
+          <div class="map-container">
+            <iframe
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A1234567890abcdef&source=constructor"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- Адрес под картой -->
+          <div class="map-address-block">
+            <p class="map-address-text">
+              📍 <strong>Подольское шоссе, 8</strong>
+              <span class="map-dot">●</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ПРАВАЯ ЧАСТЬ: ОТЗЫВЫ (пустые) -->
+      <div class="reviews-block">
+        <h2 class="reviews-title">💬 Отзывы наших участников</h2>
+
+        <div class="reviews-grid-empty">
+          <!-- Отзыв 1 (пустой) -->
+          <div class="review-card-empty">
+            <div class="review-avatar-empty">👤</div>
+            <div class="review-placeholder">
+              <div class="placeholder-line"></div>
+              <div class="placeholder-line short"></div>
+              <div class="placeholder-line medium"></div>
+            </div>
+          </div>
+
+          <!-- Отзыв 2 (пустой) -->
+          <div class="review-card-empty">
+            <div class="review-avatar-empty">👤</div>
+            <div class="review-placeholder">
+              <div class="placeholder-line"></div>
+              <div class="placeholder-line short"></div>
+              <div class="placeholder-line medium"></div>
+            </div>
+          </div>
+
+          <!-- Отзыв 3 (пустой) -->
+          <div class="review-card-empty">
+            <div class="review-avatar-empty">👤</div>
+            <div class="review-placeholder">
+              <div class="placeholder-line"></div>
+              <div class="placeholder-line short"></div>
+              <div class="placeholder-line medium"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     НОВАЯ ФОРМА РЕГИСТРАЦИИ (слева форма, справа озеро)
+     ============================================================ -->
+<!-- ============================================================
+     ФОРМА РЕГИСТРАЦИИ (только имя + email, справа озеро)
+     ============================================================ -->
+<!-- ============================================================
+     ФОРМА РЕГИСТРАЦИИ (слева форма, справа бассейн с утками и черепахами)
+     ============================================================ -->
+<section class="section final" id="form">
+  <div class="form-with-lake">
+
+    <!-- Левая часть: форма -->
+    <div class="form-content">
+      <span class="label-pill" style="border-color: rgba(255,255,255,.4); color: var(--white);">🎓 Заявка на обучение</span>
+      <h2>Тут у нас будет форма заявки</h2>
+      <p>Оставьте контакты, и мы поможем вам стать востребованным специалистом</p>
+
+      <form class="application-form" id="applicationForm" action="send.php" method="POST">
+        <label>Имя <input type="text" name="name" placeholder="Ваше имя" required></label>
+        <label>Email <input type="email" name="email" placeholder="Email" required></label>
+        <button type="submit" class="button dark">Отправить заявку</button>
         <p class="form-status" id="formStatus"></p>
       </form>
+      <small style="display:block; margin-top:12px; color:rgba(255,255,255,0.6); font-size:13px; text-align:center;">
+        Нажимая кнопку, вы соглашаетесь с политикой обработки данных
+      </small>
     </div>
-  </section>
 
-  <footer class="section" id="contacts" style="padding: 60px 24px; text-align: center;">
-    <div class="contacts">Контакты · Соцсети · РУДН · Школа 21</div>
-  </footer>
+    <!-- Правая часть: БАССЕЙН с утками и черепахами -->
+    <div class="lake-container">
+      <div class="lake-wrapper">
 
-  <a href="#hero" class="to-top" aria-label="Наверх">↑</a>
+        <!-- БОРТИК БАССЕЙНА (вместо зелёной обводки) -->
+        <div class="pool-border">
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+          <span class="pool-tile"></span>
+        </div>
 
-  <script src="script.js"></script>
+        <!-- БАССЕЙН (вода) -->
+        <div class="register-lake pool-water">
+
+          <!-- Вода с бликами -->
+          <div class="water">
+            <div class="water-ripple r1"></div>
+            <div class="water-ripple r2"></div>
+            <div class="water-ripple r3"></div>
+            <div class="water-ripple r4"></div>
+            <div class="water-ripple r5"></div>
+            <div class="water-ripple r6"></div>
+            <div class="water-shine s1"></div>
+            <div class="water-shine s2"></div>
+            <div class="water-shine s3"></div>
+            <div class="water-shine s4"></div>
+          </div>
+
+          <!-- ЧЕРЕПАХИ (5 штук) -->
+          <!-- Черепаха 1 -->
+          <div class="turtle turtle-1">
+            <div class="turtle-shell"></div>
+            <div class="turtle-head"></div>
+            <div class="turtle-eye"></div>
+            <div class="turtle-leg fl"></div>
+            <div class="turtle-leg fr"></div>
+            <div class="turtle-leg bl"></div>
+            <div class="turtle-leg br"></div>
+            <div class="turtle-tail"></div>
+          </div>
+
+          <!-- Черепаха 2 -->
+          <div class="turtle turtle-2">
+            <div class="turtle-shell"></div>
+            <div class="turtle-head"></div>
+            <div class="turtle-eye"></div>
+            <div class="turtle-leg fl"></div>
+            <div class="turtle-leg fr"></div>
+            <div class="turtle-leg bl"></div>
+            <div class="turtle-leg br"></div>
+            <div class="turtle-tail"></div>
+          </div>
+
+          <!-- Черепаха 3 -->
+          <div class="turtle turtle-3">
+            <div class="turtle-shell"></div>
+            <div class="turtle-head"></div>
+            <div class="turtle-eye"></div>
+            <div class="turtle-leg fl"></div>
+            <div class="turtle-leg fr"></div>
+            <div class="turtle-leg bl"></div>
+            <div class="turtle-leg br"></div>
+            <div class="turtle-tail"></div>
+          </div>
+
+          <!-- Черепаха 4 (маленькая) -->
+          <div class="turtle turtle-4 small">
+            <div class="turtle-shell"></div>
+            <div class="turtle-head"></div>
+            <div class="turtle-eye"></div>
+            <div class="turtle-leg fl"></div>
+            <div class="turtle-leg fr"></div>
+            <div class="turtle-leg bl"></div>
+            <div class="turtle-leg br"></div>
+            <div class="turtle-tail"></div>
+          </div>
+
+          <!-- Черепаха 5 (маленькая) -->
+          <div class="turtle turtle-5 small">
+            <div class="turtle-shell"></div>
+            <div class="turtle-head"></div>
+            <div class="turtle-eye"></div>
+            <div class="turtle-leg fl"></div>
+            <div class="turtle-leg fr"></div>
+            <div class="turtle-leg bl"></div>
+            <div class="turtle-leg br"></div>
+            <div class="turtle-tail"></div>
+          </div>
+
+          <!-- УТКИ (5 штук) -->
+          <!-- Утка 1 -->
+          <div class="duck duck-1">
+            <div class="duck-body"></div>
+            <div class="duck-head"></div>
+            <div class="duck-eye"></div>
+            <div class="duck-beak"></div>
+            <div class="duck-wing"></div>
+            <div class="duck-tail"></div>
+          </div>
+
+          <!-- Утка 2 -->
+          <div class="duck duck-2">
+            <div class="duck-body"></div>
+            <div class="duck-head"></div>
+            <div class="duck-eye"></div>
+            <div class="duck-beak"></div>
+            <div class="duck-wing"></div>
+            <div class="duck-tail"></div>
+          </div>
+
+          <!-- Утка 3 -->
+          <div class="duck duck-3">
+            <div class="duck-body"></div>
+            <div class="duck-head"></div>
+            <div class="duck-eye"></div>
+            <div class="duck-beak"></div>
+            <div class="duck-wing"></div>
+            <div class="duck-tail"></div>
+          </div>
+
+          <!-- Утка 4 (маленькая) -->
+          <div class="duck duck-4 small">
+            <div class="duck-body"></div>
+            <div class="duck-head"></div>
+            <div class="duck-eye"></div>
+            <div class="duck-beak"></div>
+            <div class="duck-wing"></div>
+            <div class="duck-tail"></div>
+          </div>
+
+          <!-- Утка 5 (маленькая) -->
+          <div class="duck duck-5 small">
+            <div class="duck-body"></div>
+            <div class="duck-head"></div>
+            <div class="duck-eye"></div>
+            <div class="duck-beak"></div>
+            <div class="duck-wing"></div>
+            <div class="duck-tail"></div>
+          </div>
+
+          <!-- Камыши -->
+          <div class="reeds reeds-left">
+            <span class="reed"></span>
+            <span class="reed tall"></span>
+            <span class="reed"></span>
+            <span class="reed short"></span>
+            <span class="reed tall"></span>
+          </div>
+          <div class="reeds reeds-right">
+            <span class="reed"></span>
+            <span class="reed tall"></span>
+            <span class="reed"></span>
+            <span class="reed short"></span>
+            <span class="reed tall"></span>
+          </div>
+
+          <!-- Кувшинки -->
+          <div class="lily-pad l1"></div>
+          <div class="lily-pad l2"></div>
+          <div class="lily-pad l3"></div>
+          <div class="lily-pad l4"></div>
+          <div class="lily-flower f1">🌸</div>
+          <div class="lily-flower f2">🌷</div>
+          <div class="lily-flower f3">🌺</div>
+
+          <!-- Круги на воде -->
+          <div class="pond-ripple pond-ripple-one"></div>
+          <div class="pond-ripple pond-ripple-two"></div>
+          <div class="pond-ripple pond-ripple-three"></div>
+          <div class="pond-ripple pond-ripple-four"></div>
+          <div class="pond-ripple pond-ripple-five"></div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     НОВЫЙ ФУТЕР
+     ============================================================ -->
+<!-- ============================================================
+      НОВЫЙ ФУТЕР (со всеми ссылками)
+      ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+
+    <!-- Верхняя строка: Оферта · Правила · Политика -->
+    <div class="footer-links-row">
+      <a href="#" target="_blank">Оферта</a>
+      <span class="footer-divider">·</span>
+      <a href="#" target="_blank">Правила</a>
+      <span class="footer-divider">·</span>
+      <a href="https://www.rudn.ru/storage/media/documents/e1bee4fb-c76b-46e2-9a94-4a81c0037db3/HF49MKfGpR7GqAoseQSjFQGbuRuBjWwsLrdCqGax.pdf" target="_blank">Политика конфиденциальности</a>
+    </div>
+
+    <!-- Нижняя строка: Контакты -->
+    <div class="footer-contacts-row">
+        <span class="footer-contact-item">
+          📧 <a href="mailto:info@school21.ru">info@school21.ru</a>
+        </span>
+      <span class="footer-contact-item">
+          📱 <a href="https://t.me/+MRsv0D63SqZjMjIy" target="_blank">Telegram</a>
+        </span>
+      <span class="footer-contact-item">
+          📱 <a href="https://vk.com/coding21" target="_blank">ВКонтакте</a>
+        </span>
+    </div>
+
+  </div>
+</footer>
+
+<a href="#hero" class="to-top" aria-label="Наверх">↑</a>
+
+<script src="script.js"></script>
 </body>
 </html>
