@@ -465,10 +465,6 @@ display: block;
    ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
    ============================================ */
 
-/* ============================================
-   ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
-   ============================================ */
-
 .hero-turtle-pond{
     position:absolute;
     right:-6vw;
@@ -660,18 +656,19 @@ display: block;
 }
 
 .pond-reeds-left{
-    left:8%;
+    left:12%;
+    bottom:5%;
 }
 
 .pond-reeds-right{
-    right:6%;
+    right:18%;
+    bottom:6%;
 }
 
 .pond-reeds i{
     display:block;
-
     width:5px;
-    height:clamp(58px,6vw,96px);
+    height:clamp(64px,6vw,102px);
 
     border-radius:999px;
 
@@ -686,21 +683,15 @@ display: block;
 }
 
 .pond-reeds i:nth-child(2){
-    height:clamp(72px,7vw,112px);
-    transform:rotate(7deg);
-    animation-delay:.4s;
+    height:clamp(82px,7vw,122px);
 }
 
 .pond-reeds i:nth-child(3){
-    height:clamp(48px,5vw,82px);
-    transform:rotate(-8deg);
-    animation-delay:.9s;
+    height:clamp(58px,5vw,90px);
 }
 
 .pond-reeds i:nth-child(4){
-    height:clamp(66px,6vw,104px);
-    transform:rotate(12deg);
-    animation-delay:1.4s;
+    height:clamp(74px,6vw,110px);
 }
 /* ============================================
    РЯБЬ НА ВОДЕ
