@@ -578,7 +578,7 @@ display: block;
 
 .pond-turtle-one{
     left:15%;
-    top:75%;
+    top:60%;
 }
 
 /* правая — значительно ближе к центру */
@@ -594,7 +594,7 @@ display: block;
 /* нижняя — выше */
 
 .pond-turtle-three{
-    left:57%;
+    left:40%;
     bottom:24%;
 
     width:clamp(72px,5vw,92px);
