@@ -472,8 +472,8 @@ display: block;
   bottom: -40px;
   z-index: 1;
   /* озеро становится значительно больше */
-  width: clamp(550px, 50vw, 900px);
-  height: clamp(360px, 42vw, 650px);
+  width: clamp(560px, 50vw, 900px);
+  height: clamp(300px, 38vw, 550px);
   overflow: hidden;
   /* убираем рамку */
   border: none;
