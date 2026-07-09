@@ -1,119 +1,61 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>РУДН × Школа 21 — Кампус будущего</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>РУДН × Школа 21 — Кампус будущего</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Навигация -->
+    <header class="nav">
+        <div class="brand-lockup">
+            <img src="https://i.imgur.com/2Ik1TS0.png" alt="РУДН × Школа 21" class="brand-icon">
+        </div>
+        <nav>
+            <a href="#tracks">Треки</a>
+            <a href="#admission">Как поступить</a>
+            <a href="#faq">FAQ</a>
+            <a href="#form">Регистрация</a>
+            <a href="#contacts">Контакты</a>
+            <a href="#cabinet">Личный кабинет</a>
+        </nav>
+        <a href="#form" class="nav-cta">Регистрация</a>
+    </header>
 
-  <!-- ============================================
-       НАВИГАЦИЯ — ПЕРВАЯ СТРАНИЦА
-       ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ВЕРХНЯЯ ПАНЕЛЬ САЙТА
-       Все разделы как на скриншоте + иконка слева
-       ============================================ -->
-  <header class="nav">
- <a class="brand-lockup" href="#hero" aria-label="РУДН × Школа 21">
-      <!-- Логотип помещается полностью в рамку; текстовый дубль рядом убран -->
-      <img class="brand-icon" src="https://i.imgur.com/2Ik1TS0.png" alt="РУДН × Школа 21">
-    </a>
-    
-    <nav>
-      <a href="#about">О программе</a>
-      <a href="#tracks">Треки</a>
-      <a href="#admission">Как поступить</a>
-      <a href="#campus">Кампус</a>
-      <a href="#education">Основное обучение</a>
-      <a href="#contacts">Контакты</a>
-      <a href="#faq">FAQ</a>
-      <a href="#cabinet">Личный кабинет</a>
-    </nav>
-    
-    <!-- ⚠️ КНОПКА РЕГИСТРАЦИИ С ЭФФЕКТОМ СТЕКЛА -->
-    <a href="#form" class="nav-cta">Регистрация</a>
-  </header>
-
- <!-- Реки (SVG overlay) -->
+    <!-- Реки (SVG overlay) -->
     <svg class="rivers-overlay" xmlns="http://www.w3.org/2000/svg">
         
     </svg>
-  <!-- ============================================
-       HERO / ПЕРВАЯ СТРАНИЦА
-       ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
-       Большой заголовок, описание, кнопки действий
-       ============================================ -->
- <!-- ПЕРВАЯ СТРАНИЦА - HERO SECTION -->
-<section class="hero" id="hero">
-  <div class="hero-content">
 
-    <!-- Большая вращающаяся картинка -->
-<img
-    class="hero-rotating-image"
-    src="https://i.imgur.com/Zu8TAyb.png"
-    alt="Декоративное изображение">
+    <!-- Слайд 1: Hero -->
+    <section class="slide hero" id="hero">
+        <div class="hero-content">
+            <img src="https://i.imgur.com/Zu8TAyb.png" alt="" class="hero-rotating-image">
+            <h1 class="hero-main-title">Центр прикладного<br>программирования</h1>
+            <h2 class="hero-gradient-title">РУДН × Школа 21</h2>
+            <p class="hero-description">Научись создавать будущее с помощью ИИ</p>
+            <p>Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.</p>
+        </div>
+        <div class="hero-bottom-row">
+            <div class="hero-bottom-actions">
+                <a href="#form" class="hero-apply-button">Подать заявку</a>
+                <a href="#cabinet" class="hero-cabinet-button">Личный кабинет</a>
+            </div>
+        </div>
+        <div class="hero-turtle-pond">
+            <div class="water-surface"></div>
+            <div class="pond-ripple pond-ripple-one"></div>
+            <div class="pond-ripple pond-ripple-two"></div>
+            <div class="pond-ripple pond-ripple-three"></div>
+            <img src="https://i.imgur.com/Iehgato.png" alt="" class="pond-turtle pond-turtle-one">
+            <img src="https://i.imgur.com/GvuuYgf.png" alt="" class="pond-turtle pond-turtle-two">
+            <img src="https://i.imgur.com/4FgtZXe.png" alt="" class="pond-turtle pond-turtle-three">
+            <div class="pond-reeds pond-reeds-left"><i></i><i></i><i></i></div>
+            <div class="pond-reeds pond-reeds-right"><i></i><i></i><i></i></div>
+        </div>
+    </section>
 
-    
-    <!-- Черный заголовок -->
-    <h1 class="hero-main-title">
-      Центр прикладного<br>программирования
-    </h1>
-    
-    <!-- Градиентный заголовок -->
-    <h2 class="hero-gradient-title">
-      РУДН × Школа 21
-    </h2>
-  </div>
-
-  <div class="hero-bottom-row" aria-label="Краткое описание и быстрые действия">
-  <div class="hero-bottom-copy">
-      <p class="hero-description">
-        Научись создавать<br>будущее с помощью ИИ
-      </p>
-      <div class="hero-campus-pill">
-        Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.
-      </div>
-  </div>
-    <div class="hero-bottom-actions">
-      <a class="hero-apply-button" href="#form">Подать заявку</a>
-      <a class="hero-cabinet-button" href="#cabinet">Личный кабинет</a>
-    </div>
-  </div>
-  
-  <!-- ОЗЕРО С ЧЕРЕПАШКАМИ - КОНТУР + ФОТО -->
-  <div class="hero-turtle-pond">
-    <!-- ЧЕРЕПАШКА 1 - замените src на вашу ссылку -->
-    <img class="pond-turtle pond-turtle-one" 
-         src="https://i.imgur.com/Iehgato.png" 
-         alt="Черепаха 1"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-    <div class="pond-turtle-emoji" style="display:none">🐢</div>
-    
-    <!-- ЧЕРЕПАШКА 2 -->
-    <img class="pond-turtle pond-turtle-two" 
-         src="https://i.imgur.com/GvuuYgf.png" 
-         alt="Черепаха 2"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-    <div class="pond-turtle-emoji" style="display:none">🐢</div>
-    
-    <!-- ЧЕРЕПАШКА 3 -->
-    <img class="pond-turtle pond-turtle-three" 
-         src="https://i.imgur.com/4FgtZXe.png" 
-         alt="Черепаха 3"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-    <div class="pond-turtle-emoji" style="display:none">🐢</div>
-
-     <!-- КАМЫШИ -->
-    <div class="pond-reeds pond-reeds-left"><i></i><i></i><i></i></div>
-    <div class="pond-reeds pond-reeds-right"><i></i><i></i><i></i><i></i></div>
-    
-    <!-- КРУГИ НА ВОДЕ -->
-    <div class="pond-ripple pond-ripple-one"></div>
-    <div class="pond-ripple pond-ripple-two"></div>
-    <div class="pond-ripple pond-ripple-three"></div>
-  </div>
-</section>
-    
     <!-- Слайд 2: Треки -->
     <section class="slide" id="tracks">
         <h2 class="section-title reveal">Треки обучения</h2>
@@ -239,40 +181,34 @@
         </div>
     </section>
 
-<!-- ============================================================
-      НОВЫЙ ФУТЕР (со всеми ссылками)
-      ============================================================ -->
-<footer class="footer">
-  <div class="footer-inner">
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <a href="#">Оферта</a> ·
+            <a href="#">Правила</a> ·
+            <a href="https://www.rudn.ru/storage/media/documents/e1bee4fb-c76b-46e2-9a94-4a81c0037db3/HF49MKfGpR7GqAoseQSjFQGbuRuBjWwsLrdCqGax.pdf">Политика конфиденциальности</a>
+        </div>
+        <div>
+            <a href="mailto:info@school21.ru">info@school21.ru</a> ·
+            <a href="https://t.me/+MRsv0D63SqZjMjIy">Telegram</a> ·
+            <a href="https://vk.com/coding21">ВКонтакте</a>
+        </div>
+        <p>📍 Подольское шоссе, 8</p>
+        <p>Это бесплатная школа цифровых технологий с уникальными программами, которые помогут быть востребованным специалистом сегодня и на долгие годы вперед.</p>
+    </footer>
 
-    <!-- Верхняя строка: Оферта · Правила · Политика -->
-    <div class="footer-links-row">
-      <a href="#" target="_blank">Оферта</a>
-      <span class="footer-divider">·</span>
-      <a href="#" target="_blank">Правила</a>
-      <span class="footer-divider">·</span>
-      <a href="https://www.rudn.ru/storage/media/documents/e1bee4fb-c76b-46e2-9a94-4a81c0037db3/HF49MKfGpR7GqAoseQSjFQGbuRuBjWwsLrdCqGax.pdf" target="_blank">Политика конфиденциальности</a>
+    <!-- Модальное окно -->
+    <div class="modal" id="modal">
+        <div>
+            <button class="modal-close">×</button>
+            <p></p>
+        </div>
     </div>
 
-    <!-- Нижняя строка: Контакты -->
-    <div class="footer-contacts-row">
-        <span class="footer-contact-item">
-          📧 <a href="mailto:info@school21.ru">info@school21.ru</a>
-        </span>
-      <span class="footer-contact-item">
-          📱 <a href="https://t.me/+MRsv0D63SqZjMjIy" target="_blank">Telegram</a>
-        </span>
-      <span class="footer-contact-item">
-          📱 <a href="https://vk.com/coding21" target="_blank">ВКонтакте</a>
-        </span>
-    </div>
+    <!-- Кнопка наверх -->
+    <a href="#hero" class="to-top">↑</a>
 
-  </div>
-</footer>
-
-<a href="#hero" class="to-top" aria-label="Наверх">↑</a>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
