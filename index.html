@@ -261,8 +261,6 @@
             </article>
         </div>
     </section>
-
-
 <!-- Слайд 5: Регистрация -->
 <section class="slide lake-form-slide" id="form">
 
@@ -281,38 +279,28 @@
         <span class="lake-drop lake-drop-4"></span>
 
         <!-- кувшинки -->
-        <img src="https://i.imgur.com/hyYfbPf.png" class="lake-lily lake-lily-1" alt="">
-        <img src="https://i.imgur.com/MbMcAYQ.png" class="lake-lily lake-lily-2" alt="">
+        <img src="YOUR_LILY_1.png" class="lake-lily lake-lily-1" alt="">
+        <img src="YOUR_LILY_2.png" class="lake-lily lake-lily-2" alt="">
 
         <!-- утка 1 -->
         <div class="lake-creature duck-1">
             <div class="lake-ripple"></div>
-            <img src="https://i.imgur.com/CleiwaG.png" alt="">
+            <img src="YOUR_DUCK_1.png" alt="">
         </div>
 
         <!-- утка 2 -->
         <div class="lake-creature duck-2">
             <div class="lake-ripple"></div>
-            <img src="https://i.imgur.com/r8dpBjT.png" alt="">
+            <img src="YOUR_DUCK_2.png" alt="">
         </div>
 
         <!-- черепаха -->
         <div class="lake-creature turtle-main">
             <div class="lake-ripple"></div>
-            <img src="https://i.imgur.com/uy1aToF.png" alt="">
+            <img src="YOUR_TURTLE.png" alt="">
         </div>
 
     </div>
-
-<div class="form-banner reveal">
-
-    <p>
-        По окончании программы "ИИ-инженер" ты получишь диплом о профессиональной переподготовке ( обучение длится 2 года, онлайн и офлайн: 4–6 часов в неделю — всего 436 акад. часов)
-        По окончании программы "Цифровой заказчик" ты получишь удостоверение о повышении квалификации (обучение длится 1 год, онлайн и офлайн: 4–6 часов в неделю — всего 200 акад. часов)
-    </p>
-
-</div>
-
 
     <!-- ФОРМА -->
     <div class="form-content reveal">
@@ -367,34 +355,6 @@
                   opacity=".7"/>
         </svg>
     </div>
-    <!-- ГРУППА 1: Утка + Черепаха -->
-<div class="graduates-animals">
-
-    <img src="https://i.imgur.com/fpttJGT.png"
-         class="graduation-turtle"
-         alt="">
-
-    <img src="https://i.imgur.com/uh5LoGM.png"
-         class="graduation-duck"
-         alt="">
-
-</div>
-
-<!-- ГРУППА 2: Флаг + Выпускной -->
-<div class="graduates-flag">
-
-    <img src="https://i.imgur.com/PAM5JPr.png"
-         class="graduation-flag"
-         alt="">
-
-    <div class="graduation-label">
-        Выпускной
-    </div>
-
-</div>
-
-</div>
-
 
 </section>
 
@@ -402,24 +362,50 @@
     <section class="slide contacts-slide" id="contacts">
         <h2 class="contacts-heading reveal">Контакты</h2>
         <div class="contacts-grid">
+            <!-- Левая колонка: Карта / Фото -->
             <div class="map-card reveal">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.1234567890123!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru" allowfullscreen></iframe>
+                <!-- Переключатели -->
+                <div class="media-tabs">
+                    <button class="tab-btn active" data-tab="map">📍 Карта</button>
+                    <button class="tab-btn" data-tab="photos">🖼️ Фото</button>
+                </div>
+
+                <!-- Контейнер для карты -->
+                <div id="map-container" class="media-content active">
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ad14a033fefdf22e9b001212d3b659574222a9ae676d9903efe34623051e318&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                </div>
+
+                <!-- Контейнер для галереи фото -->
+                <div id="photos-container" class="media-content">
+                    <div class="photo-gallery">
+                        <div class="gallery-track">
+                            <img src="img/21школа1.jpg" alt="Офис 1" class="gallery-image active">
+                            <img src="img/21школа2.jpg" alt="Офис 2" class="gallery-image">
+                            <img src="img/21школа3.webp" alt="Офис 3" class="gallery-image">
+                        </div>
+                        <button class="gallery-nav prev">❮</button>
+                        <button class="gallery-nav next">❯</button>
+                        <div class="gallery-dots"></div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Правая колонка: Отзывы -->
             <div class="reviews reveal">
                 <article>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Анна">
-                    <h3>Анна</h3>
-                    <p>Пришла без технического опыта и быстро втянулась в проектный формат. Особенно помогли команда и понятные ориентиры на каждом этапе.</p>
+                    <img src="https://back.21-school.ru/api/download?path=images/s2Hs3frC82e3J7s9ZpLJFR5Fg6FfeYj6L53R2DXh.png" alt="Наталья">
+                    <h3>Наталья</h3>
+                    <p>«Школа 21» дала мне возможность сделать первый шаг в новой для меня области. Я с нуля смогла переучится на новую профессию и уже работаю по специальности. Главное для меня — это отсутствие лекций и сильное комьюнити участников.</p>
                 </article>
                 <article>
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Илья">
-                    <h3>Илья</h3>
-                    <p>Интенсив научил не бояться сложных задач. Здесь много практики, живого общения и ощущения, что ты действительно растёшь.</p>
+                    <img src="https://back.21-school.ru/api/download?path=images/a59zd5g8AclS1PzU2Ti7g4jAqNAooIw08FW8swoX.webp" alt="Илья">
+                    <h3>Ирина</h3>
+                    <p>В «Школе 21» я получила базу программирования и общее понимание возможностей в этой сфере. Больше всего в процессе обучения мне нравится свободный график, коммуникация и большое количество мероприятий.</p>
                 </article>
                 <article>
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Мария">
-                    <h3>Мария</h3>
-                    <p>Понравилось, что обучение бесплатное, но очень серьёзное. После первых проектов стало проще понимать, куда развиваться дальше.</p>
+                    <img src="https://back.21-school.ru/api/download?path=images/ikE0AuKYikCXk4lvOP9VvfX4aGyTwxxCMImI1rqs.webp" alt="Антон">
+                    <h3>Антон</h3>
+                    <p>В школе я развил не только технические, но и мягкие навыков, по-особенному развил лидерские качества и получил возможность собрать команду и участвовать в хакатонах. Для меня «Школа 21» — самая лучшая!</p>
                 </article>
             </div>
         </div>
@@ -453,6 +439,170 @@
     <a href="#hero" class="to-top">↑</a>
 
     <script src="script.js"></script>
+
+    <script>
+        // ============================================================
+        // КОНТАКТЫ — ПЕРЕКЛЮЧЕНИЕ КАРТА / ФОТО
+        // ПРЯМОЙ ВСТРАИВАЕМЫЙ КОД (ГАРАНТИРОВАННО РАБОТАЕТ)
+        // ============================================================
+
+        // Ждём полной загрузки страницы
+        window.addEventListener('load', function() {
+
+            console.log('Скрипт переключения вкладок запущен!');
+
+            // Находим элементы
+            var mapContainer = document.getElementById('map-container');
+            var photosContainer = document.getElementById('photos-container');
+            var tabBtns = document.querySelectorAll('.tab-btn');
+
+            console.log('mapContainer:', mapContainer);
+            console.log('photosContainer:', photosContainer);
+            console.log('Кнопок найдено:', tabBtns.length);
+
+            // Если чего-то нет — выходим
+            if (!mapContainer || !photosContainer || !tabBtns.length) {
+                console.error('Не все элементы найдены!');
+                return;
+            }
+
+            // Функция переключения
+            function showTab(tabName) {
+                console.log('Переключение на:', tabName);
+
+                // Скрываем оба
+                mapContainer.style.display = 'none';
+                photosContainer.style.display = 'none';
+
+                // Убираем активный класс у кнопок
+                tabBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Показываем нужный
+                if (tabName === 'map') {
+                    mapContainer.style.display = 'block';
+                    tabBtns.forEach(function(btn) {
+                        if (btn.getAttribute('data-tab') === 'map') {
+                            btn.classList.add('active');
+                        }
+                    });
+                    console.log('Показана КАРТА');
+                } else if (tabName === 'photos') {
+                    photosContainer.style.display = 'block';
+                    tabBtns.forEach(function(btn) {
+                        if (btn.getAttribute('data-tab') === 'photos') {
+                            btn.classList.add('active');
+                        }
+                    });
+                    console.log('Показана ГАЛЕРЕЯ');
+                }
+            }
+
+            // Назначаем обработчики на кнопки
+            tabBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var tab = this.getAttribute('data-tab');
+                    console.log('Клик по кнопке:', tab);
+                    showTab(tab);
+                });
+            });
+
+            // По умолчанию показываем карту
+            showTab('map');
+
+            // ============================================================
+            // ГАЛЕРЕЯ — ЛИСТАНИЕ ФОТО
+            // ============================================================
+            var gallery = document.querySelector('.photo-gallery');
+            if (gallery) {
+                var images = gallery.querySelectorAll('.gallery-image');
+                var prevBtn = gallery.querySelector('.gallery-nav.prev');
+                var nextBtn = gallery.querySelector('.gallery-nav.next');
+                var dotsContainer = gallery.querySelector('.gallery-dots');
+                var currentIndex = 0;
+
+                console.log('Найдено изображений в галерее:', images.length);
+
+                if (images.length > 0) {
+
+                    // Создаём точки
+                    if (dotsContainer) {
+                        dotsContainer.innerHTML = '';
+                        for (var i = 0; i < images.length; i++) {
+                            var dot = document.createElement('span');
+                            if (i === 0) dot.classList.add('active');
+                            dot.addEventListener('click', (function(index) {
+                                return function() {
+                                    goToImage(index);
+                                };
+                            })(i));
+                            dotsContainer.appendChild(dot);
+                        }
+                    }
+
+                    var dots = dotsContainer ? dotsContainer.querySelectorAll('span') : [];
+
+                    function goToImage(index) {
+                        if (index < 0) index = images.length - 1;
+                        if (index >= images.length) index = 0;
+
+                        // Скрываем все фото
+                        for (var i = 0; i < images.length; i++) {
+                            images[i].classList.remove('active');
+                        }
+                        images[index].classList.add('active');
+
+                        // Обновляем точки
+                        for (var i = 0; i < dots.length; i++) {
+                            dots[i].classList.remove('active');
+                        }
+                        if (dots[index]) dots[index].classList.add('active');
+
+                        currentIndex = index;
+                        console.log('Текущее фото:', currentIndex + 1);
+                    }
+
+                    // Кнопки вперёд/назад
+                    if (prevBtn) {
+                        prevBtn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            goToImage(currentIndex - 1);
+                        });
+                    }
+
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            goToImage(currentIndex + 1);
+                        });
+                    }
+
+                    // Автопрокрутка
+                    var autoInterval = setInterval(function() {
+                        // Проверяем, видна ли галерея
+                        if (photosContainer.style.display !== 'none') {
+                            goToImage(currentIndex + 1);
+                        }
+                    }, 4000);
+
+                    // Останавливаем автопрокрутку при наведении
+                    gallery.addEventListener('mouseenter', function() {
+                        clearInterval(autoInterval);
+                    });
+
+                    gallery.addEventListener('mouseleave', function() {
+                        autoInterval = setInterval(function() {
+                            if (photosContainer.style.display !== 'none') {
+                                goToImage(currentIndex + 1);
+                            }
+                        }, 4000);
+                    });
+
+                }
+            }
+
+        });
+    </script>
 </body>
 </html>
-
