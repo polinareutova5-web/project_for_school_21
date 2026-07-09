@@ -881,6 +881,66 @@ display: block;
         transform:rotate(-5deg);
     }
 }
+
+
+/* ============================================
+   Реки
+   ============================================ */
+
+.river-highlight {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 3;
+  stroke-linecap: round;
+
+  stroke-dasharray: 18 120;
+
+  animation: riverFlow 700s linear infinite;
+}
+
+.rivers-overlay {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  overflow: visible;
+
+  z-index: 1;
+}
+
+.river-path {
+  fill: none;
+  stroke-width: 80;
+  stroke-linecap: round;
+  stroke-width: 80;
+  stroke-linecap: round;
+
+  stroke-dasharray: 150 40;
+
+  animation: riverFlow 7s linear infinite;
+}
+
+.river-teal {
+  stroke: #2ae3d2;
+}
+
+.river-purple {
+  stroke: #d0a6f4;
+}
+
+@keyframes riverFlow {
+  from {
+    stroke-dashoffset: 138;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* ============================================
    ОСТАЛЬНЫЕ СТИЛИ (без изменений)
    ============================================ */
