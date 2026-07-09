@@ -2395,3 +2395,344 @@ a {
     color: #666;
     font-size: 15px;
 }
+
+/* ============================================================
+     КОНТАКТЫ — КАРТА + ФОТОГАЛЕРЕЯ
+     ============================================================ */
+.contacts-slide {
+    padding: 80px 24px;
+    background: #ffffff;
+}
+
+.contacts-heading {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 950;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.map-card {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+/* Переключатели */
+.media-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    padding: 10px 24px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.tab-btn:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+.tab-btn.active {
+    background: #1a1a1a;
+    color: white;
+    border-color: #1a1a1a;
+}
+
+/* Контейнеры карты и фото */
+.media-content {
+    display: none;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.media-content.active {
+    display: block;
+}
+
+#map-container iframe {
+    display: block;
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 16px;
+}
+
+/* Галерея */
+.photo-gallery {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1a1a1a;
+}
+
+.gallery-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.gallery-image.active {
+    opacity: 1;
+}
+
+/* Кнопки навигации */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-nav:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+.gallery-nav.prev {
+    left: 12px;
+}
+
+.gallery-nav.next {
+    right: 12px;
+}
+
+/* Точки */
+.gallery-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.gallery-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-dots span.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Отзывы */
+.reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reviews article {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+
+.reviews article:hover {
+    transform: translateX(4px);
+}
+
+.reviews article img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.reviews article h3 {
+    margin: 0 0 4px 0;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.reviews article p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .photo-gallery,
+    #map-container iframe {
+        height: 320px;
+    }
+}
+
+@media (max-width: 640px) {
+    .photo-gallery,
+    #map-container iframe {
+        height: 240px;
+    }
+
+    .tab-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    .reviews article {
+        padding: 16px;
+    }
+}
+/* Контейнеры карты и фото */
+.media-content {
+    display: none !important;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.media-content.active {
+    display: block !important;
+}
+
+/* Галерея */
+.photo-gallery {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1a1a1a;
+}
+
+.gallery-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.gallery-image.active {
+    opacity: 1;
+}
+
+/* Кнопки навигации */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.gallery-nav.prev {
+    left: 12px;
+}
+
+.gallery-nav.next {
+    right: 12px;
+}
+
+/* Точки */
+.gallery-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.gallery-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+}
+
+.gallery-dots span.active {
+    background: white;
+}
+/* ============================================================
+     КОНТАКТЫ — КАРТА / ФОТО
+     ============================================================ */
+.media-content {
+    display: none !important;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.media-content.active {
+    display: block !important;
+}
