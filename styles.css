@@ -1,23 +1,55 @@
 :root {
-  --white: #ffffff;
+  --white: #fff;
   --black: #1f1f1f;
-  --purple: #7b2ff7;
-  --blue: #2563eb;
-  --sky: #22d3ee;
-  --teal: #14b8a6;
-  --green: #22c55e;
-  --gradient: linear-gradient(110deg, #6b3ff5 0%, #2476ff 30%, #20c7e8 56%, #20c6a6 76%, #44eb99 100%);
-  --shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
+  --purple: #d0a6f4;
+  --teal: #2fe4d3;
+  --slide-bg: linear-gradient(
+    155deg,
+    #d8f3ea 0%,
+    #e2f6ef 38%,
+    #edf9f5 72%,
+    #fff 100%
+  );
+  --gradient: linear-gradient(
+    110deg,
+    #6b3ff5,
+    #2476ff 30%,
+    #20c7e8 56%,
+    #20c6a6 76%,
+    #44eb99
+  );
 }
 
-/* ============================================
-   ОБЩИЕ СТИЛИ
-   ============================================ */
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--white); color: var(--black); font-family: Inter, Minecraft, SB Sans Text; }
-a { color: inherit; text-decoration: none; }
+* {
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--black);
+  font-family: Inter, Arial, sans-serif;
+  background: #e2f6ef;
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Все слайды одинакового размера и фона */
+.slide {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--slide-bg);
+  padding: 130px clamp(20px, 5vw, 90px) 70px;
+}
 /* ============================================
    НАВИГАЦИЯ — ПЕРВАЯ СТРАНИЦА
    ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ВЕРХНЯЯ ПАНЕЛЬ САЙТА
