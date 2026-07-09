@@ -373,243 +373,31 @@
   </div>
 </section>
 
-<!-- ============================================================
-     НОВАЯ ФОРМА РЕГИСТРАЦИИ (слева форма, справа озеро)
-     ============================================================ -->
-<!-- ============================================================
-     ФОРМА РЕГИСТРАЦИИ (только имя + email, справа озеро)
-     ============================================================ -->
-<!-- ============================================================
-     ФОРМА РЕГИСТРАЦИИ (слева форма, справа бассейн с утками и черепахами)
-     ============================================================ -->
-<section class="section final" id="form">
-  <div class="form-with-lake">
-
-    <!-- Левая часть: форма -->
-    <div class="form-content">
-      <span class="label-pill" style="border-color: rgba(255,255,255,.4); color: var(--white);">🎓 Заявка на обучение</span>
-      <h2>Тут у нас будет форма заявки</h2>
-      <p>Оставьте контакты, и мы поможем вам стать востребованным специалистом</p>
-
-      <form class="application-form" id="applicationForm" action="send.php" method="POST">
-        <label>Имя <input type="text" name="name" placeholder="Ваше имя" required></label>
-        <label>Email <input type="email" name="email" placeholder="Email" required></label>
-        <button type="submit" class="button dark">Отправить заявку</button>
-        <p class="form-status" id="formStatus"></p>
-      </form>
-      <small style="display:block; margin-top:12px; color:rgba(255,255,255,0.6); font-size:13px; text-align:center;">
-        Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-      </small>
-    </div>
-
-    <!-- Правая часть: БАССЕЙН с утками и черепахами -->
-    <div class="lake-container">
-      <div class="lake-wrapper">
-
-        <!-- БОРТИК БАССЕЙНА (вместо зелёной обводки) -->
-        <div class="pool-border">
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
-          <span class="pool-tile"></span>
+<!-- Слайд 5: Регистрация -->
+    <section class="slide lake-form-slide" id="form">
+        <div class="register-lake">
+            <span>🐢</span>
         </div>
-
-        <!-- БАССЕЙН (вода) -->
-        <div class="register-lake pool-water">
-
-          <!-- Вода с бликами -->
-          <div class="water">
-            <div class="water-ripple r1"></div>
-            <div class="water-ripple r2"></div>
-            <div class="water-ripple r3"></div>
-            <div class="water-ripple r4"></div>
-            <div class="water-ripple r5"></div>
-            <div class="water-ripple r6"></div>
-            <div class="water-shine s1"></div>
-            <div class="water-shine s2"></div>
-            <div class="water-shine s3"></div>
-            <div class="water-shine s4"></div>
-          </div>
-
-          <!-- ЧЕРЕПАХИ (5 штук) -->
-          <!-- Черепаха 1 -->
-          <div class="turtle turtle-1">
-            <div class="turtle-shell"></div>
-            <div class="turtle-head"></div>
-            <div class="turtle-eye"></div>
-            <div class="turtle-leg fl"></div>
-            <div class="turtle-leg fr"></div>
-            <div class="turtle-leg bl"></div>
-            <div class="turtle-leg br"></div>
-            <div class="turtle-tail"></div>
-          </div>
-
-          <!-- Черепаха 2 -->
-          <div class="turtle turtle-2">
-            <div class="turtle-shell"></div>
-            <div class="turtle-head"></div>
-            <div class="turtle-eye"></div>
-            <div class="turtle-leg fl"></div>
-            <div class="turtle-leg fr"></div>
-            <div class="turtle-leg bl"></div>
-            <div class="turtle-leg br"></div>
-            <div class="turtle-tail"></div>
-          </div>
-
-          <!-- Черепаха 3 -->
-          <div class="turtle turtle-3">
-            <div class="turtle-shell"></div>
-            <div class="turtle-head"></div>
-            <div class="turtle-eye"></div>
-            <div class="turtle-leg fl"></div>
-            <div class="turtle-leg fr"></div>
-            <div class="turtle-leg bl"></div>
-            <div class="turtle-leg br"></div>
-            <div class="turtle-tail"></div>
-          </div>
-
-          <!-- Черепаха 4 (маленькая) -->
-          <div class="turtle turtle-4 small">
-            <div class="turtle-shell"></div>
-            <div class="turtle-head"></div>
-            <div class="turtle-eye"></div>
-            <div class="turtle-leg fl"></div>
-            <div class="turtle-leg fr"></div>
-            <div class="turtle-leg bl"></div>
-            <div class="turtle-leg br"></div>
-            <div class="turtle-tail"></div>
-          </div>
-
-          <!-- Черепаха 5 (маленькая) -->
-          <div class="turtle turtle-5 small">
-            <div class="turtle-shell"></div>
-            <div class="turtle-head"></div>
-            <div class="turtle-eye"></div>
-            <div class="turtle-leg fl"></div>
-            <div class="turtle-leg fr"></div>
-            <div class="turtle-leg bl"></div>
-            <div class="turtle-leg br"></div>
-            <div class="turtle-tail"></div>
-          </div>
-
-          <!-- УТКИ (5 штук) -->
-          <!-- Утка 1 -->
-          <div class="duck duck-1">
-            <div class="duck-body"></div>
-            <div class="duck-head"></div>
-            <div class="duck-eye"></div>
-            <div class="duck-beak"></div>
-            <div class="duck-wing"></div>
-            <div class="duck-tail"></div>
-          </div>
-
-          <!-- Утка 2 -->
-          <div class="duck duck-2">
-            <div class="duck-body"></div>
-            <div class="duck-head"></div>
-            <div class="duck-eye"></div>
-            <div class="duck-beak"></div>
-            <div class="duck-wing"></div>
-            <div class="duck-tail"></div>
-          </div>
-
-          <!-- Утка 3 -->
-          <div class="duck duck-3">
-            <div class="duck-body"></div>
-            <div class="duck-head"></div>
-            <div class="duck-eye"></div>
-            <div class="duck-beak"></div>
-            <div class="duck-wing"></div>
-            <div class="duck-tail"></div>
-          </div>
-
-          <!-- Утка 4 (маленькая) -->
-          <div class="duck duck-4 small">
-            <div class="duck-body"></div>
-            <div class="duck-head"></div>
-            <div class="duck-eye"></div>
-            <div class="duck-beak"></div>
-            <div class="duck-wing"></div>
-            <div class="duck-tail"></div>
-          </div>
-
-          <!-- Утка 5 (маленькая) -->
-          <div class="duck duck-5 small">
-            <div class="duck-body"></div>
-            <div class="duck-head"></div>
-            <div class="duck-eye"></div>
-            <div class="duck-beak"></div>
-            <div class="duck-wing"></div>
-            <div class="duck-tail"></div>
-          </div>
-
-          <!-- Камыши -->
-          <div class="reeds reeds-left">
-            <span class="reed"></span>
-            <span class="reed tall"></span>
-            <span class="reed"></span>
-            <span class="reed short"></span>
-            <span class="reed tall"></span>
-          </div>
-          <div class="reeds reeds-right">
-            <span class="reed"></span>
-            <span class="reed tall"></span>
-            <span class="reed"></span>
-            <span class="reed short"></span>
-            <span class="reed tall"></span>
-          </div>
-
-          <!-- Кувшинки -->
-          <div class="lily-pad l1"></div>
-          <div class="lily-pad l2"></div>
-          <div class="lily-pad l3"></div>
-          <div class="lily-pad l4"></div>
-          <div class="lily-flower f1">🌸</div>
-          <div class="lily-flower f2">🌷</div>
-          <div class="lily-flower f3">🌺</div>
-
-          <!-- Круги на воде -->
-          <div class="pond-ripple pond-ripple-one"></div>
-          <div class="pond-ripple pond-ripple-two"></div>
-          <div class="pond-ripple pond-ripple-three"></div>
-          <div class="pond-ripple pond-ripple-four"></div>
-          <div class="pond-ripple pond-ripple-five"></div>
-
+        <div class="form-content reveal">
+            <div class="label-pill">🎓 Заявка на обучение</div>
+            <h2>Оставьте контакты</h2>
+            <p>Мы поможем вам стать востребованным специалистом.</p>
+            <form id="applicationForm" class="application-form">
+                <div>
+                    <label>Имя</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <button type="submit" class="button">Отправить заявку</button>
+                <p id="formStatus" class="form-status"></p>
+            </form>
+            <small>Нажимая кнопку, вы соглашаетесь с политикой обработки данных</small>
         </div>
+    </section>
 
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- ============================================================
      НОВЫЙ ФУТЕР
