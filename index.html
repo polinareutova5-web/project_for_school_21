@@ -25,26 +25,7 @@
 
     <!-- Реки (SVG overlay) -->
     <svg class="rivers-overlay" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="glow-purple">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-            <filter id="glow-teal">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
-        <!-- Фиолетовая река -->
-        <path class="river-path river-purple" d="M 50% 100% Q 30% 150% 20% 200% T 15% 300% Q 25% 400% 35% 500% T 30% 600% Q 20% 700% 25% 800% T 20% 900% Q 15% 1000% 10% 1100% T 15% 1200% Q 20% 1300% 25% 1400% T 20% 1500% Q 15% 1600% 10% 1700% T 15% 1800% Q 20% 1900% 25% 2000%" filter="url(#glow-purple)"/>
-        <!-- Бирюзовая река -->
-        <path class="river-path river-teal" d="M 50% 100% Q 70% 150% 80% 200% T 85% 300% Q 75% 400% 65% 500% T 70% 600% Q 80% 700% 75% 800% T 80% 900% Q 85% 1000% 90% 1100% T 85% 1200% Q 80% 1300% 75% 1400% T 80% 1500% Q 85% 1600% 90% 1700% T 85% 1800% Q 80% 1900% 75% 2000%" filter="url(#glow-teal)"/>
+        
     </svg>
 
     <!-- Слайд 1: Hero -->
