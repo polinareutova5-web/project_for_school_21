@@ -1,897 +1,279 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Центр прикладного программирования РУДН × Школа 21</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f4f0;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* ===== СЕКЦИЯ ТРЕКИ ===== */
-        .tracks-section {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .tracks-left-info {
-            flex: 0 0 200px;
-            font-size: 14px;
-            line-height: 1.6;
-            padding-top: 100px;
-        }
-
-        .tracks-left-info h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .tracks-center {
-            flex: 1;
-            position: relative;
-            background: #e8f5e9;
-            border-radius: 20px;
-            padding: 30px;
-            min-height: 500px;
-            overflow: hidden;
-        }
-
-        .tracks-center h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .path-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .flag {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 13px;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-
-        .flag-icon {
-            width: 30px;
-            height: 20px;
-            background: #4caf50;
-            border-radius: 2px;
-            position: relative;
-        }
-
-        .flag-icon::before {
-            content: '';
-            position: absolute;
-            left: -3px;
-            top: 0;
-            width: 3px;
-            height: 30px;
-            background: #333;
-        }
-
-        .flag-1 { top: 80px; left: 60%; }
-        .flag-2 { top: 180px; left: 55%; }
-        .flag-3 { top: 300px; left: 30%; }
-
-        .track-info-box {
-            position: absolute;
-            background: rgba(255,255,255,0.9);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 12px;
-            line-height: 1.5;
-            max-width: 200px;
-        }
-
-        .track-info-cz {
-            top: 60px;
-            left: 20px;
-        }
-
-        .track-info-ii {
-            top: 200px;
-            right: 20px;
-        }
-
-        .signpost {
-            position: absolute;
-            top: 280px;
-            left: 35%;
-        }
-
-        .signpost-img {
-            width: 80px;
-        }
-
-        .character-duck {
-            position: absolute;
-            bottom: 30px;
-            left: 40%;
-        }
-
-        .character-duck img {
-            width: 60px;
-        }
-
-        .tooltip-text {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 11px;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        .tracks-right-info {
-            flex: 0 0 350px;
-            font-size: 14px;
-            line-height: 1.7;
-            padding-top: 100px;
-        }
-
-        .tracks-right-info ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tracks-right-info ul li {
-            margin-bottom: 8px;
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .tracks-right-info ul li::before {
-            content: '*';
-            position: absolute;
-            left: 0;
-            color: #4caf50;
-        }
-
-        /* ===== СЕКЦИЯ КАК ПОСТУПИТЬ ===== */
-        .apply-section {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .apply-left-notes {
-            flex: 0 0 280px;
-            font-size: 13px;
-            line-height: 1.7;
-            padding-top: 60px;
-        }
-
-        .apply-left-notes h3 {
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .apply-left-notes .arrow {
-            color: #9c27b0;
-            font-size: 24px;
-        }
-
-        .apply-center {
-            flex: 1;
-            position: relative;
-            background: #e8f5e9;
-            border-radius: 20px;
-            padding: 30px;
-            min-height: 450px;
-            overflow: hidden;
-        }
-
-        .apply-center h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .apply-btn {
-            display: block;
-            margin: 20px auto 0;
-            padding: 14px 30px;
-            background: #fff;
-            border: 2px solid #4caf50;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .apply-btn:hover {
-            background: #4caf50;
-            color: #fff;
-        }
-
-        .apply-right-info {
-            flex: 0 0 380px;
-            font-size: 14px;
-            line-height: 1.7;
-            padding-top: 60px;
-        }
-
-        .apply-right-info h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            margin-top: 20px;
-        }
-
-        .apply-right-info h3:first-child {
-            margin-top: 0;
-        }
-
-        .apply-right-info p {
-            margin-bottom: 12px;
-        }
-
-        .apply-right-info strong {
-            color: #2e7d32;
-        }
-
-        /* ===== СЕКЦИЯ FAQ ===== */
-        .faq-section {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .faq-center {
-            flex: 1;
-            position: relative;
-            background: #e8f5e9;
-            border-radius: 20px;
-            padding: 30px;
-            min-height: 400px;
-            overflow: hidden;
-        }
-
-        .faq-center h2 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .faq-frog {
-            position: absolute;
-            top: 60px;
-            right: 40px;
-        }
-
-        .faq-frog img {
-            width: 70px;
-        }
-
-        .faq-signpost {
-            position: absolute;
-            top: 60px;
-            right: 120px;
-        }
-
-        .faq-signpost img {
-            width: 60px;
-        }
-
-        .faq-duck {
-            position: absolute;
-            top: 150px;
-            left: 30%;
-        }
-
-        .faq-duck img {
-            width: 60px;
-        }
-
-        .faq-bridge {
-            position: absolute;
-            bottom: 60px;
-            right: 25%;
-        }
-
-        .faq-bridge img {
-            width: 100px;
-        }
-
-        .faq-product-label {
-            position: absolute;
-            top: 160px;
-            left: 38%;
-            font-size: 13px;
-            color: #2e7d32;
-            font-weight: bold;
-        }
-
-        .faq-right-info {
-            flex: 0 0 200px;
-            padding-top: 100px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .faq-right-info .arrow {
-            color: #9c27b0;
-            font-size: 24px;
-        }
-
-        /* ===== СИНЯЯ ИНФО-ПАНЕЛЬ ===== */
-        .info-panel {
-            max-width: 700px;
-            margin: 40px auto;
-            background: #b3d9ff;
-            border-radius: 16px;
-            padding: 30px 35px;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .info-panel p {
-            margin-bottom: 14px;
-        }
-
-        .info-panel strong {
-            color: #1a5276;
-        }
-
-        .info-panel a {
-            color: #1a5276;
-            text-decoration: underline;
-        }
-
-        .info-panel .highlight {
-            font-weight: bold;
-        }
-
-        /* ===== СЕКЦИЯ ПРОДУКТОВАЯ МАСТЕРСКАЯ ===== */
-        .product-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .product-left-text {
-            flex: 0 0 300px;
-            font-size: 13px;
-            line-height: 1.7;
-            padding-top: 40px;
-        }
-
-        /* ===== СЕКЦИЯ ВЫПУСКНОЙ ===== */
-        .graduate-section {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .graduate-center {
-            position: relative;
-            background: #e8f5e9;
-            border-radius: 20px;
-            padding: 30px;
-            min-height: 350px;
-            overflow: hidden;
-        }
-
-        .graduate-pond {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: linear-gradient(180deg, #a8d8ea 0%, #7ec8e3 50%, #5bb5d5 100%);
-            border-radius: 0 0 20px 20px;
-        }
-
-        .graduate-pond::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: 10%;
-            right: 10%;
-            height: 60px;
-            background: #4caf50;
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-
-        .graduate-bridge {
-            position: absolute;
-            bottom: 120px;
-            left: 15%;
-        }
-
-        .graduate-bridge img {
-            width: 100px;
-        }
-
-        .graduate-characters {
-            position: absolute;
-            bottom: 60px;
-            left: 30%;
-            display: flex;
-            gap: 10px;
-        }
-
-        .graduate-characters img {
-            width: 50px;
-        }
-
-        .graduate-flag {
-            position: absolute;
-            bottom: 100px;
-            right: 30%;
-        }
-
-        .graduate-flag-label {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2e7d32;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .application-form-placeholder {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            background: rgba(255,255,255,0.8);
-            border: 2px solid #9c27b0;
-            border-radius: 10px;
-            padding: 15px 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* ===== ФУТЕР ===== */
-        .footer-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .footer-card {
-            background: #e8f5e9;
-            border-radius: 20px;
-            padding: 30px;
-        }
-
-        .footer-top-text {
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .footer-map {
-            flex: 0 0 250px;
-        }
-
-        .footer-map h4 {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .footer-map-img {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-        }
-
-        .footer-reviews {
-            flex: 1;
-        }
-
-        .footer-reviews h4 {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .review-cards {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .review-card {
-            width: 80px;
-            height: 100px;
-            background: #fff;
-            border-radius: 10px;
-            border: 2px solid #4caf50;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            font-size: 13px;
-        }
-
-        .footer-links a {
-            color: #333;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        .footer-links a:hover {
-            color: #4caf50;
-        }
-
-        /* ===== РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ ===== */
-        .section-divider {
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 3px;
-            background: #4caf50;
-            border-radius: 2px;
-        }
-
-        /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 900px) {
-            .tracks-section,
-            .apply-section,
-            .faq-section,
-            .product-section {
-                flex-direction: column;
-            }
-
-            .tracks-left-info,
-            .tracks-right-info,
-            .apply-left-notes,
-            .apply-right-info,
-            .faq-right-info,
-            .product-left-text {
-                flex: none;
-                padding-top: 0;
-            }
-
-            .info-panel {
-                margin: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>РУДН × Школа 21 — Кампус будущего</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- ===== СЕКЦИЯ: ТРЕКИ ===== -->
-    <section class="tracks-section">
-        <div class="tracks-left-info">
-            <!-- Пусто — стрелка будет в apply-section -->
+  <!-- ============================================
+       НАВИГАЦИЯ — ПЕРВАЯ СТРАНИЦА
+       ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ВЕРХНЯЯ ПАНЕЛЬ САЙТА
+       Все разделы как на скриншоте + иконка слева
+       ============================================ -->
+  <header class="nav">
+ <a class="brand-lockup" href="#hero" aria-label="РУДН × Школа 21">
+      <!-- Логотип помещается полностью в рамку; текстовый дубль рядом убран -->
+      <img class="brand-icon" src="https://i.imgur.com/2Ik1TS0.png" alt="РУДН × Школа 21">
+    </a>
+    
+    <nav>
+      <a href="#about">О программе</a>
+      <a href="#tracks">Треки</a>
+      <a href="#admission">Как поступить</a>
+      <a href="#campus">Кампус</a>
+      <a href="#education">Основное обучение</a>
+      <a href="#contacts">Контакты</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cabinet">Личный кабинет</a>
+    </nav>
+    
+    <!-- ⚠️ КНОПКА РЕГИСТРАЦИИ С ЭФФЕКТОМ СТЕКЛА -->
+    <a href="#form" class="nav-cta">Регистрация</a>
+  </header>
+
+ <!-- Реки (SVG overlay) -->
+    <svg class="rivers-overlay" xmlns="http://www.w3.org/2000/svg">
+        
+    </svg>
+  <!-- ============================================
+       HERO / ПЕРВАЯ СТРАНИЦА
+       ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
+       Большой заголовок, описание, кнопки действий
+       ============================================ -->
+ <!-- ПЕРВАЯ СТРАНИЦА - HERO SECTION -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+
+    <!-- Большая вращающаяся картинка -->
+<img
+    class="hero-rotating-image"
+    src="https://i.imgur.com/Zu8TAyb.png"
+    alt="Декоративное изображение">
+
+    
+    <!-- Черный заголовок -->
+    <h1 class="hero-main-title">
+      Центр прикладного<br>программирования
+    </h1>
+    
+    <!-- Градиентный заголовок -->
+    <h2 class="hero-gradient-title">
+      РУДН × Школа 21
+    </h2>
+  </div>
+
+  <div class="hero-bottom-row" aria-label="Краткое описание и быстрые действия">
+  <div class="hero-bottom-copy">
+      <p class="hero-description">
+        Научись создавать<br>будущее с помощью ИИ
+      </p>
+      <div class="hero-campus-pill">
+        Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.
+      </div>
+  </div>
+    <div class="hero-bottom-actions">
+      <a class="hero-apply-button" href="#form">Подать заявку</a>
+      <a class="hero-cabinet-button" href="#cabinet">Личный кабинет</a>
+    </div>
+  </div>
+  
+  <!-- ОЗЕРО С ЧЕРЕПАШКАМИ - КОНТУР + ФОТО -->
+  <div class="hero-turtle-pond">
+    <!-- ЧЕРЕПАШКА 1 - замените src на вашу ссылку -->
+    <img class="pond-turtle pond-turtle-one" 
+         src="https://i.imgur.com/Iehgato.png" 
+         alt="Черепаха 1"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="pond-turtle-emoji" style="display:none">🐢</div>
+    
+    <!-- ЧЕРЕПАШКА 2 -->
+    <img class="pond-turtle pond-turtle-two" 
+         src="https://i.imgur.com/GvuuYgf.png" 
+         alt="Черепаха 2"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="pond-turtle-emoji" style="display:none">🐢</div>
+    
+    <!-- ЧЕРЕПАШКА 3 -->
+    <img class="pond-turtle pond-turtle-three" 
+         src="https://i.imgur.com/4FgtZXe.png" 
+         alt="Черепаха 3"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="pond-turtle-emoji" style="display:none">🐢</div>
+
+     <!-- КАМЫШИ -->
+    <div class="pond-reeds pond-reeds-left"><i></i><i></i><i></i></div>
+    <div class="pond-reeds pond-reeds-right"><i></i><i></i><i></i><i></i></div>
+    
+    <!-- КРУГИ НА ВОДЕ -->
+    <div class="pond-ripple pond-ripple-one"></div>
+    <div class="pond-ripple pond-ripple-two"></div>
+    <div class="pond-ripple pond-ripple-three"></div>
+  </div>
+</section>
+    
+    <!-- Слайд 2: Треки -->
+    <section class="slide" id="tracks">
+        <h2 class="section-title reveal">Треки обучения</h2>
+        <div class="flag flag-left"><span></span>Вводная встреча</div>
+        <div class="flag flag-right"><span></span>Подача документов</div>
+        <div class="turtle-board">
+            <span>🐢</span>
+            <div>
+                <div>Цифровой заказчик</div>
+                <small>Интенсив</small>
+            </div>
         </div>
-
-        <div class="tracks-center">
-            <h2>Треки</h2>
-
-            <!-- SVG путь -->
-            <svg class="path-svg" viewBox="0 0 600 500" preserveAspectRatio="none">
-                <!-- Бирюзовый путь -->
-                <path d="M 300 30 Q 200 100 250 180 Q 300 260 200 340 Q 150 400 180 470"
-                      stroke="#4dd0c8" stroke-width="18" fill="none" stroke-linecap="round"/>
-                <!-- Фиолетовый путь -->
-                <path d="M 350 30 Q 400 120 380 200 Q 360 280 400 360 Q 430 420 420 470"
-                      stroke="#b39ddb" stroke-width="14" fill="none" stroke-linecap="round"/>
-            </svg>
-
-            <!-- Инфо ЦЗ -->
-            <div class="track-info-box track-info-cz">
-                <strong>Для ЦЗ:</strong><br>
-                программа доступна для всех желающих, независимо от опыта и сферы деятельности
+        <div class="turtle-board intensive">
+            <span>🦆</span>
+            <div>
+                <div>ИИ-инженер</div>
+                <small>Интенсив</small>
             </div>
-
-            <!-- Инфо ИИ -->
-            <div class="track-info-box track-info-ii">
-                <strong>Для ИИ:</strong><br>
-                Владение базовым синтаксисом Python
-            </div>
-
-            <!-- Флаги -->
-            <div class="flag flag-1">
-                <div class="flag-icon"></div>
-                <span>Вводная встреча</span>
-            </div>
-
-            <div class="flag flag-2">
-                <div class="flag-icon"></div>
-                <span>Подача документов</span>
-            </div>
-
-            <!-- Указатель -->
-            <div class="signpost">
-                <img src="https://via.placeholder.com/80x60/8B4513/fff?text=Знак" alt="Указатель" class="signpost-img">
-                <div style="font-size:11px; text-align:center; margin-top:4px;">
-                    ИИ инженер<br>Цифровой заказчик
-                </div>
-            </div>
-
-            <!-- Уточка -->
-            <div class="character-duck">
-                <img src="https://via.placeholder.com/60x60/FFD700/333?text=🦆" alt="Уточка">
-            </div>
-            <div class="tooltip-text">*при наведении на указатель отображаются необходимые навыки — "порог входа"</div>
         </div>
+        <div class="campus-turtle" data-popup="Нажми на меня">
+            🦆
+            <p>Нажми на меня</p>
+        </div>
+        <div class="duck-helper">
+            
+            <small>даты интенсивов для ЦЗ и ИИ</small>
+        </div>
+        <div class="bridge"></div>
+        <div class="duck-flag">
+            🚩
+            <span></span>
+            <b>основное обучение</b>
+        </div>
+        <a href="#form" class="outline-cta">Подать документы на основное обучение</a>
+    </section>
 
-        <div class="tracks-right-info">
-            <p>Знание основ линейной алгебры, статистики, математического анализа.</p>
-            <p><strong>*Желательно знать, но можно освоить в процессе обучения:</strong></p>
-            <ul>
-                <li>Опыт работы с библиотеками: <strong>NumPy, Pandas, Matplotlib/Seaborn</strong> (желательно).</li>
-                <li>Знание основ <strong>ML</strong> и применение моделей на простых датасетах.</li>
-                <li>Базовые знания <strong>SQL</strong>.</li>
-                <li>Базовое знание <strong>Linux/Bash, Git, Jupyter</strong>.</li>
-            </ul>
+    <!-- Слайд 3: Как поступить -->
+    <section class="slide" id="admission">
+        <h2 class="section-title reveal">Как поступить?</h2>
+        <div class="signpost">
+            <div class="post"></div>
+            <div class="wood-arrow left">← Треки</div>
+            <div class="wood-arrow right">FAQ →</div>
         </div>
     </section>
 
-    <!-- ===== СЕКЦИЯ: КАК ПОСТУПИТЬ ===== -->
-    <section class="apply-section">
-        <div class="apply-left-notes">
-            <h3>ОСНОВНОЕ ОБУЧЕНИЕ</h3>
-            <p>*при нажатии на кнопку отображается уведомление: "подать доки на основное обучение можно только после успешного прохождения отборочного интенсива"</p>
-            <p>кнопка=ссылка на ЛК в аппликанте при нажатии на кнопку</p>
-            <p><strong>"ПОДАТЬ ДОКУМЕНТЫ НА ОСНОВНОЕ ОБУЧЕНИЕ"</strong></p>
-            <p>*под кнопкой нужно место, где мы будем писать "старт основы – дд.мм.гг" / "дата скоро появится"</p>
-            <p>Управление проектами в ИТ</p>
-            <div class="arrow">➡️</div>
-        </div>
-
-        <div class="apply-center">
-            <h2>Как поступить?</h2>
-
-            <svg class="path-svg" viewBox="0 0 600 450" preserveAspectRatio="none">
-                <path d="M 200 30 Q 150 120 180 200 Q 200 280 170 360 Q 150 410 180 440"
-                      stroke="#4dd0c8" stroke-width="18" fill="none" stroke-linecap="round"/>
-                <path d="M 400 30 Q 430 120 410 200 Q 390 280 420 360 Q 440 410 430 440"
-                      stroke="#b39ddb" stroke-width="14" fill="none" stroke-linecap="round"/>
-            </svg>
-
-            <!-- Флаг ИНТЕНСИВ -->
-            <div class="flag" style="top:80px; right:60px;">
-                <div class="flag-icon"></div>
-                <span style="color:#9c27b0; font-weight:bold;">ИНТЕНСИВ</span>
-            </div>
-
-            <!-- Флаг ОСНОВНОЕ ОБУЧЕНИЕ -->
-            <div class="flag" style="top:280px; left:40px;">
-                <div class="flag-icon"></div>
-                <span style="color:#2e7d32; font-weight:bold;">ОСНОВНОЕ<br>ОБУЧЕНИЕ</span>
-            </div>
-
-            <!-- Указатель с датами -->
-            <div style="position:absolute; top:160px; left:40%;">
-                <img src="https://via.placeholder.com/80x60/8B4513/fff?text=Знак" alt="Указатель" style="width:80px;">
-                <div style="font-size:11px; text-align:center; margin-top:4px; font-weight:bold;">
-                    ДАТЫ<br>ИНТЕНСИВОВ<br>ДЛЯ ЦЗ И ИИ
-                </div>
-            </div>
-
-            <!-- Черепашка -->
-            <div style="position:absolute; top:220px; left:45%;">
-                <img src="https://via.placeholder.com/50x50/4caf50/fff?text=🐢" alt="Черепашка" style="width:50px;">
-                <div style="font-size:11px; text-align:center; margin-top:4px;">
-                    *черепашка с табличкой с датами интенсивов для ЦЗ и ИИ
-                </div>
-            </div>
-
-            <!-- Кнопка -->
-            <button class="apply-btn">ПОДАТЬ ДОКУМЕНТЫ НА ОСНОВНОЕ ОБУЧЕНИЕ</button>
-        </div>
-
-        <div class="apply-right-info">
-            <h3>В каком формате проходит отборочный интенсив?</h3>
-            <p>Интенсивы проходят только очно в кампусе и длятся <strong>4 дня</strong>. Дистанционный формат не предусмотрен.</p>
-
-            <h3>Что даёт участие в 4-дневном интенсиве?</h3>
-            <p>Портфолио с первых дней — проект, сделанный на интенсиве, можно положить в портфолио уже после интенсива и получить навыки работы с цифровыми инструментами.</p>
-            <p>Возможность попасть на основное обучение — если интенсив пройден успешно, можно продолжить обучение в основе, работая над новыми проектами при поддержке экспертов индустрии и карьерного консультанта.</p>
+    <!-- Слайд 4: FAQ -->
+    <section class="slide" id="faq">
+        <h2 class="section-title reveal">Часто задаваемые вопросы</h2>
+        <div class="faq-grid">
+            <article class="reveal">
+                <h3> Ценности кампуса</h3>
+                <p>Мы ценим взаимопомощь, честную обратную связь и смелость пробовать. Кампус — место, где ошибки превращаются в опыт, а идеи быстро становятся проектами.</p>
+            </article>
+            <article class="reveal">
+                <h3>🦆 Продуктовая мастерская</h3>
+                <p>Нужен ли опыт? Нет, стартовать можно с любым уровнем. Важны мотивация и готовность учиться через практику.</p>
+            </article>
+            <article class="reveal">
+                <h3>Сколько стоит обучение?</h3>
+                <p>Программы бесплатные, а участие строится вокруг проектов, командной работы и регулярной практики.</p>
+            </article>
+            <article class="reveal">
+                <h3>Как проходит отбор?</h3>
+                <p>Вы подаёте документы, проходите вводные этапы и интенсив, после чего выбираете подходящий трек.</p>
+            </article>
+            <article class="reveal">
+                <h3>Можно совмещать?</h3>
+                <p>Да, гибкий формат помогает учиться в собственном темпе и постепенно наращивать нагрузку.</p>
+            </article>
         </div>
     </section>
 
-    <!-- ===== РАЗДЕЛИТЕЛЬ ===== -->
-    <div class="section-divider"></div>
-
-    <!-- ===== СЕКЦИЯ: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ ===== -->
-    <section class="faq-section">
-        <div class="faq-right-info">
-            <div class="arrow">⬅️</div>
+    <!-- Слайд 5: Регистрация -->
+    <section class="slide lake-form-slide" id="form">
+        <div class="register-lake">
+            <span>🐢</span>
         </div>
-
-        <div class="faq-center">
-            <h2>Часто задаваемые вопросы</h2>
-
-            <!-- Лягушка -->
-            <div class="faq-frog">
-                <img src="https://via.placeholder.com/70x70/4caf50/fff?text=🐸" alt="Лягушка">
-            </div>
-
-            <!-- Указатель -->
-            <div class="faq-signpost">
-                <img src="https://via.placeholder.com/60x50/8B4513/fff?text=Знак" alt="Указатель">
-            </div>
-
-            <!-- Уточка -->
-            <div class="faq-duck">
-                <img src="https://via.placeholder.com/60x60/FFD700/333?text=🦆" alt="Уточка">
-            </div>
-            <div class="faq-product-label">Продуктовая<br>мастерская кейсов</div>
-
-            <!-- Мост -->
-            <div class="faq-bridge">
-                <img src="https://via.placeholder.com/100x60/8B4513/fff?text=Мост" alt="Мост">
-            </div>
+        <div class="form-content reveal">
+            <div class="label-pill">🎓 Заявка на обучение</div>
+            <h2>Оставьте контакты</h2>
+            <p>Мы поможем вам стать востребованным специалистом.</p>
+            <form id="applicationForm" class="application-form">
+                <div>
+                    <label>Имя</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <button type="submit" class="button">Отправить заявку</button>
+                <p id="formStatus" class="form-status"></p>
+            </form>
+            <small>Нажимая кнопку, вы соглашаетесь с политикой обработки данных</small>
         </div>
-
-        <div style="flex: 0 0 200px;"></div>
     </section>
 
-    <!-- ===== СИНЯЯ ИНФО-ПАНЕЛЬ ===== -->
-    <div class="info-panel">
-        <p><strong>Где находится кампус?</strong> Факультет искусственного интеллекта РУДН (г. Москва, Подольское шоссе, д. 8, вход со стороны сквера).</p>
+    <!-- Слайд 6: Контакты -->
+    <section class="slide contacts-slide" id="contacts">
+        <h2 class="contacts-heading reveal">Контакты</h2>
+        <div class="contacts-grid">
+            <div class="map-card reveal">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.1234567890123!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru" allowfullscreen></iframe>
+            </div>
+            <div class="reviews reveal">
+                <article>
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Анна">
+                    <h3>Анна</h3>
+                    <p>Пришла без технического опыта и быстро втянулась в проектный формат. Особенно помогли команда и понятные ориентиры на каждом этапе.</p>
+                </article>
+                <article>
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Илья">
+                    <h3>Илья</h3>
+                    <p>Интенсив научил не бояться сложных задач. Здесь много практики, живого общения и ощущения, что ты действительно растёшь.</p>
+                </article>
+                <article>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Мария">
+                    <h3>Мария</h3>
+                    <p>Понравилось, что обучение бесплатное, но очень серьёзное. После первых проектов стало проще понимать, куда развиваться дальше.</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-        <p><strong>Кто может обучаться?</strong> Студенты и сотрудники РУДН.</p>
+<!-- ============================================================
+      НОВЫЙ ФУТЕР (со всеми ссылками)
+      ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
 
-        <p><strong>Это действительно бесплатно?</strong> Да, обучение полностью бесплатное.</p>
-
-        <p><strong>Как попасть на обучение в совместный кампус РУДН и «Школы 21»?</strong></p>
-        <p>Регистрируйся на нашем сайте <a href="https://21-school.rudn.ru/">https://21-school.rudn.ru/</a>. Важно при регистрации на сайте обязательно используйте корпоративную электронную почту с доменом <strong>rudn</strong> (не phr).</p>
-        <p>Записывайся на одну из вводных онлайн-встреч в личном кабинете.</p>
-        <p>После встречи — подавай документы на интенсив.</p>
-        <p>*на момент зачисления вы должны быть сотрудником или обучающимся РУДН.</p>
-
-        <p><strong>Как проходят отборочные интенсивы?</strong></p>
-        <p>Только очно, в кампусе в течение <strong>4 дней</strong>. Дистанционный формат прохождения интенсивов не предусмотрен.</p>
-
-        <p><strong>Как часто проходит набор в кампус?</strong></p>
-        <p>Наборы проходят два раза в год — весной и осенью. Даты проведения отборочных интенсивов публикуются на сайте совместного кампуса РУДН и «Школы 21».</p>
-
-        <p><strong>Что даёт 4-дневный отборочный интенсив?</strong></p>
-        <p>* Портфолио с первых дней — проект, сделанный на интенсиве, можно положить в портфолио уже после интенсива.</p>
-        <p>* Путёвку на основное обучение — если интенсив пройден успешно, можно продолжить обучение в основе, работая над новыми проектами при поддержке экспертов индустрии и карьерного консультанта.</p>
-
-        <p><strong>Сколько времени в неделю необходимо для основного обучения?</strong><br>
-        Нагрузка <strong>4–6</strong> академических часов в неделю.</p>
-
-        <p><strong>Сколько длится обучение?</strong><br>
-        Направление «ИИ-инженер» — <strong>20 месяцев</strong>;<br>
-        Программа «Цифровой заказчик» — <strong>10 месяцев</strong>.</p>
-
-        <p><strong>Могу ли я получить документы, подтверждающие прохождение обучения?</strong></p>
-        <p>Да, конечно! Выпускники программы «Цифровой заказчик» получают удостоверение о повышении квалификации, а выпускники программы «ИИ-инженер» — диплом о профессиональной переподготовке. Также все участники формируют портфолио проектов и развивают практические цифровые компетенции, а лучшие выпускники дополнительно могут получить сертификат «Школы 21».</p>
-
-        <p><strong>Когда я могу прийти в кампус, чтобы познакомиться?</strong></p>
-        <p>Кампус открыт с <strong>9:00 до 21:00</strong> с понедельника по субботу. Об изменениях доступности кампуса сообщаем дополнительно.</p>
-
-        <p><strong>Куда я могу обратиться, если у меня еще остались вопросы?</strong></p>
-        <p>Команда кампуса на связи с понедельника по пятницу с <strong>10:00 до 19:00</strong> на почте <a href="mailto:21-school@rudn.ru">21-school@rudn.ru</a>, в <strong>Telegram</strong>-канале и, конечно, в нашем кампусе.</p>
+    <!-- Верхняя строка: Оферта · Правила · Политика -->
+    <div class="footer-links-row">
+      <a href="#" target="_blank">Оферта</a>
+      <span class="footer-divider">·</span>
+      <a href="#" target="_blank">Правила</a>
+      <span class="footer-divider">·</span>
+      <a href="https://www.rudn.ru/storage/media/documents/e1bee4fb-c76b-46e2-9a94-4a81c0037db3/HF49MKfGpR7GqAoseQSjFQGbuRuBjWwsLrdCqGax.pdf" target="_blank">Политика конфиденциальности</a>
     </div>
 
-    <!-- ===== СЕКЦИЯ: ПРОДУКТОВАЯ МАСТЕРСКАЯ + ВЫПУСКНОЙ ===== -->
-    <section class="product-section">
-        <div class="product-left-text">
-            <p><strong>@Продуктовая мастерская кейсов</strong> — это проектно-ориентированная программа, построенная вокруг решения реального бизнес-кейса от компании-партнёра (Сбера и индустрии). На этом этапе участники проходят полный цикл продуктовой разработки и менеджмента в командах: от анализа запроса и исследования рынка до создания решения, расчёта экономики и финальной защиты решения перед экспертной комиссией.</p>
-        </div>
+    <!-- Нижняя строка: Контакты -->
+    <div class="footer-contacts-row">
+        <span class="footer-contact-item">
+          📧 <a href="mailto:info@school21.ru">info@school21.ru</a>
+        </span>
+      <span class="footer-contact-item">
+          📱 <a href="https://t.me/+MRsv0D63SqZjMjIy" target="_blank">Telegram</a>
+        </span>
+      <span class="footer-contact-item">
+          📱 <a href="https://vk.com/coding21" target="_blank">ВКонтакте</a>
+        </span>
+    </div>
 
-        <div class="graduate-center" style="flex:1;">
-            <!-- Пруд -->
-            <div class="graduate-pond"></div>
+  </div>
+</footer>
 
-            <!-- Мост -->
-            <div class="graduate-bridge">
-                <img src="https://via.placeholder.com/100x60/8B4513/fff?text=Мост" alt="Мост">
-            </div>
+<a href="#hero" class="to-top" aria-label="Наверх">↑</a>
 
-            <!-- Персонажи -->
-            <div class="graduate-characters">
-                <img src="https://via.placeholder.com/50x50/4caf50/fff?text=🐢" alt="Черепашка">
-                <img src="https://via.placeholder.com/50x50/FFD700/333?text=🦆" alt="Уточка">
-            </div>
-
-            <!-- Флаг ВЫПУСКНОЙ -->
-            <div class="graduate-flag">
-                <div class="flag-icon" style="background:#4caf50;"></div>
-                <div class="graduate-flag-label">ВЫПУСКНОЙ</div>
-            </div>
-
-            <!-- Форма заявки -->
-            <div class="application-form-placeholder">
-                Тут у нас будет форма заявки
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ФУТЕР ===== -->
-    <section class="footer-section">
-        <div class="footer-card">
-            <p class="footer-top-text">
-                это бесплатная школа цифровых технологий с уникальными программами, которые помогут быть востребованным специалистом сегодня и на долгие годы вперёд.
-            </p>
-
-            <div class="footer-content">
-                <div class="footer-map">
-                    <h4>БЛОК "КАРТА"</h4>
-                    <img src="https://via.placeholder.com/250x150/a8d8ea/333?text=Карта+кампуса" alt="Карта" class="footer-map-img">
-                    <div style="font-size:11px; color:#666; margin-top:5px;">Подольское шоссе, 8, Москва</div>
-                </div>
-
-                <div class="footer-reviews">
-                    <h4>ОТЗЫВЫ НАШИХ УЧАСТНИКОВ</h4>
-                    <div class="review-cards">
-                        <div class="review-card"></div>
-                        <div class="review-card"></div>
-                        <div class="review-card"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <a href="#">Оферта</a>
-                <a href="#">Правила</a>
-                <a href="#">Кампуса</a>
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">E-mail</a>
-                <a href="#">Telegram</a>
-                <a href="#">ВК</a>
-            </div>
-        </div>
-    </section>
-
+<script src="script.js"></script>
 </body>
 </html>
+
+  
