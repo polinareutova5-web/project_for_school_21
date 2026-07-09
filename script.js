@@ -309,3 +309,248 @@ const renderRivers = () => {
 
 renderRivers();
 window.addEventListener("resize", renderRivers);
+
+// ============================================================
+// КОНТАКТЫ — ПЕРЕКЛЮЧЕНИЕ КАРТА / ФОТО (МГНОВЕННОЕ)
+// ============================================================
+
+(function() {
+
+    // Функция переключения (доступна сразу)
+    function showTab(tabName) {
+        var mapContainer = document.getElementById('map-container');
+        var photosContainer = document.getElementById('photos-container');
+        var tabBtns = document.querySelectorAll('.tab-btn');
+
+        // Если элементов нет — выходим
+        if (!mapContainer || !photosContainer) {
+            return;
+        }
+
+        // Скрываем оба
+        mapContainer.style.display = 'none';
+        photosContainer.style.display = 'none';
+        mapContainer.classList.remove('active');
+        photosContainer.classList.remove('active');
+
+        // Убираем активный класс у кнопок
+        tabBtns.forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+
+        // Показываем нужный
+        if (tabName === 'map') {
+            mapContainer.style.display = 'block';
+            mapContainer.classList.add('active');
+            tabBtns.forEach(function(btn) {
+                if (btn.getAttribute('data-tab') === 'map') {
+                    btn.classList.add('active');
+                }
+            });
+        } else if (tabName === 'photos') {
+            photosContainer.style.display = 'block';
+            photosContainer.classList.add('active');
+            tabBtns.forEach(function(btn) {
+                if (btn.getAttribute('data-tab') === 'photos') {
+                    btn.classList.add('active');
+                }
+            });
+        }
+    }
+
+    // ============================================================
+    // 1. ПРЯМОЙ СПОСОБ: вешаем обработчики сразу (без ожидания)
+    // ============================================================
+
+    // Находим кнопки
+    var tabBtns = document.querySelectorAll('.tab-btn');
+
+    // Вешаем обработчики на каждую кнопку (сразу, если они уже есть)
+    if (tabBtns.length) {
+        tabBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var tab = this.getAttribute('data-tab');
+                showTab(tab);
+            });
+        });
+        // Показываем карту по умолчанию
+        showTab('map');
+    } else {
+        // Если кнопок ещё нет на странице, используем MutationObserver
+        // или просто ждём их появления через небольшую задержку
+        var checkInterval = setInterval(function() {
+            var btns = document.querySelectorAll('.tab-btn');
+            if (btns.length) {
+                clearInterval(checkInterval);
+                btns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var tab = this.getAttribute('data-tab');
+                        showTab(tab);
+                    });
+                });
+                showTab('map');
+            }
+        }, 50);
+    }
+
+    // ============================================================
+    // 2. ЗАПАСНОЙ СПОСОБ: обработчик на весь документ (делегирование)
+    //    Работает даже для динамически добавленных кнопок
+    // ============================================================
+
+    document.addEventListener('click', function(event) {
+        var target = event.target.closest('.tab-btn');
+        if (target) {
+            // Если у кнопки уже есть свой обработчик — не мешаем
+            // Но если нет — переключаем через делегирование
+            var tab = target.getAttribute('data-tab');
+            // Проверяем, есть ли уже активный класс у этой кнопки
+            // Если нет — значит обработчик не сработал, переключаем сами
+            if (!target.classList.contains('active')) {
+                showTab(tab);
+            }
+        }
+    });
+
+})();
+
+// ============================================================
+// ГАЛЕРЕЯ — ПЕРЕКЛЮЧЕНИЕ ФОТО (МГНОВЕННОЕ)
+// ============================================================
+
+(function() {
+
+    // Функция для работы с галереей
+    function initGallery() {
+        var gallery = document.querySelector('.photo-gallery');
+        if (!gallery) return;
+
+        // Если уже инициализирована — не повторяем
+        if (gallery.dataset.initialized === 'true') return;
+        gallery.dataset.initialized = 'true';
+
+        var images = gallery.querySelectorAll('.gallery-image');
+        var prevBtn = gallery.querySelector('.gallery-nav.prev');
+        var nextBtn = gallery.querySelector('.gallery-nav.next');
+        var dotsContainer = gallery.querySelector('.gallery-dots');
+        var currentIndex = 0;
+
+        if (!images.length) return;
+
+        // --- Создаём точки ---
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            for (var i = 0; i < images.length; i++) {
+                var dot = document.createElement('span');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', (function(index) {
+                    return function() {
+                        goToImage(index);
+                    };
+                })(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        var dots = dotsContainer ? dotsContainer.querySelectorAll('span') : [];
+
+        // --- Функция переключения фото ---
+        function goToImage(index) {
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+
+            // Скрываем все фото
+            for (var i = 0; i < images.length; i++) {
+                images[i].classList.remove('active');
+            }
+            images[index].classList.add('active');
+
+            // Обновляем точки
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            if (dots[index]) dots[index].classList.add('active');
+
+            currentIndex = index;
+        }
+
+        // --- Кнопки навигации ---
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToImage(currentIndex - 1);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToImage(currentIndex + 1);
+            });
+        }
+
+        // --- Клик по точкам ---
+        dots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                goToImage(index);
+            });
+        });
+
+        // --- Автопрокрутка (если галерея видна) ---
+        var autoInterval = setInterval(function() {
+            var photosContainer = document.getElementById('photos-container');
+            if (photosContainer && photosContainer.style.display !== 'none') {
+                goToImage(currentIndex + 1);
+            }
+        }, 4000);
+
+        gallery.addEventListener('mouseenter', function() {
+            clearInterval(autoInterval);
+        });
+
+        gallery.addEventListener('mouseleave', function() {
+            autoInterval = setInterval(function() {
+                var photosContainer = document.getElementById('photos-container');
+                if (photosContainer && photosContainer.style.display !== 'none') {
+                    goToImage(currentIndex + 1);
+                }
+            }, 4000);
+        });
+
+        // --- Клавиши клавиатуры ---
+        document.addEventListener('keydown', function(e) {
+            var photosContainer = document.getElementById('photos-container');
+            if (photosContainer && photosContainer.style.display !== 'none') {
+                if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
+                if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
+            }
+        });
+    }
+
+    // --- Запускаем галерею ---
+    // Пробуем инициализировать сразу
+    initGallery();
+
+    // Если галерея появится позже (после переключения вкладки) — перехватываем
+    var galleryCheckInterval = setInterval(function() {
+        var gallery = document.querySelector('.photo-gallery');
+        if (gallery && !gallery.dataset.initialized) {
+            initGallery();
+        }
+    }, 200);
+
+    // Также инициализируем при переключении на вкладку "photos"
+    // Дополняем существующую функцию showTab
+    var originalShowTab = window.showTab || function() {};
+    window.showTab = function(tabName) {
+        // Вызываем оригинальную функцию (если есть)
+        if (typeof originalShowTab === 'function') {
+            originalShowTab(tabName);
+        }
+        // Если переключились на фото — инициализируем галерею
+        if (tabName === 'photos') {
+            setTimeout(initGallery, 100);
+        }
+    };
+
+})();
