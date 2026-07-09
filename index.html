@@ -4,7 +4,614 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Центр прикладного программирования РУДН × Школа 21</title>
-   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ===== СЕКЦИЯ ТРЕКИ ===== */
+        .tracks-section {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .tracks-left-info {
+            flex: 0 0 200px;
+            font-size: 14px;
+            line-height: 1.6;
+            padding-top: 100px;
+        }
+
+        .tracks-left-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .tracks-center {
+            flex: 1;
+            position: relative;
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .tracks-center h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .path-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flag {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .flag-icon {
+            width: 30px;
+            height: 20px;
+            background: #4caf50;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .flag-icon::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 0;
+            width: 3px;
+            height: 30px;
+            background: #333;
+        }
+
+        .flag-1 { top: 80px; left: 60%; }
+        .flag-2 { top: 180px; left: 55%; }
+        .flag-3 { top: 300px; left: 30%; }
+
+        .track-info-box {
+            position: absolute;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 12px;
+            line-height: 1.5;
+            max-width: 200px;
+        }
+
+        .track-info-cz {
+            top: 60px;
+            left: 20px;
+        }
+
+        .track-info-ii {
+            top: 200px;
+            right: 20px;
+        }
+
+        .signpost {
+            position: absolute;
+            top: 280px;
+            left: 35%;
+        }
+
+        .signpost-img {
+            width: 80px;
+        }
+
+        .character-duck {
+            position: absolute;
+            bottom: 30px;
+            left: 40%;
+        }
+
+        .character-duck img {
+            width: 60px;
+        }
+
+        .tooltip-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .tracks-right-info {
+            flex: 0 0 350px;
+            font-size: 14px;
+            line-height: 1.7;
+            padding-top: 100px;
+        }
+
+        .tracks-right-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tracks-right-info ul li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .tracks-right-info ul li::before {
+            content: '*';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+        }
+
+        /* ===== СЕКЦИЯ КАК ПОСТУПИТЬ ===== */
+        .apply-section {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .apply-left-notes {
+            flex: 0 0 280px;
+            font-size: 13px;
+            line-height: 1.7;
+            padding-top: 60px;
+        }
+
+        .apply-left-notes h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .apply-left-notes .arrow {
+            color: #9c27b0;
+            font-size: 24px;
+        }
+
+        .apply-center {
+            flex: 1;
+            position: relative;
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 450px;
+            overflow: hidden;
+        }
+
+        .apply-center h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .apply-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 14px 30px;
+            background: #fff;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #4caf50;
+            color: #fff;
+        }
+
+        .apply-right-info {
+            flex: 0 0 380px;
+            font-size: 14px;
+            line-height: 1.7;
+            padding-top: 60px;
+        }
+
+        .apply-right-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            margin-top: 20px;
+        }
+
+        .apply-right-info h3:first-child {
+            margin-top: 0;
+        }
+
+        .apply-right-info p {
+            margin-bottom: 12px;
+        }
+
+        .apply-right-info strong {
+            color: #2e7d32;
+        }
+
+        /* ===== СЕКЦИЯ FAQ ===== */
+        .faq-section {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .faq-center {
+            flex: 1;
+            position: relative;
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .faq-center h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .faq-frog {
+            position: absolute;
+            top: 60px;
+            right: 40px;
+        }
+
+        .faq-frog img {
+            width: 70px;
+        }
+
+        .faq-signpost {
+            position: absolute;
+            top: 60px;
+            right: 120px;
+        }
+
+        .faq-signpost img {
+            width: 60px;
+        }
+
+        .faq-duck {
+            position: absolute;
+            top: 150px;
+            left: 30%;
+        }
+
+        .faq-duck img {
+            width: 60px;
+        }
+
+        .faq-bridge {
+            position: absolute;
+            bottom: 60px;
+            right: 25%;
+        }
+
+        .faq-bridge img {
+            width: 100px;
+        }
+
+        .faq-product-label {
+            position: absolute;
+            top: 160px;
+            left: 38%;
+            font-size: 13px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .faq-right-info {
+            flex: 0 0 200px;
+            padding-top: 100px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .faq-right-info .arrow {
+            color: #9c27b0;
+            font-size: 24px;
+        }
+
+        /* ===== СИНЯЯ ИНФО-ПАНЕЛЬ ===== */
+        .info-panel {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #b3d9ff;
+            border-radius: 16px;
+            padding: 30px 35px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .info-panel p {
+            margin-bottom: 14px;
+        }
+
+        .info-panel strong {
+            color: #1a5276;
+        }
+
+        .info-panel a {
+            color: #1a5276;
+            text-decoration: underline;
+        }
+
+        .info-panel .highlight {
+            font-weight: bold;
+        }
+
+        /* ===== СЕКЦИЯ ПРОДУКТОВАЯ МАСТЕРСКАЯ ===== */
+        .product-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .product-left-text {
+            flex: 0 0 300px;
+            font-size: 13px;
+            line-height: 1.7;
+            padding-top: 40px;
+        }
+
+        /* ===== СЕКЦИЯ ВЫПУСКНОЙ ===== */
+        .graduate-section {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .graduate-center {
+            position: relative;
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 350px;
+            overflow: hidden;
+        }
+
+        .graduate-pond {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, #a8d8ea 0%, #7ec8e3 50%, #5bb5d5 100%);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .graduate-pond::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 10%;
+            right: 10%;
+            height: 60px;
+            background: #4caf50;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .graduate-bridge {
+            position: absolute;
+            bottom: 120px;
+            left: 15%;
+        }
+
+        .graduate-bridge img {
+            width: 100px;
+        }
+
+        .graduate-characters {
+            position: absolute;
+            bottom: 60px;
+            left: 30%;
+            display: flex;
+            gap: 10px;
+        }
+
+        .graduate-characters img {
+            width: 50px;
+        }
+
+        .graduate-flag {
+            position: absolute;
+            bottom: 100px;
+            right: 30%;
+        }
+
+        .graduate-flag-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .application-form-placeholder {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: rgba(255,255,255,0.8);
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* ===== ФУТЕР ===== */
+        .footer-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .footer-card {
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .footer-top-text {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .footer-map {
+            flex: 0 0 250px;
+        }
+
+        .footer-map h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .footer-map-img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .footer-reviews {
+            flex: 1;
+        }
+
+        .footer-reviews h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .review-cards {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .review-card {
+            width: 80px;
+            height: 100px;
+            background: #fff;
+            border-radius: 10px;
+            border: 2px solid #4caf50;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            font-size: 13px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: #4caf50;
+        }
+
+        /* ===== РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ ===== */
+        .section-divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 3px;
+            background: #4caf50;
+            border-radius: 2px;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 900px) {
+            .tracks-section,
+            .apply-section,
+            .faq-section,
+            .product-section {
+                flex-direction: column;
+            }
+
+            .tracks-left-info,
+            .tracks-right-info,
+            .apply-left-notes,
+            .apply-right-info,
+            .faq-right-info,
+            .product-left-text {
+                flex: none;
+                padding-top: 0;
+            }
+
+            .info-panel {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
     <!-- ===== СЕКЦИЯ: ТРЕКИ ===== -->
     <section class="tracks-section">
         <div class="tracks-left-info">
