@@ -1536,7 +1536,7 @@ a {
 
 .tracks-sign{
     position:absolute;
-    left:55%;
+    left:35%;
     bottom:60px;
     transform:translateX(-50%);
     width:320px;
@@ -1566,7 +1566,7 @@ a {
 
 .tracks-sign-text-left{
     left:4%;
-    top:28%;
+    top:45%;
     width:180px;
     font-size:32px;
 }
