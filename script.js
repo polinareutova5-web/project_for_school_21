@@ -1,311 +1,924 @@
-// Анимация появления элементов
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-}, { threshold: 0.18 });
-
-document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
-
-// Плавная прокрутка
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (event) => {
-        const href = anchor.getAttribute('href');
-        const target = href && href !== '#' ? document.querySelector(href) : null;
-        if (target) {
-            event.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// Модальное окно
-const modal = document.querySelector('#modal');
-const modalText = modal?.querySelector('p');
-const closeModal = () => modal?.classList.remove('open');
-
-document.querySelectorAll('[data-popup]').forEach((button) => {
-    button.addEventListener('click', () => {
-        if (!modal || !modalText) return;
-        modalText.textContent = button.dataset.popup || '';
-        modal.classList.add('open');
-    });
-});
-
-modal?.addEventListener('click', (event) => {
-    if (event.target === modal || event.target.classList.contains('modal-close')) closeModal();
-});
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeModal();
-});
-
-// Форма заявки
-const form = document.querySelector('#applicationForm');
-const formStatus = document.querySelector('#formStatus');
-
-form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
-    localStorage.setItem('school21-application', JSON.stringify(data));
-    form.reset();
-    if (formStatus) formStatus.textContent = 'Анкета сохранена. Для реальной отправки подключите обработчик формы.';
-});
-
-if (localStorage.getItem('school21-application') && formStatus) {
-    formStatus.textContent = 'У вас есть сохранённая заявка';
+:root {
+  --white: #fff;
+  --black: #1f1f1f;
+  --purple: #d0a6f4;
+  --teal: #2fe4d3;
+  --slide-bg: linear-gradient(
+    155deg,
+    #d8f3ea 0%,
+    #e2f6ef 38%,
+    #edf9f5 72%,
+    #fff 100%
+  );
+  --gradient: linear-gradient(
+    110deg,
+    #6b3ff5,
+    #2476ff 30%,
+    #20c7e8 56%,
+    #20c6a6 76%,
+    #44eb99
+  );
 }
 
-function buildRiverNetwork({
-    svg,
-    source,
-    targets,
-    trunkLength = 0.35,
-    segments = 60,
-    className = "river-purple"
-}) {
-
-    const svgElement =
-        typeof svg === "string"
-            ? document.querySelector(svg)
-            : svg;
-
-    const sourceEl = document.querySelector(source);
-
-    const targetEls = targets.map(selector =>
-        document.querySelector(selector)
-    );
-
-    const svgRect = svgElement.getBoundingClientRect();
-
-    function center(el) {
-
-        const r = el.getBoundingClientRect();
-
-        return {
-            x: r.left + r.width / 2 - svgRect.left,
-            y: r.top + r.height / 2 - svgRect.top
-        };
-
-    }
-
-    const start = center(sourceEl);
-
-    const targetPoints = targetEls.map(center);
-
-    //------------------------------------------
-    // вычисляем точку разделения
-    //------------------------------------------
-
-    const avg = targetPoints.reduce((a, b) => ({
-        x: a.x + b.x,
-        y: a.y + b.y
-    }));
-
-    avg.x /= targetPoints.length;
-    avg.y /= targetPoints.length;
-
-    const junction = {
-        x: start.x + (avg.x - start.x) * trunkLength,
-        y: start.y + (avg.y - start.y) * trunkLength
-    };
-
-    //------------------------------------------
-    // рисуем
-    //------------------------------------------
-
-    drawRiver(start, junction, className);
-
-    targetPoints.forEach((target, i) => {
-
-        drawRiver(
-            junction,
-            target,
-            className
-        );
-
-    });
-
-    //------------------------------------------
-
-    function drawRiver(a, b, cls) {
-
-        const path = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "path"
-        );
-
-        path.classList.add(
-            "river-path",
-            cls,
-            "river-generated"
-        );
-
-        path.setAttribute(
-            "d",
-            createRiver(a, b)
-        );
-
-        svgElement.appendChild(path);
-
-    }
-
-    //------------------------------------------
-
-    function createRiver(start, end) {
-
-        const dx = end.x - start.x;
-        const dy = end.y - start.y;
-
-        const len = Math.hypot(dx, dy);
-
-        const nx = -dy / len;
-        const ny = dx / len;
-
-        const pts = [];
-
-        for (let i = 0; i <= segments; i++) {
-
-            const t = i / segments;
-
-            //---------------------------------
-            // большая волна
-            //---------------------------------
-
-            const big =
-                Math.sin(t * Math.PI * 1.5) * 60;
-
-            //---------------------------------
-            // средняя
-            //---------------------------------
-
-            const medium =
-                Math.sin(t * 7) * 20;
-
-            //---------------------------------
-            // мелкая
-            //---------------------------------
-
-            const small =
-                Math.sin(t * 23) * 6;
-
-            //---------------------------------
-
-            const amplitude =
-                Math.sin(t * Math.PI) *
-                (big + medium + small);
-
-            pts.push({
-
-                x:
-                    start.x +
-                    dx * t +
-                    nx * amplitude,
-
-                y:
-                    start.y +
-                    dy * t +
-                    ny * amplitude
-
-            });
-
-        }
-
-        return catmullRom(pts);
-
-    }
-
-    //------------------------------------------
-
-    function catmullRom(points) {
-
-        let d =
-            `M ${points[0].x} ${points[0].y}`;
-
-        for (let i = 0; i < points.length - 1; i++) {
-
-            const p0 =
-                points[Math.max(0, i - 1)];
-
-            const p1 =
-                points[i];
-
-            const p2 =
-                points[i + 1];
-
-            const p3 =
-                points[
-                    Math.min(
-                        points.length - 1,
-                        i + 2
-                    )
-                ];
-
-            const cp1x =
-                p1.x +
-                (p2.x - p0.x) / 6;
-
-            const cp1y =
-                p1.y +
-                (p2.y - p0.y) / 6;
-
-            const cp2x =
-                p2.x -
-                (p3.x - p1.x) / 6;
-
-            const cp2y =
-                p2.y -
-                (p3.y - p1.y) / 6;
-
-            d +=
-                ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
-
-        }
-
-        return d;
-    }
+* {
+  box-sizing: border-box;
 }
 
-const renderRivers = () => {
-   document.querySelectorAll(".river-generated")
-        .forEach(e => e.remove());
-
-    buildRiverNetwork({
-        className: "river-purple",
-        svg: ".rivers-overlay",
-        source: ".pond-reeds-right",
-        targets: [
-            ".register-lake",
-        ]
-    });
-
-    buildRiverNetwork({
-        className: "river-teal",
-        svg: ".rivers-overlay",
-        source: ".pond-turtle-three",
-        targets: [
-            ".flag-left",
-        ]
-    });
-
-    buildRiverNetwork({
-        className: "river-teal",
-        svg: ".rivers-overlay",
-        source: ".flag-left",
-        targets: [
-            ".duck-flag"
-        ]
-    });
-
-    buildRiverNetwork({
-        className: "river-teal",
-        svg: ".rivers-overlay",
-        source:  ".duck-flag",
-        targets: [
-            ".register-lake",
-        ]
-    });
+html {
+  scroll-behavior: smooth;
 }
 
-renderRivers();
-window.addEventListener("resize", renderRivers);
+body {
+  margin: 0;
+  color: var(--black);
+  font-family: Inter, Arial, sans-serif;
+  background: #e2f6ef;
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Все слайды одинакового размера и фона */
+.slide {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--slide-bg);
+  padding: 130px clamp(20px, 5vw, 90px) 70px;
+}
+
+/* Навигация */
+.nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: min(1640px, calc(100% - 48px));
+  gap: 14px;
+}
+
+.brand-lockup {
+  width: clamp(150px, 15vw, 255px);
+  height: clamp(76px, 7.8vw, 123px);
+  display: flex;
+}
+
+.brand-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav nav,
+.nav-cta {
+  min-height: 54px;
+  background: #1f1f1f;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: clamp(12px, 0.86vw, 16px);
+  white-space: nowrap;
+}
+
+.nav nav {
+  gap: clamp(8px, 0.75vw, 14px);
+  padding: 0 clamp(16px, 1.4vw, 28px);
+  clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%);
+}
+
+.nav nav a:hover {
+  color: #00ffaf;
+  text-shadow: 0 0 14px rgba(0, 255, 175, 0.85);
+}
+
+.nav-cta {
+  padding: 0 28px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 50%,
+    calc(100% - 18px) 100%,
+    0 100%
+  );
+}
+
+/* Hero секция */
+.hero {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: var(--slide-bg);
+  padding-top: 150px;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  transform: translateY(clamp(-110px, -8vh, -56px));
+}
+
+.hero-rotating-image {
+  position: absolute;
+  width: clamp(110px, 12vw, 190px);
+  right: -4vw;
+  top: -2vw;
+  animation: spin 18s linear infinite;
+}
+
+.hero-main-title {
+  max-width: 1100px;
+  margin: 0 auto;
+  color: #1f1f1f;
+  font-size: clamp(60px, 8.8vw, 152px);
+  font-weight: 950;
+  line-height: 0.9;
+  letter-spacing: -0.015em;
+  text-shadow:
+    1px 1px 0 rgba(255, 255, 255, 0.7),
+    0 18px 36px rgba(0, 0, 0, 0.12);
+}
+
+.hero-gradient-title {
+  display: inline-block;
+  margin: 10px auto 0;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(50px, 6.9vw, 116px);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.hero-bottom-row {
+  position: absolute;
+  left: clamp(24px, 6vw, 112px);
+  right: clamp(24px, 34vw, 540px);
+  bottom: clamp(12px, 3vw, 46px);
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+}
+
+.hero-description {
+  margin: 0 0 18px;
+  font-size: clamp(22px, 1.8vw, 32px);
+  font-weight: 800;
+}
+
+.hero-campus-pill,
+.hero-cabinet-button {
+  border: 2px solid #1f1f1f;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-weight: 800;
+}
+
+.hero-bottom-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.hero-apply-button,
+.hero-cabinet-button {
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 28px;
+  font-weight: 900;
+}
+
+.hero-apply-button {
+  background: var(--gradient);
+  color: #fff;
+}
+
+/* Озеро с черепахами */
+.hero-turtle-pond {
+  position: absolute;
+  right: -6vw;
+  bottom: 0;
+  z-index: 1;
+  width: clamp(620px, 48vw, 860px);
+  height: clamp(340px, 36vw, 560px);
+  overflow: hidden;
+  border-radius: 58% 0 0 0 / 18% 0 0 0;
+  clip-path: polygon(
+    100% 100%,
+    100% 0,
+    74% 0,
+    67% 1%,
+    60% 3%,
+    54% 6%,
+    48% 10%,
+    42% 15%,
+    37% 22%,
+    31% 30%,
+    26% 39%,
+    21% 49%,
+    17% 60%,
+    13% 72%,
+    10% 84%,
+    8% 100%
+  );
+  background: linear-gradient(
+    140deg,
+    rgba(113, 236, 255, 0.88),
+    rgba(44, 196, 223, 0.72),
+    rgba(33, 170, 175, 0.6)
+  );
+  box-shadow:
+    inset 0 0 120px rgba(255, 255, 255, 0.2),
+    0 30px 90px rgba(27, 170, 184, 0.18);
+}
+
+.pond-turtle {
+  position: absolute;
+  z-index: 5;
+  width: clamp(72px, 7vw, 110px);
+  animation: float 5s ease-in-out infinite;
+}
+
+.pond-turtle-one {
+  left: 22%;
+  top: 65%;
+}
+
+.pond-turtle-two {
+  right: 20%;
+  top: 31%;
+  transform: scaleX(-1);
+}
+
+.pond-turtle-three {
+  left: 56%;
+  bottom: 22%;
+  width: clamp(62px, 5vw, 92px);
+}
+
+.water-surface:before {
+  content: " ";
+  position: absolute;
+  inset: -20%;
+  background: repeating-linear-gradient(
+    102deg,
+    transparent 0 34px,
+    rgba(255, 255, 255, 0.28) 38px 41px,
+    transparent 44px 78px
+  );
+  animation: current 16s linear infinite;
+  opacity: 0.55;
+}
+
+.water-surface:after {
+  content: " ";
+  position: absolute;
+  width: 64px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  left: 45%;
+  top: 45%;
+  animation: ripple 3.8s ease-out infinite;
+}
+
+.pond-ripple {
+  position: absolute;
+  width: 44px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: ripple 4.2s ease-out infinite;
+  z-index: 2;
+}
+
+.pond-ripple-one {
+  left: 14%;
+  top: 45%;
+}
+
+.pond-ripple-two {
+  right: 14%;
+  top: 38%;
+  animation-delay: 1.2s;
+}
+
+.pond-ripple-three {
+  left: 48%;
+  bottom: 14%;
+  animation-delay: 2.1s;
+}
+
+.pond-reeds {
+  position: absolute;
+  bottom: 8%;
+  z-index: 4;
+}
+
+.pond-reeds-left {
+  left: 14%;
+}
+
+.pond-reeds-right {
+  right: 16%;
+}
+
+.pond-reeds i {
+  display: inline-block;
+  width: 5px;
+  height: 48px;
+  background: #3f8b48;
+  border-radius: 99px;
+  transform-origin: bottom;
+  animation: sway 3s ease-in-out infinite;
+}
+
+/* Реки */
+
+.river-highlight {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 3;
+  stroke-linecap: round;
+
+  stroke-dasharray: 18 120;
+
+  animation: riverFlow 700s linear infinite;
+}
+
+.rivers-overlay {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  overflow: visible;
+
+  z-index: 1;
+}
+
+.river-path {
+  fill: none;
+  stroke-width: 80;
+  stroke-linecap: round;
+  stroke-width: 80;
+  stroke-linecap: round;
+
+  stroke-dasharray: 150 40;
+
+  animation: riverFlow 7s linear infinite;
+}
+
+.river-teal {
+  stroke: #2ae3d2;
+}
+
+.river-purple {
+  stroke: #d0a6f4;
+}
+
+@keyframes riverFlow {
+  from {
+    stroke-dashoffset: 138;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Остальные стили */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.section-title {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  font-size: clamp(38px, 5vw, 76px);
+  margin: 0;
+  font-weight: 950;
+}
+
+.flag {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(20px, 2vw, 34px);
+  font-weight: 900;
+}
+
+.flag span {
+  width: 10px;
+  height: 86px;
+  background: #6b4a2b;
+  display: block;
+  position: relative;
+}
+
+.flag span:before {
+  content: " ";
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  border: 20px solid transparent;
+  border-left: 46px solid #ff5c7a;
+}
+
+.flag-left {
+  left: 12%;
+  top: 28%;
+}
+
+.flag-right {
+  right: 29%;
+  top: 33%;
+}
+
+.signpost {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.post {
+  width: 26px;
+  height: 170px;
+  background: #7b4b22;
+  margin: auto;
+}
+
+.wood-arrow,
+.duck-helper {
+  cursor: pointer;
+  border: 0;
+}
+
+.wood-arrow {
+  position: absolute;
+  top: 20px;
+  padding: 16px 28px;
+  background: #9b622d;
+  color: #fff;
+  font-weight: 950;
+  font-size: 20px;
+  box-shadow: inset 0 -5px rgba(0, 0, 0, 0.16);
+}
+
+.wood-arrow.left {
+  right: 10px;
+  clip-path: polygon(0 50%, 18px 0, 100% 0, 100% 100%, 18px 100%);
+}
+
+.wood-arrow.right {
+  left: 10px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 50%,
+    calc(100% - 18px) 100%,
+    0 100%
+  );
+}
+
+.duck-helper {
+  position: absolute;
+  right: 12%;
+  bottom: 9%;
+  z-index: 4;
+  background: transparent;
+  font-size: 72px;
+}
+
+.duck-helper small {
+  display: block;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.turtle-board {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 38%;
+  transform: translateX(-50%);
+  background: #9b622d;
+  color: #fff;
+  border: 8px solid #6b3f1e;
+  border-radius: 16px;
+  padding: 24px 36px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.turtle-board span {
+  font-size: 54px;
+}
+
+.intensive {
+  right: 13%;
+  top: 24%;
+}
+
+.outline-cta {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  border: 3px solid #9b5cf5;
+  color: #6b2ccf;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 18px 30px;
+  font-weight: 950;
+}
+
+.outline-cta:hover {
+  background: #9b5cf5;
+  color: #fff;
+  box-shadow: 0 0 24px rgba(155, 92, 245, 0.55);
+}
+
+.campus-turtle {
+  position: absolute;
+  right: 9%;
+  top: 18%;
+  z-index: 5;
+  font-size: 70px;
+  text-align: center;
+}
+
+.campus-turtle p {
+  position: absolute;
+  right: 0;
+  top: 120px;
+  width: 300px;
+  opacity: 0;
+  pointer-events: none;
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  font-size: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14);
+}
+
+.campus-turtle:hover p,
+.campus-turtle:focus p {
+  opacity: 1;
+}
+
+.bridge {
+  position: absolute;
+  right: 27%;
+  bottom: 24%;
+  z-index: 3;
+  width: 180px;
+  height: 70px;
+  border-top: 20px solid #8a572c;
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-10deg);
+}
+
+.duck-flag {
+  position: absolute;
+  left: 27%;
+  bottom: 20%;
+  z-index: 5;
+  font-size: 58px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.duck-flag span {
+  display: block;
+  font-size: 34px;
+}
+
+.duck-flag b {
+  display: block;
+  font-size: 18px;
+}
+
+.faq-grid {
+  position: relative;
+  z-index: 4;
+  margin: 150px auto 0;
+  max-width: 880px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.faq-grid article,
+.reviews article,
+.form-content,
+.map-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(31, 31, 31, 0.08);
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.lake-form-slide {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.register-lake {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50vw;
+  height: 46vh;
+  border-radius: 0 70% 0 0;
+  background: linear-gradient(140deg, #71ecff, #2fc4df 58%, #21aaaf);
+  box-shadow: inset 0 0 90px rgba(255, 255, 255, 0.25);
+  z-index: 1;
+}
+
+.register-lake span {
+  position: relative;
+  z-index: 4;
+  font-size: 56px;
+  left: 28%;
+  top: 45%;
+  margin: 18px;
+}
+
+.form-content {
+  position: relative;
+  z-index: 5;
+  width: min(500px, 42vw);
+  margin-right: 4vw;
+}
+
+.label-pill {
+  display: inline-block;
+  border: 2px solid rgba(31, 31, 31, 0.2);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 900;
+}
+
+.application-form {
+  display: grid;
+  gap: 14px;
+}
+
+.application-form input {
+  width: 100%;
+  margin-top: 7px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+}
+
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 16px 24px;
+  background: #1f1f1f;
+  color: #fff;
+  font-weight: 900;
+}
+
+.contacts-slide {
+  background:
+    radial-gradient(
+      circle at 12% 16%,
+      rgba(208, 166, 244, 0.28),
+      transparent 28%
+    ),
+    var(--slide-bg);
+}
+
+.contacts-heading {
+  font-size: clamp(30px, 4vw, 64px);
+  max-width: 1180px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 460px;
+  border: 0;
+  border-radius: 20px;
+}
+
+.reviews {
+  display: grid;
+  gap: 16px;
+}
+
+.reviews article {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  column-gap: 18px;
+}
+
+.reviews img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  grid-row: span 2;
+}
+
+.reviews h3 {
+  margin: 0;
+}
+
+.reviews p {
+  margin: 4px 0 0;
+}
+
+.footer {
+  background: #1f1f1f;
+  color: #fff;
+  padding: 28px;
+  text-align: center;
+}
+
+.footer a {
+  margin: 0 10px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 50;
+  display: none;
+  place-items: center;
+}
+
+.modal.open {
+  display: grid;
+}
+
+.modal > div {
+  width: min(560px, calc(100% - 32px));
+  background: #fff;
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.modal-close {
+  float: right;
+  border: 0;
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 24px;
+}
+
+.to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 20;
+  background: #1f1f1f;
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  50% {
+    translate: 8px -7px;
+    rotate: 2deg;
+  }
+}
+
+@keyframes current {
+  to {
+    transform: translateX(120px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@keyframes sway {
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    grid-template-columns: 1fr;
+  }
+
+  .nav nav {
+    overflow: auto;
+    justify-content: flex-start;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .slide {
+    padding-top: 170px;
+  }
+
+  .hero-bottom-row {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-turtle-pond {
+    opacity: 0.45;
+  }
+
+  .contacts-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-content {
+    width: 100%;
+    margin: 0;
+  }
+
+  .register-lake {
+    width: 80vw;
+    opacity: 0.45;
+  }
+
+  .reviews article {
+    grid-template-columns: 1fr;
+  }
+}
