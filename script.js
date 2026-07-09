@@ -1,279 +1,311 @@
-// ============================================
-// ПЕРВАЯ СТРАНИЦА — ГЛАВНЫЙ ЭКРАН
-// ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ФУНКЦИОНАЛ ПЕРВОЙ СТРАНИЦЫ
-// Анимации, интерактивность озера с черепахами, кнопки
-// ПЕРВАЯ СТРАНИЦА - ОБРАБОТКА КНОПОК
-const applyButton = document.querySelector('.button-apply');
-const cabinetButton = document.querySelector('.button-cabinet');
-
-if (applyButton) {
-  applyButton.addEventListener('click', () => {
-    document.querySelector('#form')?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
-
-if (cabinetButton) {
-  cabinetButton.addEventListener('click', () => {
-    alert('Личный кабинет будет доступен после регистрации');
-  });
-}
-
-// ОЗЕРО - ИНТЕРАКТИВНОСТЬ
-const turtlePond = document.querySelector('.hero-turtle-pond');
-if (turtlePond) {
-  turtlePond.addEventListener('mouseenter', () => {
-    turtlePond.style.transform = 'scale(1.02)';
-    turtlePond.style.transition = 'transform 0.3s ease';
-  });
-  
-  turtlePond.addEventListener('mouseleave', () => {
-    turtlePond.style.transform = 'scale(1)';
-  });
-  
-  turtlePond.addEventListener('click', () => {
-    document.querySelector('#turtleButton')?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
-// ============================================
-
-// Анимация появления элементов при скролле
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
+// Анимация появления элементов
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
 }, { threshold: 0.18 });
 
-reveals.forEach((element) => observer.observe(element));
+document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-// ============================================
-// КНОПКА "РЕГИСТРАЦИЯ" — ЭФФЕКТ СТЕКЛА
-// ⚠️ ОБРАБОТКА НАЖАТИЯ НА СТЕКЛЯННУЮ КНОПКУ
-// ============================================
-const registerButton = document.querySelector('.nav-cta');
-if (registerButton) {
-  registerButton.addEventListener('click', (e) => {
-    // Эффект блика при клике
-    const ripple = document.createElement('span');
-    ripple.style.position = 'absolute';
-    ripple.style.borderRadius = '50%';
-    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-    ripple.style.transform = 'scale(0)';
-    ripple.style.animation = 'ripple-effect 0.6s linear';
-    ripple.style.left = e.offsetX - 25 + 'px';
-    ripple.style.top = e.offsetY - 25 + 'px';
-    ripple.style.width = '50px';
-    ripple.style.height = '50px';
-    
-    registerButton.style.position = 'relative';
-    registerButton.style.overflow = 'hidden';
-    registerButton.appendChild(ripple);
-    
-    setTimeout(() => ripple.remove(), 600);
-    
-    // Прокрутка к форме заявки
-    document.querySelector('#form')?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
-
-// ============================================
-// ОЗЕРО С ЧЕРЕПАХАМИ НА ПЕРВОЙ СТРАНИЦЕ
-// ⚠️ ИНТЕРАКТИВНОСТЬ ЧЕРЕПАШЬЕГО ОЗЕРА
-// ============================================
-const turtlePond = document.querySelector('.hero-turtle-pond');
-if (turtlePond) {
-  // Эффект при наведении на озеро
-  turtlePond.addEventListener('mouseenter', () => {
-    turtlePond.style.transform = 'scale(1.02)';
-    turtlePond.style.transition = 'transform 0.3s ease';
-  });
-  
-  turtlePond.addEventListener('mouseleave', () => {
-    turtlePond.style.transform = 'scale(1)';
-  });
-  
-  // Клик по озеру — плавная прокрутка к разделу с черепахами
-  turtlePond.addEventListener('click', () => {
-    document.querySelector('.turtle-section')?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
-
-// Анимация черепах в озере
-const pondTurtles = document.querySelectorAll('.pond-turtle');
-pondTurtles.forEach((turtle, index) => {
-  turtle.addEventListener('mouseenter', () => {
-    turtle.style.animation = 'turtle-float 2s ease-in-out infinite';
-  });
-  
-  turtle.addEventListener('mouseleave', () => {
-    turtle.style.animation = `turtle-float 5s ease-in-out infinite`;
-    turtle.style.animationDelay = `${index * 0.8}s`;
-  });
+// Плавная прокрутка
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+        const href = anchor.getAttribute('href');
+        const target = href && href !== '#' ? document.querySelector(href) : null;
+        if (target) {
+            event.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
 
-// ============================================
-// КНОПКИ ДЕЙСТВИЙ НА ПЕРВОЙ СТРАНИЦЕ
-// ⚠️ "ПОДАТЬ ЗАЯВКУ" И "ЛИЧНЫЙ КАБИНЕТ"
-// ============================================
-const applyButton = document.querySelector('.button-apply');
-if (applyButton) {
-  applyButton.addEventListener('click', () => {
-    document.querySelector('#form')?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
+// Модальное окно
+const modal = document.querySelector('#modal');
+const modalText = modal?.querySelector('p');
+const closeModal = () => modal?.classList.remove('open');
 
-const cabinetButton = document.querySelector('.button-cabinet');
-if (cabinetButton) {
-  cabinetButton.addEventListener('click', () => {
-    // Здесь будет переход в личный кабинет
-    alert('Личный кабинет будет доступен после регистрации');
-  });
-}
-
-// ============================================
-// ЛОГОТИП/ИКОНКА СВЕРХУ СЛЕВА
-// ⚠️ ОБРАБОТКА КЛИКА ПО ЛОГОТИПУ
-// ============================================
-const brandIcon = document.querySelector('.brand-icon');
-if (brandIcon) {
-  brandIcon.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  
-  // Эффект при наведении
-  brandIcon.addEventListener('mouseenter', () => {
-    brandIcon.style.transform = 'scale(1.05)';
-    brandIcon.style.transition = 'transform 0.2s ease';
-  });
-  
-  brandIcon.addEventListener('mouseleave', () => {
-    brandIcon.style.transform = 'scale(1)';
-  });
-}
-
-// ============================================
-// ОСНОВНОЙ ФУНКЦИОНАЛ САЙТА
-// (без изменений, работает на всех страницах)
-// ============================================
-
-// Раскрытие карточек программ
-document.querySelectorAll('.program-card').forEach((card) => {
-  const button = card.querySelector('.card-toggle');
-  button.addEventListener('click', () => card.classList.toggle('open'));
+document.querySelectorAll('[data-popup]').forEach((button) => {
+    button.addEventListener('click', () => {
+        if (!modal || !modalText) return;
+        modalText.textContent = button.dataset.popup || '';
+        modal.classList.add('open');
+    });
 });
 
-// ============================================
-// ЧЕРЕПАШЬЯ ПОДСКАЗКА
-// ============================================
-const turtleButton = document.querySelector('#turtleButton');
-const turtleHint = document.querySelector('#turtleHint');
-
-if (turtleButton && turtleHint) {
-  turtleButton.addEventListener('click', () => {
-    turtleHint.textContent = 'Открыты экскурсии, митапы и знакомство с командами';
-  });
-}
-
-// ============================================
-// ВЫБОР ПУТИ (УТКА ИЛИ ЧЕРЕПАХА)
-// ============================================
-const choiceResult = document.querySelector('#choiceResult');
-document.querySelectorAll('.choice-button').forEach((button) => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.choice-button').forEach((item) => item.classList.remove('active'));
-    button.classList.add('active');
-    choiceResult.textContent = button.dataset.path === 'duck'
-      ? 'Утка ведёт к основной программе и проектной практике.'
-      : 'Черепаха открывает кампус, мероприятия и спокойное знакомство.';
-  });
+modal?.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.classList.contains('modal-close')) closeModal();
 });
 
-// ============================================
-// ФОРМА ЗАЯВКИ
-// ============================================
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeModal();
+});
+
+// Форма заявки
 const form = document.querySelector('#applicationForm');
 const formStatus = document.querySelector('#formStatus');
 
-if (form && formStatus) {
-  form.addEventListener('submit', (event) => {
+form?.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
     localStorage.setItem('school21-application', JSON.stringify(data));
     form.reset();
-    formStatus.textContent = 'Анкета сохранена. Для реальной отправки подключите обработчик формы.';
-  });
-}
-
-// ============================================
-// КНОПКА "НАВЕРХ"
-// ============================================
-const toTopButton = document.querySelector('.to-top');
-if (toTopButton) {
-  toTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  
-  // Показывать/скрывать кнопку при скролле
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      toTopButton.style.opacity = '1';
-      toTopButton.style.pointerEvents = 'auto';
-    } else {
-      toTopButton.style.opacity = '0';
-      toTopButton.style.pointerEvents = 'none';
-    }
-  });
-}
-
-// ============================================
-// CSS-АНИМАЦИЯ ДЛЯ ЭФФЕКТА РЯБИ НА КНОПКЕ
-// ============================================
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes ripple-effect {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes turtle-float {
-    0%, 100% { 
-      transform: translate(0, 0) rotate(0deg); 
-    }
-    50% { 
-      transform: translate(8px, -6px) rotate(2deg); 
-    }
-  }
-`;
-document.head.appendChild(style);
-
-// ============================================
-// НАВИГАЦИЯ — ПЛАВНЫЙ СКРОЛЛ ПО ЯКОРЯМ
-// ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href !== '#') {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  });
+    if (formStatus) formStatus.textContent = 'Анкета сохранена. Для реальной отправки подключите обработчик формы.';
 });
 
-// ============================================
-// ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-  // Добавляем класс loaded для анимаций
-  document.body.classList.add('loaded');
-  
-  // Проверяем, есть ли сохранённая заявка
-  const savedApplication = localStorage.getItem('school21-application');
-  if (savedApplication && formStatus) {
+if (localStorage.getItem('school21-application') && formStatus) {
     formStatus.textContent = 'У вас есть сохранённая заявка';
-  }
-});
+}
+
+function buildRiverNetwork({
+    svg,
+    source,
+    targets,
+    trunkLength = 0.35,
+    segments = 60,
+    className = "river-purple"
+}) {
+
+    const svgElement =
+        typeof svg === "string"
+            ? document.querySelector(svg)
+            : svg;
+
+    const sourceEl = document.querySelector(source);
+
+    const targetEls = targets.map(selector =>
+        document.querySelector(selector)
+    );
+
+    const svgRect = svgElement.getBoundingClientRect();
+
+    function center(el) {
+
+        const r = el.getBoundingClientRect();
+
+        return {
+            x: r.left + r.width / 2 - svgRect.left,
+            y: r.top + r.height / 2 - svgRect.top
+        };
+
+    }
+
+    const start = center(sourceEl);
+
+    const targetPoints = targetEls.map(center);
+
+    //------------------------------------------
+    // вычисляем точку разделения
+    //------------------------------------------
+
+    const avg = targetPoints.reduce((a, b) => ({
+        x: a.x + b.x,
+        y: a.y + b.y
+    }));
+
+    avg.x /= targetPoints.length;
+    avg.y /= targetPoints.length;
+
+    const junction = {
+        x: start.x + (avg.x - start.x) * trunkLength,
+        y: start.y + (avg.y - start.y) * trunkLength
+    };
+
+    //------------------------------------------
+    // рисуем
+    //------------------------------------------
+
+    drawRiver(start, junction, className);
+
+    targetPoints.forEach((target, i) => {
+
+        drawRiver(
+            junction,
+            target,
+            className
+        );
+
+    });
+
+    //------------------------------------------
+
+    function drawRiver(a, b, cls) {
+
+        const path = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+        );
+
+        path.classList.add(
+            "river-path",
+            cls,
+            "river-generated"
+        );
+
+        path.setAttribute(
+            "d",
+            createRiver(a, b)
+        );
+
+        svgElement.appendChild(path);
+
+    }
+
+    //------------------------------------------
+
+    function createRiver(start, end) {
+
+        const dx = end.x - start.x;
+        const dy = end.y - start.y;
+
+        const len = Math.hypot(dx, dy);
+
+        const nx = -dy / len;
+        const ny = dx / len;
+
+        const pts = [];
+
+        for (let i = 0; i <= segments; i++) {
+
+            const t = i / segments;
+
+            //---------------------------------
+            // большая волна
+            //---------------------------------
+
+            const big =
+                Math.sin(t * Math.PI * 1.5) * 60;
+
+            //---------------------------------
+            // средняя
+            //---------------------------------
+
+            const medium =
+                Math.sin(t * 7) * 20;
+
+            //---------------------------------
+            // мелкая
+            //---------------------------------
+
+            const small =
+                Math.sin(t * 23) * 6;
+
+            //---------------------------------
+
+            const amplitude =
+                Math.sin(t * Math.PI) *
+                (big + medium + small);
+
+            pts.push({
+
+                x:
+                    start.x +
+                    dx * t +
+                    nx * amplitude,
+
+                y:
+                    start.y +
+                    dy * t +
+                    ny * amplitude
+
+            });
+
+        }
+
+        return catmullRom(pts);
+
+    }
+
+    //------------------------------------------
+
+    function catmullRom(points) {
+
+        let d =
+            `M ${points[0].x} ${points[0].y}`;
+
+        for (let i = 0; i < points.length - 1; i++) {
+
+            const p0 =
+                points[Math.max(0, i - 1)];
+
+            const p1 =
+                points[i];
+
+            const p2 =
+                points[i + 1];
+
+            const p3 =
+                points[
+                    Math.min(
+                        points.length - 1,
+                        i + 2
+                    )
+                ];
+
+            const cp1x =
+                p1.x +
+                (p2.x - p0.x) / 6;
+
+            const cp1y =
+                p1.y +
+                (p2.y - p0.y) / 6;
+
+            const cp2x =
+                p2.x -
+                (p3.x - p1.x) / 6;
+
+            const cp2y =
+                p2.y -
+                (p3.y - p1.y) / 6;
+
+            d +=
+                ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+
+        }
+
+        return d;
+    }
+}
+
+const renderRivers = () => {
+   document.querySelectorAll(".river-generated")
+        .forEach(e => e.remove());
+
+    buildRiverNetwork({
+        className: "river-purple",
+        svg: ".rivers-overlay",
+        source: ".pond-reeds-right",
+        targets: [
+            ".register-lake",
+        ]
+    });
+
+    buildRiverNetwork({
+        className: "river-teal",
+        svg: ".rivers-overlay",
+        source: ".pond-turtle-three",
+        targets: [
+            ".flag-left",
+        ]
+    });
+
+    buildRiverNetwork({
+        className: "river-teal",
+        svg: ".rivers-overlay",
+        source: ".flag-left",
+        targets: [
+            ".duck-flag"
+        ]
+    });
+
+    buildRiverNetwork({
+        className: "river-teal",
+        svg: ".rivers-overlay",
+        source:  ".duck-flag",
+        targets: [
+            ".register-lake",
+        ]
+    });
+}
+
+renderRivers();
+window.addEventListener("resize", renderRivers);
