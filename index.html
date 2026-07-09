@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Центр прикладного программирования РУДН × Школа 21</title>
+   
+    <!-- ===== СЕКЦИЯ: ТРЕКИ ===== -->
+    <section class="tracks-section">
+        <div class="tracks-left-info">
+            <!-- Пусто — стрелка будет в apply-section -->
+        </div>
 
+        <div class="tracks-center">
+            <h2>Треки</h2>
+
+            <!-- SVG путь -->
+            <svg class="path-svg" viewBox="0 0 600 500" preserveAspectRatio="none">
+                <!-- Бирюзовый путь -->
+                <path d="M 300 30 Q 200 100 250 180 Q 300 260 200 340 Q 150 400 180 470"
+                      stroke="#4dd0c8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                <!-- Фиолетовый путь -->
+                <path d="M 350 30 Q 400 120 380 200 Q 360 280 400 360 Q 430 420 420 470"
+                      stroke="#b39ddb" stroke-width="14" fill="none" stroke-linecap="round"/>
+            </svg>
+
+            <!-- Инфо ЦЗ -->
+            <div class="track-info-box track-info-cz">
+                <strong>Для ЦЗ:</strong><br>
+                программа доступна для всех желающих, независимо от опыта и сферы деятельности
+            </div>
+
+            <!-- Инфо ИИ -->
+            <div class="track-info-box track-info-ii">
+                <strong>Для ИИ:</strong><br>
+                Владение базовым синтаксисом Python
+            </div>
+
+            <!-- Флаги -->
+            <div class="flag flag-1">
+                <div class="flag-icon"></div>
+                <span>Вводная встреча</span>
+            </div>
+
+            <div class="flag flag-2">
+                <div class="flag-icon"></div>
+                <span>Подача документов</span>
+            </div>
+
+            <!-- Указатель -->
+            <div class="signpost">
+                <img src="https://via.placeholder.com/80x60/8B4513/fff?text=Знак" alt="Указатель" class="signpost-img">
+                <div style="font-size:11px; text-align:center; margin-top:4px;">
+                    ИИ инженер<br>Цифровой заказчик
+                </div>
+            </div>
+
+            <!-- Уточка -->
+            <div class="character-duck">
+                <img src="https://via.placeholder.com/60x60/FFD700/333?text=🦆" alt="Уточка">
+            </div>
+            <div class="tooltip-text">*при наведении на указатель отображаются необходимые навыки — "порог входа"</div>
+        </div>
+
+        <div class="tracks-right-info">
+            <p>Знание основ линейной алгебры, статистики, математического анализа.</p>
+            <p><strong>*Желательно знать, но можно освоить в процессе обучения:</strong></p>
+            <ul>
+                <li>Опыт работы с библиотеками: <strong>NumPy, Pandas, Matplotlib/Seaborn</strong> (желательно).</li>
+                <li>Знание основ <strong>ML</strong> и применение моделей на простых датасетах.</li>
+                <li>Базовые знания <strong>SQL</strong>.</li>
+                <li>Базовое знание <strong>Linux/Bash, Git, Jupyter</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: КАК ПОСТУПИТЬ ===== -->
+    <section class="apply-section">
+        <div class="apply-left-notes">
+            <h3>ОСНОВНОЕ ОБУЧЕНИЕ</h3>
+            <p>*при нажатии на кнопку отображается уведомление: "подать доки на основное обучение можно только после успешного прохождения отборочного интенсива"</p>
+            <p>кнопка=ссылка на ЛК в аппликанте при нажатии на кнопку</p>
+            <p><strong>"ПОДАТЬ ДОКУМЕНТЫ НА ОСНОВНОЕ ОБУЧЕНИЕ"</strong></p>
+            <p>*под кнопкой нужно место, где мы будем писать "старт основы – дд.мм.гг" / "дата скоро появится"</p>
+            <p>Управление проектами в ИТ</p>
+            <div class="arrow">➡️</div>
+        </div>
+
+        <div class="apply-center">
+            <h2>Как поступить?</h2>
+
+            <svg class="path-svg" viewBox="0 0 600 450" preserveAspectRatio="none">
+                <path d="M 200 30 Q 150 120 180 200 Q 200 280 170 360 Q 150 410 180 440"
+                      stroke="#4dd0c8" stroke-width="18" fill="none" stroke-linecap="round"/>
+                <path d="M 400 30 Q 430 120 410 200 Q 390 280 420 360 Q 440 410 430 440"
+                      stroke="#b39ddb" stroke-width="14" fill="none" stroke-linecap="round"/>
+            </svg>
+
+            <!-- Флаг ИНТЕНСИВ -->
+            <div class="flag" style="top:80px; right:60px;">
+                <div class="flag-icon"></div>
+                <span style="color:#9c27b0; font-weight:bold;">ИНТЕНСИВ</span>
+            </div>
+
+            <!-- Флаг ОСНОВНОЕ ОБУЧЕНИЕ -->
+            <div class="flag" style="top:280px; left:40px;">
+                <div class="flag-icon"></div>
+                <span style="color:#2e7d32; font-weight:bold;">ОСНОВНОЕ<br>ОБУЧЕНИЕ</span>
+            </div>
+
+            <!-- Указатель с датами -->
+            <div style="position:absolute; top:160px; left:40%;">
+                <img src="https://via.placeholder.com/80x60/8B4513/fff?text=Знак" alt="Указатель" style="width:80px;">
+                <div style="font-size:11px; text-align:center; margin-top:4px; font-weight:bold;">
+                    ДАТЫ<br>ИНТЕНСИВОВ<br>ДЛЯ ЦЗ И ИИ
+                </div>
+            </div>
+
+            <!-- Черепашка -->
+            <div style="position:absolute; top:220px; left:45%;">
+                <img src="https://via.placeholder.com/50x50/4caf50/fff?text=🐢" alt="Черепашка" style="width:50px;">
+                <div style="font-size:11px; text-align:center; margin-top:4px;">
+                    *черепашка с табличкой с датами интенсивов для ЦЗ и ИИ
+                </div>
+            </div>
+
+            <!-- Кнопка -->
+            <button class="apply-btn">ПОДАТЬ ДОКУМЕНТЫ НА ОСНОВНОЕ ОБУЧЕНИЕ</button>
+        </div>
+
+        <div class="apply-right-info">
+            <h3>В каком формате проходит отборочный интенсив?</h3>
+            <p>Интенсивы проходят только очно в кампусе и длятся <strong>4 дня</strong>. Дистанционный формат не предусмотрен.</p>
+
+            <h3>Что даёт участие в 4-дневном интенсиве?</h3>
+            <p>Портфолио с первых дней — проект, сделанный на интенсиве, можно положить в портфолио уже после интенсива и получить навыки работы с цифровыми инструментами.</p>
+            <p>Возможность попасть на основное обучение — если интенсив пройден успешно, можно продолжить обучение в основе, работая над новыми проектами при поддержке экспертов индустрии и карьерного консультанта.</p>
+        </div>
+    </section>
+
+    <!-- ===== РАЗДЕЛИТЕЛЬ ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== СЕКЦИЯ: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ ===== -->
+    <section class="faq-section">
+        <div class="faq-right-info">
+            <div class="arrow">⬅️</div>
+        </div>
+
+        <div class="faq-center">
+            <h2>Часто задаваемые вопросы</h2>
+
+            <!-- Лягушка -->
+            <div class="faq-frog">
+                <img src="https://via.placeholder.com/70x70/4caf50/fff?text=🐸" alt="Лягушка">
+            </div>
+
+            <!-- Указатель -->
+            <div class="faq-signpost">
+                <img src="https://via.placeholder.com/60x50/8B4513/fff?text=Знак" alt="Указатель">
+            </div>
+
+            <!-- Уточка -->
+            <div class="faq-duck">
+                <img src="https://via.placeholder.com/60x60/FFD700/333?text=🦆" alt="Уточка">
+            </div>
+            <div class="faq-product-label">Продуктовая<br>мастерская кейсов</div>
+
+            <!-- Мост -->
+            <div class="faq-bridge">
+                <img src="https://via.placeholder.com/100x60/8B4513/fff?text=Мост" alt="Мост">
+            </div>
+        </div>
+
+        <div style="flex: 0 0 200px;"></div>
+    </section>
+
+    <!-- ===== СИНЯЯ ИНФО-ПАНЕЛЬ ===== -->
+    <div class="info-panel">
+        <p><strong>Где находится кампус?</strong> Факультет искусственного интеллекта РУДН (г. Москва, Подольское шоссе, д. 8, вход со стороны сквера).</p>
+
+        <p><strong>Кто может обучаться?</strong> Студенты и сотрудники РУДН.</p>
+
+        <p><strong>Это действительно бесплатно?</strong> Да, обучение полностью бесплатное.</p>
+
+        <p><strong>Как попасть на обучение в совместный кампус РУДН и «Школы 21»?</strong></p>
+        <p>Регистрируйся на нашем сайте <a href="https://21-school.rudn.ru/">https://21-school.rudn.ru/</a>. Важно при регистрации на сайте обязательно используйте корпоративную электронную почту с доменом <strong>rudn</strong> (не phr).</p>
+        <p>Записывайся на одну из вводных онлайн-встреч в личном кабинете.</p>
+        <p>После встречи — подавай документы на интенсив.</p>
+        <p>*на момент зачисления вы должны быть сотрудником или обучающимся РУДН.</p>
+
+        <p><strong>Как проходят отборочные интенсивы?</strong></p>
+        <p>Только очно, в кампусе в течение <strong>4 дней</strong>. Дистанционный формат прохождения интенсивов не предусмотрен.</p>
+
+        <p><strong>Как часто проходит набор в кампус?</strong></p>
+        <p>Наборы проходят два раза в год — весной и осенью. Даты проведения отборочных интенсивов публикуются на сайте совместного кампуса РУДН и «Школы 21».</p>
+
+        <p><strong>Что даёт 4-дневный отборочный интенсив?</strong></p>
+        <p>* Портфолио с первых дней — проект, сделанный на интенсиве, можно положить в портфолио уже после интенсива.</p>
+        <p>* Путёвку на основное обучение — если интенсив пройден успешно, можно продолжить обучение в основе, работая над новыми проектами при поддержке экспертов индустрии и карьерного консультанта.</p>
+
+        <p><strong>Сколько времени в неделю необходимо для основного обучения?</strong><br>
+        Нагрузка <strong>4–6</strong> академических часов в неделю.</p>
+
+        <p><strong>Сколько длится обучение?</strong><br>
+        Направление «ИИ-инженер» — <strong>20 месяцев</strong>;<br>
+        Программа «Цифровой заказчик» — <strong>10 месяцев</strong>.</p>
+
+        <p><strong>Могу ли я получить документы, подтверждающие прохождение обучения?</strong></p>
+        <p>Да, конечно! Выпускники программы «Цифровой заказчик» получают удостоверение о повышении квалификации, а выпускники программы «ИИ-инженер» — диплом о профессиональной переподготовке. Также все участники формируют портфолио проектов и развивают практические цифровые компетенции, а лучшие выпускники дополнительно могут получить сертификат «Школы 21».</p>
+
+        <p><strong>Когда я могу прийти в кампус, чтобы познакомиться?</strong></p>
+        <p>Кампус открыт с <strong>9:00 до 21:00</strong> с понедельника по субботу. Об изменениях доступности кампуса сообщаем дополнительно.</p>
+
+        <p><strong>Куда я могу обратиться, если у меня еще остались вопросы?</strong></p>
+        <p>Команда кампуса на связи с понедельника по пятницу с <strong>10:00 до 19:00</strong> на почте <a href="mailto:21-school@rudn.ru">21-school@rudn.ru</a>, в <strong>Telegram</strong>-канале и, конечно, в нашем кампусе.</p>
+    </div>
+
+    <!-- ===== СЕКЦИЯ: ПРОДУКТОВАЯ МАСТЕРСКАЯ + ВЫПУСКНОЙ ===== -->
+    <section class="product-section">
+        <div class="product-left-text">
+            <p><strong>@Продуктовая мастерская кейсов</strong> — это проектно-ориентированная программа, построенная вокруг решения реального бизнес-кейса от компании-партнёра (Сбера и индустрии). На этом этапе участники проходят полный цикл продуктовой разработки и менеджмента в командах: от анализа запроса и исследования рынка до создания решения, расчёта экономики и финальной защиты решения перед экспертной комиссией.</p>
+        </div>
+
+        <div class="graduate-center" style="flex:1;">
+            <!-- Пруд -->
+            <div class="graduate-pond"></div>
+
+            <!-- Мост -->
+            <div class="graduate-bridge">
+                <img src="https://via.placeholder.com/100x60/8B4513/fff?text=Мост" alt="Мост">
+            </div>
+
+            <!-- Персонажи -->
+            <div class="graduate-characters">
+                <img src="https://via.placeholder.com/50x50/4caf50/fff?text=🐢" alt="Черепашка">
+                <img src="https://via.placeholder.com/50x50/FFD700/333?text=🦆" alt="Уточка">
+            </div>
+
+            <!-- Флаг ВЫПУСКНОЙ -->
+            <div class="graduate-flag">
+                <div class="flag-icon" style="background:#4caf50;"></div>
+                <div class="graduate-flag-label">ВЫПУСКНОЙ</div>
+            </div>
+
+            <!-- Форма заявки -->
+            <div class="application-form-placeholder">
+                Тут у нас будет форма заявки
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <section class="footer-section">
+        <div class="footer-card">
+            <p class="footer-top-text">
+                это бесплатная школа цифровых технологий с уникальными программами, которые помогут быть востребованным специалистом сегодня и на долгие годы вперёд.
+            </p>
+
+            <div class="footer-content">
+                <div class="footer-map">
+                    <h4>БЛОК "КАРТА"</h4>
+                    <img src="https://via.placeholder.com/250x150/a8d8ea/333?text=Карта+кампуса" alt="Карта" class="footer-map-img">
+                    <div style="font-size:11px; color:#666; margin-top:5px;">Подольское шоссе, 8, Москва</div>
+                </div>
+
+                <div class="footer-reviews">
+                    <h4>ОТЗЫВЫ НАШИХ УЧАСТНИКОВ</h4>
+                    <div class="review-cards">
+                        <div class="review-card"></div>
+                        <div class="review-card"></div>
+                        <div class="review-card"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Оферта</a>
+                <a href="#">Правила</a>
+                <a href="#">Кампуса</a>
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">E-mail</a>
+                <a href="#">Telegram</a>
+                <a href="#">ВК</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
