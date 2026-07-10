@@ -2491,44 +2491,23 @@ a {
 
 .admission-flag-left{
     position:absolute;
-    left:7%;
-    top:18%;
-    width:500px;
+    left:7%;       /* 👈 расстояние от ЛЕВОГО края экрана */
+    top:18%;       /* 👈 расстояние от ВЕРХНЕГО края экрана */
+    width:500px;   /* 👈 ширина всего блока (картинка + текст) */
     z-index:4;
 }
 
-/* Картинка флага */
-.admission-flag-left img{
-    width:100%;
-    display:block;
-}
-
-/* Контент под картинкой */
 .admission-flag-left .tracks-flag-content{
-    position:relative;
-    margin-top:0; /* убираем большой отступ */
+    margin-top:70px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
     text-align:center;
 }
 
 .admission-flag-left .tracks-flag-label{
     display:block;
-    margin-top:20px; /* небольшой отступ от картинки */
     margin-bottom:45px;
     font-size:32px;
     font-weight:900;
     text-align:center;
-}
-
-.admission-flag-left .tracks-flag-description{
-    margin:0 auto;
-    width:100%;
-    max-width:500px;
-    text-align:left;
-    padding:24px 30px;
-    border:4px solid rgba(123,87,255,.95);
-    border-radius:22px;
-    background:rgba(255,255,255,.95);
-    box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
 /* ==========================================
@@ -2537,35 +2516,22 @@ a {
 
 .admission-flag-right{
     position:absolute;
-    right:5%;
-    top:38%;
-    width:390px;
+    right:5%;      /* 👈 расстояние от ПРАВОГО края экрана */
+    top:38%;       /* 👈 расстояние от ВЕРХНЕГО края экрана */
+    width:390px;   /* 👈 ширина блока */
     z-index:4;
 }
 
-/* Картинка флага */
-.admission-flag-right img{
-    width:100%;
-    display:block;
-}
-
-/* Контент под картинкой */
 .admission-flag-right .tracks-flag-content{
-    position:relative;
-    margin-top:0; /* убираем отступ */
+    margin-top:18px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
     text-align:center;
 }
 
 .admission-flag-right .tracks-flag-label{
     display:block;
-    margin-top:20px; /* небольшой отступ от картинки */
     font-size:30px;
     font-weight:900;
     text-align:center;
-}
-
-.admission-flag-right .tracks-flag-description{
-    display:none;
 }
 
 /* ==========================================
@@ -2574,30 +2540,11 @@ a {
 
 .admission-board{
     position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:420px;
+    left:60%;      /* 👈 горизонтальное положение (50% = центр) */
+    top:50%;       /* 👈 вертикальное положение (50% = центр) */
+    transform:translate(-50%,-50%);  /* 👈 точное центрирование */
+    width:420px;   /* 👈 ширина таблички */
     z-index:5;
-}
-
-.admission-board-image{
-    width:100%;
-    display:block;
-}
-
-.admission-board-text{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    font-size:38px;
-    font-weight:900;
-    line-height:1.1;
-    color:#fff;
-    text-shadow:0 2px 8px rgba(0,0,0,.35);
 }
 /* ==========================================
    ЧЕРЕПАХА
@@ -2607,7 +2554,7 @@ a {
     position:absolute;
 
     left:50%;
-    top:63%;
+    top:50%;
 
     transform:translateX(-50%);
 
