@@ -2465,6 +2465,204 @@ a {
   font-size: 15px;
 }
 
+/* =====================================================
+   СЛАЙД 3 — КАК ПОСТУПИТЬ
+===================================================== */
+
+.admission-slide{
+    position:relative;
+    overflow:hidden;
+    min-height:100vh;
+}
+
+/* Заголовок */
+
+.admission-header{
+    display:flex;
+    justify-content:center;
+    margin-bottom:40px;
+    position:relative;
+    z-index:5;
+}
+
+/* -------------------------------------------------- */
+/* Флаги                                               */
+/* -------------------------------------------------- */
+
+.admission-flag-left{
+    position:absolute;
+    left:7%;
+    top:18%;
+    width:390px;
+    z-index:4;
+}
+
+.admission-flag-right{
+    position:absolute;
+    right:7%;
+    top:18%;
+    width:390px;
+    z-index:4;
+}
+
+/* -------------------------------------------------- */
+/* Центральная табличка                                */
+/* -------------------------------------------------- */
+
+.admission-board{
+
+    position:absolute;
+
+    left:50%;
+    top:54%;
+
+    transform:translate(-50%,-50%);
+
+    width:360px;
+
+    z-index:5;
+
+}
+
+.admission-board-image{
+
+    width:100%;
+    display:block;
+
+}
+
+.admission-board-text{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    font-size:36px;
+    font-weight:900;
+
+    line-height:1.1;
+
+    color:#fff;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.35);
+
+}
+
+/* -------------------------------------------------- */
+/* Черепаха                                            */
+/* -------------------------------------------------- */
+
+.admission-turtle{
+
+    position:absolute;
+
+    left:50%;
+    top:63%;
+
+    transform:translateX(-185px);
+
+    width:110px;
+
+    z-index:6;
+
+    animation:turtle-float 5s ease-in-out infinite;
+
+    filter:drop-shadow(0 12px 18px rgba(0,0,0,.18));
+
+}
+
+/* -------------------------------------------------- */
+/* Кнопка                                              */
+/* -------------------------------------------------- */
+
+.admission-button{
+
+    position:absolute;
+
+    left:50%;
+    bottom:55px;
+
+    transform:translateX(-50%);
+
+    width:min(720px,90vw);
+
+    padding:22px 34px;
+
+    border-radius:999px;
+
+    border:2px solid #9b5cf5;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    color:#6b3ff5;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    text-align:center;
+
+    letter-spacing:.02em;
+
+    transition:
+        .35s ease;
+
+    z-index:10;
+
+}
+
+/* Неоновая подсветка */
+
+.admission-button:hover{
+
+    color:white;
+
+    background:#9b5cf5;
+
+    transform:
+        translateX(-50%)
+        translateY(-4px);
+
+    box-shadow:
+        0 0 12px #9b5cf5,
+        0 0 26px rgba(155,92,245,.8),
+        0 0 60px rgba(155,92,245,.45);
+
+}
+
+/* -------------------------------------------------- */
+/* Описание под флагами                                */
+/* -------------------------------------------------- */
+
+.admission-slide .tracks-flag-description{
+
+    font-size:15px;
+
+    line-height:1.55;
+
+}
+
+.admission-slide .tracks-flag-description strong{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:17px;
+
+}
+
+
 /* ============================================================
      КОНТАКТЫ — КАРТА + ФОТОГАЛЕРЕЯ
      ============================================================ */
