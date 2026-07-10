@@ -2488,50 +2488,51 @@ a {
 }
 
 /* ==========================================
-   ЛЕВЫЙ ФЛАГ
+   ЛЕВЫЙ ФЛАГ - УМЕНЬШЕННЫЙ И СДВИНУТЫЙ
 ========================================== */
 
 .admission-flag-left{
     position:absolute;
-    left:3%;
-    top:15%;
-    width:500px;
+    left:2%;              /* 🔽 сдвинули левее */
+    top:18%;
+    width:400px;          /* 🔽 было 500px → уменьшили */
     display:flex;
     flex-direction:column;
     align-items:center;
     z-index:5;
 }
 
-/* подпись */
+/* подпись - уменьшена */
 .admission-flag-left .tracks-flag-label{
-    width:250px;
-    height:56px;
+    width:200px;          /* 🔽 было 250px → уменьшили */
+    height:46px;          /* 🔽 было 56px → уменьшили */
     margin-top:0px;
-    margin-bottom:8px;
+    margin-bottom:6px;    /* 🔽 уменьшили отступ */
     display:flex;
     justify-content:center;
     align-items:center;
     border-radius:999px;
     background:#fff;
-    font-size:30px;
+    font-size:24px;       /* 🔽 было 30px → уменьшили */
     font-weight:900;
     color:#5f39d8;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    box-shadow:0 6px 16px rgba(0,0,0,.10);
 }
 
-/* рамка */
+/* рамка - уменьшена и сделана более легкой */
 .admission-flag-left .tracks-flag-description{
-    width:780px;
-    max-width:90vw;
-    padding:28px 35px;
-    border:5px solid #7b57ff;
-    border-radius:26px;
-    background:rgba(255,255,255,.95);
-    font-size:16px;
-    line-height:1.7;
+    width:460px;          /* 🔽 было 780px → значительно уменьшили */
+    max-width:85vw;
+    padding:20px 24px;    /* 🔽 было 28px 35px → уменьшили */
+    border:3px solid #7b57ff;  /* 🔽 было 5px → тоньше */
+    border-radius:20px;   /* 🔽 было 26px → меньше */
+    background:rgba(255,255,255,.92); /* 🔽 сделали прозрачнее */
+    font-size:14px;       /* 🔽 было 16px → уменьшили */
+    line-height:1.5;      /* 🔽 было 1.7 → меньше */
     text-align:left;
     box-sizing:border-box;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    box-shadow:0 6px 20px rgba(0,0,0,.06); /* 🔽 более легкая тень */
+    backdrop-filter:blur(4px); /* ➕ добавили размытие для легкости */
 }
 
 /* ==========================================
@@ -2572,15 +2573,15 @@ a {
 }
 
 /* ==========================================
-   ТАБЛИЧКА - УМЕНЬШЕННАЯ И СДВИНУТАЯ ВЛЕВО
+   ТАБЛИЧКА - ВЕРНУЛИ РАЗМЕР
 ========================================== */
 
 .admission-board{
     position:absolute;
-    left:44%;             /* 🔽 было 50% → сдвинули влево */
+    left:50%;             /* 🔼 вернули в центр */
     top:48%;
     transform:translate(-50%,-50%);
-    width:200px;           /* 🔽 было 350px → уменьшили */
+    width:280px;           /* 🔼 было 200px → вернули к нормальному */
     z-index:8;
 }
 
@@ -2596,12 +2597,12 @@ a {
     justify-content:center;
     align-items:center;
     text-align:center;
-    font-size:11px;        /* 🔽 было 15px → уменьшили */
+    font-size:15px;        /* 🔼 было 11px → увеличили */
     font-weight:900;
-    line-height:1.2;
+    line-height:1.25;
     color:white;
-    text-shadow:0 1px 3px rgba(0,0,0,.4);
-    padding:10px 8px;     /* 🔽 уменьшили отступы */
+    text-shadow:0 2px 5px rgba(0,0,0,.4);
+    padding:12px 10px;
 }
 
 /* ==========================================
