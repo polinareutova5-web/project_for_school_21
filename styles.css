@@ -2494,7 +2494,7 @@ a {
 .admission-flag-left{
     position:absolute;
     left:2%;              /* 🔽 сдвинули левее */
-    top:18%;
+    top:10%;
     width:400px;          /* 🔽 было 500px → уменьшили */
     display:flex;
     flex-direction:column;
