@@ -48,6 +48,14 @@ a {
   min-height: 100vh;
   overflow: hidden;
   padding: 130px clamp(20px, 5vw, 90px) 70px;
+
+  background:
+      radial-gradient(
+          circle at 12% 16%,
+          rgba(208,166,244,.28),
+          transparent 28%
+      ),
+      var(--slide-bg);
 }
 
 /* Навигация */
