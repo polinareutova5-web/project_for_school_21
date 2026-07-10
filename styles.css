@@ -1494,11 +1494,17 @@ a {
                      TRACKS
 ====================================================== */
 
-.tracks-slide {
-  position: relative;
-  overflow: hidden;
+.tracks-slide{
+    position: relative;
+    overflow: hidden;
 }
 
+.tracks-flowers-full{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
 /* ---------- Заголовок ---------- */
 
 .tracks-header {
@@ -1898,6 +1904,7 @@ a {
     top: 28%;
   }
 }
+
 
 /* =====================================================
    ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ — ТРАВА, КАМНИ, РЕКА
