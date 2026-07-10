@@ -136,13 +136,6 @@ function buildRiverNetwork({
 
     const length = path.getTotalLength();
 
-    const highlight = path.cloneNode();
-    highlight.classList.add("river-highlight");
-    highlight.classList.remove("river-path");
-    highlight.classList.remove(cls);
-
-    svgElement.appendChild(highlight);
-
     function point(distance) {
       return path.getPointAtLength(distance);
     }
@@ -212,7 +205,7 @@ function buildRiverNetwork({
           return;
         }
 
-        const pos = point(length * (1 - t));
+        const pos = point(length * t);
 
         e.setAttribute("cx", pos.x);
 
