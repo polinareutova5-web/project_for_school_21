@@ -2519,7 +2519,7 @@ a {
     box-shadow:0 6px 16px rgba(0,0,0,.10);
 }
 
-/* рамка - сдвинута влево */
+/* рамка с текстом */
 .admission-flag-left .tracks-flag-description{
     width:460px;
     max-width:85vw;
@@ -2534,7 +2534,7 @@ a {
     box-shadow:0 6px 20px rgba(0,0,0,.06);
     backdrop-filter:blur(4px);
     margin-top:-2px;
-    margin-left:-30px;    /* ➕ сдвинули блок с текстом влево */
+    margin-left:-70px;    /* ➕ сдвинули блок с текстом влево */
 }
 
 /* ==========================================
@@ -2597,7 +2597,7 @@ a {
     inset:0;
     display:flex;
     justify-content:center;
-    align-items:center;
+    top:5%;   
     text-align:center;
     font-size:13px;
     font-weight:900;
