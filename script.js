@@ -284,23 +284,23 @@ const renderRivers = () => {
         svg: ".rivers-overlay",
         source: ".pond-turtle-three",
         targets: [
-            ".flag-left",
+            ".tracks-flag-left",
         ]
     });
 
     buildRiverNetwork({
         className: "river-teal",
         svg: ".rivers-overlay",
-        source: ".flag-left",
+        source: ".tracks-flag-left",
         targets: [
-            ".duck-flag"
+            ".tracks-duck"
         ]
     });
 
     buildRiverNetwork({
         className: "river-teal",
         svg: ".rivers-overlay",
-        source:  ".duck-flag",
+        source:  ".tracks-duck",
         targets: [
             ".register-lake",
         ]
