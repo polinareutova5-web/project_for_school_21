@@ -2492,68 +2492,44 @@ a {
 ========================================== */
 
 .admission-flag-left{
-
     position:absolute;
-
     left:6%;
     top:18%;
-
     width:430px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
-
     z-index:5;
 }
 
 /* подпись */
-
 .admission-flag-left .tracks-flag-label{
-
     width:250px;
     height:56px;
-
     margin-top:3px;
-    margin-bottom:20px;
-
+    margin-bottom:10px; /* 🔽 было 20px → прижали ближе к описанию флага */
     display:flex;
     justify-content:center;
     align-items:center;
-
     border-radius:999px;
-
     background:#fff;
-
     font-size:30px;
     font-weight:900;
-
     color:#5f39d8;
-
     box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 /* рамка */
-
 .admission-flag-left .tracks-flag-description{
-
     width:620px;
-
     padding:24px 28px;
-
     border:5px solid #7b57ff;
-
     border-radius:26px;
-
     background:rgba(255,255,255,.95);
-
     font-size:15px;
     line-height:1.55;
-
     text-align:left;
-
     box-sizing:border-box;
-
 }
 
 /* ==========================================
@@ -2561,52 +2537,36 @@ a {
 ========================================== */
 
 .admission-flag-right{
-
     position:absolute;
-
     right:4%;
     top:33%;
-
     width:430px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
-
     z-index:5;
 }
 
 /* подпись */
-
 .admission-flag-right .tracks-flag-label{
-
     width:325px;
     height:56px;
-
-    margin-top:3px;
-
+    margin-top:0px;    /* 🔽 было 3px → прижали к верху контейнера */
+    margin-bottom:10px;/* ➕ добавили отступ для симметрии */
     display:flex;
     justify-content:center;
     align-items:center;
-
     border-radius:999px;
-
     background:#fff;
-
     font-size:30px;
     font-weight:900;
-
     color:#5f39d8;
-
     box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 /* пока текста справа нет */
-
 .admission-flag-right .tracks-flag-description{
-
     display:none;
-
 }
 
 /* ==========================================
@@ -2614,47 +2574,31 @@ a {
 ========================================== */
 
 .admission-board{
-
     position:absolute;
-
     left:50%;
     top:48%;
-
     transform:translate(-50%,-50%);
-
     width:250px;
-
     z-index:8;
-
 }
 
 .admission-board-image{
-
     width:100%;
     display:block;
-
 }
 
 .admission-board-text{
-
     position:absolute;
     inset:0;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     text-align:center;
-
-    font-size:17px;
+    font-size:20px;      /* 🔼 было 17px → сделали чуть крупнее */
     font-weight:900;
-
     line-height:1.15;
-
     color:white;
-
     text-shadow:0 2px 5px rgba(0,0,0,.35);
-
 }
 
 /* ==========================================
@@ -2662,20 +2606,13 @@ a {
 ========================================== */
 
 .admission-turtle{
-
     position:absolute;
-
     left:50%;
     top:75%;
-
     width:125px;
-
     transform:translate(-105px,-5px);
-
     z-index:9;
-
     animation:turtle-float 5s ease-in-out infinite;
-
 }
 
 /* ==========================================
@@ -2683,72 +2620,36 @@ a {
 ========================================== */
 
 .admission-button{
-
     position:absolute;
-
     left:50%;
     bottom:55px;
-
     transform:translateX(-50%);
-
     width:min(720px,90vw);
-
     padding:22px 34px;
-
     border-radius:999px;
-
     border:2px solid #9b5cf5;
-
     background:rgba(255,255,255,.12);
-
     backdrop-filter:blur(12px);
-
     color:#6b3ff5;
-
     font-size:20px;
     font-weight:900;
-
     text-align:center;
-
     letter-spacing:.02em;
-
     transition:.35s ease;
-
     z-index:20;
-
 }
 
 .admission-button:hover{
-
     color:#fff;
-
     background:#9b5cf5;
-
     transform:
         translateX(-50%)
         translateY(-4px);
-
     box-shadow:
         0 0 12px #9b5cf5,
         0 0 26px rgba(155,92,245,.8),
         0 0 60px rgba(155,92,245,.45);
-
 }
-
-/* ==========================================
-   ТЕКСТ
-========================================== */
-
-.admission-slide .tracks-flag-description strong{
-
-    display:block;
-
-    margin-bottom:10px;
-
-    font-size:17px;
-
-}
-
 /* ============================================================
      КОНТАКТЫ — КАРТА + ФОТОГАЛЕРЕЯ
      ============================================================ */
