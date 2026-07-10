@@ -2504,7 +2504,7 @@ a {
 
 .admission-flag-left .tracks-flag-label{
     display:block;
-    margin-bottom:45px;
+    margin-bottom:60px;
     font-size:32px;
     font-weight:900;
     text-align:center;
@@ -2540,12 +2540,11 @@ a {
 
 .admission-board{
     position:absolute;
-    left:60%;      /* 👈 горизонтальное положение (50% = центр) */
-    top:50%;       /* 👈 вертикальное положение (50% = центр) */
+    left:20%;      /* 👈 горизонтальное положение (50% = центр) */
+    top:60%;       /* 👈 вертикальное положение (50% = центр) */
     transform:translate(-50%,-50%);  /* 👈 точное центрирование */
     width:350px;   /* 👈 ширина таблички */
     z-index:5;
-  margin-top: 10px;
 }
 /* ==========================================
    ЧЕРЕПАХА
