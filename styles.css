@@ -2494,7 +2494,7 @@ a {
 .admission-flag-left{
     position:absolute;
     left:10%;
-    top:8%;               /* 🔼 было 18% → подняли выше */
+    top:8%;
     width:400px;
     display:flex;
     flex-direction:column;
@@ -2506,7 +2506,7 @@ a {
 .admission-flag-left .tracks-flag-label{
     width:200px;
     height:46px;
-    margin-top:-8px;      /* 🔼 было 0px → подняли выше (прижали к картинке) */
+    margin-top:-8px;
     margin-bottom:6px;
     display:flex;
     justify-content:center;
@@ -2519,7 +2519,7 @@ a {
     box-shadow:0 6px 16px rgba(0,0,0,.10);
 }
 
-/* рамка - поднята выше */
+/* рамка - сдвинута влево */
 .admission-flag-left .tracks-flag-description{
     width:460px;
     max-width:85vw;
@@ -2533,7 +2533,8 @@ a {
     box-sizing:border-box;
     box-shadow:0 6px 20px rgba(0,0,0,.06);
     backdrop-filter:blur(4px);
-    margin-top:-2px;      /* ➕ чуть подняли блок с текстом */
+    margin-top:-2px;
+    margin-left:-40px;    /* ➕ сдвинули блок с текстом влево */
 }
 
 /* ==========================================
@@ -2579,7 +2580,7 @@ a {
 
 .admission-board{
     position:absolute;
-    left:48%;             /* 🔽 было 50% → сдвинули влево на 2% */
+    left:48%;
     top:48%;
     transform:translate(-50%,-50%);
     width:280px;
