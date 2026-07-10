@@ -50,12 +50,12 @@ a {
   padding: 130px clamp(20px, 5vw, 90px) 70px;
 
   background:
-      radial-gradient(
-          circle at 12% 16%,
-          rgba(208,166,244,.28),
-          transparent 28%
-      ),
-      var(--slide-bg);
+    radial-gradient(
+      circle at 12% 16%,
+      rgba(208, 166, 244, 0.28),
+      transparent 28%
+    ),
+    var(--slide-bg);
 }
 
 /* Навигация */
@@ -939,18 +939,37 @@ a {
   stroke-linecap: round;
   stroke-width: 80;
   stroke-linecap: round;
+  filter: url(#glow);
+}
 
-  stroke-dasharray: 150 40;
+.river-highlight {
+  fill: none;
+  stroke: white;
+  stroke-width: 40;
+  opacity: 0.25;
+  stroke-linecap: round;
 
-  animation: riverFlow 7s linear infinite;
+  stroke-dasharray: 60 140;
+
+  animation: flow 4s linear infinite;
+}
+
+@keyframes flow {
+  from {
+    stroke-dashoffset: 140;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .river-teal {
-  stroke: #2ae3d2;
+  stroke: url(#riverGradient);
 }
 
 .river-purple {
-  stroke: #d0a6f4;
+  stroke: url(#riverGradientPurple);
 }
 
 @keyframes riverFlow {
@@ -961,6 +980,26 @@ a {
   to {
     stroke-dashoffset: 0;
   }
+}
+
+.sparkle {
+  fill: white;
+
+  opacity: 0.75;
+
+  filter: url(#blur);
+}
+
+.ripple {
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+  opacity: 0.35;
+}
+
+.bubble {
+  fill: white;
+  opacity: 0.45;
 }
 
 /* Остальные стили */
@@ -1494,16 +1533,16 @@ a {
                      TRACKS
 ====================================================== */
 
-.tracks-slide{
-    position: relative;
-    overflow: hidden;
+.tracks-slide {
+  position: relative;
+  overflow: hidden;
 }
 
-.tracks-flowers-full{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
+.tracks-flowers-full {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 /* ---------- Заголовок ---------- */
 
@@ -1904,7 +1943,6 @@ a {
     top: 28%;
   }
 }
-
 
 /* =====================================================
    ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ — ТРАВА, КАМНИ, РЕКА
@@ -2469,192 +2507,190 @@ a {
    СЛАЙД 3 — КАК ПОСТУПИТЬ
 ========================================== */
 
-.admission-slide{
-    position:relative;
-    overflow:hidden;
-    min-height:100vh;
+.admission-slide {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* ==========================================
    ЗАГОЛОВОК
 ========================================== */
 
-.admission-header{
-    display:flex;
-    justify-content:center;
-    margin-bottom:40px;
-    position:relative;
-    z-index:10;
+.admission-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 10;
 }
 
 /* ==========================================
    ЛЕВЫЙ ФЛАГ - ПОДНЯТ ВВЕРХ
 ========================================== */
 
-.admission-flag-left{
-    position:absolute;
-    left:10%;
-    top:8%;
-    width:400px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    z-index:5;
+.admission-flag-left {
+  position: absolute;
+  left: 10%;
+  top: 8%;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
 }
 
 /* подпись - прижата к флагу */
-.admission-flag-left .tracks-flag-label{
-    width:200px;
-    height:46px;
-    margin-top:-8px;
-    margin-bottom:6px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:999px;
-    background:#fff;
-    font-size:24px;
-    font-weight:900;
-    color:#5f39d8;
-    box-shadow:0 6px 16px rgba(0,0,0,.10);
+.admission-flag-left .tracks-flag-label {
+  width: 200px;
+  height: 46px;
+  margin-top: -8px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  color: #5f39d8;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* рамка с текстом */
-.admission-flag-left .tracks-flag-description{
-    width:460px;
-    max-width:85vw;
-    padding:20px 24px;
-    border:3px solid #7b57ff;
-    border-radius:20px;
-    background:rgba(255,255,255,.92);
-    font-size:14px;
-    line-height:1.5;
-    text-align:left;
-    box-sizing:border-box;
-    box-shadow:0 6px 20px rgba(0,0,0,.06);
-    backdrop-filter:blur(4px);
-    margin-top:-2px;
-    margin-left:-90px;    /* ➕ сдвинули блок с текстом влево */
+.admission-flag-left .tracks-flag-description {
+  width: 460px;
+  max-width: 85vw;
+  padding: 20px 24px;
+  border: 3px solid #7b57ff;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(4px);
+  margin-top: -2px;
+  margin-left: -90px; /* ➕ сдвинули блок с текстом влево */
 }
 
 /* ==========================================
    ПРАВЫЙ ФЛАГ
 ========================================== */
 
-.admission-flag-right{
-    position:absolute;
-    right:3%;
-    top:35%;
-    width:500px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    z-index:5;
+.admission-flag-right {
+  position: absolute;
+  right: 3%;
+  top: 35%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
 }
 
 /* подпись */
-.admission-flag-right .tracks-flag-label{
-    width:300px;
-    height:56px;
-    margin-top:0px;
-    margin-bottom:8px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:999px;
-    background:#fff;
-    font-size:24px;
-    font-weight:900;
-    color:#5f39d8;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
+.admission-flag-right .tracks-flag-label {
+  width: 300px;
+  height: 56px;
+  margin-top: 0px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  color: #5f39d8;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* пока текста справа нет */
-.admission-flag-right .tracks-flag-description{
-    display:none;
+.admission-flag-right .tracks-flag-description {
+  display: none;
 }
 
 /* ==========================================
    ТАБЛИЧКА 
 ========================================== */
 
-.admission-board{
-    position:absolute;
-    left:48%;
-    top:48%;
-    transform:translate(-50%,-50%);
-    width:295px;
-    z-index:8;
+.admission-board {
+  position: absolute;
+  left: 48%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  width: 295px;
+  z-index: 8;
 }
 
-.admission-board-image{
-    width:100%;
-    display:block;
+.admission-board-image {
+  width: 100%;
+  display: block;
 }
 
-.admission-board-text{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    top:18%;   
-    text-align:center;
-    font-size:13px;
-    font-weight:900;
-    line-height:1.25;
-    color:black;
-    text-shadow:0 2px 5px rgba(0,0,0,.4);
-    padding:12px 10px;
+.admission-board-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  top: 18%;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: black;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  padding: 12px 10px;
 }
 
 /* ==========================================
    ЧЕРЕПАХА
 ========================================== */
 
-.admission-turtle{
-    position:absolute;
-    left:50%;
-    top:69%;
-    width:125px;
-    transform:translate(-105px,-5px);
-    z-index:9;
-    animation:turtle-float 5s ease-in-out infinite;
+.admission-turtle {
+  position: absolute;
+  left: 50%;
+  top: 69%;
+  width: 125px;
+  transform: translate(-105px, -5px);
+  z-index: 9;
+  animation: turtle-float 5s ease-in-out infinite;
 }
 
 /* ==========================================
    КНОПКА
 ========================================== */
 
-.admission-button{
-    position:absolute;
-    left:50%;
-    bottom:55px;
-    transform:translateX(-50%);
-    width:min(720px,90vw);
-    padding:22px 34px;
-    border-radius:999px;
-    border:2px solid #9b5cf5;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(12px);
-    color:#6b3ff5;
-    font-size:20px;
-    font-weight:900;
-    text-align:center;
-    letter-spacing:.02em;
-    transition:.35s ease;
-    z-index:20;
+.admission-button {
+  position: absolute;
+  left: 50%;
+  bottom: 55px;
+  transform: translateX(-50%);
+  width: min(720px, 90vw);
+  padding: 22px 34px;
+  border-radius: 999px;
+  border: 2px solid #9b5cf5;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  color: #6b3ff5;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.02em;
+  transition: 0.35s ease;
+  z-index: 20;
 }
 
-.admission-button:hover{
-    color:#fff;
-    background:#9b5cf5;
-    transform:
-        translateX(-50%)
-        translateY(-4px);
-    box-shadow:
-        0 0 12px #9b5cf5,
-        0 0 26px rgba(155,92,245,.8),
-        0 0 60px rgba(155,92,245,.45);
+.admission-button:hover {
+  color: #fff;
+  background: #9b5cf5;
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow:
+    0 0 12px #9b5cf5,
+    0 0 26px rgba(155, 92, 245, 0.8),
+    0 0 60px rgba(155, 92, 245, 0.45);
 }
 /* ============================================================
      Слайд   КОНТАКТЫ 
