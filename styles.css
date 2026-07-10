@@ -2534,7 +2534,7 @@ a {
     box-shadow:0 6px 20px rgba(0,0,0,.06);
     backdrop-filter:blur(4px);
     margin-top:-2px;
-    margin-left:-40px;    /* ➕ сдвинули блок с текстом влево */
+    margin-left:-30px;    /* ➕ сдвинули блок с текстом влево */
 }
 
 /* ==========================================
@@ -2554,7 +2554,7 @@ a {
 
 /* подпись */
 .admission-flag-right .tracks-flag-label{
-    width:325px;
+    width:300px;
     height:56px;
     margin-top:0px;
     margin-bottom:8px;
@@ -2563,7 +2563,7 @@ a {
     align-items:center;
     border-radius:999px;
     background:#fff;
-    font-size:30px;
+    font-size:24px;
     font-weight:900;
     color:#5f39d8;
     box-shadow:0 8px 20px rgba(0,0,0,.12);
@@ -2583,7 +2583,7 @@ a {
     left:48%;
     top:48%;
     transform:translate(-50%,-50%);
-    width:280px;
+    width:295px;
     z-index:8;
 }
 
@@ -2599,7 +2599,7 @@ a {
     justify-content:center;
     align-items:center;
     text-align:center;
-    font-size:15px;
+    font-size:13px;
     font-weight:900;
     line-height:1.25;
     color:white;
@@ -2614,7 +2614,7 @@ a {
 .admission-turtle{
     position:absolute;
     left:50%;
-    top:67%;
+    top:69%;
     width:125px;
     transform:translate(-105px,-5px);
     z-index:9;
