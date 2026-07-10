@@ -2506,8 +2506,8 @@ a {
 .admission-flag-left .tracks-flag-label{
     width:250px;
     height:56px;
-    margin-top:3px;
-    margin-bottom:10px; /* 🔽 было 20px → прижали ближе к описанию флага */
+    margin-top:0px;      /* 🔼 было 3px → прижали к верху */
+    margin-bottom:10px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -2519,15 +2519,15 @@ a {
     box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
-/* рамка */
+/* рамка - расширена */
 .admission-flag-left .tracks-flag-description{
-    width:620px;
-    padding:24px 28px;
+    width:720px;          /* 🔼 было 620px → расширили */
+    padding:24px 32px;
     border:5px solid #7b57ff;
     border-radius:26px;
     background:rgba(255,255,255,.95);
     font-size:15px;
-    line-height:1.55;
+    line-height:1.6;
     text-align:left;
     box-sizing:border-box;
 }
@@ -2551,8 +2551,8 @@ a {
 .admission-flag-right .tracks-flag-label{
     width:325px;
     height:56px;
-    margin-top:0px;    /* 🔽 было 3px → прижали к верху контейнера */
-    margin-bottom:10px;/* ➕ добавили отступ для симметрии */
+    margin-top:0px;      /* 🔼 было 3px → прижали к верху */
+    margin-bottom:10px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -2578,7 +2578,7 @@ a {
     left:50%;
     top:48%;
     transform:translate(-50%,-50%);
-    width:250px;
+    width:320px;          /* 🔼 было 250px → увеличили */
     z-index:8;
 }
 
@@ -2594,11 +2594,12 @@ a {
     justify-content:center;
     align-items:center;
     text-align:center;
-    font-size:20px;      /* 🔼 было 17px → сделали чуть крупнее */
+    font-size:16px;       /* 🔽 было 20px → уменьшили */
     font-weight:900;
-    line-height:1.15;
+    line-height:1.2;
     color:white;
     text-shadow:0 2px 5px rgba(0,0,0,.35);
+    padding:10px;
 }
 
 /* ==========================================
@@ -2608,7 +2609,7 @@ a {
 .admission-turtle{
     position:absolute;
     left:50%;
-    top:75%;
+    top:68%;              /* 🔼 было 75% → подняли выше */
     width:125px;
     transform:translate(-105px,-5px);
     z-index:9;
