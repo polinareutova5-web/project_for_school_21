@@ -2493,7 +2493,7 @@ a {
 
 .admission-flag-left{
     position:absolute;
-    left:2%;
+    left:10%;
     top:8%;               /* 🔼 было 18% → подняли выше */
     width:400px;
     display:flex;
