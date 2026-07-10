@@ -2537,7 +2537,7 @@ a {
 
 .admission-flag-left .tracks-flag-description{
 
-    width:100%;
+    width:620px;
 
     padding:24px 28px;
 
@@ -2580,7 +2580,7 @@ a {
 
 .admission-flag-right .tracks-flag-label{
 
-    width:250px;
+    width:300px;
     height:56px;
 
     margin-top:18px;
@@ -2622,7 +2622,7 @@ a {
 
     transform:translate(-50%,-50%);
 
-    width:120px;
+    width:200px;
 
     z-index:8;
 
