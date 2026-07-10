@@ -2514,7 +2514,7 @@ a {
     width:250px;
     height:56px;
 
-    margin-top:18px;
+    margin-top:3px;
     margin-bottom:20px;
 
     display:flex;
@@ -2583,7 +2583,7 @@ a {
     width:300px;
     height:56px;
 
-    margin-top:8px;
+    margin-top:3px;
 
     display:flex;
     justify-content:center;
@@ -2666,9 +2666,9 @@ a {
     position:absolute;
 
     left:50%;
-    top:48%;
+    top:55%;
 
-    width:100px;
+    width:130px;
 
     transform:translate(-105px,-5px);
 
