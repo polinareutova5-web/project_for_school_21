@@ -2534,7 +2534,7 @@ a {
     box-shadow:0 6px 20px rgba(0,0,0,.06);
     backdrop-filter:blur(4px);
     margin-top:-2px;
-    margin-left:-70px;    /* ➕ сдвинули блок с текстом влево */
+    margin-left:-80px;    /* ➕ сдвинули блок с текстом влево */
 }
 
 /* ==========================================
@@ -2575,7 +2575,7 @@ a {
 }
 
 /* ==========================================
-   ТАБЛИЧКА - СДВИНУТА ВЛЕВО
+   ТАБЛИЧКА 
 ========================================== */
 
 .admission-board{
@@ -2597,7 +2597,7 @@ a {
     inset:0;
     display:flex;
     justify-content:center;
-    top:5%;   
+    top:7%;   
     text-align:center;
     font-size:13px;
     font-weight:900;
