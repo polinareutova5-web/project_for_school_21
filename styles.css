@@ -2583,7 +2583,7 @@ a {
     width:300px;
     height:56px;
 
-    margin-top:18px;
+    margin-top:8px;
 
     display:flex;
     justify-content:center;
@@ -2668,7 +2668,7 @@ a {
     left:50%;
     top:48%;
 
-    width:70px;
+    width:100px;
 
     transform:translate(-105px,-5px);
 
