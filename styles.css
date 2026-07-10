@@ -47,7 +47,6 @@ a {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  background: var(--slide-bg);
   padding: 130px clamp(20px, 5vw, 90px) 70px;
 }
 
@@ -164,18 +163,6 @@ a {
   overflow: hidden;
   padding: 150px 24px 86px;
   text-align: center;
-  background:
-    radial-gradient(
-      circle at 14% 20%,
-      rgba(226, 246, 239, 0.92) 0 12%,
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 86% 88%,
-      rgba(255, 255, 255, 0.58) 0 8%,
-      transparent 24%
-    ),
-    linear-gradient(155deg, #d8f3ea 0%, #e2f6ef 38%, #edf9f5 72%, #ffffff 100%);
   z-index: 10;
 }
 
@@ -1437,6 +1424,13 @@ a {
   }
 }
 
+@media (max-width: 1480px) {
+  .hero-rotating-image {
+    width: 250px;
+    top: 650px;
+  }
+}
+
 @media (max-width: 900px) {
   .nav {
     grid-template-columns: 1fr;
@@ -1622,20 +1616,19 @@ a {
   line-height: 1.15;
   text-align: center;
   pointer-events: none;
+  font-size: 19px;
 }
 
 .tracks-sign-text-left {
   left: 35%;
   top: 14%;
   width: 100px;
-  font-size: 24px;
 }
 
 .tracks-sign-text-right {
   right: 36%;
   top: 37%;
   width: 100px;
-  font-size: 24px;
 }
 
 /* ---------- Hover-эффект для надписей ---------- */
