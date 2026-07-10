@@ -2497,17 +2497,36 @@ a {
     z-index:4;
 }
 
-.admission-flag-left .tracks-flag-content{
-    margin-top:10px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
-    text-align:center;
-}
-
 .admission-flag-left .tracks-flag-label{
-    display:block;
-    margin-bottom:60px;
-    font-size:32px;
+
+    width:250px;          /* ширина овала */
+
+    margin:18px auto 25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:54px;
+
+    border-radius:999px;
+
+    background:#fff;
+
+    font-size:30px;
     font-weight:900;
-    text-align:center;
+}
+.admission-flag-left .tracks-flag-description{
+
+    width:420px;
+
+    margin:0 auto;
+
+    padding:24px 28px;
+
+    border:5px solid #7b57ff;
+
+    border-radius:24px;
 }
 
 /* ==========================================
