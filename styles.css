@@ -60,18 +60,13 @@ a {
 
 /* Навигация */
 .nav {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  width: min(1640px, calc(100% - 48px));
-  gap: 14px;
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    width: min(1640px, calc(100% - 48px));
 }
-
 .brand-lockup {
   width: clamp(150px, 15vw, 255px);
   height: clamp(76px, 7.8vw, 123px);
