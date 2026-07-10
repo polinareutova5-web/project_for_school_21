@@ -2580,7 +2580,7 @@ a {
 
 .admission-flag-right .tracks-flag-label{
 
-    width:300px;
+    width:320px;
     height:56px;
 
     margin-top:3px;
@@ -2646,7 +2646,7 @@ a {
 
     text-align:center;
 
-    font-size:12px;
+    font-size:17px;
     font-weight:900;
 
     line-height:1.15;
@@ -2666,7 +2666,7 @@ a {
     position:absolute;
 
     left:50%;
-    top:55%;
+    top:60%;
 
     width:130px;
 
