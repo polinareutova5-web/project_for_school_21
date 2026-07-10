@@ -2525,8 +2525,8 @@ a {
 }
 .admission-flag-right{
     position:absolute;
-    right:3%;
-    top:28%;
+    right:7%;
+    top:35%;
     width:390px;
     z-index:4;
 }
@@ -2550,7 +2550,7 @@ a {
 /* -------------------------------------------------- */
 .admission-board{
 
-    left:48.5%;
+    left:15%;
     top:50%;
 
     transform:translate(-50%,-50%);
