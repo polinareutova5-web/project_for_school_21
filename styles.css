@@ -2498,7 +2498,7 @@ a {
 }
 
 .admission-flag-left .tracks-flag-content{
-    margin-top:70px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
+    margin-top:10px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
     text-align:center;
 }
 
@@ -2523,7 +2523,7 @@ a {
 }
 
 .admission-flag-right .tracks-flag-content{
-    margin-top:18px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
+    margin-top:10px;  /* 👈 отступ текста ОТ КАРТИНКИ флага */
     text-align:center;
 }
 
