@@ -3010,17 +3010,55 @@ a {
 .faq-slide{
     position:relative;
 }
+.faq-slide .tracks-header{
+    margin-top:-55px;
+    position:relative;
+    z-index:40;
+}
+
+.faq-slide .tracks-title-pill{
+
+    padding:0;
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
+    backdrop-filter:none;
+
+    font-size:clamp(46px,4vw,70px);
+
+    font-weight:900;
+
+    background:var(--gradient);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+
+}
 
 /* оставляем левый флаг */
 
 .faq-slide .tracks-flag-left{
-    left:40px;
+    left:10px;
     top:210px;
     width:35%;
+    z-index:30;
 }
 
 .faq-slide .tracks-flag-left .tracks-flag-description{
     max-width:380px;
+   border:2px solid #6b3ff5;
+}
+.faq-slide .tracks-flag-label{
+
+    color:#6b3ff5;
+
+    font-weight:900;
+
 }
 
 /* правая часть */
@@ -3097,6 +3135,15 @@ a {
     font-size:13px;
 
     opacity:.8;
+
+}
+.faq-slide .tracks-header,
+.faq-slide .tracks-flag,
+.faq-container,
+.faq-card{
+
+    position:relative;
+    z-index:30;
 
 }
 
