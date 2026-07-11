@@ -3004,16 +3004,19 @@ a {
   background: white;
 }
 /* ==========================
-          FAQ
+            FAQ
 ========================== */
 
 .faq-slide{
     position:relative;
 }
+
+/* ---------- Заголовок ---------- */
+
 .faq-slide .tracks-header{
     margin-top:-55px;
     position:relative;
-    z-index:40;
+    z-index:100;
 }
 
 .faq-slide .tracks-title-pill{
@@ -3040,20 +3043,27 @@ a {
 
 }
 
-/* оставляем левый флаг */
+
+/* ---------- Левый флаг ---------- */
 
 .faq-slide .tracks-flag-left{
-    left:0px;
-    top:170px;
-    width:35%;
-    z-index:30;
+
+    position:absolute;
+
+    left:24px;
+    top:30%;
+
+    width:34%;
+
+    transform:translate(-70px,-90px);
+
+    z-index:100;
+
 }
 
-.faq-slide .tracks-flag-left .tracks-flag-description{
-    max-width:380px;
-   border:2px solid #6b3ff5;
-}
-.faq-slide .tracks-flag-label{
+/* подпись */
+
+.faq-slide .tracks-flag-left .tracks-flag-label{
 
     color:#6b3ff5;
 
@@ -3061,16 +3071,28 @@ a {
 
 }
 
-/* правая часть */
+/* описание */
+
+.faq-slide .tracks-flag-left .tracks-flag-description{
+
+    max-width:390px;
+
+    border:2px solid #6b3ff5;
+
+}
+
+
+/* ---------- Правая часть ---------- */
 
 .faq-container{
 
     position:absolute;
 
-    right:40px;
+    right:30px;
+
     top:180px;
 
-    width:55%;
+    width:52%;
 
     display:grid;
 
@@ -3078,7 +3100,12 @@ a {
 
     gap:22px;
 
+    z-index:100;
+
 }
+
+
+/* ---------- Карточки ---------- */
 
 .faq-card{
 
@@ -3138,33 +3165,17 @@ a {
 
 }
 
-.faq-container{
 
-    position:absolute;
+/* ---------- Чтобы река не перекрывала ---------- */
 
-    right:40px;
-    top:10px;
-
-    width:55%;
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:22px;
-
-    z-index:30;
-
-}
 .faq-slide .tracks-header,
 .faq-slide .tracks-flag,
+.faq-container,
 .faq-card{
 
-    position:relative;
-    z-index:30;
+    z-index:100;
 
 }
-
 /* ============================================================
      КОНТАКТЫ — КАРТА / ФОТО
      ============================================================ */
