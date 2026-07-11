@@ -3043,8 +3043,8 @@ a {
 /* оставляем левый флаг */
 
 .faq-slide .tracks-flag-left{
-    left:5px;
-    top:180px;
+    left:0px;
+    top:170px;
     width:35%;
     z-index:30;
 }
@@ -3143,7 +3143,7 @@ a {
     position:absolute;
 
     right:40px;
-    top:180px;
+    top:10px;
 
     width:55%;
 
