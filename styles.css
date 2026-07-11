@@ -2685,10 +2685,9 @@ a {
      ============================================================ */
 
 .contacts-heading {
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 950;
-  text-align: center;
-  margin-bottom: 48px;
+  margin-top:-55px;
+    position:relative;
+    z-index:100;
 }
 
 .contacts-grid {
