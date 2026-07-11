@@ -137,6 +137,9 @@ function buildRiverNetwork({
     const length = path.getTotalLength();
 
     function point(distance) {
+      if (!path.parentNode) {
+        return null;
+      }
       return path.getPointAtLength(distance);
     }
 
@@ -144,6 +147,10 @@ function buildRiverNetwork({
       const d = Math.random() * length;
 
       const p = point(d);
+
+      if (p === null) {
+        return;
+      }
 
       const c = document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -207,6 +214,10 @@ function buildRiverNetwork({
 
         const pos = point(length * t);
 
+        if (pos === null) {
+          return;
+        }
+
         e.setAttribute("cx", pos.x);
 
         e.setAttribute("cy", pos.y);
@@ -223,6 +234,10 @@ function buildRiverNetwork({
       const d = Math.random() * length;
 
       const p = point(d);
+
+      if (p === null) {
+        return;
+      }
 
       const c = document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -345,6 +360,8 @@ function buildRiverNetwork({
 
 const renderRivers = () => {
   document.querySelectorAll(".river-generated").forEach((e) => e.remove());
+  const effects = document.getElementById("effects");
+  effects.innerHTML = "";
 
   buildRiverNetwork({
     className: "river-purple",
