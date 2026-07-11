@@ -3137,9 +3137,27 @@ a {
     opacity:.8;
 
 }
+
+.faq-container{
+
+    position:absolute;
+
+    right:40px;
+    top:180px;
+
+    width:55%;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    z-index:30;
+
+}
 .faq-slide .tracks-header,
 .faq-slide .tracks-flag,
-.faq-container,
 .faq-card{
 
     position:relative;
