@@ -1831,8 +1831,8 @@ a {
    Положение регулируется здесь:
    --bush-top — отступ сверху, --bush-right — отступ справа. */
 .tracks-river-source-bush {
-  --bush-top: 4%;
-  --bush-right: 9%;
+  --bush-top: 1%;
+  --bush-right: 11%;
   position: absolute;
   top: var(--bush-top);
   right: var(--bush-right);
@@ -1844,8 +1844,8 @@ a {
 .tracks-river-bush {
   position: absolute;
   display: block;
-  width: 150px;
-  height: 92px;
+  width: 160px;
+  height: 97px;
   border-radius: 55% 55% 42% 42%;
   background:
     radial-gradient(circle at 22% 42%, #4fae3c 0 24px, transparent 25px),
