@@ -1831,8 +1831,8 @@ a {
    Положение регулируется здесь:
    --bush-top — отступ сверху, --bush-right — отступ справа. */
 .tracks-river-bushes {
-  --bush-top: 22%;
-  --bush-right: 5%;
+  --bush-top: 1%;
+  --bush-right: 8%;
 
   position: absolute;
   top: var(--bush-top);
