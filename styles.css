@@ -158,6 +158,29 @@ a {
   -webkit-background-clip: text;
   color: transparent;
 }
+/* Единая типографика для всех слайдов, кроме первого */
+.slide:not(.hero) {
+  font-family: "SB Sans Display Regular", "SB Sans Display", Inter, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.slide:not(.hero) h1,
+.slide:not(.hero) h2,
+.slide:not(.hero) h3,
+.slide:not(.hero) .tracks-title-pill,
+.slide:not(.hero) .tracks-flag-label,
+.slide:not(.hero) .tracks-sign-text,
+.slide:not(.hero) .admission-board-text,
+.slide:not(.hero) .admission-button,
+.slide:not(.hero) .label-pill,
+.slide:not(.hero) .button,
+.slide:not(.hero) label,
+.slide:not(.hero) strong,
+.slide:not(.hero) b {
+  font-family: "SB Sans Display Semibold", "SB Sans Display", Inter, Arial, sans-serif;
+  font-weight: 600;
+}
+
 
 /* ============================================
    HERO / ПЕРВАЯ СТРАНИЦА
@@ -1576,7 +1599,8 @@ a {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-width: 320px;
+  width: 460px;
+  max-width: min(460px, 85vw);
 }
 
 /* Левый флаг — ниже, чтобы не наезжал на заголовок */
@@ -1597,9 +1621,9 @@ a {
 }
 
 .tracks-flag-label {
-  width: 300px;
-min-height: 52px;
-padding: 0 20px;
+  width: min(300px, 100%);
+  min-height: 56px;
+  padding: 0 20px;
 
   margin-top: -8px;
   margin-bottom: 6px;
@@ -1620,8 +1644,8 @@ padding: 0 20px;
 
 .tracks-flag-description{
 
-    width:460px;
-    max-width:85vw;
+     width:100%;
+    max-width:100%;
 
     padding:20px 24px;
 
@@ -1635,7 +1659,9 @@ padding: 0 20px;
 
     line-height:1.5;
 
-    text-align:left;
+    text-align:justify;
+    text-justify:inter-word;
+    hyphens:auto;
 
     box-sizing:border-box;
 
@@ -2477,28 +2503,20 @@ padding: 0 20px;
   top: 15px;
   right: 90px;
   width: min(550px, 42vw);
-  padding: 22px 36px;
-  border-radius: 999px;
-  background: transparent;
-  backdrop-filter: blur(8px);
-  text-align: center;
+  padding: 20px 24px;
+  border: 3px solid #7b57ff;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
   z-index: 15;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 .form-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 2px; /* толщина границы */
-  background: var(--gradient);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: -1;
+  content: none;
 }
 
 .form-banner-title {
@@ -2510,8 +2528,9 @@ padding: 0 20px;
 
 .form-banner p {
   margin: 0;
-  color: #666;
-  font-size: 15px;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* ==========================================
@@ -2553,8 +2572,8 @@ padding: 0 20px;
 
 /* подпись - прижата к флагу */
 .admission-flag-left .tracks-flag-label {
-  width: 200px;
-  height: 46px;
+   width: min(300px, 100%);
+  min-height: 56px;
   margin-top: -8px;
   margin-bottom: 6px;
   display: flex;
@@ -2570,20 +2589,22 @@ padding: 0 20px;
 
 /* рамка с текстом */
 .admission-flag-left .tracks-flag-description {
-  width: 460px;
-  max-width: 85vw;
+  width: 100%;
+  max-width: 100%;
   padding: 20px 24px;
   border: 3px solid #7b57ff;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.92);
   font-size: 14px;
   line-height: 1.5;
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
   box-sizing: border-box;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(4px);
   margin-top: -2px;
-  margin-left: -90px; /* ➕ сдвинули блок с текстом влево */
+   margin-left: 0;
 }
 
 /* ==========================================
@@ -2603,8 +2624,8 @@ padding: 0 20px;
 
 /* подпись */
 .admission-flag-right .tracks-flag-label {
-  width: 300px;
-  height: 56px;
+  width: min(300px, 100%);
+  min-height: 56px;
   margin-top: 0px;
   margin-bottom: 8px;
   display: flex;
@@ -3090,9 +3111,12 @@ padding: 0 20px;
 /* описание */
 
 .faq-slide .tracks-flag-left .tracks-flag-description {
-  max-width: 390px;
-
-  border: 2px solid #6b3ff5;
+  width: 100%;
+  max-width: 100%;
+  border: 3px solid #7b57ff;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 
 /* ---------- Правая часть ---------- */
