@@ -1806,7 +1806,7 @@ a {
     position: absolute;
     left: 38%;
     bottom: 50px;
-    width: 140px;
+    width: 125px;
     z-index: 12;
     transition: 0.35s;
     filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
@@ -2042,7 +2042,39 @@ a {
         margin: 50px auto 0;
     }
 
+
+    .tracks-duck,
+    .tracks-turtle {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+
+
+    .tracks-animals-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+        gap: -5px !important;
+        margin: 10px auto !important;
+        width: 100% !important;
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
     .tracks-duck {
+        width: 70px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .tracks-turtle {
+        width: 55px !important;
+        flex-shrink: 0 !important;
+        margin-left: -15px !important; /* Подтягиваем к утке */
+    }  .tracks-duck {
         position: relative;
         right: auto;
         bottom: auto;
@@ -3563,14 +3595,7 @@ a {
         max-width: 100% !important;
     }
 
-    .tracks-duck {
-        width: 110px !important;
-    }
 
-    .tracks-turtle {
-        width: 95px !important;
-        left: calc(37% + 115px) !important;
-    }
 
     .tracks-river-source-bush {
         --bush-right: 8% !important;
@@ -3817,16 +3842,16 @@ a {
     .tracks-duck {
         width: 70px !important;
         position: relative !important;
-        left: auto !important;
-        bottom: auto !important;
+        left: 38% !important;
+        top: 48%!important;
         margin: 10px auto !important;
     }
 
     .tracks-turtle {
         width: 60px !important;
         position: relative !important;
-        left: auto !important;
-        bottom: auto !important;
+        left: 38% !important;
+        top: 38%!important;
         margin: 10px auto !important;
     }
 
@@ -4390,7 +4415,7 @@ a {
 
     /* Левый текст — по центру */
     .tracks-sign-text-left {
-        top: 12% !important;
+        top: 14% !important;
         left: 50% !important;
         right: auto !important;
         transform: translateX(-50%) !important;
@@ -4546,3 +4571,7 @@ a {
         border-radius: 40px !important;
     }
 }
+
+
+
+
