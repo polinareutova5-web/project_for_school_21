@@ -934,13 +934,12 @@ a {
 
 .river-highlight {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.45);
-  stroke-width: 3;
+   stroke: rgba(255, 255, 255, 0.48);
+  stroke-width: 9;
   stroke-linecap: round;
-
-  stroke-dasharray: 18 120;
-
-  animation: riverFlow 700s linear infinite;
+stroke-dasharray: 34 180;
+  animation: riverFlow 26s linear infinite;
+  filter: url(#blur);
 }
 
 .rivers-overlay {
@@ -958,8 +957,6 @@ a {
 
 .river-path {
   fill: none;
-  stroke-width: 80;
-  stroke-linecap: round;
   stroke-width: 80;
   stroke-linecap: round;
   filter: url(#glow);
@@ -985,7 +982,7 @@ a {
 
 @keyframes riverFlow {
   from {
-    stroke-dashoffset: 138;
+  stroke-dashoffset: 214;
   }
 
   to {
@@ -1810,9 +1807,21 @@ a {
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
 }
 
-.tracks-duck:hover {
+.tracks-duck:hover,
+.tracks-turtle:hover {
   transform: translateY(-8px) rotate(-4deg);
 }
+
+.tracks-turtle {
+  position: absolute;
+  left: calc(37% + 230px);
+  bottom: 50px;
+  width: 125px;
+  z-index: 12;
+  transition: 0.35s;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+}
+
 
 /* ---------- Модальное окно ---------- */
 
@@ -3209,4 +3218,10 @@ a {
 
 .media-content.active {
   display: block !important;
+}
+
+/* Точная настройка длинной подписи на FAQ-слайде */
+.faq-slide .tracks-flag-left .tracks-flag-label {
+  width: min(390px, 100%);
+  white-space: nowrap;
 }
