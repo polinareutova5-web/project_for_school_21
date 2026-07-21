@@ -1827,6 +1827,72 @@ a {
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
 }
 
+/* Кусты у истока реки на 2 слайде.
+   Положение регулируется здесь:
+   --bush-top — отступ сверху, --bush-right — отступ справа. */
+.tracks-river-bushes {
+  --bush-top: 22%;
+  --bush-right: 5%;
+
+  position: absolute;
+  top: var(--bush-top);
+  right: var(--bush-right);
+  width: 260px;
+  height: 150px;
+  pointer-events: none;
+  z-index: 7;
+}
+
+.tracks-river-bush {
+  position: absolute;
+  display: block;
+  width: 130px;
+  height: 80px;
+  border-radius: 55% 55% 42% 42%;
+  background:
+    radial-gradient(circle at 22% 42%, #4fae3c 0 24px, transparent 25px),
+    radial-gradient(circle at 48% 28%, #6bc44d 0 34px, transparent 35px),
+    radial-gradient(circle at 76% 45%, #3f9c34 0 28px, transparent 29px),
+    linear-gradient(180deg, #5fba45, #347d2e);
+  filter: drop-shadow(0 10px 14px rgba(31, 31, 31, 0.14));
+}
+
+.tracks-river-bush::before,
+.tracks-river-bush::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: #66c14a;
+}
+
+.tracks-river-bush::before {
+  left: 24px;
+  top: -12px;
+  width: 54px;
+  height: 54px;
+}
+
+.tracks-river-bush::after {
+  right: 18px;
+  top: -6px;
+  width: 46px;
+  height: 46px;
+  background: #459e36;
+}
+
+.tracks-river-bush-one {
+  right: 84px;
+  top: 48px;
+  transform: rotate(-8deg);
+}
+
+.tracks-river-bush-two {
+  right: 8px;
+  top: 20px;
+  transform: rotate(10deg) scale(0.92);
+}
+
+
 /* ---------- Модальное окно ---------- */
 
 .tracks-popup {
