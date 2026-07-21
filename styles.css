@@ -1597,8 +1597,9 @@ a {
 }
 
 .tracks-flag-label {
-  width: 200px;
-  height: 46px;
+  width: 300px;
+min-height: 52px;
+padding: 0 20px;
 
   margin-top: -8px;
   margin-bottom: 6px;
