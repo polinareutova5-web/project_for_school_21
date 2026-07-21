@@ -60,7 +60,7 @@ form?.addEventListener("submit", (event) => {
 
     // ЗАМЕНИТЕ НА ВАШИ РЕАЛЬНЫЕ ДАННЫЕ ИЗ КАБИНЕТА EMAILJS:
     const serviceID = "service_e5d3pma";     // например, "service_gmail"
-    const templateID = "template_Irag7cr";   // например, "template_abc123"
+    const templateID = "template_lrag7cr";   // например, "template_abc123"
 
     emailjs.sendForm(serviceID, templateID, form)
         .then(() => {
