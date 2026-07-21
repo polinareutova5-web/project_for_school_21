@@ -131,13 +131,6 @@ function buildRiverNetwork({
     path.setAttribute("d", createRiver(a, b));
 
     svgElement.prepend(path);
-    const highlight = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    highlight.classList.add("river-highlight", "river-generated");
-    highlight.setAttribute("d", path.getAttribute("d"));
-    svgElement.appendChild(highlight);
-
-
-    
     const effects = document.getElementById("effects");
 
     const length = path.getTotalLength();
