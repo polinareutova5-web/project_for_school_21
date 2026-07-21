@@ -46,20 +46,44 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
 });
 
-// Форма заявки
+// Форма заявки с интеграцией EmailJS
 const form = document.querySelector("#applicationForm");
 const formStatus = document.querySelector("#formStatus");
 
 form?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const data = Object.fromEntries(new FormData(form).entries());
-  localStorage.setItem("school21-application", JSON.stringify(data));
-  form.reset();
-  if (formStatus)
-    formStatus.textContent =
-      "Анкета сохранена. Для реальной отправки подключите обработчик формы.";
+    event.preventDefault();
+    
+    if (formStatus) {
+        formStatus.textContent = "Отправка заявки...";
+        formStatus.style.color = "#666";
+    }
+
+    // ЗАМЕНИТЕ НА ВАШИ РЕАЛЬНЫЕ ДАННЫЕ ИЗ КАБИНЕТА EMAILJS:
+    const serviceID = "service_e5d3pma";     // например, "service_gmail"
+    const templateID = "template_Irag7cr";   // например, "template_abc123"
+
+    emailjs.sendForm(serviceID, templateID, form)
+        .then(() => {
+            if (formStatus) {
+                formStatus.textContent = "✅ Заявка успешно отправлена! Мы свяжемся с вами.";
+                formStatus.style.color = "green";
+            }
+            form.reset();
+            localStorage.removeItem("school21-application");
+        })
+        .catch((error) => {
+            if (formStatus) {
+                formStatus.textContent = "❌ Ошибка отправки. Пожалуйста, попробуйте позже.";
+                formStatus.style.color = "red";
+            }
+            console.error("EmailJS Error:", error);
+        });
 });
 
+// Проверка сохраненной заявки при загрузке страницы
+if (localStorage.getItem("school21-application") && formStatus) {
+    formStatus.textContent = "У вас есть сохранённая заявка. Пожалуйста, завершите отправку.";
+}
 if (localStorage.getItem("school21-application") && formStatus) {
   formStatus.textContent = "У вас есть сохранённая заявка";
 }
