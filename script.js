@@ -131,7 +131,13 @@ function buildRiverNetwork({
     path.setAttribute("d", createRiver(a, b));
 
     svgElement.prepend(path);
+    const highlight = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    highlight.classList.add("river-highlight", "river-generated");
+    highlight.setAttribute("d", path.getAttribute("d"));
+    svgElement.appendChild(highlight);
 
+
+    
     const effects = document.getElementById("effects");
 
     const length = path.getTotalLength();
@@ -199,7 +205,7 @@ function buildRiverNetwork({
 
       effects.appendChild(e);
 
-      const duration = 5000;
+      const duration = 9000;
 
       const start = performance.now();
 
@@ -269,16 +275,16 @@ function buildRiverNetwork({
           },
         ],
         {
-          duration: 3000,
+        duration: 5200,
         },
       );
 
-      setTimeout(() => c.remove(), 3000);
+       setTimeout(() => c.remove(), 5200);
     }
 
-    setInterval(ripple, 900);
-    setInterval(sparkle, 700);
-    setInterval(bubble, 1000);
+   setInterval(ripple, 1600);
+    setInterval(sparkle, 1800);
+    setInterval(bubble, 1900);
   }
 
   //------------------------------------------
