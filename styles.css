@@ -1,841 +1,4822 @@
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РУДН × Школа 21 — Кампус будущего</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110794636', 'ym');
-
-        ym(110794636, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/110794636" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-</head>
-
-<body>
-<!-- Навигация -->
-<header class="nav">
-    <div class="brand-lockup">
-        <img src="https://i.imgur.com/2Ik1TS0.png" alt="РУДН × Школа 21" class="brand-icon">
-    </div>
-    <button class="hamburger" aria-label="Меню" onclick="toggleMenu()">☰</button>
-    <nav>
-        <a href="#tracks">Треки</a>
-        <a href="#admission">Как поступить</a>
-        <a href="#faq">FAQ</a>
-        <a href="#form">Регистрация</a>
-        <a href="#contacts">Контакты</a>
-        <a href="https://applicant.21-school.ru/auth">Личный кабинет</a>
-    </nav>
-    <a href="#form" class="nav-cta">Регистрация</a>
-</header>
-
-<!-- Реки (SVG overlay) -->
-<svg class="rivers-overlay" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-
-        <linearGradient id="riverGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-
-            <stop offset="0%" stop-color="#5fe6ff" />
-            <stop offset="50%" stop-color="#27b8ff" />
-            <stop offset="100%" stop-color="#39d8ff" />
-
-            <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="0 .4" dur="8s"
-                              repeatCount="indefinite" />
-
-        </linearGradient>
-
-        <linearGradient id="riverGradientPurple" x1="0%" y1="0%" x2="0%" y2="100%">
-
-            <stop offset="0%" stop-color="#d8b2f6" />
-            <stop offset="50%" stop-color="#d0a6f4" />
-            <stop offset="100%" stop-color="#c89bf2" />
-
-            <animateTransform attributeName="gradientTransform" type="translate" values="0 0;0 .25;0 0" dur="10s"
-                              repeatCount="indefinite" />
-
-        </linearGradient>
-
-        <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="6" />
-        </filter>
-
-        <filter id="blur">
-            <feGaussianBlur stdDeviation="1" />
-        </filter>
-
-    </defs>
-
-    <g id="effects"></g>
-</svg>
-
-<!-- Слайд 1: Hero -->
-<section class="slide hero" id="hero">
-    <img src="https://i.imgur.com/Zu8TAyb.png" alt="logo" class="hero-rotating-image">
-    <div class="hero-content">
-        <h1 class="hero-main-title">Центр прикладного<br>программирования</h1>
-        <h2 class="hero-gradient-title">РУДН × Школа 21</h2>
-        <p class="hero-description">Научись создавать будущее с помощью ИИ</p>
-        <p>Совместный кампус РУДН и «Школы 21». Синергия науки, индустрии и практики.</p>
-    </div>
-    <div class="hero-bottom-row">
-        <div class="hero-bottom-actions">
-            <a href="#form" class="hero-apply-button">Подать заявку</a>
-            <a href="https://applicant.21-school.ru/auth" class="hero-cabinet-button">Личный кабинет</a>
-        </div>
-    </div>
-    <div class="hero-turtle-pond">
-        <div class="water-surface"></div>
-        <div class="pond-ripple pond-ripple-one"></div>
-        <div class="pond-ripple pond-ripple-two"></div>
-        <div class="pond-ripple pond-ripple-three"></div>
-        <img src="https://i.imgur.com/Iehgato.png" alt="" class="pond-turtle pond-turtle-one">
-        <img src="https://i.imgur.com/GvuuYgf.png" alt="" class="pond-turtle pond-turtle-two">
-        <img src="https://i.imgur.com/4FgtZXe.png" alt="" class="pond-turtle pond-turtle-three">
-        <div class="pond-reeds pond-reeds-left"><i></i><i></i><i></i></div>
-        <div class="pond-reeds pond-reeds-right"><i></i><i></i><i></i></div>
-    </div>
-</section>
+:root {
+    --white: #fff;
+    --black: #1f1f1f;
+    --purple: #d0a6f4;
+    --teal: #2fe4d3;
+    --slide-bg: linear-gradient(
+            155deg,
+            #d8f3ea 0%,
+            #e2f6ef 38%,
+            #edf9f5 72%,
+            #fff 100%
+    );
+    --gradient: linear-gradient(
+            110deg,
+            #6b3ff5,
+            #2476ff 30%,
+            #20c7e8 56%,
+            #20c6a6 76%,
+            #44eb99
+    );
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--black);
+    font-family: Inter, Arial, sans-serif;
+    background: #e2f6ef;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Все слайды одинакового размера и фона */
+.slide {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 130px clamp(20px, 5vw, 90px) 70px;
+
+    background:
+            radial-gradient(
+                    circle at 12% 16%,
+                    rgba(208, 166, 244, 0.28),
+                    transparent 28%
+            ),
+            var(--slide-bg);
+}
+
+/* Навигация */
+.nav {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    width: min(1640px, calc(100% - 48px));
+    gap: 14px;
+}
+
+.brand-lockup {
+    width: clamp(150px, 15vw, 255px);
+    height: clamp(76px, 7.8vw, 123px);
+    display: flex;
+}
+
+.brand-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav nav,
+.nav-cta {
+    min-height: 54px;
+    background: #1f1f1f;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: clamp(12px, 0.86vw, 16px);
+    white-space: nowrap;
+}
+
+.nav nav {
+    gap: clamp(8px, 0.75vw, 14px);
+    padding: 0 clamp(16px, 1.4vw, 28px);
+    clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%);
+}
+
+.nav nav a:hover {
+    color: #00ffaf;
+    text-shadow: 0 0 14px rgba(0, 255, 175, 0.85);
+}
+
+.nav-cta {
+    padding: 0 28px;
+    clip-path: polygon(
+            0 0,
+            calc(100% - 18px) 0,
+            100% 50%,
+            calc(100% - 18px) 100%,
+            0 100%
+    );
+}
+
+/* Блик на кнопке при наведении */
+.nav-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.5),
+            transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.nav-cta:hover::before {
+    left: 100%;
+}
+
+.nav-cta:hover {
+    color: var(--white) !important;
+    transform: scale(0.97);
+    box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-weight: 900;
+}
+.gradient-text {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+/* Единая типографика для всех слайдов, кроме первого */
+.slide:not(.hero) {
+    font-family: "SB Sans Display Regular", "SB Sans Display", Inter, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.slide:not(.hero) h1,
+.slide:not(.hero) h2,
+.slide:not(.hero) h3,
+.slide:not(.hero) .tracks-title-pill,
+.slide:not(.hero) .tracks-flag-label,
+.slide:not(.hero) .tracks-sign-text,
+.slide:not(.hero) .admission-board-text,
+.slide:not(.hero) .admission-button,
+.slide:not(.hero) .label-pill,
+.slide:not(.hero) .button,
+.slide:not(.hero) label,
+.slide:not(.hero) strong,
+.slide:not(.hero) b {
+    font-family: "SB Sans Display Semibold", "SB Sans Display", Inter, Arial, sans-serif;
+    font-weight: 600;
+}
+
+
+
+/* ============================================
+   HERO / ПЕРВАЯ СТРАНИЦА
+   ⚠️ ЗДЕСЬ РЕДАКТИРУЕТСЯ ГЛАВНАЯ СЕКЦИЯ САЙТА
+   ============================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 150px 24px 86px;
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-content {
+    position: relative;
+    width: min(1320px, 100%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(clamp(-110px, -8vh, -56px));
+}
+
+/* Заголовки первой страницы */
+.hero-main-title {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    color: #1f1f1f;
+
+    font-size: clamp(60px, 6vw, 152px);
+
+    font-weight: 950;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.015em;
+
+    text-shadow:
+            1px 1px 0 rgba(255, 255, 255, 0.7),
+            2px 2px 0 rgba(255, 255, 255, 0.55),
+            0 6px 12px rgba(0, 0, 0, 0.1),
+            0 18px 36px rgba(0, 0, 0, 0.12);
+}
+.hero-gradient-title {
+    position: relative;
+    display: inline-block;
+    margin: 10px auto 0;
+    padding: 0 0.08em;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: clamp(50px, 6.9vw, 102px);
+    font-weight: 950;
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    text-shadow:
+            0 2px 0 rgba(255, 255, 255, 0.24),
+            0 10px 20px rgba(31, 31, 31, 0.12),
+            0 22px 42px rgba(32, 198, 166, 0.18);
+    filter: drop-shadow(0 8px 10px rgba(31, 31, 31, 0.08));
+    overflow: visible;
+}
+
+.hero-title {
+    font-size: clamp(48px, 10vw, 132px);
+    font-weight: 950;
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    margin: 0 0 24px;
+    color: var(--black);
+}
+
+.hero-subtitle {
+    font-size: clamp(32px, 6vw, 72px);
+    font-weight: 950;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 28px;
+    color: var(--black);
+}
+
+.hero-description {
+    margin: 0 0 18px;
+    text-align: center;
+    max-width: none;
+
+    font-size: clamp(22px, 1.8vw, 32px);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero-bottom-row {
+    position: absolute;
+    left: clamp(24px, 6vw, 112px);
+    right: clamp(24px, 34vw, 540px);
+    bottom: clamp(12px, 3vw, 46px);
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(12px, 1.3vw, 22px);
+}
+.hero-bottom-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-campus-pill {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--black);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--black);
+    padding: 12px 26px;
+    text-align: center;
+    font-size: clamp(13px, 0.92vw, 16px);
+    font-weight: 800;
+    line-height: 1.18;
+}
+
+.hero-bottom-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+}
+
+.hero-apply-button,
+.hero-cabinet-button {
+    min-height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0 28px;
+    font-size: clamp(14px, 1vw, 18px);
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.hero-apply-button {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    background: var(--gradient);
+    color: var(--white);
+    border: 2px solid transparent;
+    background:
+            linear-gradient(
+                    110deg,
+                    #6b3ff5 0%,
+                    #2476ff 30%,
+                    #20c7e8 56%,
+                    #20c6a6 76%,
+                    #44eb99 100%
+            )
+            padding-box,
+            linear-gradient(
+                    110deg,
+                    #6b3ff5 0%,
+                    #2476ff 30%,
+                    #20c7e8 56%,
+                    #20c6a6 76%,
+                    #44eb99 100%
+            )
+            border-box;
+    box-shadow:
+            0 10px 28px rgba(32, 198, 166, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.hero-apply-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+            100deg,
+            transparent,
+            rgba(255, 255, 255, 0.72),
+            transparent
+    );
+    transform: skewX(-18deg);
+    transition: left 0.55s ease;
+}
+
+.hero-apply-button:hover::before {
+    left: 130%;
+}
+
+.hero-apply-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.32) 0%,
+            transparent 48%,
+            rgba(0, 0, 0, 0.1) 100%
+    );
+    opacity: 0.62;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.hero-apply-button:hover::after {
+    opacity: 1;
+}
+.hero-cabinet-button {
+    border: 2px solid var(--black);
+    background: transparent;
+    color: var(--black);
+    transition:
+            border-color 0.25s ease,
+            box-shadow 0.25s ease,
+            color 0.25s ease;
+}
+
+.hero-cabinet-button:hover {
+    border-color: #00ffaf;
+    box-shadow:
+            0 0 0 4px rgba(0, 255, 175, 0.14),
+            0 0 22px rgba(0, 255, 175, 0.38);
+    color: var(--black);
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-arrow {
+    font-size: clamp(24px, 3vw, 40px);
+    color: var(--black);
+    margin-right: 8px;
+}
+
+.hero-action-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border: 1px solid rgba(31, 31, 31, 0.14);
+    border-radius: 999px;
+    background: var(--white);
+    font-size: clamp(14px, 1.4vw, 18px);
+    color: var(--black);
+    max-width: 420px;
+}
+
+/* ============================================
+   КНОПКИ "ПОДАТЬ ЗАЯВКУ" И "ЛИЧНЫЙ КАБИНЕТ"
+   ⚠️ ГРАДИЕНТ + ЭФФЕКТ СТЕКЛА/ГЛЯНЦА
+   ============================================ */
+.button-apply,
+.button-cabinet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 16px 32px;
+    font-size: clamp(15px, 1.4vw, 20px);
+    font-weight: 900;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    box-shadow:
+            0 8px 24px rgba(123, 47, 247, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Блик скользит при наведении */
+.button-apply::before,
+.button-cabinet::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.6),
+            transparent
+    );
+    transition: left 0.6s ease;
+}
+
+/* Верхний слой глянца */
+.button-apply::after,
+.button-cabinet::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.3) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.1) 100%
+    );
+    border-radius: 999px;
+    pointer-events: none;
+}
+
+.button-apply:hover::before,
+.button-cabinet:hover::before {
+    left: 100%;
+}
+
+.button-apply:hover,
+.button-cabinet:hover {
+    transform: scale(1.04);
+    box-shadow:
+            0 12px 32px rgba(123, 47, 247, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Кнопка "Личный кабинет" — серая версия */
+.button-cabinet {
+    background: rgba(31, 31, 31, 0.12);
+    color: var(--black);
+    box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.button-cabinet::after {
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.5) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+.button-cabinet:hover {
+    box-shadow:
+            0 12px 32px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   ОЗЕРО С ЧЕРЕПАХАМИ — ПЕРВАЯ СТРАНИЦА
+   ============================================ */
+
+.hero-turtle-pond {
+    position: absolute;
+    right: -6vw;
+    bottom: 0;
+    z-index: 10;
+
+    /* уменьшили озеро */
+    width: clamp(620px, 48vw, 860px);
+    height: clamp(340px, 36vw, 560px);
+
+    overflow: hidden;
+    border: none;
+
+    border-radius: 58% 0 0 0 / 18% 0 0 0;
+
+    clip-path: polygon(
+            100% 100%,
+            100% 0,
+            74% 0,
+            67% 1%,
+            60% 3%,
+            54% 6%,
+            48% 10%,
+            42% 15%,
+            37% 22%,
+            31% 30%,
+            26% 39%,
+            21% 49%,
+            17% 60%,
+            13% 72%,
+            10% 84%,
+            8% 100%
+    );
+
+    background:
+            radial-gradient(
+                    circle at 15% 18%,
+                    rgba(255, 255, 255, 0.56) 0 6%,
+                    transparent 7%
+            ),
+            radial-gradient(
+                    circle at 86% 18%,
+                    rgba(255, 255, 255, 0.28) 0 7%,
+                    transparent 8%
+            ),
+            radial-gradient(
+                    circle at 70% 60%,
+                    rgba(255, 255, 255, 0.18) 0 8%,
+                    transparent 9%
+            ),
+            linear-gradient(
+                    140deg,
+                    rgba(113, 236, 255, 0.88) 0%,
+                    rgba(72, 214, 236, 0.82) 28%,
+                    rgba(44, 196, 223, 0.72) 58%,
+                    rgba(31, 180, 195, 0.66) 78%,
+                    rgba(33, 170, 175, 0.6) 100%
+            );
+
+    box-shadow:
+            inset 0 0 120px rgba(255, 255, 255, 0.2),
+            inset 0 -40px 70px rgba(0, 120, 160, 0.08),
+            0 30px 90px rgba(27, 170, 184, 0.18);
+
+    transition: transform 0.45s ease;
+}
+
+.hero-turtle-pond:hover {
+    transform: scale(1.015);
+}
+
+.hero-turtle-pond::before,
+.hero-turtle-pond::after {
+    content: "";
+    position: absolute;
+    left: -18%;
+    top: 4%;
+    width: 145%;
+    height: 105%;
+
+    background: repeating-linear-gradient(
+            102deg,
+            transparent 0 38px,
+            rgba(255, 255, 255, 0.18) 40px 43px,
+            transparent 44px 82px
+    );
+
+    animation: pond-current 18s linear infinite;
+    opacity: 0.55;
+    filter: blur(0.8px);
+}
+
+.hero-turtle-pond::after {
+    left: -10%;
+    top: 12%;
+    width: 135%;
+    opacity: 0.28;
+    transform: rotate(-6deg);
+    animation-duration: 26s;
+}
+
+/* ============================================
+   ЧЕРЕПАШКИ
+   ============================================ */
+.pond-turtle {
+    position: absolute;
+    z-index: 5;
+    /* немного увеличили */
+    width: clamp(85px, 8vw, 110px);
+    height: clamp(85px, 8vw, 110px);
+    object-fit: contain;
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.16));
+    animation: turtle-float 5.2s ease-in-out infinite;
+    background: none;
+}
+/* левая — чуть правее */
+
+.pond-turtle-one {
+    left: 22%;
+    top: 65%;
+}
+
+/* правая — левее примерно на полторы черепахи */
+
+.pond-turtle-two {
+    right: 20%;
+    top: 31%;
+
+    animation-delay: 0.9s;
+    transform: scaleX(-1);
+}
+
+/* нижняя — вернули в центр озера */
+
+.pond-turtle-three {
+    left: 56%;
+    bottom: 22%;
+
+    width: clamp(72px, 5vw, 92px);
+    height: clamp(72px, 5vw, 92px);
+
+    animation-delay: 1.8s;
+}
+/* ============================================
+   EMOJI FALLBACK
+   ============================================ */
+
+.pond-turtle-emoji {
+    position: absolute;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(58px, 5vw, 82px);
+
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.15));
+
+    animation: turtle-float 5.2s ease-in-out infinite;
+}
+
+.pond-turtle-one + .pond-turtle-emoji {
+    left: 4%;
+    top: 70%;
+}
+
+.pond-turtle-two + .pond-turtle-emoji {
+    right: 36%;
+    top: 31%;
+    animation-delay: 0.9s;
+}
+
+.pond-turtle-three + .pond-turtle-emoji {
+    left: 57%;
+    bottom: 24%;
+    animation-delay: 1.8s;
+}
+
+/* ============================================
+   КАМЫШ
+   ============================================ */
+
+.pond-reeds {
+    position: absolute;
+    z-index: 6;
+    bottom: 3%;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+
+    pointer-events: none;
+}
+
+.pond-reeds-left {
+    left: 12%;
+    bottom: 5%;
+}
+
+.pond-reeds-right {
+    right: 18%;
+    bottom: 6%;
+}
+
+.pond-reeds i {
+    display: block;
+    width: 5px;
+    height: clamp(64px, 6vw, 102px);
+
+    border-radius: 999px;
+
+    background: linear-gradient(180deg, #63bb78, #2d8552);
+
+    transform-origin: bottom center;
+    animation: reeds-sway 5.8s ease-in-out infinite;
+}
+
+.pond-reeds i:nth-child(2) {
+    height: clamp(82px, 7vw, 122px);
+}
+
+.pond-reeds i:nth-child(3) {
+    height: clamp(58px, 5vw, 90px);
+}
+
+.pond-reeds i:nth-child(4) {
+    height: clamp(74px, 6vw, 110px);
+}
+/* ============================================
+   РЯБЬ НА ВОДЕ
+   ============================================ */
+
+.pond-ripple {
+    position: absolute;
+
+    z-index: 4;
+
+    width: clamp(82px, 6vw, 118px);
+    aspect-ratio: 1;
+
+    border: 2px solid rgba(255, 255, 255, 0.42);
+    border-radius: 50%;
+
+    box-shadow:
+            0 0 16px rgba(255, 255, 255, 0.16),
+            inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+    animation: ripple-natural 5.5s ease-out infinite;
+}
+
+/* Под левую черепаху */
+
+.pond-ripple-one {
+    left: 22%;
+    top: 62%;
+}
+
+/* Под правую */
+
+.pond-ripple-two {
+    right: 16%;
+    top: 36%;
+
+    animation-delay: 1.6s;
+}
+
+/* Под нижнюю */
+
+.pond-ripple-three {
+    left: 62%;
+    bottom: 16%;
+
+    animation-delay: 3.2s;
+}
+
+/* ============================================
+   Куб
+   ============================================ */
+
+.hero-rotating-image {
+    position: absolute;
+    width: 370px;
+
+    top: 175px;
+    left: 0px;
+
+    animation: spin 4s ease-in-out infinite;
+}
+
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+
+@keyframes ripple-natural {
+    0% {
+        opacity: 0.62;
+
+        transform: scale(0.18);
+
+        border-width: 3px;
+    }
+
+    35% {
+        opacity: 0.48;
+    }
+
+    70% {
+        opacity: 0.22;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform: scale(2.9);
+
+        border-width: 1px;
+    }
+}
+
+@keyframes turtle-float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    18% {
+        transform: translate(5px, -3px) rotate(0.6deg);
+    }
+
+    35% {
+        transform: translate(9px, -8px) rotate(1.2deg);
+    }
+
+    52% {
+        transform: translate(13px, -10px) rotate(2deg);
+    }
+
+    70% {
+        transform: translate(7px, -6px) rotate(0.8deg);
+    }
+
+    85% {
+        transform: translate(3px, -2px) rotate(-0.5deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+@keyframes pond-current {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(220px);
+    }
+}
+
+@keyframes reeds-sway {
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    25% {
+        transform: rotate(1deg);
+    }
+
+    50% {
+        transform: rotate(7deg);
+    }
+
+    75% {
+        transform: rotate(2deg);
+    }
+
+    100% {
+        transform: rotate(-5deg);
+    }
+}
+
+/* Реки */
+
+.rivers-overlay {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    overflow: visible;
+
+    z-index: 1;
+}
+
+.river-path {
+    fill: none;
+    stroke-width: 80;
+    stroke-linecap: round;
+    filter: url(#glow);
+}
+
+@keyframes flow {
+    from {
+        stroke-dashoffset: 140;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.river-teal {
+    stroke: url(#riverGradient);
+}
+
+.river-purple {
+    stroke: url(#riverGradientPurple);
+}
+
+@keyframes riverFlow {
+    from {
+        stroke-dashoffset: 214;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.sparkle {
+    fill: white;
+
+    opacity: 0.75;
+
+    filter: url(#blur);
+}
+
+.ripple {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    opacity: 0.35;
+}
+
+.bubble {
+    fill: white;
+    opacity: 0.45;
+}
+
+/* Остальные стили */
+.reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.section-title {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    font-size: clamp(38px, 5vw, 76px);
+    margin: 0;
+    font-weight: 950;
+}
+
+.flag {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(20px, 2vw, 34px);
+    font-weight: 900;
+}
+
+.flag span {
+    width: 10px;
+    height: 86px;
+    background: #6b4a2b;
+    display: block;
+    position: relative;
+}
+
+.flag span:before {
+    content: " ";
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    border: 20px solid transparent;
+    border-left: 46px solid #ff5c7a;
+}
+
+.flag-left {
+    left: 12%;
+    top: 28%;
+}
+
+.flag-right {
+    right: 29%;
+    top: 33%;
+}
+
+.signpost {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    z-index: 5;
+    transform: translateX(-50%);
+}
+
+.post {
+    width: 26px;
+    height: 170px;
+    background: #7b4b22;
+    margin: auto;
+}
+
+.wood-arrow,
+.duck-helper {
+    cursor: pointer;
+    border: 0;
+}
+
+.wood-arrow {
+    position: absolute;
+    top: 20px;
+    padding: 16px 28px;
+    background: #9b622d;
+    color: #fff;
+    font-weight: 950;
+    font-size: 20px;
+    box-shadow: inset 0 -5px rgba(0, 0, 0, 0.16);
+}
+
+.wood-arrow.left {
+    right: 10px;
+    clip-path: polygon(0 50%, 18px 0, 100% 0, 100% 100%, 18px 100%);
+}
+
+.wood-arrow.right {
+    left: 10px;
+    clip-path: polygon(
+            0 0,
+            calc(100% - 18px) 0,
+            100% 50%,
+            calc(100% - 18px) 100%,
+            0 100%
+    );
+}
+
+.duck-helper {
+    position: absolute;
+    right: 12%;
+    bottom: 9%;
+    z-index: 4;
+    background: transparent;
+    font-size: 72px;
+}
+
+.duck-helper small {
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.turtle-board {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 38%;
+    transform: translateX(-50%);
+    background: #9b622d;
+    color: #fff;
+    border: 8px solid #6b3f1e;
+    border-radius: 16px;
+    padding: 24px 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.turtle-board span {
+    font-size: 54px;
+}
+
+.intensive {
+    right: 13%;
+    top: 24%;
+}
+
+.outline-cta {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    border: 3px solid #9b5cf5;
+    color: #6b2ccf;
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    padding: 18px 30px;
+    font-weight: 950;
+}
+
+.outline-cta:hover {
+    background: #9b5cf5;
+    color: #fff;
+    box-shadow: 0 0 24px rgba(155, 92, 245, 0.55);
+}
+
+.campus-turtle {
+    position: absolute;
+    right: 9%;
+    top: 18%;
+    z-index: 5;
+    font-size: 70px;
+    text-align: center;
+}
+
+.campus-turtle p {
+    position: absolute;
+    right: 0;
+    top: 120px;
+    width: 300px;
+    opacity: 0;
+    pointer-events: none;
+    background: #fff;
+    border-radius: 18px;
+    padding: 18px;
+    font-size: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14);
+}
+
+.campus-turtle:hover p,
+.campus-turtle:focus p {
+    opacity: 1;
+}
+
+.bridge {
+    position: absolute;
+    right: 27%;
+    bottom: 24%;
+    z-index: 3;
+    width: 180px;
+    height: 70px;
+    border-top: 20px solid #8a572c;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-10deg);
+}
+
+.duck-flag {
+    position: absolute;
+    left: 27%;
+    bottom: 20%;
+    z-index: 5;
+    font-size: 58px;
+    text-align: center;
+    font-weight: 900;
+}
+
+.duck-flag span {
+    display: block;
+    font-size: 34px;
+}
+
+.duck-flag b {
+    display: block;
+    font-size: 18px;
+}
+
+.faq-grid {
+    position: relative;
+    z-index: 4;
+    margin: 150px auto 0;
+    max-width: 880px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.faq-grid article,
+.reviews article,
+.form-content,
+.map-card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(31, 31, 31, 0.08);
+    border-radius: 26px;
+    padding: 24px;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.lake-form-slide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.register-lake {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50vw;
+    height: 46vh;
+    border-radius: 0 70% 0 0;
+    background: linear-gradient(140deg, #71ecff, #2fc4df 58%, #21aaaf);
+    box-shadow: inset 0 0 90px rgba(255, 255, 255, 0.25);
+    z-index: 1;
+}
+
+.register-lake span {
+    position: relative;
+    z-index: 4;
+    font-size: 56px;
+    left: 28%;
+    top: 45%;
+    margin: 18px;
+}
+
+.form-content {
+    position: relative;
+    z-index: 5;
+    width: min(500px, 42vw);
+    margin-right: 4vw;
+}
+
+.label-pill {
+    display: inline-block;
+    border: 2px solid rgba(31, 31, 31, 0.2);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 900;
+}
+
+.application-form {
+    display: grid;
+    gap: 14px;
+}
+
+.application-form input {
+    width: 100%;
+    margin-top: 7px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+}
+
+.button {
+    border: 0;
+    border-radius: 999px;
+    padding: 16px 24px;
+    background: #1f1f1f;
+    color: #fff;
+    font-weight: 900;
+}
+
+.contacts-slide {
+    background:
+            radial-gradient(
+                    circle at 12% 16%,
+                    rgba(208, 166, 244, 0.28),
+                    transparent 28%
+            ),
+            var(--slide-bg);
+}
+
+.contacts-heading {
+    font-size: clamp(30px, 4vw, 64px);
+    max-width: 1180px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.map-card iframe {
+    width: 100%;
+    height: 460px;
+    border: 0;
+    border-radius: 20px;
+}
+
+.reviews {
+    display: grid;
+    gap: 16px;
+}
+
+.reviews article {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    column-gap: 18px;
+}
+
+.reviews img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    grid-row: span 2;
+}
+
+.reviews h3 {
+    margin: 0;
+}
+
+.reviews p {
+    margin: 4px 0 0;
+}
+
+.footer {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 28px clamp(20px, 5vw, 90px);
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer a {
+    margin: 0;
+}
+
+.footer-address {
+    margin: 18px 0 0;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 50;
+    display: none;
+    place-items: center;
+}
+
+.modal.open {
+    display: grid;
+}
+
+.modal > div {
+    width: min(560px, calc(100% - 32px));
+    background: #fff;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.modal-close {
+    float: right;
+    border: 0;
+    background: #1f1f1f;
+    color: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+}
+
+.to-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 20;
+    background: #1f1f1f;
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    50% {
+        translate: 8px -7px;
+        rotate: 2deg;
+    }
+}
+
+@keyframes current {
+    to {
+        transform: translateX(120px);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0.65;
+        transform: scale(0.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.4);
+    }
+}
+
+@keyframes sway {
+    50% {
+        transform: rotate(7deg);
+    }
+}
+
+@media (max-width: 1480px) {
+    .hero-rotating-image {
+        width: 250px;
+        top: 650px;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav {
+        grid-template-columns: 1fr;
+    }
+
+    .nav nav {
+        overflow: auto;
+        justify-content: flex-start;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    .slide {
+        padding-top: 170px;
+    }
+
+    .hero-bottom-row {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-turtle-pond {
+        opacity: 0.45;
+    }
+
+    .contacts-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-content {
+        width: 100%;
+        margin: 0;
+    }
+
+    .register-lake {
+        width: 80vw;
+        opacity: 0.45;
+    }
+
+    .reviews article {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+                     TRACKS
+====================================================== */
+
+.tracks-slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.tracks-flowers-full {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+/* ---------- Заголовок ---------- */
+
+.tracks-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    z-index: 20;
+}
+
+.tracks-title-pill {
+    padding: 18px 56px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 2px solid rgba(31, 31, 31, 0.14);
+    border-radius: 999px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    font-size: clamp(34px, 3vw, 56px);
+    font-weight: 900;
+    z-index: 10;
+}
+
+/* ---------- Флаги ---------- */
+
+.tracks-flag {
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    z-index: 5;
+}
+
+.tracks-flag img {
+    width: 192px;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.18));
+    flex-shrink: 0;
+}
+
+.tracks-flag-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 460px;
+    max-width: min(460px, 85vw);
+}
+
+/* Левый флаг — ниже, чтобы не наезжал на заголовок */
+.tracks-flag-left {
+    left: 24px;
+    top: 30%;
+}
+
+/* Правый флаг — ещё ниже, чтобы флаги не были на одной линии */
+.tracks-flag-right {
+    right: 24px;
+    top: 46%;
+    flex-direction: row-reverse;
+}
+
+.tracks-flag-right .tracks-flag-content {
+    align-items: flex-end;
+}
+
+.tracks-flag-label {
+    width: min(300px, 100%);
+    min-height: 56px;
+    padding: 0 20px;
+
+    margin-top: -8px;
+    margin-bottom: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 999px;
+    background: #fff;
+
+    font-size: 24px;
+    font-weight: 900;
+    color: #5f39d8;
+
+    box-shadow: 0 6px 16px rgba(0,0,0,.1);
+}
+
+.tracks-flag-description{
+
+    width:100%;
+    max-width:100%;
+
+    padding:20px 24px;
+
+    border:3px solid #7b57ff;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.92);
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    text-align:justify;
+    text-justify:inter-word;
+    hyphens:auto;
+
+    box-sizing:border-box;
+
+    backdrop-filter:blur(4px);
+
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
+
+    margin-top:-2px;
+}
+
+.tracks-flag:hover .tracks-flag-label {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Развилка ---------- */
+
+.tracks-sign {
+    position: absolute;
+    left: 37%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    width: 320px;
+    z-index: 10;
+}
+
+.tracks-sign-image {
+    width: 100%;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+/* ---------- Надписи на развилке (опущены ниже, на одном уровне) ---------- */
+
+.tracks-sign-text {
+    position: absolute;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+    line-height: 1.15;
+    text-align: center;
+    pointer-events: none;
+    font-size: 19px;
+}
+
+.tracks-sign-text-left {
+    left: 35%;
+    top: 14%;
+    width: 100px;
+}
+
+.tracks-sign-text-right {
+    right: 36%;
+    top: 37%;
+    width: 100px;
+}
+
+/* ---------- Hover-эффект для надписей ---------- */
+
+.tracks-sign-text {
+    position: absolute;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+    line-height: 1.15;
+    text-align: center;
+    pointer-events: auto; /* Разрешаем наведение */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 12px;
+}
+
+/* Hover-эффект — жёлтая подсветка */
+.tracks-sign-text:hover {
+    color: #ffd700;
+    text-shadow:
+            0 0 10px rgba(255, 215, 0, 0.8),
+            0 0 20px rgba(255, 215, 0, 0.6),
+            0 0 30px rgba(255, 215, 0, 0.4),
+            0 3px 12px rgba(0, 0, 0, 0.55);
+    transform: scale(1.05);
+    background: rgba(255, 215, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Альтернатива: только свечение без фона */
+.tracks-sign-text-left:hover {
+    color: #ffd700;
+    text-shadow:
+            0 0 15px rgba(255, 215, 0, 0.9),
+            0 0 30px rgba(255, 215, 0, 0.7),
+            0 3px 12px rgba(0, 0, 0, 0.55);
+}
+
+.tracks-sign-text-right:hover {
+    color: #ffd700;
+    text-shadow:
+            0 0 15px rgba(255, 215, 0, 0.9),
+            0 0 30px rgba(255, 215, 0, 0.7),
+            0 3px 12px rgba(0, 0, 0, 0.55);
+}
+/* ---------- Кликабельные области ---------- */
+
+.tracks-hitbox {
+    position: absolute;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 30px;
+}
+
+.tracks-hitbox:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.22);
+}
+
+/* левая стрелка */
+.tracks-hitbox-left {
+    left: 1%;
+    top: 6%;
+    width: 44%;
+    height: 56%;
+}
+
+/* правая */
+.tracks-hitbox-right {
+    right: 1%;
+    top: 6%;
+    width: 44%;
+    height: 56%;
+}
+
+/* ---------- Утка ---------- */
+
+.tracks-duck {
+    position: absolute;
+    left: 38%;
+    bottom: 50px;
+    width: 125px;
+    z-index: 12;
+    transition: 0.35s;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+}
+
+.tracks-duck:hover,
+.tracks-turtle:hover {
+    transform: translateY(-8px) rotate(-4deg);
+}
+
+.tracks-turtle {
+    position: absolute;
+    left: calc(37% + 145px);
+    bottom: 50px;
+    width: 125px;
+    z-index: 12;
+    transition: 0.35s;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+}
+
+/* Куст у истока реки на 2 слайде.
+   Положение регулируется здесь:
+   --bush-top — отступ сверху, --bush-right — отступ справа. */
+
+.tracks-river-source-bush {
+    --bush-top: 1%;
+    --bush-right: 11%;
+    position: absolute;
+    top: var(--bush-top);
+    right: var(--bush-right);
+    transform: rotate(8deg);
+    pointer-events: none;
+    z-index: 9;
+}
+
+.tracks-river-bush {
+    position: absolute;
+    display: block;
+    width: 160px;
+    height: 97px;
+    border-radius: 55% 55% 42% 42%;
+    background:
+        /* Круги теперь в % от ширины куста (160px) */
+            radial-gradient(
+                    circle at 22% 42%,
+                    #4fae3c 0 15%,  /* 24px / 160px = 15% */
+                    transparent 15.5%
+            ),
+            radial-gradient(
+                    circle at 48% 28%,
+                    #6bc44d 0 31.25%, /* 34px / 160px = 21.25% */
+                    transparent 22%
+            ),
+            radial-gradient(
+                    circle at 76% 45%,
+                    #3f9c34 0 17.5%,  /* 28px / 160px = 17.5% */
+                    transparent 18%
+            ),
+            linear-gradient(180deg, #5fba45, #347d2e);
+    filter: drop-shadow(0 10px 14px rgba(31, 31, 31, 0.14));
+}
+
+/* Псевдоэлементы тоже в % от ширины */
+.tracks-river-bush::before,
+.tracks-river-bush::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: #66c14a;
+}
+
+/* Левый верхний круг: 54px / 160px = 33.75% */
+.tracks-river-bush::before {
+    left: 15%;     /* 24px / 160px = 15% */
+    top: -12%;     /* -12px / 97px ≈ -12.37% */
+    width: 33.75%;
+    height: 55.67%; /* 54px / 97px ≈ 55.67% */
+    background: #66c14a;
+}
+
+/* Правый верхний круг: 46px / 160px = 28.75% */
+.tracks-river-bush::after {
+    right: 11.25%;  /* 18px / 160px = 11.25% */
+    top: -6%;       /* -6px / 97px ≈ -6.19% */
+    width: 28.75%;
+    height: 47.42%; /* 46px / 97px ≈ 47.42% */
+    background: #459e36;
+}
+
+
+/* ---------- Модальное окно ---------- */
+
+.tracks-popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+}
+
+.tracks-popup.active {
+    display: flex;
+}
+
+.tracks-popup-card {
+    position: relative;
+    width: min(560px, 92vw);
+    padding: 40px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.18);
+    animation: popupAppear 0.35s ease;
+}
+
+.tracks-popup-card h3 {
+    margin: 0 0 20px;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.tracks-popup-card p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 19px;
+}
+
+.tracks-popup-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #1f1f1f;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.25s;
+}
+
+.tracks-popup-close:hover {
+    background: #ff4444;
+    transform: scale(1.1);
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ---------- Планшеты ---------- */
+
+@media (max-width: 1100px) {
+    .tracks-sign {
+        width: 320px;
+        bottom: 40px;
+    }
+
+    .tracks-duck {
+        width: 110px;
+    }
+
+    .tracks-flag img {
+        width: 140px;
+    }
+
+    .tracks-flag-label {
+        font-size: 20px;
+        padding: 12px 22px;
+    }
+
+    .tracks-flag-description {
+        font-size: 14px;
+        max-width: 260px;
+    }
+
+    .tracks-flag-content {
+        max-width: 260px;
+    }
+
+    .tracks-sign-text-left {
+        width: 140px;
+        font-size: 26px;
+        top: 28%;
+    }
+
+    .tracks-sign-text-right {
+        width: 130px;
+        font-size: 26px;
+        top: 28%;
+    }
+}
+
+/* ---------- Телефон ---------- */
+
+@media (max-width: 768px) {
+    .tracks-flag {
+        position: relative;
+        justify-content: center;
+        left: auto !important;
+        right: auto !important;
+        top: auto;
+        margin-top: 25px;
+    }
+
+    .tracks-flag-left,
+    .tracks-flag-right {
+        position: relative;
+        flex-direction: row !important;
+    }
+
+    .tracks-flag-right .tracks-flag-content {
+        align-items: flex-start;
+    }
+
+    .tracks-sign {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        width: 80%;
+        margin: 50px auto 0;
+    }
+
+
+    .tracks-duck,
+    .tracks-turtle {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+
+
+    .tracks-animals-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+        gap: -5px !important;
+        margin: 10px auto !important;
+        width: 100% !important;
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    .tracks-duck {
+        width: 70px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .tracks-turtle {
+        width: 55px !important;
+        flex-shrink: 0 !important;
+        margin-left: -15px !important; /* Подтягиваем к утке */
+    }  .tracks-duck {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        display: block;
+        margin: 25px auto 0;
+        width: 120px;
+    }
+
+    .tracks-sign-text-left {
+        font-size: 22px;
+        width: 110px;
+        top: 28%;
+    }
+
+    .tracks-sign-text-right {
+        font-size: 22px;
+        width: 100px;
+        top: 28%;
+    }
+}
+
+/* =====================================================
+   ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ — ТРАВА, КАМНИ, РЕКА
+====================================================== */
+
+/* ---------- Трава (нижний ярус) ---------- */
+
+.tracks-grass-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tracks-grass-bottom svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ---------- Адаптив: Планшеты ---------- */
+
+@media (max-width: 1100px) {
+    .tracks-grass-bottom {
+        height: 110px;
+    }
+}
+
+/* ---------- Адаптив: Телефоны ---------- */
+
+@media (max-width: 768px) {
+    .tracks-grass-bottom {
+        position: relative;
+        height: 80px;
+        margin-top: 10px;
+    }
+}
+
+/* ---------- Очень маленькие экраны ---------- */
+
+@media (max-width: 480px) {
+    .tracks-grass-bottom {
+        height: 60px;
+    }
+}
+
+/* ---------- Цветы (по всему экрану, фон) ---------- */
+
+.tracks-flowers-full {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.tracks-flowers-full span {
+    position: absolute;
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    width: var(--s, 10px);
+    height: var(--s, 10px);
+    background:
+        /* белый центр */
+            radial-gradient(circle at center, #fff 20%, transparent 21%),
+                /* 8 лепестков */
+            radial-gradient(ellipse at 50% 0%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 100% 15%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 100% 50%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 100% 85%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 50% 100%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 0% 85%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 0% 50%, var(--c) 40%, transparent 41%),
+            radial-gradient(ellipse at 0% 15%, var(--c) 40%, transparent 41%);
+    border-radius: 50%;
+    box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: flowerPulse 4s ease-in-out infinite;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* убираем старые лепестки */
+.tracks-flowers-full span::before,
+.tracks-flowers-full span::after {
+    display: none;
+}
+
+/* при наведении на слайд — цветы становятся ярче */
+.tracks-slide:hover .tracks-flowers-full span {
+    opacity: 0.9;
+}
+
+@keyframes flowerPulse {
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1) rotate(5deg);
+        opacity: 0.85;
+    }
+}
+
+/* ---------- Адаптив для цветов ---------- */
+
+@media (max-width: 1100px) {
+    .tracks-flowers-full span {
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 768px) {
+    .tracks-flowers-full span {
+        --s: 6px !important;
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .tracks-flowers-full span {
+        --s: 5px !important;
+        opacity: 0.4;
+    }
+}
+
+/* ===================================
+   СЛАЙД 5
+=================================== */
+
+.lake-form-slide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+/* ===================================
+   ГРАДИЕНТНАЯ РАМКА КАРТОЧКИ
+=================================== */
+
+.form-content {
+    position: relative;
+    z-index: 10;
+
+    width: min(520px, 42vw);
+
+    padding: 36px;
+
+    border: 2px solid transparent;
+
+    background:
+            linear-gradient(#ffffff, #ffffff) padding-box,
+            var(--gradient) border-box;
+
+    border-radius: 32px;
+
+    box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.08),
+            0 0 40px rgba(32, 198, 166, 0.12);
+
+    backdrop-filter: blur(12px);
+}
+
+/* ===================================
+   ОЗЕРО
+=================================== */
+
+.register-lake {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 52vw;
+    height: 48vh;
+
+    overflow: hidden;
+
+    border-radius: 0 70% 0 0;
+
+    background:
+            radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 255, 255, 0.35),
+                    transparent 20%
+            ),
+            linear-gradient(140deg, #71ecff, #48d6ec 30%, #2cc4df 60%, #21aaaf);
+
+    box-shadow:
+            inset 0 0 120px rgba(255, 255, 255, 0.2),
+            0 20px 60px rgba(0, 120, 160, 0.15);
+
+    z-index: 1;
+}
+
+/* ===================================
+   ТЕКУЩИЕ ВОЛНЫ
+=================================== */
+
+.register-lake::before,
+.register-lake::after {
+    content: "";
+
+    position: absolute;
+
+    left: -20%;
+    top: 0;
+
+    width: 150%;
+    height: 100%;
+
+    background: repeating-linear-gradient(
+            100deg,
+            transparent 0 40px,
+            rgba(255, 255, 255, 0.15) 40px 44px,
+            transparent 44px 84px
+    );
+
+    animation: lakeCurrent 18s linear infinite;
+}
+
+.register-lake::after {
+    opacity: 0.35;
+    animation-duration: 26s;
+}
+
+@keyframes lakeCurrent {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(220px);
+    }
+}
+
+/* ===================================
+   КРУГИ НА ВОДЕ
+=================================== */
+
+.lake-wave {
+    position: absolute;
+
+    border: 2px solid rgba(255, 255, 255, 0.28);
+
+    border-radius: 50%;
+
+    animation: lakeRipple 7s linear infinite;
+}
+
+.lake-wave-1 {
+    width: 220px;
+    height: 220px;
+    left: 15%;
+    top: 18%;
+}
+
+.lake-wave-2 {
+    width: 160px;
+    height: 160px;
+    left: 58%;
+    top: 22%;
+    animation-delay: 2s;
+}
+
+.lake-wave-3 {
+    width: 140px;
+    height: 140px;
+    left: 40%;
+    top: 55%;
+    animation-delay: 4s;
+}
+
+@keyframes lakeRipple {
+    0% {
+        transform: scale(0.2);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* ===================================
+   КАПЛИ
+=================================== */
+
+.lake-drop {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: 0.8;
+
+    animation: dropFloat 4s ease-in-out infinite;
+}
+
+.lake-drop-1 {
+    left: 18%;
+    top: 20%;
+}
+.lake-drop-2 {
+    left: 28%;
+    top: 34%;
+    animation-delay: 1s;
+}
+.lake-drop-3 {
+    left: 60%;
+    top: 30%;
+    animation-delay: 2s;
+}
+.lake-drop-4 {
+    left: 72%;
+    top: 18%;
+    animation-delay: 3s;
+}
+
+@keyframes dropFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+/* ===================================
+   УТКИ И ЧЕРЕПАХА
+=================================== */
+
+.lake-creature {
+    position: absolute;
+    z-index: 6;
+}
+
+.lake-creature img {
+    width: 90px;
+    height: auto;
+
+    object-fit: contain;
+
+    animation: creatureFloat 6s ease-in-out infinite;
+
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+}
+
+.duck-1 {
+    left: 18%;
+    top: 55%;
+}
+
+.duck-2 {
+    left: 60%;
+    top: 30%;
+}
+
+.turtle-main {
+    left: 42%;
+    top: 60%;
+}
+
+.turtle-main img {
+    width: 85px;
+}
+
+@keyframes creatureFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===================================
+   РЯБЬ ПОД ОБЪЕКТАМИ
+=================================== */
+
+.lake-ripple {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 90px;
+    height: 90px;
+
+    border: 2px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    animation: rippleLoop 4s ease-out infinite;
+}
+
+@keyframes rippleLoop {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* ===================================
+   КУВШИНКИ
+=================================== */
+
+.lake-lily {
+    position: absolute;
+
+    width: 70px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.15));
+}
+
+.lake-lily-1 {
+    left: 30%;
+    top: 30%;
+}
+
+.lake-lily-2 {
+    left: 72%;
+    top: 62%;
+}
+
+/* ===================================
+   ВЫПУСКНОЙ НА БЕРЕГУ
+=================================== */
+
+.graduates-animals {
+    position: absolute;
+    left: 34%;
+    bottom: 15px;
+    z-index: 20;
+    display: flex;
+    align-items: flex-end;
+    gap: 0; /* Убираем расстояние */
+}
+
+.graduation-turtle {
+    width: 180px;
+}
+
+.graduation-duck {
+    width: 180px;
+    margin-left: -65px; /* Подкручиваем это значение: -20px, -30px, -50px и т.д. */
+}
+.graduates-flag {
+    position: absolute;
+
+    left: 8%;
+    bottom: 525px;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.graduation-flag {
+    width: 192px;
+}
+
+.graduation-label {
+    width: min(300px, 100%);
+    min-height: 56px;
+    margin-top: -8px;
+    margin-bottom: 6px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 999px;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    color: #5f39d8;
+
+    border: none;
+    background: #fff;
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+
+    backdrop-filter: blur(10px);
+
+    white-space: nowrap;
+}
+
+/* Блок над анкетой */
+.form-banner {
+    position: absolute;
+    top: 15px;
+    right: 90px;
+    width: min(550px, 42vw);
+    padding: 20px 24px;
+    border: 3px solid #7b57ff;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    z-index: 15;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.form-banner::before {
+    content: none;
+}
+
+.form-banner-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #1f1f1f;
+}
+
+.form-banner p {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   СЛАЙД 3 — КАК ПОСТУПИТЬ
+========================================== */
+
+.admission-slide {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   ЗАГОЛОВОК
+========================================== */
+
+.admission-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================
+   ЛЕВЫЙ ФЛАГ - ПОДНЯТ ВВЕРХ
+========================================== */
+
+.admission-flag-left {
+    position: absolute;
+    left: 10%;
+    top: 8%;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+/* подпись - прижата к флагу */
+.admission-flag-left .tracks-flag-label {
+    width: min(300px, 100%);
+    min-height: 56px;
+    margin-top: -8px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    color: #5f39d8;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* рамка с текстом */
+.admission-flag-left .tracks-flag-description {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 24px;
+    border: 3px solid #7b57ff;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    box-sizing: border-box;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(4px);
+    margin-top: -2px;
+    margin-left: 0;
+}
+
+/* ==========================================
+   ПРАВЫЙ ФЛАГ
+========================================== */
+
+.admission-flag-right {
+    position: absolute;
+    right: 3%;
+    top: 35%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+/* подпись */
+.admission-flag-right .tracks-flag-label {
+    width: min(300px, 100%);
+    min-height: 56px;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    color: #5f39d8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* пока текста справа нет */
+.admission-flag-right .tracks-flag-description {
+    display: none;
+}
+
+/* ==========================================
+   ТАБЛИЧКА
+========================================== */
+
+.admission-board {
+    position: absolute;
+    left: 48%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    width: 295px;
+    z-index: 8;
+}
+
+.admission-board-image {
+    width: 100%;
+    display: block;
+}
+
+.admission-board-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    top: 18%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.25;
+    color: #3a2114;
+    text-shadow: 0 1px 3px rgba(58, 33, 20, 0.18);
+    padding: 12px 10px;
+}
+
+/* ==========================================
+   ЧЕРЕПАХА
+========================================== */
+
+.admission-turtle {
+    position: absolute;
+    left: 50%;
+    top: 69%;
+    width: 125px;
+    transform: translate(-105px, -5px);
+    z-index: 9;
+    animation: turtle-float 5s ease-in-out infinite;
+}
+
+/* ==========================================
+   КНОПКА
+========================================== */
+
+.admission-button {
+    position: absolute;
+    left: 50%;
+    bottom: 55px;
+    transform: translateX(-50%);
+    width: min(720px, 90vw);
+    padding: 22px 34px;
+    border-radius: 999px;
+    border: 2px solid #9b5cf5;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    color: #6b3ff5;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0.02em;
+    transition: 0.35s ease;
+    z-index: 20;
+}
+
+.admission-button:hover {
+    color: #fff;
+    background: #9b5cf5;
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow:
+            0 0 12px #9b5cf5,
+            0 0 26px rgba(155, 92, 245, 0.8),
+            0 0 60px rgba(155, 92, 245, 0.45);
+}
+/* ============================================================
+     Слайд   КОНТАКТЫ
+     ============================================================ */
+
+.contacts-heading {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 950;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.map-card {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Переключатели */
+.media-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    padding: 10px 24px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.tab-btn:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+.tab-btn.active {
+    background: #1a1a1a;
+    color: white;
+    border-color: #1a1a1a;
+}
+
+/* Контейнеры карты и фото */
+.media-content {
+    display: none;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.media-content.active {
+    display: block;
+}
+
+#map-container iframe {
+    display: block;
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 16px;
+}
+
+/* Галерея */
+.photo-gallery {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1a1a1a;
+}
+
+.gallery-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.gallery-image.active {
+    opacity: 1;
+}
+
+/* Кнопки навигации */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-nav:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.gallery-nav.prev {
+    left: 12px;
+}
+
+.gallery-nav.next {
+    right: 12px;
+}
+
+/* Точки */
+.gallery-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.gallery-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-dots span.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Отзывы */
+.reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reviews article {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+
+.reviews article:hover {
+    transform: translateX(4px);
+}
+
+.reviews article img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.reviews article h3 {
+    margin: 0 0 4px 0;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.reviews article p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .photo-gallery,
+    #map-container iframe {
+        height: 320px;
+    }
+}
+
+@media (max-width: 640px) {
+    .photo-gallery,
+    #map-container iframe {
+        height: 240px;
+    }
+
+    .tab-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    .reviews article {
+        padding: 16px;
+    }
+}
+/* Контейнеры карты и фото */
+.media-content {
+    display: none !important;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.media-content.active {
+    display: block !important;
+}
+
+/* Галерея */
+.photo-gallery {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1a1a1a;
+}
+
+.gallery-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.gallery-image.active {
+    opacity: 1;
+}
+
+/* Кнопки навигации */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.gallery-nav.prev {
+    left: 12px;
+}
+
+.gallery-nav.next {
+    right: 12px;
+}
+
+/* Точки */
+.gallery-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.gallery-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+.gallery-dots span.active {
+    background: white;
+}
+/* ==========================
+            FAQ
+========================== */
+
+.faq-slide {
+    position: relative;
+}
+
+/* ---------- Заголовок ---------- */
+
+.faq-slide .tracks-header {
+    margin-top: -55px;
+    position: relative;
+    z-index: 100;
+}
+
+.faq-slide .tracks-title-pill {
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+
+    font-size: clamp(46px, 4vw, 70px);
+
+    font-weight: 900;
+
+    background: var(--gradient);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---------- Левый флаг ---------- */
+
+.faq-slide .tracks-flag-left {
+    position: absolute;
+
+    left: 24px;
+    top: 30%;
+
+    width: 34%;
+
+    transform: translate(-50px, -90px);
+
+    z-index: 100;
+}
+
+/* подпись */
+
+.faq-slide .tracks-flag-left .tracks-flag-label {
+    color: #6b3ff5;
+
+    font-weight: 900;
+}
+
+/* описание */
+
+.faq-slide .tracks-flag-left .tracks-flag-description {
+    width: 100%;
+    max-width: 100%;
+    border: 3px solid #7b57ff;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+/* ---------- Правая часть ---------- */
+
+.faq-container {
+    position: absolute;
+
+    right: 30px;
+
+    top: 180px;
+
+    width: 52%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+
+    z-index: 100;
+}
+
+/* ---------- Карточки ---------- */
+
+.faq-card {
+    background: rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    border-radius: 24px;
+
+    padding: 22px;
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+
+    transition: 0.25s;
+}
+
+.faq-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+}
+
+.faq-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #1f1f1f;
+}
+
+.faq-card p {
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #333;
+}
+
+.faq-card small {
+    font-size: 13px;
+
+    opacity: 0.8;
+}
+
+/* Кустики внизу FAQ-слайда */
+.faq-bushes {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 145px;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.faq-bush {
+    position: absolute;
+    bottom: -24px;
+    width: clamp(180px, 18vw, 290px);
+    height: clamp(95px, 9vw, 145px);
+    border-radius: 52% 48% 0 0 / 78% 72% 0 0;
+    background:
+            radial-gradient(circle at 24% 32%, #79c65b 0 22%, transparent 23%),
+            radial-gradient(circle at 48% 18%, #61b847 0 28%, transparent 29%),
+            radial-gradient(circle at 72% 34%, #4fa83b 0 24%, transparent 25%),
+            linear-gradient(180deg, #6fc452 0%, #2f7f25 100%);
+    filter: drop-shadow(0 10px 18px rgba(47, 127, 37, 0.22));
+}
+
+.faq-bush-left {
+    left: 3%;
+}
+
+.faq-bush-center {
+    left: 43%;
+    width: clamp(140px, 13vw, 220px);
+    height: clamp(76px, 7vw, 112px);
+}
+
+.faq-bush-right {
+    right: 3%;
+}
+
+
+/* ---------- Чтобы река не перекрывала ---------- */
+
+.faq-slide .tracks-header,
+.faq-slide .tracks-flag,
+.faq-container,
+.faq-card {
+    z-index: 100;
+}
+/* ============================================================
+     КОНТАКТЫ — КАРТА / ФОТО
+     ============================================================ */
+.media-content {
+    display: none !important;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.media-content.active {
+    display: block !important;
+}
+
+/* Точная настройка длинной подписи на FAQ-слайде */
+.faq-slide .tracks-flag-left .tracks-flag-label {
+    width: min(390px, 100%);
+    white-space: nowrap;
+}
+
+
+/* Контакты: заголовок в стиле плашки второго слайда */
+.contacts-heading {
+    width: fit-content;
+    margin: 0 auto 48px;
+    padding: 18px 56px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 2px solid rgba(31, 31, 31, 0.14);
+    border-radius: 999px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    font-size: clamp(34px, 3vw, 56px);
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+/* ============================================================
+     МОБИЛЬНАЯ ВЕРСИЯ (до 1024px)
+     ============================================================ */
+
+/* ===== ГАМБУРГЕР ===== */
+.hamburger {
+    display: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 30px;
+    z-index: 30;
+    transition: all 0.3s ease;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .hamburger {
+        display: block !important;
+        z-index: 9999 !important;
+        position: relative;
+    }
+
+    .nav {
+        z-index: 9998 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        padding: 10px 16px !important;
+        background: rgba(31, 31, 31, 0.95) !important;
+        backdrop-filter: blur(12px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        border-radius: 0 !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+    }
+
+    .brand-lockup {
+        width: clamp(100px, 25vw, 160px) !important;
+        height: clamp(44px, 7vw, 60px) !important;
+    }
+
+    .nav nav {
+        display: none !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 16px 0 !important;
+        gap: 4px !important;
+        background: rgba(31, 31, 31, 0.98) !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        border-radius: 0 0 20px 20px !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+        clip-path: none !important;
+        min-height: auto !important;
+    }
+
+    .nav nav.open {
+        display: flex !important;
+    }
+
+    .nav nav a {
+        padding: 12px 20px !important;
+        width: 100% !important;
+        text-align: center !important;
+        color: #fff !important;
+        font-size: 16px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        white-space: normal !important;
+    }
+
+    .nav nav a:last-child {
+        border-bottom: none !important;
+    }
+
+    .nav-cta {
+        display: none !important;
+    }
+
+    .slide {
+        padding-top: 90px !important;
+        min-height: auto !important;
+    }
+}
+
+/* ===== ПЛАНШЕТЫ ===== */
+@media (max-width: 1024px) {
+    .hero-main-title {
+        font-size: clamp(40px, 6vw, 70px) !important;
+    }
+
+    .hero-gradient-title {
+        font-size: clamp(32px, 5vw, 50px) !important;
+    }
+
+    .hero-bottom-row {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+        padding: 20px 0 !important;
+    }
+
+    .hero-turtle-pond {
+        width: clamp(400px, 50vw, 600px) !important;
+        height: clamp(220px, 30vw, 340px) !important;
+        opacity: 0.4 !important;
+        right: -4vw !important;
+    }
+
+    .contacts-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+    }
+
+    .photo-gallery,
+    #map-container iframe {
+        height: 320px !important;
+    }
+
+    .register-lake {
+        width: 60vw !important;
+        height: 35vh !important;
+        opacity: 0.5 !important;
+    }
+
+    .form-content {
+        width: min(480px, 50vw) !important;
+        padding: 28px !important;
+    }
+
+    .tracks-flag img {
+        width: 140px !important;
+    }
+
+    .tracks-flag-label {
+        font-size: 20px !important;
+        padding: 10px 18px !important;
+    }
+
+    .tracks-flag-description {
+        font-size: 14px !important;
+    }
+
+    .tracks-sign {
+        width: 280px !important;
+    }
+
+    .faq-container {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16px !important;
+        width: 48% !important;
+        right: 20px !important;
+    }
+
+    .admission-flag-left {
+        left: 5% !important;
+        top: 12% !important;
+        width: 300px !important;
+    }
+
+    .admission-flag-left .tracks-flag-description {
+        width: 340px !important;
+    }
+
+    .admission-flag-right {
+        right: 2% !important;
+        top: 28% !important;
+        width: 350px !important;
+    }
+
+    .admission-board {
+        width: 240px !important;
+        top: 52% !important;
+    }
+
+    .admission-turtle {
+        width: 100px !important;
+        top: 72% !important;
+        transform: translate(-80px, -5px) !important;
+    }
+
+    .admission-button {
+        padding: 16px 24px !important;
+        font-size: 16px !important;
+        bottom: 40px !important;
+    }
+
+    .tracks-flag-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+
+
+    .tracks-river-source-bush {
+        --bush-right: 8% !important;
+    }
+
+    .tracks-river-bush {
+        width: 120px !important;
+        height: 73px !important;
+    }
+
+    .graduates-animals {
+        left: 30% !important;
+    }
+
+    .graduation-turtle {
+        width: 130px !important;
+    }
+
+    .graduation-duck {
+        width: 130px !important;
+        margin-left: -45px !important;
+    }
+
+    .graduates-flag {
+        bottom: 400px !important;
+    }
+
+    .graduation-flag {
+        width: 140px !important;
+    }
+
+    .form-banner {
+        width: min(450px, 45vw) !important;
+        padding: 16px 20px !important;
+        right: 60px !important;
+    }
+
+    .form-banner p {
+        font-size: 13px !important;
+    }
+
+    .faq-slide .tracks-flag-left {
+        width: 40% !important;
+        transform: translate(-30px, -70px) !important;
+    }
+
+    .faq-slide .tracks-title-pill {
+        font-size: clamp(32px, 4.5vw, 50px) !important;
+    }
+
+    .faq-bush {
+        width: clamp(140px, 15vw, 200px) !important;
+        height: clamp(76px, 7vw, 100px) !important;
+    }
+}
+
+/* ===== ТЕЛЕФОНЫ (до 768px) ===== */
+@media (max-width: 768px) {
+    /* ===== HERO ===== */
+    .hero {
+        padding: 80px 16px 40px !important;
+    }
+
+    .hero-content {
+        transform: none !important;
+        padding-top: 10px !important;
+    }
+
+    .hero-main-title {
+        font-size: clamp(28px, 7vw, 42px) !important;
+        line-height: 1.05 !important;
+    }
+
+    .hero-gradient-title {
+        font-size: clamp(22px, 6vw, 34px) !important;
+    }
+
+    .hero-description {
+        font-size: clamp(16px, 4vw, 22px) !important;
+    }
+
+    .hero-bottom-row {
+        padding: 10px 0 0 !important;
+    }
+
+    .hero-bottom-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    .hero-apply-button,
+    .hero-cabinet-button {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 14px 20px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+    }
+
+    .hero-campus-pill {
+        font-size: 13px !important;
+        padding: 10px 16px !important;
+        min-height: auto !important;
+    }
+
+    .hero-turtle-pond {
+        width: clamp(150px, 45vw, 240px) !important;
+        height: clamp(80px, 28vw, 140px) !important;
+        right: -10px !important;
+        bottom: 10px !important;
+        opacity: 0.25 !important;
+        clip-path: none !important;
+        border-radius: 50% 0 0 0 / 50% 0 0 0 !important;
+        position: absolute !important;
+    }
+
+    .pond-turtle {
+        width: clamp(24px, 5vw, 38px) !important;
+        height: clamp(24px, 5vw, 38px) !important;
+    }
+
+    .pond-turtle-one {
+        left: 15% !important;
+        top: 50% !important;
+    }
+
+    .pond-turtle-two {
+        right: 15% !important;
+        top: 25% !important;
+    }
+
+    .pond-turtle-three {
+        left: 45% !important;
+        bottom: 15% !important;
+    }
+
+    .pond-reeds i {
+        height: clamp(24px, 4vw, 40px) !important;
+    }
+
+    .pond-ripple {
+        width: clamp(24px, 4vw, 40px) !important;
+    }
+
+    .hero-rotating-image {
+        width: clamp(100px, 22vw, 160px) !important;
+        top: 60px !important;
+        left: -20px !important;
+    }
+
+    /* ===== ТРЕКИ ===== */
+    .tracks-slide {
+        padding: 70px 16px 30px !important;
+    }
+
+    .tracks-title-pill {
+        font-size: clamp(22px, 5vw, 32px) !important;
+        padding: 10px 18px !important;
+    }
+
+    .tracks-header {
+        margin-top: 0 !important;
+    }
+
+    .tracks-flag {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin: 16px 0 !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .tracks-flag img {
+        width: 100px !important;
+    }
+
+    .tracks-flag-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        align-items: center !important;
+    }
+
+    .tracks-flag-label {
+        font-size: 16px !important;
+        padding: 8px 16px !important;
+        white-space: normal !important;
+        text-align: center !important;
+        min-height: 44px !important;
+        width: 100% !important;
+    }
+
+    .tracks-flag-description {
+        font-size: 13px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: justify !important;
+        padding: 14px 16px !important;
+        margin-left: 0 !important;
+    }
+
+    .tracks-flag-right {
+        flex-direction: column !important;
+    }
+
+    .tracks-flag-right .tracks-flag-content {
+        align-items: center !important;
+    }
+
+    .tracks-sign {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 80% !important;
+        margin: 20px auto !important;
+    }
+
+    .tracks-sign-text {
+        font-size: 14px !important;
+        padding: 4px 6px !important;
+    }
+
+    .tracks-sign-text-left {
+        left: 30% !important;
+        top: 16% !important;
+        width: auto !important;
+    }
+
+    .tracks-sign-text-right {
+        right: 30% !important;
+        top: 38% !important;
+        width: auto !important;
+    }
+
+    .tracks-hitbox {
+        display: none !important;
+    }
+
+    .tracks-duck {
+        width: 70px !important;
+        position: relative !important;
+        left: 38% !important;
+        top: 48%!important;
+        margin: 10px auto !important;
+    }
+
+    .tracks-turtle {
+        width: 60px !important;
+        position: relative !important;
+        left: 38% !important;
+        top: 38%!important;
+        margin: 10px auto !important;
+    }
+
+    .tracks-flowers-full span {
+        --s: 6px !important;
+        opacity: 0.3 !important;
+    }
+
+    .tracks-river-source-bush {
+        --bush-right: 5% !important;
+        --bush-top: 2% !important;
+    }
+
+    .tracks-river-bush {
+        width: 90px !important;
+        height: 55px !important;
+    }
+
+    .tracks-grass-bottom {
+        position: relative !important;
+        height: 60px !important;
+        margin-top: 10px !important;
+    }
+
+    /* ===== ADMISSION ===== */
+    .admission-slide {
+        padding: 70px 16px 30px !important;
+    }
+
+    .admission-flag-left,
+    .admission-flag-right {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        margin: 15px 0 !important;
+        transform: none !important;
+    }
+
+    .admission-flag-left .tracks-flag-description {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 13px !important;
+        padding: 14px 16px !important;
+        margin-left: 0 !important;
+    }
+
+    .admission-flag-right .tracks-flag-label {
+        width: 100% !important;
+        font-size: 16px !important;
+        padding: 8px 16px !important;
+        min-height: 44px !important;
+    }
+
+    .admission-flag-left .tracks-flag-label {
+        width: 100% !important;
+        font-size: 16px !important;
+        padding: 8px 16px !important;
+        min-height: 44px !important;
+    }
+
+    .admission-board {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: clamp(180px, 50vw, 260px) !important;
+        margin: 20px auto !important;
+    }
+
+    .admission-board-text {
+        font-size: clamp(9px, 2vw, 13px) !important;
+        top: 15% !important;
+        padding: 8px 6px !important;
+    }
+
+    .admission-turtle {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 70px !important;
+        margin: 10px auto !important;
+        display: block !important;
+    }
+
+    .admission-button {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        padding: 14px 16px !important;
+        font-size: 14px !important;
+        margin-top: 20px !important;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-slide {
+        padding: 70px 16px 30px !important;
+    }
+
+    .faq-slide .tracks-header {
+        margin-top: 0 !important;
+    }
+
+    .faq-slide .tracks-title-pill {
+        font-size: clamp(24px, 5vw, 32px) !important;
+    }
+
+    .faq-slide .tracks-flag-left {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        margin: 15px 0 !important;
+    }
+
+    .faq-slide .tracks-flag-left .tracks-flag-description {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 13px !important;
+        padding: 14px 16px !important;
+    }
+
+    .faq-slide .tracks-flag-left .tracks-flag-label {
+        width: 100% !important;
+        font-size: 16px !important;
+        padding: 8px 16px !important;
+        min-height: 44px !important;
+        white-space: normal !important;
+    }
+
+    .faq-container {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        margin-top: 16px !important;
+    }
+
+    .faq-card {
+        padding: 14px 16px !important;
+    }
+
+    .faq-card h3 {
+        font-size: 16px !important;
+        margin: 0 0 8px !important;
+    }
+
+    .faq-card p {
+        font-size: 14px !important;
+    }
+
+    .faq-bushes {
+        display: none !important;
+    }
+
+    /* ===== ФОРМА ===== */
+    .lake-form-slide {
+        padding: 70px 16px 30px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .register-lake {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        height: 150px !important;
+        border-radius: 30px 30px 0 0 !important;
+        margin-bottom: 16px !important;
+        opacity: 0.5 !important;
+    }
+
+    .lake-creature img {
+        width: 40px !important;
+    }
+
+    .lake-lily {
+        width: 30px !important;
+    }
+
+    .lake-wave {
+        display: none !important;
+    }
+
+    .form-content {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px 16px !important;
+        border-radius: 20px !important;
+    }
+
+    .form-content h2 {
+        font-size: 24px !important;
+    }
+
+    .form-content p {
+        font-size: 14px !important;
+    }
+
+    .form-banner {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        padding: 14px 16px !important;
+        margin-bottom: 12px !important;
+        font-size: 13px !important;
+    }
+
+    .form-banner p {
+        font-size: 13px !important;
+    }
+
+    .application-form input {
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+    }
+
+    .application-form label {
+        font-size: 13px !important;
+    }
+
+    .button {
+        font-size: 14px !important;
+        padding: 12px 16px !important;
+    }
+
+    .graduates-animals {
+        display: none !important;
+    }
+
+    .graduates-flag {
+        display: none !important;
+    }
+
+    /* ===== КОНТАКТЫ ===== */
+    .contacts-slide {
+        padding: 60px 16px 30px !important;
+    }
+
+    .contacts-heading {
+        font-size: clamp(22px, 5vw, 32px) !important;
+        margin-bottom: 20px !important;
+        padding: 12px 20px !important;
+    }
+
+    .contacts-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .map-card {
+        padding: 12px !important;
+    }
+
+    .photo-gallery,
+    #map-container iframe {
+        height: 200px !important;
+    }
+
+    .tab-btn {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+    }
+
+    .media-tabs {
+        gap: 4px !important;
+    }
+
+    .gallery-nav {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 12px !important;
+    }
+
+    .gallery-dots span {
+        width: 8px !important;
+        height: 8px !important;
+    }
+
+    .reviews article {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 14px 16px !important;
+        gap: 8px !important;
+    }
+
+    .reviews article img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .reviews article h3 {
+        font-size: 15px !important;
+    }
+
+    .reviews article p {
+        font-size: 13px !important;
+    }
+
+    /* ===== ФУТЕР ===== */
+    .footer {
+        padding: 20px 16px !important;
+        font-size: 13px !important;
+    }
+
+    .footer-links {
+        flex-direction: column !important;
+        gap: 8px !important;
+        align-items: center !important;
+    }
+
+    .footer a {
+        margin: 0 !important;
+    }
+
+    .footer-address {
+        font-size: 13px !important;
+    }
+
+    /* ===== КНОПКА НАВЕРХ ===== */
+    .to-top {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 16px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+    }
+
+    /* ===== МОДАЛЬНОЕ ОКНО ===== */
+    .modal > div {
+        width: calc(100% - 24px) !important;
+        padding: 24px 20px !important;
+        font-size: 18px !important;
+    }
+
+    .tracks-popup-card {
+        width: calc(100% - 24px) !important;
+        padding: 24px 20px !important;
+    }
+
+    .tracks-popup-card h3 {
+        font-size: 24px !important;
+    }
+
+    .tracks-popup-card p {
+        font-size: 16px !important;
+    }
+
+    /* ===== СКРЫВАЕМ ПУЛЬСИРУЮЩУЮ ТОЧКУ НА МОБИЛЬНЫХ ===== */
+    .map-dot {
+        display: none !important;
+    }
+
+    /* ===== ДОПОЛНИТЕЛЬНЫЕ ПРАВКИ ДЛЯ ЭЛЕМЕНТОВ ===== */
+    .admission-flag-right .tracks-flag-description {
+        display: block !important;
+        width: 100% !important;
+        font-size: 13px !important;
+        padding: 14px 16px !important;
+        border: 3px solid #7b57ff;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.92);
+        text-align: justify !important;
+    }
+
+    .faq-bush {
+        display: none !important;
+    }
+}
+
+/* ===== МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px) ===== */
+@media (max-width: 480px) {
+    .hero-main-title {
+        font-size: clamp(20px, 6vw, 28px) !important;
+    }
+
+    .hero-gradient-title {
+        font-size: clamp(18px, 5vw, 24px) !important;
+    }
+
+    .hero-turtle-pond {
+        width: clamp(80px, 35vw, 120px) !important;
+        height: clamp(50px, 22vw, 70px) !important;
+        opacity: 0.15 !important;
+    }
+
+    .pond-turtle {
+        width: clamp(14px, 3vw, 20px) !important;
+        height: clamp(14px, 3vw, 20px) !important;
+    }
+
+    .tracks-title-pill {
+        font-size: clamp(18px, 4.5vw, 24px) !important;
+        padding: 8px 14px !important;
+    }
+
+    .tracks-flag img {
+        width: 80px !important;
+    }
+
+    .tracks-flag-label {
+        font-size: 14px !important;
+        padding: 6px 12px !important;
+        min-height: 36px !important;
+    }
+
+    .tracks-flag-description {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+    }
+
+    .tracks-sign {
+        width: 90% !important;
+    }
+
+    .tracks-sign-text {
+        font-size: 11px !important;
+    }
+
+    .admission-board {
+        width: clamp(140px, 55vw, 200px) !important;
+    }
+
+    .admission-board-text {
+        font-size: clamp(7px, 1.8vw, 10px) !important;
+        top: 12% !important;
+    }
+
+    .faq-card h3 {
+        font-size: 14px !important;
+    }
+
+    .faq-card p {
+        font-size: 12px !important;
+    }
+
+    .photo-gallery,
+    #map-container iframe {
+        height: 160px !important;
+    }
+
+    .tab-btn {
+        font-size: 10px !important;
+        padding: 4px 8px !important;
+    }
+
+    .application-form input {
+        padding: 8px 10px !important;
+        font-size: 13px !important;
+    }
+
+    .button {
+        font-size: 13px !important;
+        padding: 10px 14px !important;
+    }
+
+    .register-lake {
+        height: 100px !important;
+    }
+
+    .lake-creature img {
+        width: 30px !important;
+    }
+
+    .form-content {
+        padding: 16px 12px !important;
+    }
+
+    .form-content h2 {
+        font-size: 20px !important;
+    }
+
+    .admission-button {
+        font-size: 12px !important;
+        padding: 12px 14px !important;
+    }
+
+    .reviews article {
+        padding: 12px !important;
+    }
+
+    .reviews article img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .tracks-grass-bottom {
+        height: 40px !important;
+    }
+}
+
+/* ============================================================
+   РАЗВИЛКА — УВЕЛИЧЕННЫЙ ТЕКСТ ПО ЦЕНТРУ (МОБИЛЬНАЯ ВЕРСИЯ)
+   ============================================================ */
+
+/* Для всех устройств — текст по центру стрелок */
+.tracks-sign-text {
+    position: absolute;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+    line-height: 1.15;
+    text-align: center;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 12px;
+}
+
+/* Левый текст */
+.tracks-sign-text-left {
+    left: 20%;
+    top: 14%;
+    width: 60%;
+}
+
+/* Правый текст */
+.tracks-sign-text-right {
+    right: 20%;
+    top: 38%;
+    width: 60%;
+}
+
+/* ============================================================
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) — УВЕЛИЧЕННЫЙ ТЕКСТ ПО ЦЕНТРУ
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Контейнер знака — центрируем */
+    .tracks-sign {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: clamp(200px, 55vw, 300px) !important;
+        margin: 20px auto !important;
+    }
+
+    /* Текст — по центру ширины знака */
+    .tracks-sign-text {
+        position: absolute;
+        text-align: center;
+        padding: 4px 8px;
+        width: 70% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: clamp(16px, 3.5vw, 24px) !important;
+        line-height: 1.1;
+    }
+
+    /* Левый текст — по центру */
+    .tracks-sign-text-left {
+        top: 14% !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 70% !important;
+    }
+
+    /* Правый текст — по центру */
+    .tracks-sign-text-right {
+        top: 40% !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 70% !important;
+    }
+}
+
+/* ============================================================
+   МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px)
+   ============================================================ */
+
+@media (max-width: 480px) {
+    .tracks-sign {
+        width: clamp(160px, 60vw, 220px) !important;
+        margin: 15px auto !important;
+    }
+
+    .tracks-sign-text {
+        font-size: clamp(14px, 3vw, 18px) !important;
+        padding: 2px 6px;
+        width: 75% !important;
+    }
+
+    .tracks-sign-text-left {
+        top: 15% !important;
+    }
+
+    .tracks-sign-text-right {
+        top: 40% !important;
+    }
+}
+
+/* ============================================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 360px)
+   ============================================================ */
+
+@media (max-width: 360px) {
+    .tracks-sign {
+        width: clamp(130px, 70vw, 170px) !important;
+    }
+
+    .tracks-sign-text {
+        font-size: clamp(11px, 2.8vw, 14px) !important;
+        padding: 2px 4px;
+        width: 80% !important;
+    }
+
+    .tracks-sign-text-left {
+        top: 8% !important;
+    }
+
+    .tracks-sign-text-right {
+        top: 40% !important;
+    }
+}
+
+/* ============================================================
+   КНОПКА "ПОДАТЬ ДОКУМЕНТЫ" — МОБИЛЬНАЯ ВЕРСИЯ
+   ============================================================ */
+
+/* Десктопная версия — стандартная */
+.admission-button {
+    position: absolute;
+    left: 50%;
+    bottom: 55px;
+    transform: translateX(-50%);
+    width: min(720px, 90vw);
+    padding: 22px 34px;
+    border-radius: 999px;
+    border: 2px solid #9b5cf5;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    color: #6b3ff5;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0.02em;
+    transition: 0.35s ease;
+    z-index: 20;
+}
+
+.admission-button:hover {
+    color: #fff;
+    background: #9b5cf5;
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow:
+            0 0 12px #9b5cf5,
+            0 0 26px rgba(155, 92, 245, 0.8),
+            0 0 60px rgba(155, 92, 245, 0.45);
+}
+
+/* ============================================================
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) — НА ВСЮ ШИРИНУ
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .admission-button {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 85% !important;          /* 85% ширины экрана */
+        max-width: 400px !important;     /* Максимальная ширина */
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        margin: 20px auto 0 !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        line-height: 1.3 !important;
+        border-radius: 60px !important;
+    }
+
+    .admission-button:hover {
+        transform: translateY(-2px) !important;
+    }
+}
+
+/* ============================================================
+   МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px)
+   ============================================================ */
+
+@media (max-width: 480px) {
+    .admission-button {
+        width: 90% !important;          /* 90% ширины экрана */
+        max-width: 340px !important;
+        padding: 14px 16px !important;
+        font-size: 14px !important;
+        margin: 16px auto 0 !important;
+        border-radius: 50px !important;
+    }
+}
+
+/* ============================================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 360px)
+   ============================================================ */
+
+@media (max-width: 360px) {
+    .admission-button {
+        width: 92% !important;
+        max-width: 280px !important;
+        padding: 12px 14px !important;
+        font-size: 12px !important;
+        margin: 12px auto 0 !important;
+        border-radius: 40px !important;
+    }
+}
+
+
+/* ============================================================
+   ОПТИМИЗИРОВАННЫЙ CSS ДЛЯ МОБИЛЬНЫХ
+   ============================================================ */
+
+/* --- БАЗОВЫЕ СТИЛИ (для всех устройств) --- */
+:root {
+    --white: #fff;
+    --black: #1f1f1f;
+    --gradient: linear-gradient(110deg, #6b3ff5, #2476ff 30%, #20c7e8 56%, #20c6a6 76%, #44eb99);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    color: var(--black);
+    font-family: Inter, Arial, sans-serif;
+    background: #e2f6ef;
+    overflow-x: hidden;
+}
+
+/* --- УНИВЕРСАЛЬНЫЙ АДАПТИВНЫЙ ТЕКСТ --- */
+h1 { font-size: clamp(28px, 6vw, 60px); }
+h2 { font-size: clamp(24px, 4vw, 48px); }
+p { font-size: clamp(14px, 1.5vw, 20px); }
+
+/* --- УНИВЕРСАЛЬНЫЕ ОТСТУПЫ --- */
+.section { padding: clamp(60px, 8vh, 120px) clamp(16px, 3vw, 60px); }
+
+/* --- УНИВЕРСАЛЬНЫЕ СЕТКИ --- */
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; gap: 24px; } }
+@media (min-width: 1024px) { .grid-2 { gap: 32px; } }
+
+/* --- ОПТИМИЗИРОВАННЫЙ ГАМБУРГЕР --- */
+.hamburger {
+    display: none;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: clamp(24px, 3vw, 28px);
+    color: #fff;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 30px;
+    z-index: 9999;
+}
+@media (max-width: 1024px) {
+    .hamburger { display: block !important; }
+}
+@media (min-width: 1025px) {
+    .hamburger { display: none !important; }
+}
+
+/* --- ОПТИМИЗИРОВАННОЕ ОЗЕРО НА МОБИЛЬНЫХ --- */
+.hero-turtle-pond {
+    width: clamp(150px, 40vw, 860px);
+    height: clamp(80px, 25vw, 560px);
+    opacity: clamp(0.15, 0.3, 1);
+}
+@media (max-width: 768px) {
+    .hero-turtle-pond {
+        position: absolute;
+        right: -10px;
+        bottom: 10px;
+        clip-path: none;
+        border-radius: 50% 0 0 0 / 50% 0 0 0;
+    }
+    .pond-turtle {
+        width: clamp(20px, 4vw, 38px) !important;
+        height: clamp(20px, 4vw, 38px) !important;
+    }
+}
+
+/* --- ОПТИМИЗИРОВАННЫЕ ФЛАГИ НА МОБИЛЬНЫХ --- */
+.tracks-flag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 24px);
+}
+@media (max-width: 768px) {
+    .tracks-flag {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        margin: 16px 0;
+        width: 100%;
+    }
+    .tracks-flag img {
+        width: clamp(80px, 20vw, 120px);
+    }
+    .tracks-flag-label {
+        font-size: clamp(14px, 3vw, 18px);
+        padding: 8px 16px;
+        min-height: 44px;
+        width: 100%;
+    }
+    .tracks-flag-description {
+        font-size: clamp(12px, 2.5vw, 14px);
+        padding: 12px 16px;
+        width: 100%;
+    }
+}
+
+/* --- ОПТИМИЗИРОВАННАЯ РАЗВИЛКА --- */
+.tracks-sign {
+    width: clamp(180px, 50vw, 420px);
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .tracks-sign {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        margin: 20px auto;
+    }
+    .tracks-sign-text {
+        font-size: clamp(12px, 2.8vw, 18px) !important;
+        padding: 2px 6px;
+        width: 75% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+/* --- ОПТИМИЗИРОВАННАЯ КНОПКА --- */
+.admission-button {
+    padding: clamp(14px, 2vw, 22px) clamp(16px, 3vw, 34px);
+    font-size: clamp(14px, 1.5vw, 20px);
+    width: clamp(85%, 90%, 100%);
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+@media (max-width: 768px) {
+    .admission-button {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 90% !important;
+        max-width: 400px !important;
+        margin: 20px auto 0 !important;
+    }
+}
+
+/* --- ОПТИМИЗИРОВАННЫЙ ФУТЕР --- */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+@media (min-width: 768px) {
+    .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+}
+
+/* ============================================================
+   ⚡ АППАРАТНО-УСКОРЕННЫЕ АНИМАЦИИ
+   ============================================================ */
+
+/* 1. Включаем GPU для анимированных элементов */
+.hero-turtle-pond,
+.pond-turtle,
+.pond-ripple,
+.hero-rotating-image,
+.reveal,
+.tracks-duck,
+.tracks-turtle,
+.lake-creature img,
+.lake-drop,
+.lake-wave,
+.gallery-image,
+.admission-turtle {
+    will-change: transform, opacity;
+    /* Предупреждаем браузер о готовящихся анимациях */
+}
+
+/* 2. Принудительное включение GPU (3D-ускорение) */
+.hero-turtle-pond,
+.pond-turtle,
+.hero-rotating-image,
+.reveal,
+.tracks-duck,
+.tracks-turtle {
+    transform: translateZ(0);
+    /* Включает аппаратное ускорение */
+    backface-visibility: hidden;
+    /* Убирает мерцание при анимации */
+}
+
+/* 3. Оптимизация для анимированных элементов */
+.pond-turtle {
+    transform: translateZ(0) translate(0, 0);
+    /* GPU ускоряет translate */
+}
+
+.hero-rotating-image {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 4. Для сложных анимаций — явное указание */
+@keyframes turtle-float {
+    0%, 100% {
+        transform: translateZ(0) translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translateZ(0) translate(8px, -6px) rotate(2deg);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: translateZ(0) rotate(360deg);
+    }
+}
+
+@keyframes ripple-natural {
+    0% {
+        opacity: 0.62;
+        transform: translateZ(0) scale(0.18);
+    }
+    100% {
+        opacity: 0;
+        transform: translateZ(0) scale(2.9);
+    }
+}
+
+/* 5. Оптимизация для мобильных — отключаем will-change после анимации */
+@media (max-width: 768px) {
+    .reveal {
+        will-change: auto !important;
+        /* На мобильных экономит память */
+    }
+    .hero-turtle-pond {
+        will-change: auto !important;
+    }
+}
 
-
-
-<!-- ===========================================
- СЛАЙД 2 — ТРЕКИ
-============================================ -->
-<section class="slide tracks-slide" id="tracks">
-
-    <!-- Заголовок -->
-    <div class="tracks-header reveal">
-        <div class="tracks-title-pill">
-            Треки обучения
-        </div>
-    </div>
-
-    <!-- Левый флаг -->
-    <div class="tracks-flag tracks-flag-left reveal">
-
-        <img src="https://i.imgur.com/rRz7wbP.png" alt="Флаг">
-
-        <div class="tracks-flag-content">
-            <div class="tracks-flag-label">
-                Вводная встреча
-            </div>
-            <div class="tracks-flag-description">
-                Приходи на установочную встречу в кампусе или подключайся онлайн, чтобы получить информацию,
-                необходимую для выбора трека обучения. Удобное время установочной встречи можно выбрать в личном
-                кабинете после регистрации. </div>
-        </div>
-
-    </div>
-
-    <!-- Правый флаг -->
-    <div class="tracks-flag tracks-flag-right reveal">
-
-        <img src="https://i.imgur.com/CH2Bp42.png" alt="Флаг">
-
-        <div class="tracks-flag-content">
-            <div class="tracks-flag-label">
-                Подача документов
-            </div>
-            <div class="tracks-flag-description">
-                Всем участникам основного обучения в первый день необходимо принести заполненные оригиналы
-                документов в кампус.
-            </div>
-        </div>
-
-    </div>
-
-
-    <!-- Деревянная развилка -->
-
-    <div class="tracks-sign reveal">
-
-        <img src="https://i.imgur.com/jKGIBhH.png" class="tracks-sign-image" alt="Развилка">
-
-        <!-- Левая стрелка -->
-        <button class="tracks-hitbox tracks-hitbox-left"
-                data-popup="Понимаешь запрос рынка, проектируешь решения, управляешь командой">
-        </button>
-
-        <!-- Правая стрелка -->
-        <button class="tracks-hitbox tracks-hitbox-right"
-                data-popup="Проектируешь системы, работаешь с данными, кодишь без костылей">
-        </button>
-
-        <!-- Подпись слева -->
-
-        <div class="tracks-sign-text tracks-sign-text-left" role="button" tabindex="0"
-             data-popup="Понимаешь запрос рынка, проектируешь решения, управляешь командой">
-            Цифровой<br>
-            заказчик
-
-        </div>
-
-        <!-- Подпись справа -->
-
-        <div class="tracks-sign-text tracks-sign-text-right" role="button" tabindex="0"
-             data-popup="Проектируешь системы, работаешь с данными, кодишь без костылей">
-
-            ИИ-инженер
-
-        </div>
-
-    </div>
-
-    <!-- Куст у истока реки: положение регулируется CSS-переменными --bush-top и --bush-right -->
-    <div class="tracks-river-bush tracks-river-source-bush reveal" aria-hidden="true"></div>
-
-    <!-- Утка -->
-
-    <img src="https://i.imgur.com/xBYD4ML.png" class="tracks-duck reveal" alt="Утка">
-    <img src="https://i.imgur.com/4FgtZXe.png" class="tracks-turtle reveal" alt="Черепашка">
-
-
-    <!-- Красивое всплывающее окно -->
-
-    <div class="tracks-popup" id="tracksPopup">
-
-        <div class="tracks-popup-card">
-
-            <button class="tracks-popup-close" id="tracksPopupClose">
-
-                ×
-
-            </button>
-
-            <h3 id="tracksPopupTitle"></h3>
-
-            <p id="tracksPopupText"></p>
-
-        </div>
-
-    </div>
-
-    <!-- ===== ДЕКОР: ЦВЕТЫ (по всему экрану, фон) ===== -->
-    <div class="tracks-flowers tracks-flowers-full reveal">
-        <!-- Верхняя зона -->
-        <span style="--x:5;  --y:12; --c:#f7d84a; --s:8px"></span>
-        <span style="--x:12; --y:18; --c:#f28b82; --s:6px"></span>
-        <span style="--x:20; --y:14; --c:#c5a3ff; --s:9px"></span>
-        <span style="--x:28; --y:20; --c:#f7d84a; --s:7px"></span>
-        <span style="--x:35; --y:16; --c:#f28b82; --s:8px"></span>
-        <span style="--x:42; --y:22; --c:#c5a3ff; --s:6px"></span>
-        <span style="--x:50; --y:19; --c:#f7d84a; --s:9px"></span>
-        <span style="--x:58; --y:15; --c:#f28b82; --s:7px"></span>
-        <span style="--x:65; --y:21; --c:#c5a3ff; --s:8px"></span>
-        <span style="--x:72; --y:17; --c:#f7d84a; --s:6px"></span>
-        <span style="--x:80; --y:23; --c:#f28b82; --s:9px"></span>
-        <span style="--x:88; --y:13; --c:#c5a3ff; --s:7px"></span>
-        <span style="--x:95; --y:19; --c:#f7d84a; --s:8px"></span>
-
-        <!-- Средняя зона -->
-        <span style="--x:8;  --y:32; --c:#f28b82; --s:7px"></span>
-        <span style="--x:15; --y:38; --c:#c5a3ff; --s:9px"></span>
-        <span style="--x:23; --y:35; --c:#f7d84a; --s:6px"></span>
-        <span style="--x:30; --y:42; --c:#f28b82; --s:8px"></span>
-        <span style="--x:38; --y:37; --c:#c5a3ff; --s:7px"></span>
-        <span style="--x:45; --y:45; --c:#f7d84a; --s:9px"></span>
-        <span style="--x:53; --y:33; --c:#f28b82; --s:6px"></span>
-        <span style="--x:60; --y:40; --c:#c5a3ff; --s:8px"></span>
-        <span style="--x:68; --y:36; --c:#f7d84a; --s:7px"></span>
-        <span style="--x:75; --y:43; --c:#f28b82; --s:9px"></span>
-        <span style="--x:82; --y:34; --c:#c5a3ff; --s:6px"></span>
-        <span style="--x:90; --y:41; --c:#f7d84a; --s:8px"></span>
-
-        <!-- Нижняя зона -->
-        <span style="--x:6;  --y:52; --c:#c5a3ff; --s:8px"></span>
-        <span style="--x:14; --y:58; --c:#f7d84a; --s:7px"></span>
-        <span style="--x:22; --y:55; --c:#f28b82; --s:9px"></span>
-        <span style="--x:30; --y:62; --c:#c5a3ff; --s:6px"></span>
-        <span style="--x:38; --y:57; --c:#f7d84a; --s:8px"></span>
-        <span style="--x:46; --y:65; --c:#f28b82; --s:7px"></span>
-        <span style="--x:54; --y:53; --c:#c5a3ff; --s:9px"></span>
-        <span style="--x:62; --y:60; --c:#f7d84a; --s:6px"></span>
-        <span style="--x:70; --y:56; --c:#f28b82; --s:8px"></span>
-        <span style="--x:78; --y:63; --c:#c5a3ff; --s:7px"></span>
-        <span style="--x:86; --y:54; --c:#f7d84a; --s:9px"></span>
-        <span style="--x:93; --y:61; --c:#f28b82; --s:6px"></span>
-    </div>
-</section>
-
-<!-- ===========================================
- СЛАЙД 3 — КАК ПОСТУПИТЬ
-============================================ -->
-<section class="slide admission-slide" id="admission">
-
-    <!-- Заголовок -->
-    <div class="admission-header reveal">
-
-        <div class="tracks-title-pill">
-            Как поступить?
-        </div>
-
-    </div>
-
-    <!-- Флаг "Интенсив" -->
-    <div class="tracks-flag admission-flag-left reveal">
-
-        <img src="https://i.imgur.com/PAM5JPr.png" alt="Интенсив">
-
-        <div class="tracks-flag-content">
-
-            <div class="tracks-flag-label">
-                Интенсив
-            </div>
-
-            <div class="tracks-flag-description">
-
-                <strong>Интенсив проходит только очно в кампусе и длится 4 дня. Дистанционный формат не
-                    предусмотрен.</strong>
-                <br>
-
-                Проект, выполненный на интенсиве, можно добавить в портфолио; получение первых практических навыков
-                работы с цифровыми инструментами; возможность попасть на основное обучение, где вы продолжите работу
-                над проектами при поддержке экспертов индустриии карьерного консультанта.
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Флаг "Основное обучение" -->
-
-    <div class="tracks-flag admission-flag-right reveal">
-
-        <img src="https://i.imgur.com/rRz7wbP.png" alt="Основное обучение">
-
-        <div class="tracks-flag-content">
-
-            <div class="tracks-flag-label">
-                Основное обучение
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Центральная табличка -->
-
-    <div class="admission-board reveal">
-
-        <img src="https://i.imgur.com/r3NOaeH.png" class="admission-board-image" alt="Табличка">
-
-        <div class="admission-board-text">
-
-            Даты отборочных испытаний:<br>
-            29 сентября — 2 октября,<br>
-            13 — 16 октября,<br>
-            27 — 30 октября<br>
-            Дата старта основного обучения:<br>
-            18 ноября
-
-        </div>
-
-    </div>
-
-    <!-- Черепаха -->
-
-    <img src="https://i.imgur.com/4FgtZXe.png" class="admission-turtle reveal" alt="Черепаха">
-
-    <!-- Кнопка -->
-
-    <a href="#form" class="admission-button reveal">
-
-        ПОДАТЬ ДОКУМЕНТЫ<br>
-        НА ОСНОВНОЕ ОБУЧЕНИЕ
-
-    </a>
-
-</section>
-
-<section class="slide faq-slide" id="faq">
-
-    <!-- Заголовок -->
-    <div class="tracks-header reveal">
-        <div class="tracks-title-pill">
-            Часто задаваемые вопросы
-        </div>
-    </div>
-
-    <!-- Левый флаг -->
-    <div class="tracks-flag tracks-flag-left reveal">
-
-        <img src="https://i.imgur.com/rRz7wbP.png" alt="Флаг">
-
-        <div class="tracks-flag-content">
-            <div class="tracks-flag-label">
-                Продуктовая мастерская
-            </div>
-
-            <div class="tracks-flag-description">
-                Продуктовая мастерская кейсов — это проектно-ориентированная программа, построенная вокруг решения
-                реального бизнес-кейса от компании-партнера (Сбера и индустрии). На этом этапе участники проходят полный
-                цикл продуктовой разработки и менеджмента в командах: от анализа запроса и исследования рынка до создания
-                решения, расчета экономики и финальной защиты проекта перед экспертной комиссией.
-            </div>
-        </div>
-
-    </div>
-    <div class="faq-bushes" aria-hidden="true">
-        <span class="faq-bush faq-bush-left"></span>
-        <span class="faq-bush faq-bush-center"></span>
-        <span class="faq-bush faq-bush-right"></span>
-    </div>
-
-    <!-- FAQ -->
-    <div class="faq-container reveal">
-
-        <div class="faq-card">
-            <h3> Это действительно бесплатно? </h3>
-            <p> Да, обучение полностью бесплатное.</p>
-        </div>
-
-        <div class="faq-card">
-            <h3>Кто может обучаться?</h3>
-            <p>Студенты и сотрудники РУДН.</p>
-        </div>
-
-        <div class="faq-card">
-            <h3>Где находится кампус? </h3>
-            <p>Факультет искусственного интеллекта РУДН (г. Москва, Подольское шоссе, д. 8, вход со стороны сквера).</p>
-        </div>
-
-        <div class="faq-card">
-            <h3>Как попасть на обучение?</h3>
-            <p>
-                Зарегистрируйтесь на сайте, используя корпоративную почту с доменом <b>rudn</b>, запишитесь на
-                вводную встречу и после неё подайте документы на интенсив.
-                <br><br>
-                <small>*На момент зачисления необходимо быть студентом или сотрудником РУДН.</small>
-            </p>
-        </div>
-
-        <div class="faq-card">
-            <h3>Как часто проходит набор?</h3>
-            <p>Наборы проходят два раза в год — весной и осенью. Даты публикуются на сайте кампуса.</p>
-        </div>
-
-        <div class="faq-card">
-            <h3>Сколько длится обучение?</h3>
-            <p>
-                «ИИ-инженер» — 20 месяцев.<br>
-                «Цифровой заказчик» — 10 месяцев.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Слайд 5: Регистрация -->
-<section class="slide lake-form-slide" id="form">
-
-    <!-- ОЗЕРО -->
-    <div class="register-lake">
-
-        <!-- волны -->
-        <div class="lake-wave lake-wave-1"></div>
-        <div class="lake-wave lake-wave-2"></div>
-        <div class="lake-wave lake-wave-3"></div>
-
-        <!-- капли -->
-        <span class="lake-drop lake-drop-1"></span>
-        <span class="lake-drop lake-drop-2"></span>
-        <span class="lake-drop lake-drop-3"></span>
-        <span class="lake-drop lake-drop-4"></span>
-
-        <!-- кувшинки -->
-        <img src="https://i.imgur.com/hyYfbPf.png" class="lake-lily lake-lily-1" alt="">
-        <img src="https://i.imgur.com/MbMcAYQ.png" class="lake-lily lake-lily-2" alt="">
-
-        <!-- утка 1 -->
-        <div class="lake-creature duck-1">
-            <div class="lake-ripple"></div>
-            <img src="https://i.imgur.com/CleiwaG.png" alt="">
-        </div>
-
-        <!-- утка 2 -->
-        <div class="lake-creature duck-2">
-            <div class="lake-ripple"></div>
-            <img src="https://i.imgur.com/r8dpBjT.png" alt="">
-        </div>
-
-        <!-- черепаха -->
-        <div class="lake-creature turtle-main">
-            <div class="lake-ripple"></div>
-            <img src="https://i.imgur.com/uy1aToF.png" alt="">
-        </div>
-
-    </div>
-
-    <div class="form-banner reveal">
-
-        <p>
-            По окончании программы "ИИ-инженер" ты получишь диплом о профессиональной переподготовке ( обучение
-            длится 2 года, онлайн и офлайн: 4–6 часов в неделю — всего 436 акад. часов)
-            По окончании программы "Цифровой заказчик" ты получишь удостоверение о повышении квалификации (обучение
-            длится 1 год, онлайн и офлайн: 4–6 часов в неделю — всего 200 акад. часов)
-        </p>
-
-    </div>
-
-
-    <!-- ФОРМА -->
-    <div class="form-content reveal">
-        <div class="label-pill">🎓 Заявка на обучение</div>
-        <h2>Оставьте контакты</h2>
-        <p>Мы поможем вам стать востребованным специалистом.</p>
-
-        <form id="applicationForm" class="application-form">
-            <div>
-                <label>Имя</label>
-                <input type="text" name="user_name" placeholder="Ваше имя" required>
-            </div>
-
-            <div>
-                <label>Email</label>
-                <input type="email" name="user_email" placeholder="example@rudn.ru" required>
-            </div>
-
-            <button type="submit" class="button">
-                Отправить заявку
-            </button>
-
-            <p id="formStatus" class="form-status"></p>
-        </form>
-
-        <small>
-            Нажимая кнопку, вы соглашаетесь с <a href="https://www.rudn.ru/storage/media/documents/e1bee4fb-c76b-46e2-9a94-4a81c0037db3/HF49MKfGpR7GqAoseQSjFQGbuRuBjWwsLrdCqGax.pdf" target="_blank">политикой обработки данных</a>
-        </small>
-    </div>
-    <!-- ТРАВА -->
-    <div class="tracks-grass tracks-grass-bottom reveal">
-        <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
-            <defs>
-                <linearGradient id="grassGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#6abf4b" />
-                    <stop offset="100%" stop-color="#3a8a28" />
-                </linearGradient>
-            </defs>
-
-            <path d="M0,120 Q120,60 240,100 T480,80 T720,110 T960,70 T1200,100 T1440,90 L1440,180 L0,180Z"
-                  fill="url(#grassGrad)" />
-
-            <path d="M0,145 Q180,110 360,135 T720,120 T1080,140 T1440,125 L1440,180 L0,180Z" fill="#2d7a1e"
-                  opacity=".7" />
-        </svg>
-    </div>
-    <!-- ГРУППА 1: Утка + Черепаха -->
-    <div class="graduates-animals">
-
-        <img src="https://i.imgur.com/fpttJGT.png" class="graduation-turtle" alt="">
-
-        <img src="https://i.imgur.com/uh5LoGM.png" class="graduation-duck" alt="">
-
-    </div>
-
-    <!-- ГРУППА 2: Флаг + Выпускной -->
-    <div class="graduates-flag">
-
-        <img src="https://i.imgur.com/PAM5JPr.png" class="graduation-flag" alt="">
-
-        <div class="graduation-label">
-            Выпускной
-        </div>
-
-    </div>
-
-    </div>
-
-
-</section>
-
-
-<!-- Слайд 6: Контакты -->
-<section class="slide contacts-slide" id="contacts">
-    <h2 class="contacts-heading reveal">Контакты</h2>
-    <div class="contacts-grid">
-        <!-- Левая колонка: Карта / Фото -->
-        <div class="map-card reveal">
-            <!-- Переключатели -->
-            <div class="media-tabs">
-                <button class="tab-btn active" data-tab="map">📍 Карта</button>
-                <button class="tab-btn" data-tab="photos">🖼️ Фото</button>
-            </div>
-
-            <!-- Контейнер для карты -->
-            <div id="map-container" class="media-content active">
-                <script type="text/javascript" charset="utf-8" async
-                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ad14a033fefdf22e9b001212d3b659574222a9ae676d9903efe34623051e318&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
-            </div>
-
-            <!-- Контейнер для галереи фото -->
-            <div id="photos-container" class="media-content">
-                <div class="photo-gallery">
-                    <div class="gallery-track">
-                        <img src="https://i.imgur.com/IknpHSH.jpeg" alt="Офис 1" class="gallery-image active">
-                        <img src="https://i.imgur.com/JbikpCD.jpeg" alt="Офис 2" class="gallery-image">
-                        <img src="https://i.imgur.com/gUSVG3v.jpeg" alt="Офис 3" class="gallery-image">
-                    </div>
-                    <button class="gallery-nav prev">❮</button>
-                    <button class="gallery-nav next">❯</button>
-                    <div class="gallery-dots"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Правая колонка: Отзывы -->
-        <div class="reviews reveal">
-            <article>
-                <img src="https://back.21-school.ru/api/download?path=images/s2Hs3frC82e3J7s9ZpLJFR5Fg6FfeYj6L53R2DXh.png"
-                     alt="Наталья">
-                <h3>Наталья</h3>
-                <p>«Школа 21» дала мне возможность сделать первый шаг в новой для меня области. Я с нуля смогла
-                    переучится на новую профессию и уже работаю по специальности. Главное для меня — это отсутствие
-                    лекций и сильное комьюнити участников.</p>
-            </article>
-            <article>
-                <img src="https://back.21-school.ru/api/download?path=images/a59zd5g8AclS1PzU2Ti7g4jAqNAooIw08FW8swoX.webp"
-                     alt="Илья">
-                <h3>Ирина</h3>
-                <p>В «Школе 21» я получила базу программирования и общее понимание возможностей в этой сфере. Больше
-                    всего в процессе обучения мне нравится свободный график, коммуникация и большое количество
-                    мероприятий.</p>
-            </article>
-            <article>
-                <img src="https://back.21-school.ru/api/download?path=images/ikE0AuKYikCXk4lvOP9VvfX4aGyTwxxCMImI1rqs.webp"
-                     alt="Антон">
-                <h3>Антон</h3>
-                <p>В школе я развил не только технические, но и мягкие навыков, по-особенному развил лидерские
-                    качества и получил возможность собрать команду и участвовать в хакатонах. Для меня «Школа 21» —
-                    самая лучшая!</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-links">
-        <a href="https://it-gym.21-school.ru/oferta">Оферта</a>
-        <a href="https://applicant.21-school.ru/rules">Правила</a>
-        <a
-                href="https://www.rudn.ru/storage/media/documents/e1bee4fb-c76b-46e2-9a94-4a81c0037db3/HF49MKfGpR7GqAoseQSjFQGbuRuBjWwsLrdCqGax.pdf">Политика
-            конфиденциальности</a>
-        <a href="mailto:info@school21.ru">info@school21.ru</a>
-        <a href="https://t.me/+MRsv0D63SqZjMjIy">Telegram</a>
-        <a href="https://vk.com/coding21">ВКонтакте</a>
-    </div>
-    <p class="footer-address">📍 Подольское шоссе, 8</p>
-</footer>
-
-<!-- Модальное окно -->
-<div class="modal" id="modal">
-    <div>
-        <button class="modal-close">×</button>
-        <p></p>
-    </div>
-</div>
-
-<!-- Кнопка наверх -->
-<a href="#hero" class="to-top">↑</a>
-
-<script src="script.js"></script>
-
-<script>
-    // ============================================================
-    // КОНТАКТЫ — ПЕРЕКЛЮЧЕНИЕ КАРТА / ФОТО
-    // ПРЯМОЙ ВСТРАИВАЕМЫЙ КОД (ГАРАНТИРОВАННО РАБОТАЕТ)
-    // ============================================================
-
-    // Ждём полной загрузки страницы
-    window.addEventListener('load', function () {
-
-        console.log('Скрипт переключения вкладок запущен!');
-
-        // Находим элементы
-        var mapContainer = document.getElementById('map-container');
-        var photosContainer = document.getElementById('photos-container');
-        var tabBtns = document.querySelectorAll('.tab-btn');
-
-        console.log('mapContainer:', mapContainer);
-        console.log('photosContainer:', photosContainer);
-        console.log('Кнопок найдено:', tabBtns.length);
-
-        // Если чего-то нет — выходим
-        if (!mapContainer || !photosContainer || !tabBtns.length) {
-            console.error('Не все элементы найдены!');
-            return;
-        }
-
-        // Функция переключения
-        function showTab(tabName) {
-            console.log('Переключение на:', tabName);
-
-            // Скрываем оба
-            mapContainer.style.display = 'none';
-            photosContainer.style.display = 'none';
-
-            // Убираем активный класс у кнопок
-            tabBtns.forEach(function (btn) {
-                btn.classList.remove('active');
-            });
-
-            // Показываем нужный
-            if (tabName === 'map') {
-                mapContainer.style.display = 'block';
-                tabBtns.forEach(function (btn) {
-                    if (btn.getAttribute('data-tab') === 'map') {
-                        btn.classList.add('active');
-                    }
-                });
-                console.log('Показана КАРТА');
-            } else if (tabName === 'photos') {
-                photosContainer.style.display = 'block';
-                tabBtns.forEach(function (btn) {
-                    if (btn.getAttribute('data-tab') === 'photos') {
-                        btn.classList.add('active');
-                    }
-                });
-                console.log('Показана ГАЛЕРЕЯ');
-            }
-        }
-
-        // Назначаем обработчики на кнопки
-        tabBtns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var tab = this.getAttribute('data-tab');
-                console.log('Клик по кнопке:', tab);
-                showTab(tab);
-            });
-        });
-
-        // По умолчанию показываем карту
-        showTab('map');
-
-        // ============================================================
-        // ГАЛЕРЕЯ — ЛИСТАНИЕ ФОТО
-        // ============================================================
-        var gallery = document.querySelector('.photo-gallery');
-        if (gallery) {
-            var images = gallery.querySelectorAll('.gallery-image');
-            var prevBtn = gallery.querySelector('.gallery-nav.prev');
-            var nextBtn = gallery.querySelector('.gallery-nav.next');
-            var dotsContainer = gallery.querySelector('.gallery-dots');
-            var currentIndex = 0;
-
-            console.log('Найдено изображений в галерее:', images.length);
-
-            if (images.length > 0) {
-
-                // Создаём точки
-                if (dotsContainer) {
-                    dotsContainer.innerHTML = '';
-                    for (var i = 0; i < images.length; i++) {
-                        var dot = document.createElement('span');
-                        if (i === 0) dot.classList.add('active');
-                        dot.addEventListener('click', (function (index) {
-                            return function () {
-                                goToImage(index);
-                            };
-                        })(i));
-                        dotsContainer.appendChild(dot);
-                    }
-                }
-
-                var dots = dotsContainer ? dotsContainer.querySelectorAll('span') : [];
-
-                function goToImage(index) {
-                    if (index < 0) index = images.length - 1;
-                    if (index >= images.length) index = 0;
-
-                    // Скрываем все фото
-                    for (var i = 0; i < images.length; i++) {
-                        images[i].classList.remove('active');
-                    }
-                    images[index].classList.add('active');
-
-                    // Обновляем точки
-                    for (var i = 0; i < dots.length; i++) {
-                        dots[i].classList.remove('active');
-                    }
-                    if (dots[index]) dots[index].classList.add('active');
-
-                    currentIndex = index;
-                    console.log('Текущее фото:', currentIndex + 1);
-                }
-
-                // Кнопки вперёд/назад
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                        goToImage(currentIndex - 1);
-                    });
-                }
-
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                        goToImage(currentIndex + 1);
-                    });
-                }
-
-                // Автопрокрутка
-                var autoInterval = setInterval(function () {
-                    // Проверяем, видна ли галерея
-                    if (photosContainer.style.display !== 'none') {
-                        goToImage(currentIndex + 1);
-                    }
-                }, 4000);
-
-                // Останавливаем автопрокрутку при наведении
-                gallery.addEventListener('mouseenter', function () {
-                    clearInterval(autoInterval);
-                });
-
-                gallery.addEventListener('mouseleave', function () {
-                    autoInterval = setInterval(function () {
-                        if (photosContainer.style.display !== 'none') {
-                            goToImage(currentIndex + 1);
-                        }
-                    }, 4000);
-                });
-
-            }
-        }
-
-    });
-
-
-    <!-- Здесь заканчивается весь ваш видимый контент сайта -->
-
-    <!-- 1. Подключаем ваш основной файл со скриптами (галерея, форма и т.д.) -->
-    <script src="script.js"></script>
-
-<!-- 2. Подключаем библиотеку EmailJS (строго отдельным тегом!) -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<!-- 3. Инициализируем EmailJS вашим ключом -->
-<script type="text/javascript">
-    (function() {
-        // ВНИМАНИЕ: Ключ ДОЛЖЕН начинаться со слова "user_"
-        // Например: "user_AbCdEfGhIjKlMnOpQrStUvWxYz"
-        emailjs.init({
-            publicKey: "N_YiW0qI6ywlOE0D2"
-        });
-        console.log("✅ EmailJS инициализирован");
-    })();
-</script>
-
-</body>
-</html>
