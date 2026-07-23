@@ -1,689 +1,639 @@
-// Анимация появления элементов
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-    },
-    { threshold: 0.18 },
-);
-
-document
-    .querySelectorAll(".reveal")
-    .forEach((element) => revealObserver.observe(element));
-
-// Плавная прокрутка
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (event) => {
-        const href = anchor.getAttribute("href");
-        const target = href && href !== "#" ? document.querySelector(href) : null;
-        if (target) {
-            event.preventDefault();
-            target.scrollIntoView({ behavior: "smooth" });
-        }
-    });
-});
-
-// Модальное окно
-const modal = document.querySelector("#modal");
-const modalText = modal?.querySelector("p");
-const closeModal = () => modal?.classList.remove("open");
-
-document.querySelectorAll("[data-popup]").forEach((button) => {
-    button.addEventListener("click", () => {
-        if (!modal || !modalText) return;
-        modalText.textContent = button.dataset.popup || "";
-        modal.classList.add("open");
-    });
-});
-
-modal?.addEventListener("click", (event) => {
-    if (event.target === modal || event.target.classList.contains("modal-close"))
-        closeModal();
-});
-
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeModal();
-});
-
-// Форма заявки с интеграцией EmailJS
-const form = document.querySelector("#applicationForm");
-const formStatus = document.querySelector("#formStatus");
-
-form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (formStatus) {
-        formStatus.textContent = "Отправка заявки...";
-        formStatus.style.color = "#666";
-    }
-
-    // ЗАМЕНИТЕ НА ВАШИ РЕАЛЬНЫЕ ДАННЫЕ ИЗ КАБИНЕТА EMAILJS:
-    const serviceID = "service_e5d3pma";     // например, "service_gmail"
-    const templateID = "template_lrag7cr";   // например, "template_abc123"
-
-    emailjs.sendForm(serviceID, templateID, form)
-        .then(() => {
-            if (formStatus) {
-                formStatus.textContent = "✅ Заявка успешно отправлена! Мы свяжемся с вами.";
-                formStatus.style.color = "green";
-            }
-            form.reset();
-            localStorage.removeItem("school21-application");
-        })
-        .catch((error) => {
-            if (formStatus) {
-                formStatus.textContent = "❌ Ошибка отправки. Пожалуйста, попробуйте позже.";
-                formStatus.style.color = "red";
-            }
-            console.error("EmailJS Error:", error);
-        });
-});
-
-// Проверка сохраненной заявки при загрузке страницы
-if (localStorage.getItem("school21-application") && formStatus) {
-    formStatus.textContent = "У вас есть сохранённая заявка. Пожалуйста, завершите отправку.";
-}
-if (localStorage.getItem("school21-application") && formStatus) {
-    formStatus.textContent = "У вас есть сохранённая заявка";
-}
-
-function buildRiverNetwork({
-                               svg,
-                               source,
-                               targets,
-                               trunkLength = 0.35,
-                               segments = 60,
-                               className = "river-purple",
-                           }) {
-    const svgElement =
-        typeof svg === "string" ? document.querySelector(svg) : svg;
-
-    const sourceEl = document.querySelector(source);
-
-    const targetEls = targets.map((selector) => document.querySelector(selector));
-
-    const svgRect = svgElement.getBoundingClientRect();
-
-    function center(el) {
-        const r = el.getBoundingClientRect();
-
-        return {
-            x: r.left + r.width / 2 - svgRect.left,
-            y: r.top + r.height / 2 - svgRect.top,
-        };
-    }
-
-    const start = center(sourceEl);
-
-    const targetPoints = targetEls.map(center);
-
-    //------------------------------------------
-    // вычисляем точку разделения
-    //------------------------------------------
-
-    const avg = targetPoints.reduce((a, b) => ({
-        x: a.x + b.x,
-        y: a.y + b.y,
-    }));
-
-    avg.x /= targetPoints.length;
-    avg.y /= targetPoints.length;
-
-    const junction = {
-        x: start.x + (avg.x - start.x) * trunkLength,
-        y: start.y + (avg.y - start.y) * trunkLength,
-    };
-
-    //------------------------------------------
-    // рисуем
-    //------------------------------------------
-
-    drawRiver(start, junction, className);
-
-    targetPoints.forEach((target, i) => {
-        drawRiver(junction, target, className);
-    });
-
-    //------------------------------------------
-
-    function drawRiver(a, b, cls) {
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
-        path.classList.add("river-path", cls, "river-generated");
-
-        path.setAttribute("d", createRiver(a, b));
-
-        svgElement.prepend(path);
-        const effects = document.getElementById("effects");
-
-        const length = path.getTotalLength();
-
-        function point(distance) {
-            if (!path.parentNode) {
-                return null;
-            }
-            return path.getPointAtLength(distance);
-        }
-
-        function ripple() {
-            const d = Math.random() * length;
-
-            const p = point(d);
-
-            if (p === null) {
-                return;
-            }
-
-            const c = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "circle",
-            );
-
-            c.setAttribute("cx", p.x);
-            c.setAttribute("cy", p.y);
-            c.setAttribute("r", 2);
-
-            c.setAttribute("class", "ripple");
-
-            effects.appendChild(c);
-
-            c.animate(
-                [
-                    {
-                        r: 2,
-                        opacity: 0.4,
-                    },
-
-                    {
-                        r: 22,
-                        opacity: 0,
-                    },
-                ],
-                {
-                    duration: 2200,
-                    easing: "ease-out",
-                },
-            );
-
-            setTimeout(() => c.remove(), 2300);
-        }
-
-        function sparkle() {
-            const e = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "ellipse",
-            );
-
-            e.setAttribute("rx", 8);
-            e.setAttribute("ry", 2);
-
-            e.setAttribute("class", "sparkle");
-
-            effects.appendChild(e);
-
-            const duration = 9000;
-
-            const start = performance.now();
-
-            function frame(now) {
-                const t = (now - start) / duration;
-
-                if (t >= 1) {
-                    e.remove();
-
-                    return;
-                }
-
-                const pos = point(length * t);
-
-                if (pos === null) {
-                    return;
-                }
-
-                e.setAttribute("cx", pos.x);
-
-                e.setAttribute("cy", pos.y);
-
-                e.setAttribute("opacity", Math.sin(t * Math.PI));
-
-                requestAnimationFrame(frame);
-            }
-
-            requestAnimationFrame(frame);
-        }
-
-        function bubble() {
-            const d = Math.random() * length;
-
-            const p = point(d);
-
-            if (p === null) {
-                return;
-            }
-
-            const c = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "circle",
-            );
-
-            const r = 2 + Math.random() * 4;
-
-            c.setAttribute("cx", p.x);
-
-            c.setAttribute("cy", p.y);
-
-            c.setAttribute("r", r);
-
-            c.setAttribute("class", "bubble");
-
-            effects.appendChild(c);
-
-            c.animate(
-                [
-                    {
-                        transform: "translateY(0px)",
-                        opacity: 0.45,
-                    },
-
-                    {
-                        transform: "translateY(-25px)",
-                        opacity: 0,
-                    },
-                ],
-                {
-                    duration: 5200,
-                },
-            );
-
-            setTimeout(() => c.remove(), 5200);
-        }
-
-        setInterval(ripple, 1600);
-        setInterval(sparkle, 1800);
-        setInterval(bubble, 1900);
-    }
-
-    //------------------------------------------
-
-    function createRiver(start, end) {
-        const dx = end.x - start.x;
-        const dy = end.y - start.y;
-
-        const len = Math.hypot(dx, dy);
-
-        const nx = -dy / len;
-        const ny = dx / len;
-
-        const pts = [];
-
-        for (let i = 0; i <= segments; i++) {
-            const t = i / segments;
-
-            //---------------------------------
-            // большая волна
-            //---------------------------------
-
-            const big = Math.sin(t * Math.PI * 1.5) * 60;
-
-            //---------------------------------
-            // средняя
-            //---------------------------------
-
-            const medium = Math.sin(t * 7) * 20;
-
-            //---------------------------------
-            // мелкая
-            //---------------------------------
-
-            const small = Math.sin(t * 23) * 6;
-
-            //---------------------------------
-
-            const amplitude = Math.sin(t * Math.PI) * (big + medium + small);
-
-            pts.push({
-                x: start.x + dx * t + nx * amplitude,
-
-                y: start.y + dy * t + ny * amplitude,
+// ============================================================
+// ОПТИМИЗИРОВАННЫЙ JS (РЕКИ НЕ ТРОГАЕМ, КНОПКА ФОТО ИСПРАВЛЕНА)
+// ============================================================
+
+(function() {
+    'use strict';
+
+    // ============================================================
+    // 1. АНИМАЦИЯ ПОЯВЛЕНИЯ
+    // ============================================================
+
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
+            requestAnimationFrame(() => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
             });
+        },
+        {
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
         }
+    );
 
-        return catmullRom(pts);
+    document.querySelectorAll(".reveal").forEach((el) => {
+        if (!el.classList.contains('visible')) {
+            revealObserver.observe(el);
+        }
+    });
+
+    // ============================================================
+    // 2. ПЛАВНАЯ ПРОКРУТКА
+    // ============================================================
+
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (e) => {
+            const href = anchor.getAttribute("href");
+            const target = href && href !== "#" ? document.querySelector(href) : null;
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: isTouch ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ============================================================
+    // 3. МОДАЛЬНОЕ ОКНО
+    // ============================================================
+
+    const modal = document.querySelector("#modal");
+    const modalText = modal?.querySelector("p");
+
+    if (modal) {
+        document.addEventListener("click", (e) => {
+            const button = e.target.closest("[data-popup]");
+            if (button && modalText) {
+                modalText.textContent = button.dataset.popup || "";
+                modal.classList.add("open");
+                return;
+            }
+            if (e.target === modal || e.target.closest(".modal-close")) {
+                modal.classList.remove("open");
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") modal.classList.remove("open");
+        });
     }
 
-    //------------------------------------------
+    // ============================================================
+    // 4. ФОРМА
+    // ============================================================
 
-    function catmullRom(points) {
-        let d = `M ${points[0].x} ${points[0].y}`;
+    const form = document.querySelector("#applicationForm");
+    const formStatus = document.querySelector("#formStatus");
 
-        for (let i = 0; i < points.length - 1; i++) {
-            const p0 = points[Math.max(0, i - 1)];
+    if (form) {
+        let isSubmitting = false;
 
-            const p1 = points[i];
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (isSubmitting) return;
+            isSubmitting = true;
 
-            const p2 = points[i + 1];
+            if (formStatus) {
+                formStatus.textContent = "⏳ Отправка...";
+                formStatus.style.color = "#666";
+            }
 
-            const p3 = points[Math.min(points.length - 1, i + 2)];
+            const serviceID = "service_e5d3pma";
+            const templateID = "template_lrag7cr";
 
-            const cp1x = p1.x + (p2.x - p0.x) / 6;
+            emailjs.sendForm(serviceID, templateID, form)
+                .then(() => {
+                    if (formStatus) {
+                        formStatus.textContent = "✅ Заявка успешно отправлена!";
+                        formStatus.style.color = "green";
+                    }
+                    form.reset();
+                    localStorage.removeItem("school21-application");
+                })
+                .catch((error) => {
+                    if (formStatus) {
+                        formStatus.textContent = "❌ Ошибка. Попробуйте позже.";
+                        formStatus.style.color = "red";
+                    }
+                    console.error("EmailJS Error:", error);
+                })
+                .finally(() => {
+                    isSubmitting = false;
+                });
+        });
 
-            const cp1y = p1.y + (p2.y - p0.y) / 6;
-
-            const cp2x = p2.x - (p3.x - p1.x) / 6;
-
-            const cp2y = p2.y - (p3.y - p1.y) / 6;
-
-            d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+        if (localStorage.getItem("school21-application") && formStatus) {
+            formStatus.textContent = "📌 У вас есть сохранённая заявка";
         }
-
-        return d;
     }
-}
 
-const renderRivers = () => {
-    document.querySelectorAll(".river-generated").forEach((e) => e.remove());
-    const effects = document.getElementById("effects");
-    effects.innerHTML = "";
+    // ============================================================
+    // 5. ГАМБУРГЕР
+    // ============================================================
 
-    buildRiverNetwork({
-        className: "river-purple",
-        svg: ".rivers-overlay",
-        source: ".pond-reeds-right",
-        targets: [".register-lake"],
-    });
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav nav');
+    const nav = document.querySelector('.nav');
 
-    buildRiverNetwork({
-        className: "river-teal",
-        svg: ".rivers-overlay",
-        source: ".pond-turtle-three",
-        targets: [".tracks-flag-left"],
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navMenu.classList.toggle('open');
+            hamburger.textContent = isOpen ? '✕' : '☰';
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
 
-    buildRiverNetwork({
-        className: "river-teal",
-        svg: ".rivers-overlay",
-        source: ".tracks-flag-left",
-        targets: [".tracks-duck"],
-    });
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('open') && nav && !nav.contains(e.target)) {
+                navMenu.classList.remove('open');
+                hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
 
-    buildRiverNetwork({
-        className: "river-teal",
-        svg: ".rivers-overlay",
-        source: ".tracks-duck",
-        targets: [".register-lake"],
-    });
-};
+        navMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+                hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 
-renderRivers();
-window.addEventListener("resize", renderRivers);
+    // ============================================================
+    // 6. КОНТАКТЫ — ВКЛАДКИ (ИСПРАВЛЕНА КНОПКА "ФОТО")
+    // ============================================================
 
-// ============================================================
-// КОНТАКТЫ — ПЕРЕКЛЮЧЕНИЕ КАРТА / ФОТО (МГНОВЕННОЕ)
-// ============================================================
+    (function initTabs() {
+        var mapContainer = document.getElementById('map-container');
+        var photosContainer = document.getElementById('photos-container');
+        var tabBtns = document.querySelectorAll('.tab-btn');
 
-(function () {
-    // Функция переключения (доступна сразу)
-    function showTab(tabName) {
-        var mapContainer = document.getElementById("map-container");
-        var photosContainer = document.getElementById("photos-container");
-        var tabBtns = document.querySelectorAll(".tab-btn");
+        console.log('🔍 Инициализация вкладок');
+        console.log('mapContainer:', mapContainer);
+        console.log('photosContainer:', photosContainer);
+        console.log('Кнопок найдено:', tabBtns.length);
 
-        // Если элементов нет — выходим
-        if (!mapContainer || !photosContainer) {
+        if (!mapContainer || !photosContainer || !tabBtns.length) {
+            console.error('❌ Не все элементы найдены для вкладок!');
             return;
         }
 
-        // Скрываем оба
-        mapContainer.style.display = "none";
-        photosContainer.style.display = "none";
-        mapContainer.classList.remove("active");
-        photosContainer.classList.remove("active");
+        function showTab(tabName) {
+            console.log('📌 Переключение на:', tabName);
 
-        // Убираем активный класс у кнопок
-        tabBtns.forEach(function (btn) {
-            btn.classList.remove("active");
-        });
+            // Скрываем оба
+            mapContainer.style.display = 'none';
+            photosContainer.style.display = 'none';
+            mapContainer.classList.remove('active');
+            photosContainer.classList.remove('active');
 
-        // Показываем нужный
-        if (tabName === "map") {
-            mapContainer.style.display = "block";
-            mapContainer.classList.add("active");
-            tabBtns.forEach(function (btn) {
-                if (btn.getAttribute("data-tab") === "map") {
-                    btn.classList.add("active");
-                }
+            // Убираем активный класс у кнопок
+            tabBtns.forEach(function(btn) {
+                btn.classList.remove('active');
             });
-        } else if (tabName === "photos") {
-            photosContainer.style.display = "block";
-            photosContainer.classList.add("active");
-            tabBtns.forEach(function (btn) {
-                if (btn.getAttribute("data-tab") === "photos") {
-                    btn.classList.add("active");
-                }
-            });
-        }
-    }
 
-    // ============================================================
-    // 1. ПРЯМОЙ СПОСОБ: вешаем обработчики сразу (без ожидания)
-    // ============================================================
-
-    // Находим кнопки
-    var tabBtns = document.querySelectorAll(".tab-btn");
-
-    // Вешаем обработчики на каждую кнопку (сразу, если они уже есть)
-    if (tabBtns.length) {
-        tabBtns.forEach(function (btn) {
-            btn.addEventListener("click", function () {
-                var tab = this.getAttribute("data-tab");
-                showTab(tab);
-            });
-        });
-        // Показываем карту по умолчанию
-        showTab("map");
-    } else {
-        // Если кнопок ещё нет на странице, используем MutationObserver
-        // или просто ждём их появления через небольшую задержку
-        var checkInterval = setInterval(function () {
-            var btns = document.querySelectorAll(".tab-btn");
-            if (btns.length) {
-                clearInterval(checkInterval);
-                btns.forEach(function (btn) {
-                    btn.addEventListener("click", function () {
-                        var tab = this.getAttribute("data-tab");
-                        showTab(tab);
-                    });
+            // Показываем нужный
+            if (tabName === 'map') {
+                mapContainer.style.display = 'block';
+                mapContainer.classList.add('active');
+                tabBtns.forEach(function(btn) {
+                    if (btn.getAttribute('data-tab') === 'map') {
+                        btn.classList.add('active');
+                    }
                 });
-                showTab("map");
-            }
-        }, 50);
-    }
-
-    // ============================================================
-    // 2. ЗАПАСНОЙ СПОСОБ: обработчик на весь документ (делегирование)
-    //    Работает даже для динамически добавленных кнопок
-    // ============================================================
-
-    document.addEventListener("click", function (event) {
-        var target = event.target.closest(".tab-btn");
-        if (target) {
-            // Если у кнопки уже есть свой обработчик — не мешаем
-            // Но если нет — переключаем через делегирование
-            var tab = target.getAttribute("data-tab");
-            // Проверяем, есть ли уже активный класс у этой кнопки
-            // Если нет — значит обработчик не сработал, переключаем сами
-            if (!target.classList.contains("active")) {
-                showTab(tab);
+                console.log('✅ Показана КАРТА');
+            } else if (tabName === 'photos') {
+                photosContainer.style.display = 'block';
+                photosContainer.classList.add('active');
+                tabBtns.forEach(function(btn) {
+                    if (btn.getAttribute('data-tab') === 'photos') {
+                        btn.classList.add('active');
+                    }
+                });
+                console.log('✅ Показана ГАЛЕРЕЯ');
+                // Инициализируем галерею после показа
+                setTimeout(initGallery, 100);
             }
         }
-    });
-})();
 
-// ============================================================
-// ГАЛЕРЕЯ — ПЕРЕКЛЮЧЕНИЕ ФОТО (МГНОВЕННОЕ)
-// ============================================================
+        // Вешаем обработчики на кнопки
+        tabBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var tab = this.getAttribute('data-tab');
+                console.log('🖱️ Клик по кнопке:', tab);
+                showTab(tab);
+            });
+        });
 
-(function () {
-    // Функция для работы с галереей
+        // По умолчанию показываем карту
+        showTab('map');
+    })();
+
+    // ============================================================
+    // 7. ГАЛЕРЕЯ
+    // ============================================================
+
     function initGallery() {
-        var gallery = document.querySelector(".photo-gallery");
-        if (!gallery) return;
+        var gallery = document.querySelector('.photo-gallery');
+        if (!gallery) {
+            console.log('⚠️ Галерея не найдена');
+            return;
+        }
 
-        // Если уже инициализирована — не повторяем
-        if (gallery.dataset.initialized === "true") return;
-        gallery.dataset.initialized = "true";
+        if (gallery.dataset.initialized === 'true') {
+            console.log('⚠️ Галерея уже инициализирована');
+            return;
+        }
 
-        var images = gallery.querySelectorAll(".gallery-image");
-        var prevBtn = gallery.querySelector(".gallery-nav.prev");
-        var nextBtn = gallery.querySelector(".gallery-nav.next");
-        var dotsContainer = gallery.querySelector(".gallery-dots");
+        console.log('🖼️ Инициализация галереи');
+        gallery.dataset.initialized = 'true';
+
+        var images = gallery.querySelectorAll('.gallery-image');
+        var prevBtn = gallery.querySelector('.gallery-nav.prev');
+        var nextBtn = gallery.querySelector('.gallery-nav.next');
+        var dotsContainer = gallery.querySelector('.gallery-dots');
         var currentIndex = 0;
 
-        if (!images.length) return;
+        if (!images.length) {
+            console.log('⚠️ Нет изображений в галерее');
+            return;
+        }
 
-        // --- Создаём точки ---
+        console.log('📸 Найдено изображений:', images.length);
+
+        // Создаём точки
         if (dotsContainer) {
-            dotsContainer.innerHTML = "";
+            dotsContainer.innerHTML = '';
             for (var i = 0; i < images.length; i++) {
-                var dot = document.createElement("span");
-                if (i === 0) dot.classList.add("active");
-                dot.addEventListener(
-                    "click",
-                    (function (index) {
-                        return function () {
-                            goToImage(index);
-                        };
-                    })(i),
-                );
+                var dot = document.createElement('span');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', (function(index) {
+                    return function() {
+                        goToImage(index);
+                    };
+                })(i));
                 dotsContainer.appendChild(dot);
             }
         }
 
-        var dots = dotsContainer ? dotsContainer.querySelectorAll("span") : [];
+        var dots = dotsContainer ? dotsContainer.querySelectorAll('span') : [];
 
-        // --- Функция переключения фото ---
         function goToImage(index) {
             if (index < 0) index = images.length - 1;
             if (index >= images.length) index = 0;
 
-            // Скрываем все фото
             for (var i = 0; i < images.length; i++) {
-                images[i].classList.remove("active");
+                images[i].classList.remove('active');
             }
-            images[index].classList.add("active");
+            images[index].classList.add('active');
 
-            // Обновляем точки
             for (var i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active");
+                dots[i].classList.remove('active');
             }
-            if (dots[index]) dots[index].classList.add("active");
+            if (dots[index]) dots[index].classList.add('active');
 
             currentIndex = index;
+            console.log('📸 Текущее фото:', currentIndex + 1);
         }
 
-        // --- Кнопки навигации ---
+        // Кнопки навигации
         if (prevBtn) {
-            prevBtn.addEventListener("click", function (e) {
+            prevBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 goToImage(currentIndex - 1);
             });
         }
 
         if (nextBtn) {
-            nextBtn.addEventListener("click", function (e) {
+            nextBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 goToImage(currentIndex + 1);
             });
         }
 
-        // --- Клик по точкам ---
-        dots.forEach(function (dot, index) {
-            dot.addEventListener("click", function () {
+        // Клик по точкам
+        dots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
                 goToImage(index);
             });
         });
 
-        // --- Автопрокрутка (если галерея видна) ---
-        var autoInterval = setInterval(function () {
-            var photosContainer = document.getElementById("photos-container");
-            if (photosContainer && photosContainer.style.display !== "none") {
+        // Автопрокрутка
+        var photosContainer = document.getElementById('photos-container');
+        var autoInterval = setInterval(function() {
+            if (photosContainer && photosContainer.style.display !== 'none') {
                 goToImage(currentIndex + 1);
             }
         }, 4000);
 
-        gallery.addEventListener("mouseenter", function () {
+        gallery.addEventListener('mouseenter', function() {
             clearInterval(autoInterval);
         });
 
-        gallery.addEventListener("mouseleave", function () {
-            autoInterval = setInterval(function () {
-                var photosContainer = document.getElementById("photos-container");
-                if (photosContainer && photosContainer.style.display !== "none") {
+        gallery.addEventListener('mouseleave', function() {
+            autoInterval = setInterval(function() {
+                if (photosContainer && photosContainer.style.display !== 'none') {
                     goToImage(currentIndex + 1);
                 }
             }, 4000);
         });
 
-        // --- Клавиши клавиатуры ---
-        document.addEventListener("keydown", function (e) {
-            var photosContainer = document.getElementById("photos-container");
-            if (photosContainer && photosContainer.style.display !== "none") {
-                if (e.key === "ArrowRight") goToImage(currentIndex + 1);
-                if (e.key === "ArrowLeft") goToImage(currentIndex - 1);
+        // Клавиши клавиатуры
+        document.addEventListener('keydown', function(e) {
+            var photosContainer = document.getElementById('photos-container');
+            if (photosContainer && photosContainer.style.display !== 'none') {
+                if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
+                if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
             }
         });
+
+        console.log('✅ Галерея инициализирована успешно');
     }
 
-    // --- Запускаем галерею ---
+    // === ЗАПУСК ГАЛЕРЕИ ===
     // Пробуем инициализировать сразу
-    initGallery();
+    setTimeout(initGallery, 500);
 
-    // Если галерея появится позже (после переключения вкладки) — перехватываем
-    var galleryCheckInterval = setInterval(function () {
-        var gallery = document.querySelector(".photo-gallery");
+    // Если галерея появится позже — перехватываем
+    var galleryCheckInterval = setInterval(function() {
+        var gallery = document.querySelector('.photo-gallery');
         if (gallery && !gallery.dataset.initialized) {
             initGallery();
         }
-    }, 200);
+    }, 300);
 
-    // Также инициализируем при переключении на вкладку "photos"
-    // Дополняем существующую функцию showTab
-    var originalShowTab = window.showTab || function () {};
-    window.showTab = function (tabName) {
-        // Вызываем оригинальную функцию (если есть)
-        if (typeof originalShowTab === "function") {
-            originalShowTab(tabName);
+
+    // ============================================================
+    // 8. РЕКИ (ПОЛНАЯ ВЕРСИЯ С АНИМАЦИЯМИ — РАБОТАЕТ ВЕЗДЕ)
+    // ============================================================
+
+    // ===== ПОЛНАЯ ФУНКЦИЯ РЕК (СО ВСЕМИ АНИМАЦИЯМИ) =====
+    function buildRiverNetwork({
+                                   svg,
+                                   source,
+                                   targets,
+                                   trunkLength = 0.35,
+                                   segments = 60,
+                                   className = "river-purple"
+                               }) {
+        const svgElement = typeof svg === "string" ? document.querySelector(svg) : svg;
+        if (!svgElement) {
+            console.warn('SVG элемент не найден:', svg);
+            return;
         }
-        // Если переключились на фото — инициализируем галерею
-        if (tabName === "photos") {
-            setTimeout(initGallery, 100);
+
+        const sourceEl = document.querySelector(source);
+        if (!sourceEl) {
+            console.warn('Источник не найден:', source);
+            return;
         }
-    };
+
+        const targetEls = targets
+            .map(selector => document.querySelector(selector))
+            .filter(el => el !== null);
+        if (!targetEls.length) {
+            console.warn('Цели не найдены для:', source);
+            return;
+        }
+
+        const svgRect = svgElement.getBoundingClientRect();
+
+        function center(el) {
+            const r = el.getBoundingClientRect();
+            return {
+                x: r.left + r.width / 2 - svgRect.left,
+                y: r.top + r.height / 2 - svgRect.top,
+            };
+        }
+
+        const start = center(sourceEl);
+        const targetPoints = targetEls.map(center);
+
+        const avg = targetPoints.reduce((a, b) => ({
+            x: a.x + b.x,
+            y: a.y + b.y,
+        }));
+        avg.x /= targetPoints.length;
+        avg.y /= targetPoints.length;
+
+        const junction = {
+            x: start.x + (avg.x - start.x) * trunkLength,
+            y: start.y + (avg.y - start.y) * trunkLength,
+        };
+
+        // Для мобильных уменьшаем сегменты (но анимации остаются)
+        const isMobile = window.innerWidth < 768;
+        const mobileSegments = isMobile ? 40 : segments;
+
+        // === РИСУЕМ РЕКУ ===
+        function drawRiver(a, b, cls) {
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.classList.add("river-path", cls, "river-generated");
+            path.setAttribute("d", createRiver(a, b, mobileSegments));
+            svgElement.prepend(path);
+
+            // === АНИМАЦИИ ===
+            const effects = document.getElementById("effects");
+            if (!effects) return;
+
+            const length = path.getTotalLength();
+
+            function point(distance) {
+                if (!path.parentNode) return null;
+                try {
+                    return path.getPointAtLength(distance);
+                } catch {
+                    return null;
+                }
+            }
+
+            // 1. РЯБЬ
+            function ripple() {
+                const d = Math.random() * length;
+                const p = point(d);
+                if (!p) return;
+
+                const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                c.setAttribute("cx", p.x);
+                c.setAttribute("cy", p.y);
+                c.setAttribute("r", 2);
+                c.setAttribute("class", "ripple");
+                effects.appendChild(c);
+
+                c.animate(
+                    [{ r: 2, opacity: 0.4 }, { r: 22, opacity: 0 }],
+                    { duration: 2200, easing: "ease-out" }
+                );
+                setTimeout(() => c.remove(), 2300);
+            }
+
+            // 2. ИСКРЫ
+            function sparkle() {
+                const d = Math.random() * length;
+                const p = point(d);
+                if (!p) return;
+
+                const e = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+                e.setAttribute("rx", 8);
+                e.setAttribute("ry", 2);
+                e.setAttribute("class", "sparkle");
+                effects.appendChild(e);
+
+                const duration = 5000 + Math.random() * 4000;
+                const startTime = performance.now();
+
+                function frame(now) {
+                    const t = (now - startTime) / duration;
+                    if (t >= 1) { e.remove(); return; }
+                    const pos = point(length * t);
+                    if (!pos) return;
+                    e.setAttribute("cx", pos.x);
+                    e.setAttribute("cy", pos.y);
+                    e.setAttribute("opacity", Math.sin(t * Math.PI));
+                    requestAnimationFrame(frame);
+                }
+                requestAnimationFrame(frame);
+            }
+
+            // 3. ПУЗЫРЬКИ
+            function bubble() {
+                const d = Math.random() * length;
+                const p = point(d);
+                if (!p) return;
+
+                const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                const r = 2 + Math.random() * 4;
+                c.setAttribute("cx", p.x);
+                c.setAttribute("cy", p.y);
+                c.setAttribute("r", r);
+                c.setAttribute("class", "bubble");
+                effects.appendChild(c);
+
+                c.animate(
+                    [{ transform: "translateY(0px)", opacity: 0.45 }, { transform: "translateY(-25px)", opacity: 0 }],
+                    { duration: 3000 + Math.random() * 2000 }
+                );
+                setTimeout(() => c.remove(), 3200 + Math.random() * 2000);
+            }
+
+            // Запускаем интервалы
+            const rippleInterval = setInterval(ripple, 1600);
+            const sparkleInterval = setInterval(sparkle, 1800);
+            const bubbleInterval = setInterval(bubble, 1900);
+
+            // Сохраняем интервалы для очистки
+            path._intervals = [rippleInterval, sparkleInterval, bubbleInterval];
+        }
+
+        // === СОЗДАНИЕ КРИВОЙ ===
+        function createRiver(start, end, segs) {
+            const dx = end.x - start.x;
+            const dy = end.y - start.y;
+            const len = Math.hypot(dx, dy);
+            const nx = -dy / len;
+            const ny = dx / len;
+            const pts = [];
+
+            for (let i = 0; i <= segs; i++) {
+                const t = i / segs;
+                const amplitude = Math.sin(t * Math.PI) * (
+                    Math.sin(t * Math.PI * 1.5) * 60 +
+                    Math.sin(t * 7) * 20 +
+                    Math.sin(t * 23) * 6
+                );
+                pts.push({
+                    x: start.x + dx * t + nx * amplitude,
+                    y: start.y + dy * t + ny * amplitude,
+                });
+            }
+
+            let d = `M ${pts[0].x} ${pts[0].y}`;
+            for (let i = 0; i < pts.length - 1; i++) {
+                const p0 = pts[Math.max(0, i - 1)];
+                const p1 = pts[i];
+                const p2 = pts[i + 1];
+                const p3 = pts[Math.min(pts.length - 1, i + 2)];
+                d += ` C ${p1.x + (p2.x - p0.x) / 6} ${p1.y + (p2.y - p0.y) / 6}, ${p2.x - (p3.x - p1.x) / 6} ${p2.y - (p3.y - p1.y) / 6}, ${p2.x} ${p2.y}`;
+            }
+            return d;
+        }
+
+        drawRiver(start, junction, className);
+        targetPoints.forEach((target) => {
+            drawRiver(junction, target, className);
+        });
+    }
+
+    // ===== РЕНДЕР РЕК =====
+    function renderRivers() {
+        // Очищаем старые реки и интервалы
+        document.querySelectorAll(".river-generated").forEach(e => {
+            if (e._intervals) {
+                e._intervals.forEach(interval => clearInterval(interval));
+            }
+            e.remove();
+        });
+
+        const effects = document.getElementById("effects");
+        if (effects) effects.innerHTML = "";
+
+        buildRiverNetwork({
+            className: "river-purple",
+            svg: ".rivers-overlay",
+            source: ".pond-reeds-right",
+            targets: [".register-lake"],
+        });
+
+        buildRiverNetwork({
+            className: "river-teal",
+            svg: ".rivers-overlay",
+            source: ".pond-turtle-three",
+            targets: [".tracks-flag-left"],
+        });
+
+        buildRiverNetwork({
+            className: "river-teal",
+            svg: ".rivers-overlay",
+            source: ".tracks-flag-left",
+            targets: [".tracks-duck"],
+        });
+
+        buildRiverNetwork({
+            className: "river-teal",
+            svg: ".rivers-overlay",
+            source: ".tracks-duck",
+            targets: [".register-lake"],
+        });
+    }
+
+    // === ЗАПУСК ===
+    renderRivers();
+
+    // Throttle для resize
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(renderRivers, 300);
+    });
+
+    // ============================================================
+    // 9. WILL-CHANGE
+    // ============================================================
+
+    document.querySelectorAll('.pond-turtle, .hero-rotating-image').forEach(function(el) {
+        el.style.willChange = 'transform';
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        if (!el.classList.contains('visible')) {
+            el.style.willChange = 'transform, opacity';
+        }
+    });
+
+    document.addEventListener('transitionend', function(e) {
+        if (e.target.classList && e.target.classList.contains('reveal')) {
+            e.target.style.willChange = 'auto';
+        }
+    }, { passive: true });
+
 })();
-// ============================================================
-// ГАМБУРГЕР
-// ============================================================
-function toggleMenu() {
-    var navMenu = document.querySelector('.nav nav');
-    var hamburger = document.querySelector('.hamburger');
-    if (navMenu) {
-        navMenu.classList.toggle('open');
-        if (hamburger) {
-            hamburger.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
-        }
-    }
-}
-
-// Закрываем меню при клике вне него
-document.addEventListener('click', function(event) {
-    var navMenu = document.querySelector('.nav nav');
-    var hamburger = document.querySelector('.hamburger');
-    var nav = document.querySelector('.nav');
-    if (navMenu && navMenu.classList.contains('open')) {
-        if (nav && !nav.contains(event.target)) {
-            navMenu.classList.remove('open');
-            if (hamburger) hamburger.textContent = '☰';
-        }
-    }
-});
